@@ -778,7 +778,7 @@ Value* GVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
         return newVal;
       } else {
         VN.erase(newVal);
-        delete newVal;
+        newVal->deleteValue();
         return leader;
       }
     }
@@ -818,7 +818,7 @@ Value* GVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
                                  newOp1, newOp2,
                                  C->getName()+".expr");
       else if (ExtractElementInst* E = dyn_cast<ExtractElementInst>(U))
-        newVal = new ExtractElementInst(newOp1, newOp2, E->getName()+".expr");
+        newVal = ExtractElementInst::Create(newOp1, newOp2, E->getName()+".expr");
       
       uint32_t v = VN.lookup_or_add(newVal);
       
@@ -828,7 +828,7 @@ Value* GVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
         return newVal;
       } else {
         VN.erase(newVal);
-        delete newVal;
+        newVal->deleteValue();
         return leader;
       }
     }
@@ -887,7 +887,7 @@ Value* GVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
         return newVal;
       } else {
         VN.erase(newVal);
-        delete newVal;
+        newVal->deleteValue();
         return leader;
       }
     }
@@ -918,8 +918,8 @@ Value* GVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
     
     if (newOp1 != U->getPointerOperand() || changed_idx) {
       Instruction* newVal =
-          GetElementPtrInst::Create(newOp1,
-                                    newIdx.begin(), newIdx.end(),
+          GetElementPtrInst::Create(newOp1->getType(), newOp1,
+                                    ArrayRef<Value*>(newIdx.begin(), newIdx.end()),
                                     U->getName()+".expr");
       
       uint32_t v = VN.lookup_or_add(newVal);
@@ -930,7 +930,7 @@ Value* GVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
         return newVal;
       } else {
         VN.erase(newVal);
-        delete newVal;
+        newVal->deleteValue();
         return leader;
       }
     }
@@ -1182,7 +1182,7 @@ bool GVNPRE::elimination() {
   SmallVector<std::pair<Instruction*, Value*>, 8> replace;
   SmallVector<Instruction*, 8> erase;
   
-  DominatorTree& DT = getAnalysis<DominatorTree>();
+  DominatorTree &DT = getAnalysis<DominatorTreeWrapperPass>().getDomTree();  
   
   for (df_iterator<DomTreeNode*> DI = df_begin(DT.getRootNode()),
          E = df_end(DT.getRootNode()); DI != E; ++DI) {

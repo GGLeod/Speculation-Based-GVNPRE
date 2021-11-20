@@ -31,12 +31,19 @@
 #include "llvm/Analysis/BlockFrequencyInfo.h"
 #include "llvm/Transforms/Utils.h"
 #include "llvm/Transforms/Utils/UnifyFunctionExitNodes.h"
+#include <unordered_map>
+#include <functional>
+#include "llvm/ADT/Statistic.h"
+#define DEBUG_TYPE "spgvnpre"
 
 /* *******Implementation Starts Here******* */
 // include necessary header files
 /* *******Implementation Ends Here******* */
-
+using std::unordered_map;
 using namespace llvm;
+
+
+
 //===----------------------------------------------------------------------===//
 //                         ValueTable Class
 //===----------------------------------------------------------------------===//
@@ -44,7 +51,10 @@ namespace {
 /// This class holds the mapping between values and value numbers.  It is used
 /// as an efficient mechanism to determine the expression-wise equivalence of
 /// two values.
+
+
 struct Expression {
+
   enum ExpressionOpcode { ADD, SUB, MUL, UDIV, SDIV, FDIV, UREM, SREM, 
                           FREM, SHL, LSHR, ASHR, AND, OR, XOR, ICMPEQ, 
                           ICMPNE, ICMPUGT, ICMPUGE, ICMPULT, ICMPULE, 
@@ -121,8 +131,52 @@ struct Expression {
 namespace {
   class ValueTable {
     private:
+    // ExpressionOpcode opcode;
+    // const Type* type;
+    // uint32_t firstVN;
+    // uint32_t secondVN;
+    // uint32_t thirdVN;
+    // SmallVector<uint32_t, 4> varargs;
+      struct Exhash{
+        std::size_t operator()(const Expression& E) const{
+          using std::hash;
+          
+          size_t h = hash<int>()(E.opcode);
+          h = h ^ (hash<int>()(E.firstVN) << 1) >> 1;
+          h = h ^ (hash<int>()(E.secondVN) << 1) >> 1;
+          h = h ^ (hash<int>()(E.thirdVN) << 1) >> 1;
+          h = h ^ (hash<int>()(E.type->getTypeID()) << 1) >> 1;
+
+          
+
+          
+          return hash<int>()(E.opcode) ^ (hash<int>()(E.firstVN) ) ;
+        }
+      };
+
+      struct Exequal{
+        bool operator()(const Expression& E1, const Expression& E2) const{
+          bool result = E1.type->getTypeID() == E2.type->getTypeID()
+           && E1.firstVN==E2.firstVN && E1.secondVN == E2.secondVN && E1.thirdVN == E2.thirdVN
+            && E1.varargs.size() == E2.varargs.size();
+
+          if(result){
+            for(int i=0; i<E1.varargs.size(); i++){
+              if(E1.varargs[i] != E2.varargs[i]){
+                return false;
+              }
+            }
+          }
+
+
+          return result;
+
+        }
+      };
+
+
       DenseMap<Value*, uint32_t> valueNumbering;
-      DenseMap<Expression, uint32_t> expressionNumbering;
+      unordered_map<Expression, uint32_t, Exhash, Exequal> expressionNumbering;
   
       uint32_t nextValueNumber;
     
@@ -138,7 +192,9 @@ namespace {
       Expression create_expression(CastInst* C);
       Expression create_expression(GetElementPtrInst* G);
     public:
-      ValueTable() { nextValueNumber = 1; }
+      ValueTable() { 
+        nextValueNumber = 1; 
+        }
       uint32_t lookup_or_add(Value* V);
       uint32_t lookup(Value* V) const;
       void add(Value* V, uint32_t num);
@@ -147,6 +203,398 @@ namespace {
       unsigned size();
   };
 }
+
+//===----------------------------------------------------------------------===//
+//                     ValueTable Internal Functions
+//===----------------------------------------------------------------------===//
+Expression::ExpressionOpcode 
+                             ValueTable::getOpcode(BinaryOperator* BO) {
+  switch(BO->getOpcode()) {
+    case Instruction::Add:
+      return Expression::ADD;
+    case Instruction::Sub:
+      return Expression::SUB;
+    case Instruction::Mul:
+      return Expression::MUL;
+    case Instruction::UDiv:
+      return Expression::UDIV;
+    case Instruction::SDiv:
+      return Expression::SDIV;
+    case Instruction::FDiv:
+      return Expression::FDIV;
+    case Instruction::URem:
+      return Expression::UREM;
+    case Instruction::SRem:
+      return Expression::SREM;
+    case Instruction::FRem:
+      return Expression::FREM;
+    case Instruction::Shl:
+      return Expression::SHL;
+    case Instruction::LShr:
+      return Expression::LSHR;
+    case Instruction::AShr:
+      return Expression::ASHR;
+    case Instruction::And:
+      return Expression::AND;
+    case Instruction::Or:
+      return Expression::OR;
+    case Instruction::Xor:
+      return Expression::XOR;
+    
+    // THIS SHOULD NEVER HAPPEN
+    default:
+      assert(0 && "Binary operator with unknown opcode?");
+      return Expression::ADD;
+  }
+}
+Expression::ExpressionOpcode ValueTable::getOpcode(CmpInst* C) {
+  if (C->getOpcode() == Instruction::ICmp) {
+    switch (C->getPredicate()) {
+      case ICmpInst::ICMP_EQ:
+        return Expression::ICMPEQ;
+      case ICmpInst::ICMP_NE:
+        return Expression::ICMPNE;
+      case ICmpInst::ICMP_UGT:
+        return Expression::ICMPUGT;
+      case ICmpInst::ICMP_UGE:
+        return Expression::ICMPUGE;
+      case ICmpInst::ICMP_ULT:
+        return Expression::ICMPULT;
+      case ICmpInst::ICMP_ULE:
+        return Expression::ICMPULE;
+      case ICmpInst::ICMP_SGT:
+        return Expression::ICMPSGT;
+      case ICmpInst::ICMP_SGE:
+        return Expression::ICMPSGE;
+      case ICmpInst::ICMP_SLT:
+        return Expression::ICMPSLT;
+      case ICmpInst::ICMP_SLE:
+        return Expression::ICMPSLE;
+      
+      // THIS SHOULD NEVER HAPPEN
+      default:
+        assert(0 && "Comparison with unknown predicate?");
+        return Expression::ICMPEQ;
+    }
+  } else {
+    switch (C->getPredicate()) {
+      case FCmpInst::FCMP_OEQ:
+        return Expression::FCMPOEQ;
+      case FCmpInst::FCMP_OGT:
+        return Expression::FCMPOGT;
+      case FCmpInst::FCMP_OGE:
+        return Expression::FCMPOGE;
+      case FCmpInst::FCMP_OLT:
+        return Expression::FCMPOLT;
+      case FCmpInst::FCMP_OLE:
+        return Expression::FCMPOLE;
+      case FCmpInst::FCMP_ONE:
+        return Expression::FCMPONE;
+      case FCmpInst::FCMP_ORD:
+        return Expression::FCMPORD;
+      case FCmpInst::FCMP_UNO:
+        return Expression::FCMPUNO;
+      case FCmpInst::FCMP_UEQ:
+        return Expression::FCMPUEQ;
+      case FCmpInst::FCMP_UGT:
+        return Expression::FCMPUGT;
+      case FCmpInst::FCMP_UGE:
+        return Expression::FCMPUGE;
+      case FCmpInst::FCMP_ULT:
+        return Expression::FCMPULT;
+      case FCmpInst::FCMP_ULE:
+        return Expression::FCMPULE;
+      case FCmpInst::FCMP_UNE:
+        return Expression::FCMPUNE;
+      
+      // THIS SHOULD NEVER HAPPEN
+      default:
+        assert(0 && "Comparison with unknown predicate?");
+        return Expression::FCMPOEQ;
+    }
+  }
+}
+Expression::ExpressionOpcode 
+                             ValueTable::getOpcode(CastInst* C) {
+  switch(C->getOpcode()) {
+    case Instruction::Trunc:
+      return Expression::TRUNC;
+    case Instruction::ZExt:
+      return Expression::ZEXT;
+    case Instruction::SExt:
+      return Expression::SEXT;
+    case Instruction::FPToUI:
+      return Expression::FPTOUI;
+    case Instruction::FPToSI:
+      return Expression::FPTOSI;
+    case Instruction::UIToFP:
+      return Expression::UITOFP;
+    case Instruction::SIToFP:
+      return Expression::SITOFP;
+    case Instruction::FPTrunc:
+      return Expression::FPTRUNC;
+    case Instruction::FPExt:
+      return Expression::FPEXT;
+    case Instruction::PtrToInt:
+      return Expression::PTRTOINT;
+    case Instruction::IntToPtr:
+      return Expression::INTTOPTR;
+    case Instruction::BitCast:
+      return Expression::BITCAST;
+    
+    // THIS SHOULD NEVER HAPPEN
+    default:
+      assert(0 && "Cast operator with unknown opcode?");
+      return Expression::BITCAST;
+  }
+}
+Expression ValueTable::create_expression(BinaryOperator* BO) {
+  Expression e;
+    
+  e.firstVN = lookup_or_add(BO->getOperand(0));
+  e.secondVN = lookup_or_add(BO->getOperand(1));
+  e.thirdVN = 0;
+  e.type = BO->getType();
+  e.opcode = getOpcode(BO);
+  
+  return e;
+}
+Expression ValueTable::create_expression(CmpInst* C) {
+  Expression e;
+    
+  e.firstVN = lookup_or_add(C->getOperand(0));
+  e.secondVN = lookup_or_add(C->getOperand(1));
+  e.thirdVN = 0;
+  e.type = C->getType();
+  e.opcode = getOpcode(C);
+  
+  return e;
+}
+Expression ValueTable::create_expression(CastInst* C) {
+  Expression e;
+    
+  e.firstVN = lookup_or_add(C->getOperand(0));
+  e.secondVN = 0;
+  e.thirdVN = 0;
+  e.type = C->getType();
+  e.opcode = getOpcode(C);
+  
+  return e;
+}
+Expression ValueTable::create_expression(ShuffleVectorInst* S) {
+  Expression e;
+    
+  e.firstVN = lookup_or_add(S->getOperand(0));
+  e.secondVN = lookup_or_add(S->getOperand(1));
+  e.thirdVN = lookup_or_add(S->getOperand(2));
+  e.type = S->getType();
+  e.opcode = Expression::SHUFFLE;
+  
+  return e;
+}
+Expression ValueTable::create_expression(ExtractElementInst* E) {
+  Expression e;
+    
+  e.firstVN = lookup_or_add(E->getOperand(0));
+  e.secondVN = lookup_or_add(E->getOperand(1));
+  e.thirdVN = 0;
+  e.type = E->getType();
+  e.opcode = Expression::EXTRACT;
+  
+  return e;
+}
+Expression ValueTable::create_expression(InsertElementInst* I) {
+  Expression e;
+    
+  e.firstVN = lookup_or_add(I->getOperand(0));
+  e.secondVN = lookup_or_add(I->getOperand(1));
+  e.thirdVN = lookup_or_add(I->getOperand(2));
+  e.type = I->getType();
+  e.opcode = Expression::INSERT;
+  
+  return e;
+}
+Expression ValueTable::create_expression(SelectInst* I) {
+  Expression e;
+    
+  e.firstVN = lookup_or_add(I->getCondition());
+  e.secondVN = lookup_or_add(I->getTrueValue());
+  e.thirdVN = lookup_or_add(I->getFalseValue());
+  e.type = I->getType();
+  e.opcode = Expression::SELECT;
+  
+  return e;
+}
+Expression ValueTable::create_expression(GetElementPtrInst* G) {
+  Expression e;
+    
+  e.firstVN = lookup_or_add(G->getPointerOperand());
+  e.secondVN = 0;
+  e.thirdVN = 0;
+  e.type = G->getType();
+  e.opcode = Expression::GEP;
+  
+  for (GetElementPtrInst::op_iterator I = G->idx_begin(), E = G->idx_end();
+       I != E; ++I)
+    e.varargs.push_back(lookup_or_add(*I));
+  
+  return e;
+}
+//===----------------------------------------------------------------------===//
+//                     ValueTable External Functions
+//===----------------------------------------------------------------------===//
+/// lookup_or_add - Returns the value number for the specified value, assigning
+/// it a new number if it did not have one before.
+uint32_t ValueTable::lookup_or_add(Value* V) {
+  DenseMap<Value*, uint32_t>::iterator VI = valueNumbering.find(V);
+  if (VI != valueNumbering.end())
+    return VI->second;
+  
+  
+  if (BinaryOperator* BO = dyn_cast<BinaryOperator>(V)) {
+    Expression e = create_expression(BO);
+    
+    auto EI = expressionNumbering.find(e);
+    if (EI != expressionNumbering.end()) {
+      valueNumbering.insert(std::make_pair(V, EI->second));
+      return EI->second;
+    } else {
+      expressionNumbering.insert(std::make_pair(e, nextValueNumber));
+      valueNumbering.insert(std::make_pair(V, nextValueNumber));
+      
+      return nextValueNumber++;
+    }
+  } else if (CmpInst* C = dyn_cast<CmpInst>(V)) {
+    Expression e = create_expression(C);
+    
+    auto EI = expressionNumbering.find(e);
+    if (EI != expressionNumbering.end()) {
+      valueNumbering.insert(std::make_pair(V, EI->second));
+      return EI->second;
+    } else {
+      expressionNumbering.insert(std::make_pair(e, nextValueNumber));
+      valueNumbering.insert(std::make_pair(V, nextValueNumber));
+      
+      return nextValueNumber++;
+    }
+  } else if (ShuffleVectorInst* U = dyn_cast<ShuffleVectorInst>(V)) {
+    Expression e = create_expression(U);
+    
+    auto EI = expressionNumbering.find(e);
+    if (EI != expressionNumbering.end()) {
+      valueNumbering.insert(std::make_pair(V, EI->second));
+      return EI->second;
+    } else {
+      expressionNumbering.insert(std::make_pair(e, nextValueNumber));
+      valueNumbering.insert(std::make_pair(V, nextValueNumber));
+      
+      return nextValueNumber++;
+    }
+  } else if (ExtractElementInst* U = dyn_cast<ExtractElementInst>(V)) {
+    Expression e = create_expression(U);
+    
+    auto EI = expressionNumbering.find(e);
+    if (EI != expressionNumbering.end()) {
+      valueNumbering.insert(std::make_pair(V, EI->second));
+      return EI->second;
+    } else {
+      expressionNumbering.insert(std::make_pair(e, nextValueNumber));
+      valueNumbering.insert(std::make_pair(V, nextValueNumber));
+      
+      return nextValueNumber++;
+    }
+  } else if (InsertElementInst* U = dyn_cast<InsertElementInst>(V)) {
+    Expression e = create_expression(U);
+    
+    auto EI = expressionNumbering.find(e);
+    if (EI != expressionNumbering.end()) {
+      valueNumbering.insert(std::make_pair(V, EI->second));
+      return EI->second;
+    } else {
+      expressionNumbering.insert(std::make_pair(e, nextValueNumber));
+      valueNumbering.insert(std::make_pair(V, nextValueNumber));
+      
+      return nextValueNumber++;
+    }
+  } else if (SelectInst* U = dyn_cast<SelectInst>(V)) {
+    Expression e = create_expression(U);
+    
+    auto EI = expressionNumbering.find(e);
+    if (EI != expressionNumbering.end()) {
+      valueNumbering.insert(std::make_pair(V, EI->second));
+      return EI->second;
+    } else {
+      expressionNumbering.insert(std::make_pair(e, nextValueNumber));
+      valueNumbering.insert(std::make_pair(V, nextValueNumber));
+      
+      return nextValueNumber++;
+    }
+  } else if (CastInst* U = dyn_cast<CastInst>(V)) {
+    Expression e = create_expression(U);
+    
+    auto EI = expressionNumbering.find(e);
+    if (EI != expressionNumbering.end()) {
+      valueNumbering.insert(std::make_pair(V, EI->second));
+      return EI->second;
+    } else {
+      expressionNumbering.insert(std::make_pair(e, nextValueNumber));
+      valueNumbering.insert(std::make_pair(V, nextValueNumber));
+      
+      return nextValueNumber++;
+    }
+  } else if (GetElementPtrInst* U = dyn_cast<GetElementPtrInst>(V)) {
+    Expression e = create_expression(U);
+    
+    auto EI = expressionNumbering.find(e);
+    if (EI != expressionNumbering.end()) {
+      valueNumbering.insert(std::make_pair(V, EI->second));
+      return EI->second;
+    } else {
+      expressionNumbering.insert(std::make_pair(e, nextValueNumber));
+      valueNumbering.insert(std::make_pair(V, nextValueNumber));
+      
+      return nextValueNumber++;
+    }
+  } else {
+    valueNumbering.insert(std::make_pair(V, nextValueNumber));
+    return nextValueNumber++;
+  }
+}
+/// lookup - Returns the value number of the specified value. Fails if
+/// the value has not yet been numbered.
+uint32_t ValueTable::lookup(Value* V) const {
+  auto VI = valueNumbering.find(V);
+  if (VI != valueNumbering.end())
+    return VI->second;
+  else
+    assert(0 && "Value not numbered?");
+  
+  return 0;
+}
+/// add - Add the specified value with the given value number, removing
+/// its old number, if any
+void ValueTable::add(Value* V, uint32_t num) {
+  DenseMap<Value*, uint32_t>::iterator VI = valueNumbering.find(V);
+  if (VI != valueNumbering.end())
+    valueNumbering.erase(VI);
+  valueNumbering.insert(std::make_pair(V, num));
+}
+/// clear - Remove all entries from the ValueTable
+void ValueTable::clear() {
+  valueNumbering.clear();
+  expressionNumbering.clear();
+  nextValueNumber = 1;
+}
+/// erase - Remove a value from the value numbering
+void ValueTable::erase(Value* V) {
+  valueNumbering.erase(V);
+}
+/// size - Return the number of assigned value numbers
+unsigned ValueTable::size() {
+  // NOTE: zero is never assigned
+  return nextValueNumber;
+}
+
 
 namespace {
 //===----------------------------------------------------------------------===//
@@ -224,7 +672,7 @@ namespace {
       AU.setPreservesCFG();
       AU.addRequiredID(BreakCriticalEdgesID);
       //AU.addRequired<UnifyFunctionExitNodes>();
-      AU.addRequired<DominatorTree>();
+      AU.addRequired<DominatorTreeWrapperPass>();
     }
   
     // Helper fuctions
@@ -273,6 +721,467 @@ namespace {
   
 }
 
+
+// STATISTIC(NumInsertedVals, "Number of values inserted");
+// STATISTIC(NumInsertedPhis, "Number of PHI nodes inserted");
+// STATISTIC(NumEliminated, "Number of redundant instructions eliminated");
+/// find_leader - Given a set and a value number, return the first
+/// element of the set with that value number, or 0 if no such element
+/// is present
+Value* SPGVNPRE::find_leader(ValueNumberedSet& vals, uint32_t v) {
+  if (!vals.test(v))
+    return 0;
+  
+  for (ValueNumberedSet::iterator I = vals.begin(), E = vals.end();
+       I != E; ++I)
+    if (v == VN.lookup(*I))
+      return *I;
+  
+  assert(0 && "No leader found, but present bit is set?");
+  return 0;
+}
+/// val_insert - Insert a value into a set only if there is not a value
+/// with the same value number already in the set
+void SPGVNPRE::val_insert(ValueNumberedSet& s, Value* v) {
+  uint32_t num = VN.lookup(v);
+  if (!s.test(num))
+    s.insert(v);
+}
+/// val_replace - Insert a value into a set, replacing any values already in
+/// the set that have the same value number
+void SPGVNPRE::val_replace(ValueNumberedSet& s, Value* v) {
+  if (s.count(v)) return;
+  
+  uint32_t num = VN.lookup(v);
+  Value* leader = find_leader(s, num);
+  if (leader != 0)
+    s.erase(leader);
+  s.insert(v);
+  s.set(num);
+}
+
+/// clean - Remove all non-opaque values from the set whose operands are not
+/// themselves in the set, as well as all values that depend on invokes (see 
+/// above)
+void SPGVNPRE::clean(ValueNumberedSet& set) {
+  SmallVector<Value*, 8> worklist;
+  worklist.reserve(set.size());
+  topo_sort(set, worklist);
+  
+  for (unsigned i = 0; i < worklist.size(); ++i) {
+    Value* v = worklist[i];
+    
+    // Handle unary ops
+    if (CastInst* U = dyn_cast<CastInst>(v)) {
+      bool lhsValid = !isa<Instruction>(U->getOperand(0));
+      lhsValid |= set.test(VN.lookup(U->getOperand(0)));
+      if (lhsValid)
+        lhsValid = !dependsOnInvoke(U->getOperand(0));
+      
+      if (!lhsValid) {
+        set.erase(U);
+        set.reset(VN.lookup(U));
+      }
+    
+    // Handle binary ops
+    } else if (isa<BinaryOperator>(v) || isa<CmpInst>(v) ||
+        isa<ExtractElementInst>(v)) {
+      User* U = cast<User>(v);
+      
+      bool lhsValid = !isa<Instruction>(U->getOperand(0));
+      lhsValid |= set.test(VN.lookup(U->getOperand(0)));
+      if (lhsValid)
+        lhsValid = !dependsOnInvoke(U->getOperand(0));
+    
+      bool rhsValid = !isa<Instruction>(U->getOperand(1));
+      rhsValid |= set.test(VN.lookup(U->getOperand(1)));
+      if (rhsValid)
+        rhsValid = !dependsOnInvoke(U->getOperand(1));
+      
+      if (!lhsValid || !rhsValid) {
+        set.erase(U);
+        set.reset(VN.lookup(U));
+      }
+    
+    // Handle ternary ops
+    } else if (isa<ShuffleVectorInst>(v) || isa<InsertElementInst>(v) ||
+               isa<SelectInst>(v)) {
+      User* U = cast<User>(v);
+    
+      bool lhsValid = !isa<Instruction>(U->getOperand(0));
+      lhsValid |= set.test(VN.lookup(U->getOperand(0)));
+      if (lhsValid)
+        lhsValid = !dependsOnInvoke(U->getOperand(0));
+      
+      bool rhsValid = !isa<Instruction>(U->getOperand(1));
+      rhsValid |= set.test(VN.lookup(U->getOperand(1)));
+      if (rhsValid)
+        rhsValid = !dependsOnInvoke(U->getOperand(1));
+      
+      bool thirdValid = !isa<Instruction>(U->getOperand(2));
+      thirdValid |= set.test(VN.lookup(U->getOperand(2)));
+      if (thirdValid)
+        thirdValid = !dependsOnInvoke(U->getOperand(2));
+    
+      if (!lhsValid || !rhsValid || !thirdValid) {
+        set.erase(U);
+        set.reset(VN.lookup(U));
+      }
+    
+    // Handle varargs ops
+    } else if (GetElementPtrInst* U = dyn_cast<GetElementPtrInst>(v)) {
+      bool ptrValid = !isa<Instruction>(U->getPointerOperand());
+      ptrValid |= set.test(VN.lookup(U->getPointerOperand()));
+      if (ptrValid)
+        ptrValid = !dependsOnInvoke(U->getPointerOperand());
+      
+      bool varValid = true;
+      for (GetElementPtrInst::op_iterator I = U->idx_begin(), E = U->idx_end();
+           I != E; ++I)
+        if (varValid) {
+          varValid &= !isa<Instruction>(*I) || set.test(VN.lookup(*I));
+          varValid &= !dependsOnInvoke(*I);
+        }
+    
+      if (!ptrValid || !varValid) {
+        set.erase(U);
+        set.reset(VN.lookup(U));
+      }
+    }
+  }
+}
+
+/// topo_sort - Given a set of values, sort them by topological
+/// order into the provided vector.
+void SPGVNPRE::topo_sort(ValueNumberedSet& set, SmallVector<Value*, 8>& vec) {
+  SmallPtrSet<Value*, 16> visited;
+  SmallVector<Value*, 8> stack;
+  for (ValueNumberedSet::iterator I = set.begin(), E = set.end();
+       I != E; ++I) {
+    if (visited.count(*I) == 0)
+      stack.push_back(*I);
+    
+    while (!stack.empty()) {
+      Value* e = stack.back();
+      
+      // Handle unary ops
+      if (CastInst* U = dyn_cast<CastInst>(e)) {
+        Value* l = find_leader(set, VN.lookup(U->getOperand(0)));
+    
+        if (l != 0 && isa<Instruction>(l) &&
+            visited.count(l) == 0)
+          stack.push_back(l);
+        else {
+          vec.push_back(e);
+          visited.insert(e);
+          stack.pop_back();
+        }
+      
+      // Handle binary ops
+      } else if (isa<BinaryOperator>(e) || isa<CmpInst>(e) ||
+          isa<ExtractElementInst>(e)) {
+        User* U = cast<User>(e);
+        Value* l = find_leader(set, VN.lookup(U->getOperand(0)));
+        Value* r = find_leader(set, VN.lookup(U->getOperand(1)));
+    
+        if (l != 0 && isa<Instruction>(l) &&
+            visited.count(l) == 0)
+          stack.push_back(l);
+        else if (r != 0 && isa<Instruction>(r) &&
+                 visited.count(r) == 0)
+          stack.push_back(r);
+        else {
+          vec.push_back(e);
+          visited.insert(e);
+          stack.pop_back();
+        }
+      
+      // Handle ternary ops
+      } else if (isa<InsertElementInst>(e) || isa<ShuffleVectorInst>(e) ||
+                 isa<SelectInst>(e)) {
+        User* U = cast<User>(e);
+        Value* l = find_leader(set, VN.lookup(U->getOperand(0)));
+        Value* r = find_leader(set, VN.lookup(U->getOperand(1)));
+        Value* m = find_leader(set, VN.lookup(U->getOperand(2)));
+      
+        if (l != 0 && isa<Instruction>(l) &&
+            visited.count(l) == 0)
+          stack.push_back(l);
+        else if (r != 0 && isa<Instruction>(r) &&
+                 visited.count(r) == 0)
+          stack.push_back(r);
+        else if (m != 0 && isa<Instruction>(m) &&
+                 visited.count(m) == 0)
+          stack.push_back(m);
+        else {
+          vec.push_back(e);
+          visited.insert(e);
+          stack.pop_back();
+        }
+      
+      // Handle vararg ops
+      } else if (GetElementPtrInst* U = dyn_cast<GetElementPtrInst>(e)) {
+        Value* p = find_leader(set, VN.lookup(U->getPointerOperand()));
+        
+        if (p != 0 && isa<Instruction>(p) &&
+            visited.count(p) == 0)
+          stack.push_back(p);
+        else {
+          bool push_va = false;
+          for (GetElementPtrInst::op_iterator I = U->idx_begin(),
+               E = U->idx_end(); I != E; ++I) {
+            Value * v = find_leader(set, VN.lookup(*I));
+            if (v != 0 && isa<Instruction>(v) && visited.count(v) == 0) {
+              stack.push_back(v);
+              push_va = true;
+            }
+          }
+          
+          if (!push_va) {
+            vec.push_back(e);
+            visited.insert(e);
+            stack.pop_back();
+          }
+        }
+      
+      // Handle opaque ops
+      } else {
+        visited.insert(e);
+        vec.push_back(e);
+        stack.pop_back();
+      }
+    }
+    
+    stack.clear();
+  }
+}
+
+/// dependsOnInvoke - Test if a value has an phi node as an operand, any of 
+/// whose inputs is an invoke instruction.  If this is true, we cannot safely
+/// PRE the instruction or anything that depends on it.
+bool SPGVNPRE::dependsOnInvoke(Value* V) {
+  if (PHINode* p = dyn_cast<PHINode>(V)) {
+    for (PHINode::op_iterator I = p->op_begin(), E = p->op_end(); I != E; ++I)
+      if (isa<InvokeInst>(*I))
+        return true;
+    return false;
+  } else {
+    return false;
+  }
+}
+
+/// phi_translate - Given a value, its parent block, and a predecessor of its
+/// parent, translate the value into legal for the predecessor block.  This 
+/// means translating its operands (and recursively, their operands) through
+/// any phi nodes in the parent into values available in the predecessor
+Value* SPGVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
+  if (V == 0)
+    return 0;
+  
+  // Unary Operations
+  if (CastInst* U = dyn_cast<CastInst>(V)) {
+    Value* newOp1 = 0;
+    if (isa<Instruction>(U->getOperand(0)))
+      newOp1 = phi_translate(U->getOperand(0), pred, succ);
+    else
+      newOp1 = U->getOperand(0);
+    
+    if (newOp1 == 0)
+      return 0;
+    
+    if (newOp1 != U->getOperand(0)) {
+      Instruction* newVal = 0;
+      if (CastInst* C = dyn_cast<CastInst>(U))
+        newVal = CastInst::Create(C->getOpcode(),
+                                  newOp1, C->getType(),
+                                  C->getName()+".expr");
+      
+      uint32_t v = VN.lookup_or_add(newVal);
+      
+      Value* leader = find_leader(availableOut[pred], v);
+      if (leader == 0) {
+        createdExpressions.push_back(newVal);
+        return newVal;
+      } else {
+        VN.erase(newVal);
+        newVal->deleteValue();
+        return leader;
+      }
+    }
+  
+  // Binary Operations
+  } if (isa<BinaryOperator>(V) || isa<CmpInst>(V) || 
+      isa<ExtractElementInst>(V)) {
+    User* U = cast<User>(V);
+    
+    Value* newOp1 = 0;
+    if (isa<Instruction>(U->getOperand(0)))
+      newOp1 = phi_translate(U->getOperand(0), pred, succ);
+    else
+      newOp1 = U->getOperand(0);
+    
+    if (newOp1 == 0)
+      return 0;
+    
+    Value* newOp2 = 0;
+    if (isa<Instruction>(U->getOperand(1)))
+      newOp2 = phi_translate(U->getOperand(1), pred, succ);
+    else
+      newOp2 = U->getOperand(1);
+    
+    if (newOp2 == 0)
+      return 0;
+    
+    if (newOp1 != U->getOperand(0) || newOp2 != U->getOperand(1)) {
+      Instruction* newVal = 0;
+      if (BinaryOperator* BO = dyn_cast<BinaryOperator>(U))
+        newVal = BinaryOperator::Create(BO->getOpcode(),
+                                        newOp1, newOp2,
+                                        BO->getName()+".expr");
+      else if (CmpInst* C = dyn_cast<CmpInst>(U))
+        newVal = CmpInst::Create(C->getOpcode(),
+                                 C->getPredicate(),
+                                 newOp1, newOp2,
+                                 C->getName()+".expr");
+      else if (ExtractElementInst* E = dyn_cast<ExtractElementInst>(U))
+        newVal = ExtractElementInst::Create(newOp1, newOp2, E->getName()+".expr");
+      
+      uint32_t v = VN.lookup_or_add(newVal);
+      
+      Value* leader = find_leader(availableOut[pred], v);
+      if (leader == 0) {
+        createdExpressions.push_back(newVal);
+        return newVal;
+      } else {
+        VN.erase(newVal);
+        newVal->deleteValue();
+        return leader;
+      }
+    }
+  
+  // Ternary Operations
+  } else if (isa<ShuffleVectorInst>(V) || isa<InsertElementInst>(V) ||
+             isa<SelectInst>(V)) {
+    User* U = cast<User>(V);
+    
+    Value* newOp1 = 0;
+    if (isa<Instruction>(U->getOperand(0)))
+      newOp1 = phi_translate(U->getOperand(0), pred, succ);
+    else
+      newOp1 = U->getOperand(0);
+    
+    if (newOp1 == 0)
+      return 0;
+    
+    Value* newOp2 = 0;
+    if (isa<Instruction>(U->getOperand(1)))
+      newOp2 = phi_translate(U->getOperand(1), pred, succ);
+    else
+      newOp2 = U->getOperand(1);
+    
+    if (newOp2 == 0)
+      return 0;
+    
+    Value* newOp3 = 0;
+    if (isa<Instruction>(U->getOperand(2)))
+      newOp3 = phi_translate(U->getOperand(2), pred, succ);
+    else
+      newOp3 = U->getOperand(2);
+    
+    if (newOp3 == 0)
+      return 0;
+    
+    if (newOp1 != U->getOperand(0) ||
+        newOp2 != U->getOperand(1) ||
+        newOp3 != U->getOperand(2)) {
+      Instruction* newVal = 0;
+      if (ShuffleVectorInst* S = dyn_cast<ShuffleVectorInst>(U))
+        newVal = new ShuffleVectorInst(newOp1, newOp2, newOp3,
+                                       S->getName() + ".expr");
+      else if (InsertElementInst* I = dyn_cast<InsertElementInst>(U))
+        newVal = InsertElementInst::Create(newOp1, newOp2, newOp3,
+                                           I->getName() + ".expr");
+      else if (SelectInst* I = dyn_cast<SelectInst>(U))
+        newVal = SelectInst::Create(newOp1, newOp2, newOp3,
+                                    I->getName() + ".expr");
+      
+      uint32_t v = VN.lookup_or_add(newVal);
+      
+      Value* leader = find_leader(availableOut[pred], v);
+      if (leader == 0) {
+        createdExpressions.push_back(newVal);
+        return newVal;
+      } else {
+        VN.erase(newVal);
+        newVal->deleteValue();
+        return leader;
+      }
+    }
+  
+  // Varargs operators
+  } else if (GetElementPtrInst* U = dyn_cast<GetElementPtrInst>(V)) {
+    Value* newOp1 = 0;
+    if (isa<Instruction>(U->getPointerOperand()))
+      newOp1 = phi_translate(U->getPointerOperand(), pred, succ);
+    else
+      newOp1 = U->getPointerOperand();
+    
+    if (newOp1 == 0)
+      return 0;
+    
+    bool changed_idx = false;
+    SmallVector<Value*, 4> newIdx;
+    for (GetElementPtrInst::op_iterator I = U->idx_begin(), E = U->idx_end();
+         I != E; ++I)
+      if (isa<Instruction>(*I)) {
+        Value* newVal = phi_translate(*I, pred, succ);
+        newIdx.push_back(newVal);
+        if (newVal != *I)
+          changed_idx = true;
+      } else {
+        newIdx.push_back(*I);
+      }
+    
+    if (newOp1 != U->getPointerOperand() || changed_idx) {
+      Instruction* newVal =
+          GetElementPtrInst::Create(newOp1->getType(), newOp1,
+                                    ArrayRef<Value*>(newIdx.begin(), newIdx.end()),
+                                    U->getName()+".expr");
+      
+      uint32_t v = VN.lookup_or_add(newVal);
+      
+      Value* leader = find_leader(availableOut[pred], v);
+      if (leader == 0) {
+        createdExpressions.push_back(newVal);
+        return newVal;
+      } else {
+        VN.erase(newVal);
+        newVal->deleteValue();
+        return leader;
+      }
+    }
+  
+  // PHI Nodes
+  } else if (PHINode* P = dyn_cast<PHINode>(V)) {
+    if (P->getParent() == succ)
+      return P->getIncomingValueForBlock(pred);
+  }
+  
+  return V;
+}
+/// phi_translate_set - Perform phi translation on every element of a set
+void SPGVNPRE::phi_translate_set(ValueNumberedSet& anticIn,
+                              BasicBlock* pred, BasicBlock* succ,
+                              ValueNumberedSet& out) {
+  for (ValueNumberedSet::iterator I = anticIn.begin(),
+       E = anticIn.end(); I != E; ++I) {
+    Value* V = phi_translate(*I, pred, succ);
+    if (V != 0 && !out.test(VN.lookup_or_add(V))) {
+      out.insert(V);
+      out.set(VN.lookup(V));
+    }
+  }
+}
 /// buildsets_availout - When calculating availability, handle an instruction
 /// by inserting it into the appropriate sets
 void SPGVNPRE::buildsets_availout(BasicBlock::iterator I,
@@ -499,7 +1408,7 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
 void SPGVNPRE::buildsets(Function& F) {
   DenseMap<BasicBlock*, ValueNumberedSet> generatedExpressions;
   DenseMap<BasicBlock*, SmallPtrSet<Value*, 16> > generatedTemporaries;
-  DominatorTree &DT = getAnalysis<DominatorTree>();   
+  DominatorTree &DT = getAnalysis<DominatorTreeWrapperPass>().getDomTree();   
   
   // Phase 1, Part 1: calculate AVAIL_OUT
   
@@ -585,19 +1494,19 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   // This phase calculates the AVAIL_OUT and ANTIC_IN sets
   buildsets(F);
   
-  // Phase 2: Insert
-  // This phase inserts values to make partially redundant values
-  // fully redundant
-  changed_function |= insertion(F);
+  // // Phase 2: Insert
+  // // This phase inserts values to make partially redundant values
+  // // fully redundant
+  // changed_function |= insertion(F);
   
-  // Phase 3: Eliminate
-  // This phase performs trivial full redundancy elimination
-  changed_function |= elimination();
+  // // Phase 3: Eliminate
+  // // This phase performs trivial full redundancy elimination
+  // changed_function |= elimination();
   
-  // Phase 4: Cleanup
-  // This phase cleans up values that were created solely
-  // as leaders for expressions
-  cleanup();
+  // // Phase 4: Cleanup
+  // // This phase cleans up values that were created solely
+  // // as leaders for expressions
+  // cleanup();
   
   return changed_function;
 }
@@ -606,5 +1515,5 @@ bool SPGVNPRE::runOnFunction(Function &F) {
 
 char SPGVNPRE::ID = 0;
   
-static RegisterPass<SPGVNPRE> X("gvnpre",
-                      "Global Value Numbering/Partial Redundancy Elimination");
+static RegisterPass<SPGVNPRE> X("spgvnpre",
+                      "SPeculation-based Global Value Numbering/Partial Redundancy Elimination");
