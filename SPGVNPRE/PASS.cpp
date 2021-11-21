@@ -31,15 +31,24 @@
 #include "llvm/Analysis/BlockFrequencyInfo.h"
 #include "llvm/Transforms/Utils.h"
 #include "llvm/Transforms/Utils/UnifyFunctionExitNodes.h"
-#include <unordered_map>
-#include <functional>
 #include "llvm/ADT/Statistic.h"
+#include <limits>
+#include <unordered_map>
+#include <unordered_set>
+#include <string>
+#include <functional>
+#include <vector>
+using std::unordered_map;
+using std::unordered_set;
+using std::vector;
+using std::pair;
+using std::string;
+
 #define DEBUG_TYPE "spgvnpre"
 
 /* *******Implementation Starts Here******* */
 // include necessary header files
 /* *******Implementation Ends Here******* */
-using std::unordered_map;
 using namespace llvm;
 
 
@@ -131,12 +140,6 @@ struct Expression {
 namespace {
   class ValueTable {
     private:
-    // ExpressionOpcode opcode;
-    // const Type* type;
-    // uint32_t firstVN;
-    // uint32_t secondVN;
-    // uint32_t thirdVN;
-    // SmallVector<uint32_t, 4> varargs;
       struct Exhash{
         std::size_t operator()(const Expression& E) const{
           using std::hash;
@@ -651,10 +654,10 @@ class ValueNumberedSet {
       numbers.clear();
     }
 
-    void print(){
+    void print(ValueTable& VN){
       for(auto i=contents.begin(); i!=contents.end(); ++i){
         Value* v = *i;
-        errs() << *v << "\n";
+        errs() << VN.lookup(v) << " " << *v  << "\n";
       }
     }
 };
@@ -680,6 +683,9 @@ namespace {
       AU.addRequiredID(BreakCriticalEdgesID);
       //AU.addRequired<UnifyFunctionExitNodes>();
       AU.addRequired<DominatorTreeWrapperPass>();
+      AU.addRequired<BranchProbabilityInfoWrapperPass>();
+      AU.addRequired<BlockFrequencyInfoWrapperPass>();
+      
     }
   
     // Helper fuctions
@@ -1503,7 +1509,136 @@ void SPGVNPRE::cleanup() {
 }
 
 
+
+namespace{
+  class ReducedFlowGraph{
+    vector<vector<int>> graph;
+    unordered_map<BasicBlock*, int> BBtoNode;
+    unordered_map<int, BasicBlock*> NodetoBB;
+
+
+    public:
+
+    ReducedFlowGraph(vector<pair<BasicBlock*, BasicBlock*>> essentialEdges, 
+      BranchProbabilityInfo &bpi, BlockFrequencyInfo &bfi){
+
+      int nodeNum = 0;
+      for(auto edge : essentialEdges){
+        if(BBtoNode.find(edge.first) == BBtoNode.end()){
+          BBtoNode[edge.first] = nodeNum;
+          NodetoBB[nodeNum] = edge.first;
+          nodeNum++;
+        }
+        if(BBtoNode.find(edge.second) == BBtoNode.end()){
+          BBtoNode[edge.second] = nodeNum;
+          NodetoBB[nodeNum] = edge.second;
+          nodeNum++;
+        }
+      }
+
+      // 2 extra node for source (nodeNum) and sink (nodeNum+1)
+      graph = vector<vector<int>>(nodeNum+2, vector<int>(nodeNum+2, -1));
+
+      for(auto edge : essentialEdges){
+        BasicBlock* start = edge.first;
+        BasicBlock* dest = edge.second;
+        int blockFreq = bfi.getBlockFreq(start).getFrequency();
+        double branchProb =  bpi.getEdgeProbability(start,dest).getNumerator() 
+          / (double)bpi.getEdgeProbability(start,dest).getDenominator();
+
+        graph[BBtoNode[start]][BBtoNode[dest]] = blockFreq * branchProb;
+      }
+
+
+      for(int i=0; i<nodeNum; i++){
+        bool hasSucc = false;
+        bool hasPred = false;
+        for(int j=0; j<nodeNum; j++){
+          if(!hasSucc){
+            hasSucc = graph[i][j]!=-1;
+          }
+          if(!hasPred){
+            hasPred = graph[j][i]!=-1;
+          }
+          if(hasPred && hasSucc)
+            break;
+        }
+
+        if(!hasPred){
+          graph[nodeNum][i] = INT_MAX;
+        }
+        if(!hasSucc){
+          graph[i][nodeNum+1] = INT_MAX;
+        }
+      }
+
+
+      printGraph();
+
+    }
+
+    void printGraph(){
+      std::string p;
+      for(int i=0; i<graph.size(); i++){
+        
+        for(int j=0; j<graph.size(); j++){
+          p = p + std::to_string(graph[i][j]) + "\t\t\t\t";
+        }
+        p = p + "\n";
+      }
+      errs() << p;
+    }
+
+    vector<pair<BasicBlock*, BasicBlock*>> minCut(){
+      return vector<pair<BasicBlock*, BasicBlock*>>();
+
+    }
+  };
+
+
+  vector<unordered_set<BasicBlock*>> getValueSet(ValueTable& VN, DenseMap<BasicBlock*, ValueNumberedSet>& map){
+    vector<unordered_set<BasicBlock*>> valueSets = vector<unordered_set<BasicBlock*>>(VN.size());
+    for(auto i : map){
+      for(auto j : i.second){
+        int valuenumber = VN.lookup(j);
+        valueSets[valuenumber].insert(i.first);
+      }
+    }
+
+    return valueSets;
+  } 
+
+  vector<pair<BasicBlock*, BasicBlock*>> findEssentialEdge(unordered_set<BasicBlock*>& avOutBB, 
+    unordered_set<BasicBlock*>& pantInBB){
+    
+    vector<pair<BasicBlock*, BasicBlock*>> essentialEdge;
+    for(auto bb : pantInBB){
+      for(auto it = pred_begin(bb); it!=pred_end(bb); ++it){
+        BasicBlock* pred = *it;
+        if(avOutBB.find(pred)!=avOutBB.end()){
+          essentialEdge.push_back(pair<BasicBlock*, BasicBlock*>(pred, bb));
+        }
+      }
+    }
+
+    return essentialEdge;
+  }
+
+  struct pairHash{
+    // std::size_t operator()(const Expression& E) const{
+    size_t operator()(const pair<BasicBlock*, BasicBlock*> p) const{
+      long long first = (long long)p.first;
+      long long second = (long long)p.second;
+      return std::hash<long long>()(first) ^ std::hash<long long>()(second);
+    }
+  };
+}
+
+
+
 bool SPGVNPRE::runOnFunction(Function &F) {
+  BranchProbabilityInfo &bpi = getAnalysis<BranchProbabilityInfoWrapperPass>().getBPI(); 
+  BlockFrequencyInfo &bfi = getAnalysis<BlockFrequencyInfoWrapperPass>().getBFI();
   // Clean out global sets from any previous functions
   VN.clear();
   createdExpressions.clear();
@@ -1520,16 +1655,38 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   errs() << "avaiableOut for each Basic Block \n";
   for(auto it = availableOut.begin(); it!=availableOut.end(); ++it){
     errs() << "Block: " << it->first->getName() << "\n";
-    it->second.print();
+    it->second.print(VN);
   }
 
   errs() << "anticipateIn for each Basic Block \n";
   for(auto it = anticipatedIn.begin(); it!=anticipatedIn.end(); ++it){
     errs() << "Block: " << it->first->getName() << "\n";
-    it->second.print();
+    it->second.print(VN);
   }
 
   errs() << VN.size() << "\n";
+
+
+  // Phase 2: Build reduced flow graph
+
+  vector<unordered_set<BasicBlock*>> availValueSets = getValueSet(VN, availableOut);
+  vector<unordered_set<BasicBlock*>> pantiValueSets = getValueSet(VN, anticipatedIn);
+
+  unordered_map<pair<BasicBlock*, BasicBlock*>, vector<int>, pairHash>insertSets; 
+
+  for(int i=0; i<VN.size(); i++){
+    vector<pair<BasicBlock*, BasicBlock*>> essentialEdges 
+      = findEssentialEdge(availValueSets[i], pantiValueSets[i]);
+    
+    errs() << "valunumber: " << i << "\n";
+    
+    ReducedFlowGraph RFG(essentialEdges,bpi, bfi);
+    vector<pair<BasicBlock*, BasicBlock*>> optimalInsertSet = RFG.minCut();
+    for(auto edge : optimalInsertSet){
+      insertSets[edge].push_back(i);
+    }
+
+  }
 
 
 

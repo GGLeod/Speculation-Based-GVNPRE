@@ -1,0 +1,190 @@
+Writing '.main.dot'...
+avaiableOut for each Basic Block 
+Block: entry
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+4   %rem = srem i32 %call, 100
+6   %cmp = icmp ne i32 %rem, 1
+Block: if.else8
+4   %rem = srem i32 %call, 100
+9   %c.0 = phi i32 [ %add, %if.then ], [ %add3, %if.else ]
+12   %cmp5 = icmp eq i32 %rem4, 1
+6   %cmp = icmp ne i32 %rem, 1
+11   %rem4 = srem i32 %call1, 200
+16   %add11 = add nsw i32 %c.0, %add10
+15   %add10 = add nsw i32 %call, %call1
+2   %call1 = call i32 @getchar()
+1   %call = call i32 @getchar()
+Block: if.end12
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+4   %rem = srem i32 %call, 100
+6   %cmp = icmp ne i32 %rem, 1
+9   %c.0 = phi i32 [ %add, %if.then ], [ %add3, %if.else ]
+11   %rem4 = srem i32 %call1, 200
+12   %cmp5 = icmp eq i32 %rem4, 1
+Block: if.end
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+4   %rem = srem i32 %call, 100
+6   %cmp = icmp ne i32 %rem, 1
+9   %c.0 = phi i32 [ %add, %if.then ], [ %add3, %if.else ]
+11   %rem4 = srem i32 %call1, 200
+12   %cmp5 = icmp eq i32 %rem4, 1
+Block: if.then6
+4   %rem = srem i32 %call, 100
+9   %c.0 = phi i32 [ %add, %if.then ], [ %add3, %if.else ]
+12   %cmp5 = icmp eq i32 %rem4, 1
+6   %cmp = icmp ne i32 %rem, 1
+11   %rem4 = srem i32 %call1, 200
+14   %add7 = add nsw i32 %sub, 1
+2   %call1 = call i32 @getchar()
+13   %sub = sub nsw i32 %c.0, %call1
+1   %call = call i32 @getchar()
+Block: if.else
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+4   %rem = srem i32 %call, 100
+6   %cmp = icmp ne i32 %rem, 1
+15   %add2 = add nsw i32 %call, %call1
+17   %add3 = add nsw i32 0, %add2
+Block: if.then
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+4   %rem = srem i32 %call, 100
+6   %cmp = icmp ne i32 %rem, 1
+8   %add = add nsw i32 0, %call
+anticipateIn for each Basic Block 
+Block: if.else8
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+15   %add10 = add nsw i32 %call, %call1
+9   %c.0 = phi i32 [ %add, %if.then ], [ %add3, %if.else ]
+16   %add11 = add nsw i32 %c.0, %add10
+Block: entry
+Block: if.end12
+Block: if.end
+14   %add7 = add nsw i32 %sub, 1
+11   %rem4 = srem i32 %call1, 200
+9   %c.0 = phi i32 [ %add, %if.then ], [ %add3, %if.else ]
+16   %add11 = add nsw i32 %c.0, %add10
+2   %call1 = call i32 @getchar()
+12   %cmp5 = icmp eq i32 %rem4, 1
+13   %sub = sub nsw i32 %c.0, %call1
+15   %add10 = add nsw i32 %call, %call1
+1   %call = call i32 @getchar()
+Block: if.then6
+9   %c.0 = phi i32 [ %add, %if.then ], [ %add3, %if.else ]
+2   %call1 = call i32 @getchar()
+13   %sub = sub nsw i32 %c.0, %call1
+14   %add7 = add nsw i32 %sub, 1
+Block: if.else
+23   %add7.expr = add i32 %sub.expr, 1
+11   %rem4 = srem i32 %call1, 200
+22   %sub.expr = sub i32 %add3, %call1
+17   %add3 = add nsw i32 0, %add2
+2   %call1 = call i32 @getchar()
+12   %cmp5 = icmp eq i32 %rem4, 1
+15   %add10 = add nsw i32 %call, %call1
+1   %call = call i32 @getchar()
+21   %add11.expr = add i32 %add3, %add10
+Block: if.then
+8   %add = add nsw i32 0, %call
+11   %rem4 = srem i32 %call1, 200
+18   %add11.expr = add i32 %add, %add10
+20   %add7.expr = add i32 %sub.expr, 1
+2   %call1 = call i32 @getchar()
+12   %cmp5 = icmp eq i32 %rem4, 1
+15   %add10 = add nsw i32 %call, %call1
+19   %sub.expr = sub i32 %add, %call1
+1   %call = call i32 @getchar()
+24
+valunumber: 0
+-1				-1				
+-1				-1				
+valunumber: 1
+-1				0				0				-1				-1				-1				-1				
+-1				-1				-1				-8				-1				-1				-1				
+-1				-1				-1				8				-1				-1				-1				
+-1				-1				-1				-1				0				-1				-1				
+-1				-1				-1				-1				-1				-1				2147483647				
+2147483647				-1				-1				-1				-1				-1				-1				
+-1				-1				-1				-1				-1				-1				-1				
+valunumber: 2
+-1				0				0				-1				-1				-1				-1				-1				
+-1				-1				-1				-8				-1				-1				-1				-1				
+-1				-1				-1				8				-1				-1				-1				-1				
+-1				-1				-1				-1				0				0				-1				-1				
+-1				-1				-1				-1				-1				-1				-1				2147483647				
+-1				-1				-1				-1				-1				-1				-1				2147483647				
+2147483647				-1				-1				-1				-1				-1				-1				-1				
+-1				-1				-1				-1				-1				-1				-1				-1				
+valunumber: 3
+-1				-1				
+-1				-1				
+valunumber: 4
+-1				-1				
+-1				-1				
+valunumber: 5
+-1				-1				
+-1				-1				
+valunumber: 6
+-1				-1				
+-1				-1				
+valunumber: 7
+-1				-1				
+-1				-1				
+valunumber: 8
+-1				-1				
+-1				-1				
+valunumber: 9
+-1				0				0				-1				-1				
+-1				-1				-1				-1				2147483647				
+-1				-1				-1				-1				2147483647				
+2147483647				-1				-1				-1				-1				
+-1				-1				-1				-1				-1				
+valunumber: 10
+-1				-1				
+-1				-1				
+valunumber: 11
+-1				-1				
+-1				-1				
+valunumber: 12
+-1				-1				
+-1				-1				
+valunumber: 13
+-1				-1				
+-1				-1				
+valunumber: 14
+-1				-1				
+-1				-1				
+valunumber: 15
+-1				8				-1				-1				
+-1				-1				-1				2147483647				
+2147483647				-1				-1				-1				
+-1				-1				-1				-1				
+valunumber: 16
+-1				-1				
+-1				-1				
+valunumber: 17
+-1				-1				
+-1				-1				
+valunumber: 18
+-1				-1				
+-1				-1				
+valunumber: 19
+-1				-1				
+-1				-1				
+valunumber: 20
+-1				-1				
+-1				-1				
+valunumber: 21
+-1				-1				
+-1				-1				
+valunumber: 22
+-1				-1				
+-1				-1				
+valunumber: 23
+-1				-1				
+-1				-1				
+Writing '.main.dot'...
