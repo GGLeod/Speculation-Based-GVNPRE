@@ -650,6 +650,13 @@ class ValueNumberedSet {
       contents.clear();
       numbers.clear();
     }
+
+    void print(){
+      for(auto i=contents.begin(); i!=contents.end(); ++i){
+        Value* v = *i;
+        errs() << *v << "\n";
+      }
+    }
 };
 }
 
@@ -1337,19 +1344,26 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
     
     for (unsigned i = 1; i < BB->getTerminator()->getNumSuccessors(); ++i) {
       BasicBlock* currSucc = BB->getTerminator()->getSuccessor(i);
-      ValueNumberedSet& succAnticIn = anticipatedIn[currSucc];
+      // ValueNumberedSet& succAnticIn = anticipatedIn[currSucc];
       
-      SmallVector<Value*, 16> temp;
+      // SmallVector<Value*, 16> temp;
       
-      for (ValueNumberedSet::iterator I = anticOut.begin(),
-           E = anticOut.end(); I != E; ++I)
-        if (!succAnticIn.test(VN.lookup(*I)))
-          temp.push_back(*I);
-      for (SmallVector<Value*, 16>::iterator I = temp.begin(), E = temp.end();
-           I != E; ++I) {
-        anticOut.erase(*I);
-        anticOut.reset(VN.lookup(*I));
+      // for (ValueNumberedSet::iterator I = anticOut.begin(),
+      //      E = anticOut.end(); I != E; ++I)
+      //   if (!succAnticIn.test(VN.lookup(*I)))
+      //     temp.push_back(*I);
+      // for (SmallVector<Value*, 16>::iterator I = temp.begin(), E = temp.end();
+      //      I != E; ++I) {
+      //   anticOut.erase(*I);
+      //   anticOut.reset(VN.lookup(*I));
+      // }
+      for (ValueNumberedSet::iterator I = anticipatedIn[currSucc].begin(),
+          E = anticipatedIn[currSucc].end(); I != E; ++I) {
+        anticOut.insert(*I);
+        anticOut.set(VN.lookup(*I));
       }
+      //TODO: error occur when changing this part
+
     }
   }
   
@@ -1479,6 +1493,15 @@ void SPGVNPRE::buildsets(Function& F) {
   }
 }
 
+void SPGVNPRE::cleanup() {
+  while (!createdExpressions.empty()) {
+    Instruction* I = createdExpressions.back();
+    createdExpressions.pop_back();
+    
+    I->deleteValue();
+  }
+}
+
 
 bool SPGVNPRE::runOnFunction(Function &F) {
   // Clean out global sets from any previous functions
@@ -1493,6 +1516,23 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   // Phase 1: BuildSets
   // This phase calculates the AVAIL_OUT and ANTIC_IN sets
   buildsets(F);
+
+  errs() << "avaiableOut for each Basic Block \n";
+  for(auto it = availableOut.begin(); it!=availableOut.end(); ++it){
+    errs() << "Block: " << it->first->getName() << "\n";
+    it->second.print();
+  }
+
+  errs() << "anticipateIn for each Basic Block \n";
+  for(auto it = anticipatedIn.begin(); it!=anticipatedIn.end(); ++it){
+    errs() << "Block: " << it->first->getName() << "\n";
+    it->second.print();
+  }
+
+  errs() << VN.size() << "\n";
+
+
+
   
   // // Phase 2: Insert
   // // This phase inserts values to make partially redundant values
@@ -1506,7 +1546,7 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   // // Phase 4: Cleanup
   // // This phase cleans up values that were created solely
   // // as leaders for expressions
-  // cleanup();
+  cleanup();
   
   return changed_function;
 }

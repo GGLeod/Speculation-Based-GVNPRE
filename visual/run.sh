@@ -23,9 +23,11 @@ BENCH=../test/${1}.cpp
 # setup
 # Convert source code to bitcode (IR)
 # This approach has an issue with -O2, so we are going to stick with default optimization level (-O0)
-clang -emit-llvm -c ${BENCH} -o ${1}.bc 
+clang -Xclang -disable-O0-optnone -emit-llvm -c ${BENCH} -o ${1}.bc 
+
+opt -mem2reg ${1}.bc -o ${1}_reg.bc
 # Instrument profiler
-opt -pgo-instr-gen -instrprof ${1}.bc -o ${1}.prof.bc
+opt -pgo-instr-gen -instrprof ${1}_reg.bc -o ${1}.prof.bc
 # Generate binary executable with profiler embedded
 clang -fprofile-instr-generate ${1}.prof.bc -o ${1}.prof
 # Collect profiling data
@@ -33,15 +35,15 @@ clang -fprofile-instr-generate ${1}.prof.bc -o ${1}.prof
 # Translate raw profiling data into LLVM data format
 llvm-profdata merge -output=pgo.profdata default.profraw
 
-opt -dot-cfg < ${1}.bc > /dev/null
+opt -dot-cfg < ${1}_reg.bc > /dev/null
 
-dot -Tpng .main.dot -o ${1}.png
+dot -Tpng .main.dot -o ${1}_reg.png
 
 
 # Prepare input to run
 # setup
 # Apply your pass to bitcode (IR)
-opt -o ${1}.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ${PATH_MYPASS} ${NAME_MYPASS} < ${1}.bc > /dev/null
+opt -o ${1}.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ${PATH_MYPASS} ${NAME_MYPASS} < ${1}_reg.bc > /dev/null
 
 opt -dot-cfg < ${1}.pre.bc > /dev/null
 
