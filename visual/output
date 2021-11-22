@@ -1,1 +1,249 @@
 Writing '.main.dot'...
+begin
+avaiableOut for each Basic Block 
+Block: entry
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+Block: for.cond
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+Block: for.body
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp ne i32 %rem, 1
+Block: if.then
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp ne i32 %rem, 1
+Block: if.else
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp ne i32 %rem, 1
+10   %add = add nsw i32 %call, %call1
+Block: if.end
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp ne i32 %rem, 1
+10   %add3 = add nsw i32 %call, %call1
+Block: for.inc
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp ne i32 %rem, 1
+10   %add3 = add nsw i32 %call, %call1
+11   %inc = add nsw i32 %i.0, 1
+Block: for.end
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+anticipateIn for each Basic Block 
+Block: entry
+12 i32 0
+13   %cmp.expr = icmp slt i32 0, 100
+Block: for.cond
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+Block: for.body
+11   %inc = add nsw i32 %i.0, 1
+14   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+10   %add3 = add nsw i32 %call, %call1
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp ne i32 %rem, 1
+Block: if.then
+11   %inc = add nsw i32 %i.0, 1
+14   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+10   %add3 = add nsw i32 %call, %call1
+Block: if.else
+11   %inc = add nsw i32 %i.0, 1
+14   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+10   %add3 = add nsw i32 %call, %call1
+Block: if.end
+11   %inc = add nsw i32 %i.0, 1
+14   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+10   %add3 = add nsw i32 %call, %call1
+Block: for.inc
+11   %inc = add nsw i32 %i.0, 1
+14   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+Block: for.end
+15
+available out point of each value number0: 
+1: for.end for.inc if.end if.else if.then for.body for.cond entry 
+2: for.end for.inc if.end if.else if.then for.body for.cond entry 
+3: for.end for.inc if.end if.else if.then for.body for.cond 
+4: 
+5: for.end for.inc if.end if.else if.then for.body for.cond 
+6: 
+7: for.inc if.end if.else if.then for.body 
+8: 
+9: for.inc if.end if.else if.then for.body 
+10: for.inc if.end if.else 
+11: for.inc 
+12: 
+13: 
+14: 
+antipate in point of each value number0: 
+1: if.end if.else if.then for.body 
+2: if.end if.else if.then for.body 
+3: for.inc if.end if.else if.then for.body for.cond 
+4: 
+5: for.cond 
+6: 
+7: for.body 
+8: 
+9: for.body 
+10: if.end if.else if.then for.body 
+11: for.inc if.end if.else if.then for.body 
+12: entry 
+13: entry 
+14: for.inc if.end if.else if.then for.body 
+valunumber: 0
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 1
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 2
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 3
+entry to for.cond: 8 1.000000e+00
+0				9				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+entry - for.cond
+valunumber: 4
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 5
+entry to for.cond: 8 1.000000e+00
+0				9				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+entry - for.cond
+valunumber: 6
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 7
+for.cond to for.body: 808 9.900990e-01
+0				801				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+for.cond - for.body
+valunumber: 8
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 9
+for.cond to for.body: 808 9.900990e-01
+0				801				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+for.cond - for.body
+valunumber: 10
+if.then to if.end: 720 1.000000e+00
+for.body to if.else: 800 1.000000e-01
+for.body to if.then: 800 9.000000e-01
+for.cond to for.body: 808 9.900990e-01
+0				721				0				0				0				0				0				
+0				0				0				0				0				0				2147483647				
+720				0				0				81				0				0				0				
+0				0				0				0				0				0				2147483647				
+0				0				801				0				0				0				0				
+0				0				0				0				2147483647				0				0				
+0				0				0				0				0				0				0				
+min cut from 5 to 6
+for.cond - for.body
+valunumber: 11
+if.end to for.inc: 800 1.000000e+00
+if.else to if.end: 80 1.000000e+00
+if.then to if.end: 720 1.000000e+00
+for.body to if.else: 800 1.000000e-01
+for.body to if.then: 800 9.000000e-01
+for.cond to for.body: 808 9.900990e-01
+0				801				0				0				0				0				0				0				
+0				0				0				0				0				0				0				2147483647				
+81				0				0				0				0				0				0				0				
+721				0				0				0				0				0				0				0				
+0				0				81				720				0				0				0				0				
+0				0				0				0				801				0				0				0				
+0				0				0				0				0				2147483647				0				0				
+0				0				0				0				0				0				0				0				
+min cut from 6 to 7
+for.cond - for.body
+valunumber: 12
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 13
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 14
+if.end to for.inc: 800 1.000000e+00
+if.else to if.end: 80 1.000000e+00
+if.then to if.end: 720 1.000000e+00
+for.body to if.else: 800 1.000000e-01
+for.body to if.then: 800 9.000000e-01
+for.cond to for.body: 808 9.900990e-01
+0				801				0				0				0				0				0				0				
+0				0				0				0				0				0				0				2147483647				
+81				0				0				0				0				0				0				0				
+721				0				0				0				0				0				0				0				
+0				0				81				720				0				0				0				0				
+0				0				0				0				801				0				0				0				
+0				0				0				0				0				2147483647				0				0				
+0				0				0				0				0				0				0				0				
+min cut from 6 to 7
+for.cond - for.body
+Basic Block in function 'main' does not have terminator!
+label %for.body.split
+in function main
+LLVM ERROR: Broken function found, compilation aborted!
+PLEASE submit a bug report to https://bugs.llvm.org/ and include the crash backtrace.
+Stack dump:
+0.	Program arguments: opt -o simple.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ../build/SPGVNPRE/LLVMHW2.so -spgvnpre
+1.	Running pass 'Function Pass Manager' on module '<stdin>'.
+2.	Running pass 'Module Verifier' on function '@main'

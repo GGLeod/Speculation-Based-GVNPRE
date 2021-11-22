@@ -38,11 +38,13 @@
 #include <string>
 #include <functional>
 #include <vector>
+#include <queue>
 using std::unordered_map;
 using std::unordered_set;
 using std::vector;
 using std::pair;
 using std::string;
+using std::queue;
 
 #define DEBUG_TYPE "spgvnpre"
 
@@ -1523,7 +1525,7 @@ void SPGVNPRE::cleanup() {
 
 namespace{
   class ReducedFlowGraph{
-    vector<vector<int>> graph;
+    vector<vector<long long>> graph;
     unordered_map<BasicBlock*, int> BBtoNode;
     unordered_map<int, BasicBlock*> NodetoBB;
 
@@ -1548,7 +1550,7 @@ namespace{
       }
 
       // 2 extra node for source (nodeNum) and sink (nodeNum+1)
-      graph = vector<vector<int>>(nodeNum+2, vector<int>(nodeNum+2, -1));
+      graph = vector<vector<long long>>(nodeNum+2, vector<long long>(nodeNum+2, 0));
 
       for(auto edge : essentialEdges){
         BasicBlock* start = edge.first;
@@ -1559,7 +1561,7 @@ namespace{
 
         errs() << start->getName() << " to " << dest->getName() << ": " << blockFreq << " " << branchProb << "\n";
 
-        graph[BBtoNode[start]][BBtoNode[dest]] = blockFreq * branchProb;
+        graph[BBtoNode[start]][BBtoNode[dest]] = blockFreq * branchProb + 1;
       }
 
 
@@ -1568,10 +1570,10 @@ namespace{
         bool hasPred = false;
         for(int j=0; j<nodeNum; j++){
           if(!hasSucc){
-            hasSucc = graph[i][j]!=-1;
+            hasSucc = graph[i][j]!=0;
           }
           if(!hasPred){
-            hasPred = graph[j][i]!=-1;
+            hasPred = graph[j][i]!=0;
           }
           if(hasPred && hasSucc)
             break;
@@ -1589,7 +1591,7 @@ namespace{
       //   errs() << it.first << " " << it.second << "\n";
       // }
 
-      printGraph();
+      printGraph2();
 
     }
 
@@ -1606,10 +1608,131 @@ namespace{
       errs() << p;
     }
 
-    vector<pair<BasicBlock*, BasicBlock*>> minCut(){
-      return vector<pair<BasicBlock*, BasicBlock*>>();
-
+    void printGraph2(){
+      std::string p;
+      for(int i=0; i<graph.size(); i++){
+        // errs() << NodetoBB[i]->getName();
+        for(int j=0; j<graph.size(); j++){
+          p = p + std::to_string(graph[i][j]) + "\t\t\t\t";
+        }
+        p = p + "\n";
+      }
+      errs() << p;
     }
+      
+    /* Returns true if there is a path from source 's' to sink 't' in
+      residual graph. Also fills parent[] to store the path */
+    int bfs(vector<vector<long long>>& rGraph, int s, int t, int parent[])
+    {
+        // Create a visited array and mark all vertices as not visited
+        int V = rGraph.size();
+        bool visited[V];
+        memset(visited, 0, sizeof(visited));
+      
+        // Create a queue, enqueue source vertex and mark source vertex
+        // as visited
+        queue <int> q;
+        q.push(s);
+        visited[s] = true;
+        parent[s] = -1;
+      
+        // Standard BFS Loop
+        while (!q.empty())
+        {
+            int u = q.front();
+            q.pop();
+      
+            for (int v=0; v<V; v++)
+            {
+                if (visited[v]==false && rGraph[u][v] > 0)
+                {
+                    q.push(v);
+                    parent[v] = u;
+                    visited[v] = true;
+                }
+            }
+        }
+      
+        // If we reached sink in BFS starting from source, then return
+        // true, else false
+        return (visited[t] == true);
+    }
+      
+    // A DFS based function to find all reachable vertices from s.  The function
+    // marks visited[i] as true if i is reachable from s.  The initial values in
+    // visited[] must be false. We can also use BFS to find reachable vertices
+    void dfs(vector<vector<long long>>& rGraph, int s, bool visited[])
+    {
+        visited[s] = true;
+        for (int i = 0; i < rGraph.size(); i++)
+          if (rGraph[s][i]>0 && !visited[i])
+              dfs(rGraph, i, visited);
+    }
+      
+    long long min(long long a, long long b){
+      return a > b ? b : a;
+    }
+
+    // Prints the minimum s-t cut
+    vector<pair<BasicBlock*, BasicBlock*>> minCut()
+    {
+        int s = graph.size()-2;
+        int t = graph.size()-1;
+        errs() << "min cut from " << s << " to " << t << "\n";
+
+        int u, v;
+      
+        // Create a residual graph and fill the residual graph with
+        // given capacities in the original graph as residual capacities
+        // in residual graph
+        vector<vector<long long>> rGraph = graph; // rGraph[i][j] indicates residual capacity of edge i-j
+
+        int parent[graph.size()];  // This array is filled by BFS and to store path
+      
+        // Augment the flow while there is a path from source to sink
+        while (bfs(rGraph, s, t, parent))
+        {
+            // Find minimum residual capacity of the edhes along the
+            // path filled by BFS. Or we can say find the maximum flow
+            // through the path found.
+            long long path_flow = LONG_LONG_MAX;
+            for (v=t; v!=s; v=parent[v])
+            {
+                u = parent[v];
+                path_flow = min(path_flow, rGraph[u][v]);
+            }
+      
+            // update residual capacities of the edges and reverse edges
+            // along the path
+            for (v=t; v != s; v=parent[v])
+            {
+                u = parent[v];
+                rGraph[u][v] -= path_flow;
+                rGraph[v][u] += path_flow;
+            }
+        }
+
+        int V = graph.size();
+      
+        // Flow is maximum now, find vertices reachable from s
+        bool visited[V];
+        memset(visited, false, sizeof(visited));
+        dfs(rGraph, s, visited);
+
+        vector<pair<BasicBlock*, BasicBlock*>> cutedges;
+
+        // Print all edges that are from a reachable vertex to
+        // non-reachable vertex in the original graph
+        for (int i = 0; i < V; i++)
+          for (int j = 0; j < V; j++)
+            if (visited[i] && !visited[j] && graph[i][j]>0){
+                  errs() << NodetoBB[i]->getName() << " - " << NodetoBB[j]->getName() << "\n";
+                  cutedges.push_back(pair<BasicBlock*, BasicBlock*>(NodetoBB[i], NodetoBB[j]));
+            }
+      
+        return cutedges;
+    }
+
   };
 
 
@@ -1769,11 +1892,11 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     }
   }
 
-  // // Phase 3: Eliminate and replace
+  // // Phase 4: Eliminate and replace
   // // This phase performs trivial full redundancy elimination
   // changed_function |= elimination();
   
-  // // Phase 4: Cleanup
+  // // Phase 5: Cleanup
   // // This phase cleans up values that were created solely
   // // as leaders for expressions
   cleanup();

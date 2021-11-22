@@ -27,11 +27,11 @@ clang -Xclang -disable-O0-optnone -emit-llvm -c ${BENCH} -o ${1}.bc
 
 opt -mem2reg ${1}.bc -o ${1}_reg.bc
 # Instrument profiler
-opt -pgo-instr-gen -instrprof ${1}_reg.bc -o ${1}.prof.bc
+opt -pgo-instr-gen -instrprof ${1}_reg.bc -o ${1}.prof.bc 
 # Generate binary executable with profiler embedded
 clang -fprofile-instr-generate ${1}.prof.bc -o ${1}.prof
 # Collect profiling data
-./${1}.prof #${INPUT}
+./${1}.prof < ../test/${1}.in
 # Translate raw profiling data into LLVM data format
 llvm-profdata merge -output=pgo.profdata default.profraw
 

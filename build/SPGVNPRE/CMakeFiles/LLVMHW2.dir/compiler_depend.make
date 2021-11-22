@@ -426,7 +426,9 @@ SPGVNPRE/CMakeFiles/LLVMHW2.dir/PASS.cpp.o: ../SPGVNPRE/PASS.cpp \
   /usr/include/c++/9/bits/hashtable_policy.h \
   /usr/include/c++/9/bits/unordered_map.h \
   /usr/include/c++/9/unordered_set \
-  /usr/include/c++/9/bits/unordered_set.h
+  /usr/include/c++/9/bits/unordered_set.h \
+  /usr/include/c++/9/queue \
+  /usr/include/c++/9/bits/stl_queue.h
 
 
 /usr/include/c++/9/bits/unordered_set.h:
@@ -679,6 +681,8 @@ SPGVNPRE/CMakeFiles/LLVMHW2.dir/PASS.cpp.o: ../SPGVNPRE/PASS.cpp \
 
 /usr/include/asm-generic/errno-base.h:
 
+/usr/include/c++/9/bits/stl_queue.h:
+
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/local/include/llvm/IR/Type.h:
@@ -766,6 +770,8 @@ SPGVNPRE/CMakeFiles/LLVMHW2.dir/PASS.cpp.o: ../SPGVNPRE/PASS.cpp \
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
 /usr/local/include/llvm/ADT/APInt.h:
+
+/usr/include/c++/9/queue:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
