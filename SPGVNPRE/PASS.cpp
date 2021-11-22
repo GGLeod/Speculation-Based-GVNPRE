@@ -1864,6 +1864,8 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   
   unordered_map<int, vector<Value*>> numberToValues = VN.valueWithNumber();
   for(auto insertSet : insertSets){
+    if(insertSet.second.empty()) continue;
+
     BasicBlock * newBB = SplitEdge(insertSet.first.first, insertSet.first.second);
     auto vns = availableOut[insertSet.first.first];
     
@@ -1886,10 +1888,13 @@ bool SPGVNPRE::runOnFunction(Function &F) {
           auto I2 = I->clone();
           I2->setName("OptInsert_"+I->getName());
           auto lastinsert = newBB->getInstList().end();
-          newBB->getInstList().insert(lastinsert, I2);
+          newBB->getInstList().insert(--lastinsert, I2);
+          break;
         }
       }
     }
+
+    errs() << *newBB << "\n";
   }
 
   // // Phase 4: Eliminate and replace

@@ -1,21 +1,25 @@
 digraph "CFG for 'main' function" {
 	label="CFG for 'main' function";
 
-	Node0x55b9f45256b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{entry:\l  %call = call i32 @getchar()\l  %call1 = call i32 @getchar()\l  br label %for.cond\l}"];
-	Node0x55b9f45256b0 -> Node0x55b9f4525700;
-	Node0x55b9f4525700 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body, label %for.end\l|{<s0>T|<s1>F}}"];
-	Node0x55b9f4525700:s0 -> Node0x55b9f4525750;
-	Node0x55b9f4525700:s1 -> Node0x55b9f45258e0;
-	Node0x55b9f4525750 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body:                                         \l  %rem = srem i32 %i.0, 10\l  %cmp2 = icmp ne i32 %rem, 1\l  br i1 %cmp2, label %if.then, label %if.else\l|{<s0>T|<s1>F}}"];
-	Node0x55b9f4525750:s0 -> Node0x55b9f45257a0;
-	Node0x55b9f4525750:s1 -> Node0x55b9f45257f0;
-	Node0x55b9f45257a0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.then:                                          \l  br label %if.end\l}"];
-	Node0x55b9f45257a0 -> Node0x55b9f4525840;
-	Node0x55b9f45257f0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.else:                                          \l  %add = add nsw i32 %call, %call1\l  br label %if.end\l}"];
-	Node0x55b9f45257f0 -> Node0x55b9f4525840;
-	Node0x55b9f4525840 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.end:                                           \l  %add3 = add nsw i32 %call, %call1\l  br label %for.inc\l}"];
-	Node0x55b9f4525840 -> Node0x55b9f4525890;
-	Node0x55b9f4525890 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.inc:                                          \l  %inc = add nsw i32 %i.0, 1\l  br label %for.cond, !llvm.loop !2\l}"];
-	Node0x55b9f4525890 -> Node0x55b9f4525700;
-	Node0x55b9f45258e0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{for.end:                                          \l  ret i32 0\l}"];
+	Node0x5618eed79c30 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{entry:\l  %call = call i32 @getchar()\l  %call1 = call i32 @getchar()\l  br label %entry.split\l}"];
+	Node0x5618eed79c30 -> Node0x5618eed825d0;
+	Node0x5618eed825d0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{entry.split:                                      \l  br label %for.cond\l}"];
+	Node0x5618eed825d0 -> Node0x5618eed82620;
+	Node0x5618eed82620 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body.split, label %for.end, !prof !32\l|{<s0>T|<s1>F}}"];
+	Node0x5618eed82620:s0 -> Node0x5618eed82670;
+	Node0x5618eed82620:s1 -> Node0x5618eed82850;
+	Node0x5618eed82670 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body.split:                                   \l  %OptInsert_add3 = add nsw i32 %call, %call1\l  br label %for.body\l}"];
+	Node0x5618eed82670 -> Node0x5618eed826c0;
+	Node0x5618eed826c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body:                                         \l  %rem = srem i32 %i.0, 10\l  %cmp2 = icmp ne i32 %rem, 1\l  br i1 %cmp2, label %if.then, label %if.else, !prof !33\l|{<s0>T|<s1>F}}"];
+	Node0x5618eed826c0:s0 -> Node0x5618eed82710;
+	Node0x5618eed826c0:s1 -> Node0x5618eed82760;
+	Node0x5618eed82710 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{if.then:                                          \l  br label %if.end\l}"];
+	Node0x5618eed82710 -> Node0x5618eed827b0;
+	Node0x5618eed82760 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7bca170",label="{if.else:                                          \l  %add = add nsw i32 %call, %call1\l  br label %if.end\l}"];
+	Node0x5618eed82760 -> Node0x5618eed827b0;
+	Node0x5618eed827b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %add3 = add nsw i32 %call, %call1\l  br label %for.inc\l}"];
+	Node0x5618eed827b0 -> Node0x5618eed82800;
+	Node0x5618eed82800 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.inc:                                          \l  %inc = add nsw i32 %i.0, 1\l  br label %for.cond, !llvm.loop !34\l}"];
+	Node0x5618eed82800 -> Node0x5618eed82620;
+	Node0x5618eed82850 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{for.end:                                          \l  ret i32 0\l}"];
 }
