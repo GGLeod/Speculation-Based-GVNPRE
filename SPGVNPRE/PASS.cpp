@@ -1553,9 +1553,11 @@ namespace{
       for(auto edge : essentialEdges){
         BasicBlock* start = edge.first;
         BasicBlock* dest = edge.second;
-        int blockFreq = bfi.getBlockFreq(start).getFrequency();
+        uint64_t blockFreq = bfi.getBlockFreq(start).getFrequency();
         double branchProb =  bpi.getEdgeProbability(start,dest).getNumerator() 
           / (double)bpi.getEdgeProbability(start,dest).getDenominator();
+
+        errs() << start->getName() << " to " << dest->getName() << ": " << blockFreq << " " << branchProb << "\n";
 
         graph[BBtoNode[start]][BBtoNode[dest]] = blockFreq * branchProb;
       }
@@ -1583,6 +1585,9 @@ namespace{
         }
       }
 
+      // for(auto it : BBtoNode){
+      //   errs() << it.first << " " << it.second << "\n";
+      // }
 
       printGraph();
 
@@ -1590,9 +1595,10 @@ namespace{
 
     void printGraph(){
       std::string p;
-      for(int i=0; i<graph.size(); i++){
-        
-        for(int j=0; j<graph.size(); j++){
+      for(int i=0; i<graph.size()-2; i++){
+        // errs() << NodetoBB[i]->getName();
+        p = p + NodetoBB[i]->getName().str() + "\t";
+        for(int j=0; j<graph.size()-2; j++){
           p = p + std::to_string(graph[i][j]) + "\t\t\t\t";
         }
         p = p + "\n";
@@ -1626,7 +1632,7 @@ namespace{
     for(auto bb : pantInBB){
       for(auto it = pred_begin(bb); it!=pred_end(bb); ++it){
         BasicBlock* pred = *it;
-        if(avOutBB.find(pred)!=avOutBB.end()){
+        if(avOutBB.find(pred)==avOutBB.end()){
           essentialEdge.push_back(pair<BasicBlock*, BasicBlock*>(pred, bb));
         }
       }
@@ -1689,6 +1695,25 @@ bool SPGVNPRE::runOnFunction(Function &F) {
 
   vector<unordered_set<BasicBlock*>> availValueSets = getValueSet(VN, availableOut);
   vector<unordered_set<BasicBlock*>> pantiValueSets = getValueSet(VN, anticipatedIn);
+
+  errs() << "available out point of each value number";
+  for(int i=0; i<availValueSets.size(); i++){
+    errs() << i << ": ";
+    for(auto it : availValueSets[i]){
+      errs() << it->getName() << " ";
+    } 
+    errs() << "\n";
+  }
+
+
+  errs() << "antipate in point of each value number";
+  for(int i=0; i<pantiValueSets.size(); i++){
+    errs() << i << ": ";
+    for(auto it : pantiValueSets[i]){
+      errs() << it->getName() << " ";
+    } 
+    errs() << "\n";
+  }
 
   unordered_map<pair<BasicBlock*, BasicBlock*>, vector<int>, pairHash>insertSets; 
 

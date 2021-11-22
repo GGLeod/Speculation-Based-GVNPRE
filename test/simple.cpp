@@ -3,26 +3,19 @@
 int main(){
     int a = getchar();
     int b = getchar();
-    for(int i=0; i<2; i++){
-        int c = 0;
-        if(a%100!=1){
-            c = c+a;
+
+    for(int i=0; i<100; i++){
+        if(i%10!=1){
+            int c = a;
         }
         else{
             int  k = a+b;
-            c = c+k;
         }
 
-        if(b%200==1){
-            c = c - b + 1;
-        }
-        else{
-            int  k = a+b;
-            c = c+k;
-        }
+        int d = a+b;
 
-        // a = a+1;
     }
+
 
 
     return 0;
