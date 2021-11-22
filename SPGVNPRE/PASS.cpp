@@ -204,6 +204,15 @@ namespace {
       void clear();
       void erase(Value* v);
       unsigned size();
+
+      unordered_map<int, vector<Value*>> valueWithNumber(){
+        unordered_map<int, vector<Value*>> result;
+        for(auto it = valueNumbering.begin(); it!=valueNumbering.end(); ++it){
+          result[it->second].push_back(it->first);
+        }
+
+        return result;
+      }
   };
 }
 
@@ -624,6 +633,8 @@ class ValueNumberedSet {
     void erase(Value* v) { contents.erase(v); }
     unsigned count(Value* v) { return contents.count(v); }
     size_t size() { return contents.size(); }
+
+    iterator find(Value* v){ return contents.find(v);}
     
     void set(unsigned i)  {
       if (i >= numbers.size())
@@ -1350,24 +1361,24 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
     
     for (unsigned i = 1; i < BB->getTerminator()->getNumSuccessors(); ++i) {
       BasicBlock* currSucc = BB->getTerminator()->getSuccessor(i);
-      // ValueNumberedSet& succAnticIn = anticipatedIn[currSucc];
+      ValueNumberedSet& succAnticIn = anticipatedIn[currSucc];
       
-      // SmallVector<Value*, 16> temp;
+      SmallVector<Value*, 16> temp;
       
-      // for (ValueNumberedSet::iterator I = anticOut.begin(),
-      //      E = anticOut.end(); I != E; ++I)
-      //   if (!succAnticIn.test(VN.lookup(*I)))
-      //     temp.push_back(*I);
-      // for (SmallVector<Value*, 16>::iterator I = temp.begin(), E = temp.end();
-      //      I != E; ++I) {
-      //   anticOut.erase(*I);
-      //   anticOut.reset(VN.lookup(*I));
-      // }
-      for (ValueNumberedSet::iterator I = anticipatedIn[currSucc].begin(),
-          E = anticipatedIn[currSucc].end(); I != E; ++I) {
-        anticOut.insert(*I);
-        anticOut.set(VN.lookup(*I));
+      for (ValueNumberedSet::iterator I = anticOut.begin(),
+           E = anticOut.end(); I != E; ++I)
+        if (!succAnticIn.test(VN.lookup(*I)))
+          temp.push_back(*I);
+      for (SmallVector<Value*, 16>::iterator I = temp.begin(), E = temp.end();
+           I != E; ++I) {
+        anticOut.erase(*I);
+        anticOut.reset(VN.lookup(*I));
       }
+      // for (ValueNumberedSet::iterator I = anticipatedIn[currSucc].begin(),
+      //     E = anticipatedIn[currSucc].end(); I != E; ++I) {
+      //   anticOut.insert(*I);
+      //   anticOut.set(VN.lookup(*I));
+      // }
       //TODO: error occur when changing this part
 
     }
@@ -1637,6 +1648,7 @@ namespace{
 
 
 bool SPGVNPRE::runOnFunction(Function &F) {
+  errs() << "begin\n";
   BranchProbabilityInfo &bpi = getAnalysis<BranchProbabilityInfoWrapperPass>().getBPI(); 
   BlockFrequencyInfo &bfi = getAnalysis<BlockFrequencyInfoWrapperPass>().getBFI();
   // Clean out global sets from any previous functions
@@ -1663,6 +1675,12 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     errs() << "Block: " << it->first->getName() << "\n";
     it->second.print(VN);
   }
+
+
+  // BasicBlock* tmp = anticipatedIn.begin()->first;
+  // BasicBlock* tmp2 = tmp->getTerminator()->getSuccessor(0);
+  // BasicBlock * newBB = SplitEdge(tmp, tmp2);
+  
 
   errs() << VN.size() << "\n";
 
@@ -1691,12 +1709,42 @@ bool SPGVNPRE::runOnFunction(Function &F) {
 
 
   
-  // // Phase 2: Insert
+  // // Phase 3: Insert
   // // This phase inserts values to make partially redundant values
   // // fully redundant
   // changed_function |= insertion(F);
   
-  // // Phase 3: Eliminate
+  unordered_map<int, vector<Value*>> numberToValues = VN.valueWithNumber();
+  for(auto insertSet : insertSets){
+    BasicBlock * newBB = SplitEdge(insertSet.first.first, insertSet.first.second);
+    auto vns = availableOut[insertSet.first.first];
+    
+
+    for(int n : insertSet.second){
+      vector<Value*>& values = numberToValues[n];
+      for(Value* v : values){
+        Instruction* I = cast<Instruction>(v);
+        bool valid = true;
+        for(int i=0; i<I->getNumOperands(); i++){
+          Value* operand = I->getOperand(i);
+          if(vns.find(operand) == vns.end()){
+            valid = false;
+            break;
+          }
+        }
+
+        if(valid){
+          
+          auto I2 = I->clone();
+          I2->setName("OptInsert_"+I->getName());
+          auto lastinsert = newBB->getInstList().end();
+          newBB->getInstList().insert(lastinsert, I2);
+        }
+      }
+    }
+  }
+
+  // // Phase 3: Eliminate and replace
   // // This phase performs trivial full redundancy elimination
   // changed_function |= elimination();
   

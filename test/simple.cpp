@@ -3,7 +3,7 @@
 int main(){
     int a = getchar();
     int b = getchar();
-    // for(int i=0; i<1000; i++){
+    for(int i=0; i<2; i++){
         int c = 0;
         if(a%100!=1){
             c = c+a;
@@ -22,7 +22,7 @@ int main(){
         }
 
         // a = a+1;
-    // }
+    }
 
 
     return 0;
