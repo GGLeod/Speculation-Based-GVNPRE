@@ -346,6 +346,7 @@ SPGVNPRE/CMakeFiles/LLVMHW2.dir/PASS.cpp.o: \
  /usr/local/include/llvm/Support/BlockFrequency.h \
  /usr/local/include/llvm/Transforms/Utils.h \
  /usr/local/include/llvm/Transforms/Utils/UnifyFunctionExitNodes.h \
+ /usr/local/include/llvm/Analysis/DominanceFrontier.h \
  /usr/local/include/llvm/ADT/Statistic.h /usr/include/c++/9/atomic \
  /usr/include/c++/9/unordered_map /usr/include/c++/9/bits/hashtable.h \
  /usr/include/c++/9/bits/hashtable_policy.h \

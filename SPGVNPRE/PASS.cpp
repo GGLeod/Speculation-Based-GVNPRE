@@ -31,6 +31,8 @@
 #include "llvm/Analysis/BlockFrequencyInfo.h"
 #include "llvm/Transforms/Utils.h"
 #include "llvm/Transforms/Utils/UnifyFunctionExitNodes.h"
+#include "llvm/Analysis/DominanceFrontier.h"
+
 #include "llvm/ADT/Statistic.h"
 #include <limits>
 #include <unordered_map>
@@ -1772,6 +1774,32 @@ namespace{
       return std::hash<long long>()(first) ^ std::hash<long long>()(second);
     }
   };
+
+  unordered_map<BasicBlock*, vector<BasicBlock*>> computeDF(DominatorTree& DT, Function &F){
+    unordered_map<BasicBlock*, vector<BasicBlock*>> result;
+    for(auto BBit = F.begin(); BBit!=F.end(); ++BBit){
+      BasicBlock* X = &*BBit;
+      if(pred_size(X)>1){
+        auto nodeX = DT.getNode(X);
+        BasicBlock* IDOMX = nodeX->getIDom()->getBlock();
+        for(auto pred = pred_begin(X); pred!=pred_end(X); ++pred){
+          BasicBlock* Y =  *pred;
+          auto nodeY = DT.getNode(Y);
+          auto nodeCur = nodeY;
+          while(nodeCur->getBlock()!=IDOMX && nodeCur->getBlock()!=X){
+            result[nodeCur->getBlock()].push_back(X);
+            nodeCur = nodeCur->getIDom();
+          }
+
+          
+        }
+      }
+      
+    }
+
+    return result;
+  }
+  
 }
 
 
@@ -1862,6 +1890,8 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   // // fully redundant
   // changed_function |= insertion(F);
   
+  unordered_map<int, vector<Instruction*>> newValueSets; 
+
   unordered_map<int, vector<Value*>> numberToValues = VN.valueWithNumber();
   for(auto insertSet : insertSets){
     if(insertSet.second.empty()) continue;
@@ -1889,6 +1919,7 @@ bool SPGVNPRE::runOnFunction(Function &F) {
           I2->setName("OptInsert_"+I->getName());
           auto lastinsert = newBB->getInstList().end();
           newBB->getInstList().insert(--lastinsert, I2);
+          newValueSets[n].push_back(I2);
           break;
         }
       }
@@ -1897,9 +1928,22 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     errs() << *newBB << "\n";
   }
 
-  // // Phase 4: Eliminate and replace
-  // // This phase performs trivial full redundancy elimination
-  // changed_function |= elimination();
+  // // Phase 4: SSA convertion
+  // step 1: compute dominance frontier
+  DominatorTree DT(F);
+  unordered_map<BasicBlock*, vector<BasicBlock*>> Dfrontier = computeDF(DT, F);
+
+
+  // step 2: insert phi node
+
+
+  // step 3: rename variables
+
+
+  // step 4: eliminate old values
+  // maybe use a dead code elimination pass
+
+
   
   // // Phase 5: Cleanup
   // // This phase cleans up values that were created solely

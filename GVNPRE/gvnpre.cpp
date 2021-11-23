@@ -1657,7 +1657,7 @@ void GVNPRE::insertion_pre(Value* e, BasicBlock* BB,
               
   for (pred_iterator PI = pred_begin(BB), PE = pred_end(BB); PI != PE; ++PI) {
     if (p == 0)
-      p = PHINode::Create(avail[*PI]->getType(), "gvnpre-join", BB->begin());
+      p = PHINode::Create(avail[*PI]->getType(), 0, "gvnpre-join", &*BB->begin());
     
     p->addIncoming(avail[*PI], *PI);
   }
