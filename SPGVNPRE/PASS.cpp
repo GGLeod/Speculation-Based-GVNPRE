@@ -41,12 +41,15 @@
 #include <functional>
 #include <vector>
 #include <queue>
+#include <stack>
+
 using std::unordered_map;
 using std::unordered_set;
 using std::vector;
 using std::pair;
 using std::string;
 using std::queue;
+using std::stack;
 
 #define DEBUG_TYPE "spgvnpre"
 
@@ -204,6 +207,15 @@ namespace {
         }
       uint32_t lookup_or_add(Value* V);
       uint32_t lookup(Value* V) const;
+      bool exists(Value* V) const{
+        auto VI = valueNumbering.find(V);
+        if (VI != valueNumbering.end())
+          return true;
+        else
+          return false;
+      }
+
+
       void add(Value* V, uint32_t num);
       void clear();
       void erase(Value* v);
@@ -1800,6 +1812,74 @@ namespace{
     return result;
   }
   
+
+  void rename(unordered_map<int, stack<Value*>>& VRStack, DomTreeNode* node, 
+    unordered_map<int, vector<Instruction*>>& newValueSets, 
+    unordered_map<Instruction*, int>& revNewValue, ValueTable& VN){
+
+    BasicBlock* bb = node->getBlock();
+
+
+    unordered_map<int,int> cnt;
+
+    for(auto it = bb->begin(); it != bb->end(); ++it){
+      Instruction* I = &*it;
+
+
+      // if is a definition, put to stack
+      if(revNewValue.find(I)!=revNewValue.end()){
+        int valueNum = revNewValue[I];
+        VRStack[valueNum].push(I);
+        cnt[valueNum]++;
+      }
+
+      // if is a use, replace with top of stack
+      for(int i=0; i < I->getNumOperands(); i++){
+        if(isa<Instruction>(I->getOperand(i))){
+          Instruction* op = cast<Instruction>(I->getOperand(i));
+          if(VN.exists(op) && VRStack.find(VN.lookup(op))!=VRStack.end()){
+            I->replaceUsesOfWith(op, VRStack[VN.lookup(op)].top());
+          }
+        }
+        
+        
+      }
+
+    }
+
+
+    // Fill in Phi node parameters of successor block
+    for(auto succbb = succ_begin(bb); succbb != succ_end(bb); ++succbb){
+      BasicBlock* sb = *succbb;
+      for(auto it2 = bb->begin(); it2!=bb->end(); ++it2){
+        Instruction* I2 = &*it2;
+        if(isa<PHINode>(I2)){
+          PHINode* phi = cast<PHINode>(I2);
+          if(revNewValue.find(I2)!=revNewValue.end()){
+            phi->addIncoming(VRStack[revNewValue[I2]].top(), bb);
+          }
+        }
+
+
+      }
+    }
+    
+
+
+    for(auto child = node->children().begin(); child!=node->children().end(); child++){
+      rename(VRStack, *child, newValueSets, revNewValue, VN);
+    }
+
+
+    //pop from stack after exit
+    for(auto it : cnt){
+      for(int i=0; i<it.second; ++i){
+        VRStack[it.first].pop();
+      }
+    }
+
+  }
+
 }
 
 
@@ -1903,7 +1983,7 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     for(int n : insertSet.second){
       vector<Value*>& values = numberToValues[n];
       for(Value* v : values){
-        Instruction* I = cast<Instruction>(v);
+        Instruction* I = dyn_cast<Instruction>(v);
         bool valid = true;
         for(int i=0; i<I->getNumOperands(); i++){
           Value* operand = I->getOperand(i);
@@ -1913,7 +1993,7 @@ bool SPGVNPRE::runOnFunction(Function &F) {
           }
         }
 
-        if(valid){
+        if(valid && !isa<PHINode>(I)){
           
           auto I2 = I->clone();
           I2->setName("OptInsert_"+I->getName());
@@ -1928,26 +2008,80 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     errs() << *newBB << "\n";
   }
 
-  // // Phase 4: SSA convertion
+  // // Phase 4: Replace use with new inserted value
   // step 1: compute dominance frontier
   DominatorTree DT(F);
   unordered_map<BasicBlock*, vector<BasicBlock*>> Dfrontier = computeDF(DT, F);
 
+  for(auto it : Dfrontier){
+    errs() << it.first->getName() << " has dominance frontier:\n";
+    for(BasicBlock* df : it.second){
+      errs() << df->getName() << " ";
+    }
+    errs() << "\n";
+  }
+
 
   // step 2: insert phi node
+  for(auto it : newValueSets){
+    int valueNumber = it.first;
+    vector<Instruction*>& newDefined = it.second;
+    for(int i=0; i<newDefined.size(); i++){
+      
+      BasicBlock* definedBlock = newDefined[i]->getParent();
 
+      for(auto BBd : Dfrontier[definedBlock]){
+        PHINode* newPhi = PHINode::Create(newDefined[i]->getType(), 2, "NewPhi_"+newDefined[i]->getName(), 
+            &*BBd->getFirstInsertionPt());
+
+        errs() << *BBd;
+      }
+
+    }
+  }
+
+
+  unordered_map<Instruction*, int> revNewValue;
+
+  for(auto it : newValueSets){
+    for(Instruction* I : it.second){
+      revNewValue[I] = it.first;
+    }
+  }
 
   // step 3: rename variables
+  unordered_map<int, stack<Value*>> VRStack;
+  rename(VRStack, DT.getRootNode(), newValueSets, revNewValue, VN);
+
 
 
   // step 4: eliminate old values
   // maybe use a dead code elimination pass
+  // !!!need to eliminate partial phi node
+  for (Function::iterator bb = F.begin(); bb!=F.end(); ++bb){ // iterate BBs 
+      for(BasicBlock::iterator i = bb->begin(); i!=bb->end(); ++i){
+        if(isa<PHINode>(&*i)){
+          PHINode* phi = cast<PHINode>(i);
+        
+          if(phi->getNumIncomingValues()!=pred_size(&*bb)){
+            phi->removeFromParent();
+            i = bb->begin();
+          }
 
+          
+
+        }
+        
+
+        
+      }
+  }
+    
 
   
-  // // Phase 5: Cleanup
-  // // This phase cleans up values that were created solely
-  // // as leaders for expressions
+  // Phase 5: Cleanup
+  // This phase cleans up values that were created solely
+  // as leaders for expressions
   cleanup();
   
   return changed_function;

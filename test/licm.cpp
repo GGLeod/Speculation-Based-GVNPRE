@@ -1,8 +1,7 @@
 #include <stdio.h>
 
-// This PRE cannot be discovered by GVN
-// In lexical version of PRE described by the paper
-// it will treat a=a+1 and a as the same variable
+// gvnpre cannot do LICM to a+b but sppregvn can
+// gvnpre is not sure a+b is safe (may not go in to the loop)
 
 int main(){
     int a = getchar();
@@ -10,10 +9,10 @@ int main(){
 
     for(int i=0; i<100; i++){
         if(i%10!=1){
-            a = a +1;
+            int c = a;
         }
         else{
-            printf("%d", a+b);
+            int  k = a+b;
         }
 
         printf("%d", a+b);

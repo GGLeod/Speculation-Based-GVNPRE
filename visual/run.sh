@@ -48,3 +48,11 @@ opt -o ${1}.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ${PA
 opt -dot-cfg < ${1}.pre.bc > /dev/null
 
 dot -Tpng .main.dot -o ${1}_pre.png
+
+# perform dead code elimination
+
+opt -dce ${1}.pre.bc -o ${1}_final.bc
+
+opt -dot-cfg < ${1}_final.bc > /dev/null
+
+dot -Tpng .main.dot -o ${1}_final.png

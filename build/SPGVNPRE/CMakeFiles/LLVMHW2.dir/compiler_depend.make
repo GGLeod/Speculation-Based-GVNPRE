@@ -419,6 +419,7 @@ SPGVNPRE/CMakeFiles/LLVMHW2.dir/PASS.cpp.o: ../SPGVNPRE/PASS.cpp \
   /usr/local/include/llvm/Support/BlockFrequency.h \
   /usr/local/include/llvm/Transforms/Utils.h \
   /usr/local/include/llvm/Transforms/Utils/UnifyFunctionExitNodes.h \
+  /usr/local/include/llvm/Analysis/DominanceFrontier.h \
   /usr/local/include/llvm/ADT/Statistic.h \
   /usr/include/c++/9/atomic \
   /usr/include/c++/9/unordered_map \
@@ -428,14 +429,20 @@ SPGVNPRE/CMakeFiles/LLVMHW2.dir/PASS.cpp.o: ../SPGVNPRE/PASS.cpp \
   /usr/include/c++/9/unordered_set \
   /usr/include/c++/9/bits/unordered_set.h \
   /usr/include/c++/9/queue \
-  /usr/include/c++/9/bits/stl_queue.h
+  /usr/include/c++/9/bits/stl_queue.h \
+  /usr/include/c++/9/stack \
+  /usr/include/c++/9/bits/stl_stack.h
 
+
+/usr/include/c++/9/stack:
 
 /usr/include/c++/9/bits/unordered_set.h:
 
 /usr/include/c++/9/atomic:
 
 /usr/local/include/llvm/ADT/Statistic.h:
+
+/usr/local/include/llvm/Analysis/DominanceFrontier.h:
 
 /usr/local/include/llvm/Support/BlockFrequency.h:
 
@@ -600,6 +607,8 @@ SPGVNPRE/CMakeFiles/LLVMHW2.dir/PASS.cpp.o: ../SPGVNPRE/PASS.cpp \
 /usr/local/include/llvm/IR/Value.h:
 
 /usr/include/c++/9/bits/erase_if.h:
+
+/usr/include/c++/9/bits/stl_stack.h:
 
 /usr/include/c++/9/bits/stl_multimap.h:
 
