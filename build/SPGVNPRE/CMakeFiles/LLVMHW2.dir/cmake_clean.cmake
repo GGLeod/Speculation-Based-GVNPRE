@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/LLVMHW2.dir/PASS.cpp.o"
-  "CMakeFiles/LLVMHW2.dir/PASS.cpp.o.d"
   "LLVMHW2.pdb"
   "LLVMHW2.so"
 )

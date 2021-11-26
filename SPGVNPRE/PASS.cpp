@@ -1374,30 +1374,51 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
       anticOut.insert(*I);
       anticOut.set(VN.lookup(*I));
     }
+    errs() << "Finished first succ\n";
     
     for (unsigned i = 1; i < BB->getTerminator()->getNumSuccessors(); ++i) {
       BasicBlock* currSucc = BB->getTerminator()->getSuccessor(i);
       ValueNumberedSet& succAnticIn = anticipatedIn[currSucc];
+      bool testOriginal = false;
+      bool testChange = true;
       
-      SmallVector<Value*, 16> temp;
+      if (testOriginal) {
+        SmallVector<Value*, 16> temp;
       
-      for (ValueNumberedSet::iterator I = anticOut.begin(),
-           E = anticOut.end(); I != E; ++I)
-        if (!succAnticIn.test(VN.lookup(*I)))
-          temp.push_back(*I);
-      for (SmallVector<Value*, 16>::iterator I = temp.begin(), E = temp.end();
-           I != E; ++I) {
-        anticOut.erase(*I);
-        anticOut.reset(VN.lookup(*I));
+        errs() << "Start constructing temp for " << i << "\n";
+        for (ValueNumberedSet::iterator I = anticOut.begin(),
+            E = anticOut.end(); I != E; ++I)
+          if (!succAnticIn.test(VN.lookup(*I)))
+            temp.push_back(*I);
+        for (SmallVector<Value*, 16>::iterator I = temp.begin(), E = temp.end();
+            I != E; ++I) {
+          anticOut.erase(*I);
+          anticOut.reset(VN.lookup(*I));
+        }
       }
-      // for (ValueNumberedSet::iterator I = anticipatedIn[currSucc].begin(),
-      //     E = anticipatedIn[currSucc].end(); I != E; ++I) {
-      //   anticOut.insert(*I);
-      //   anticOut.set(VN.lookup(*I));
-      // }
-      //TODO: error occur when changing this part
+      
+      if (testChange) {
+        errs() << "Start adding succAnticIn for " << i << "\n";
+        for (ValueNumberedSet::iterator I = succAnticIn.begin(),
+            E = succAnticIn.end(); I != E; ++I) {
+              if (!anticOut.test(VN.lookup(*I))) {
+                anticOut.insert(*I);
+                anticOut.set(VN.lookup(*I));
+              }
+        }
+      }
+      
 
+
+      errs() << "[In Loop] anticOut size: " << anticOut.size() << "\n";
+      if (testOriginal) {
+        anticOut.print(VN);
+      }
+      if (testChange && anticOut.size() < 50) {
+        anticOut.print(VN);
+      }
     }
+    errs() << "[In Function] anticOut size: " << anticOut.size() << "\n";
   }
   
   return false;
@@ -1414,6 +1435,7 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
                                SmallPtrSet<BasicBlock*, 8>& visited) {
   ValueNumberedSet& anticIn = anticipatedIn[BB];
   unsigned old = anticIn.size();
+  errs() << "[Anticin] old value: " << old << "\n";
       
   bool defer = buildsets_anticout(BB, anticOut, visited);
   if (defer)
@@ -1426,6 +1448,7 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
     anticIn.insert(*I);
     anticIn.set(VN.lookup(*I));
   }
+  errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
   for (ValueNumberedSet::iterator I = currExps.begin(),
        E = currExps.end(); I != E; ++I) {
     if (!anticIn.test(VN.lookup(*I))) {
@@ -1433,16 +1456,17 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
       anticIn.set(VN.lookup(*I));
     }
   } 
-  
+  errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
   for (SmallPtrSet<Value*, 16>::iterator I = currTemps.begin(),
        E = currTemps.end(); I != E; ++I) {
     anticIn.erase(*I);
     anticIn.reset(VN.lookup(*I));
   }
-  
+  errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
   clean(anticIn);
   anticOut.clear();
-  
+  errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
+
   if (old != anticIn.size())
     return 2;
   else
@@ -1500,9 +1524,10 @@ void SPGVNPRE::buildsets(Function& F) {
       BasicBlock* BB = *BBI;
       
       if (block_changed.count(BB) != 0) {
+        errs() << "[buildsets while loop] anticin called\n";
         unsigned ret = buildsets_anticin(BB, anticOut,generatedExpressions[BB],
                                          generatedTemporaries[BB], visited);
-      
+        errs() << "[buildsets while loop] ret value: " << ret << "\n";
         if (ret == 0) {
           changed = true;
           continue;
