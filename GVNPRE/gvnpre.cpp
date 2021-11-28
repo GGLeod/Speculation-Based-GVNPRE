@@ -45,6 +45,8 @@
 #include <map>
 #include <iostream>
 using namespace llvm;
+
+FunctionPass *llvm::createGVNPREPass();
 //===----------------------------------------------------------------------===//
 //                         ValueTable Class
 //===----------------------------------------------------------------------===//
@@ -1230,7 +1232,7 @@ void GVNPRE::cleanup() {
     Instruction* I = createdExpressions.back();
     createdExpressions.pop_back();
     
-    delete I;
+    I->eraseFromParent();
   }
 }
 /// buildsets_availout - When calculating availability, handle an instruction
