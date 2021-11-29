@@ -35,15 +35,18 @@
 #include "llvm/ADT/SmallVector.h"
 #include "llvm/ADT/Statistic.h"
 #include "llvm/Transforms/Utils/UnifyFunctionExitNodes.h"
+#include "llvm/Transforms/Utils/BreakCriticalEdges.h"
 #include "llvm/IR/CFG.h"
 #include "llvm/Support/Compiler.h"
 #include "llvm/Support/Debug.h"
 #include "llvm/Transforms/Utils.h"
-#include "llvm/Transforms/Utils/UnifyFunctionExitNodes.h"
 #include <algorithm>
 #include <deque>
 #include <map>
+#include <iostream>
 using namespace llvm;
+
+FunctionPass *llvm::createGVNPREPass();
 //===----------------------------------------------------------------------===//
 //                         ValueTable Class
 //===----------------------------------------------------------------------===//
@@ -1165,13 +1168,13 @@ void GVNPRE::topo_sort(ValueNumberedSet& set, SmallVector<Value*, 8>& vec) {
 }
 /// dump - Dump a set of values to standard error
 void GVNPRE::dump(ValueNumberedSet& s) const {
-  DOUT << "{ ";
+  errs() << "{ ";
   for (ValueNumberedSet::iterator I = s.begin(), E = s.end();
        I != E; ++I) {
-    DOUT << "" << VN.lookup(*I) << ": ";
-    DEBUG((*I)->dump());
+    errs() << "" << VN.lookup(*I) << ": ";
+    LLVM_DEBUG( ((*I)->dump()) );
   }
-  DOUT << "}\n\n";
+  errs() << "}\n\n";
 }
 /// elimination - Phase 3 of the main algorithm.  Perform full redundancy 
 /// elimination by walking the dominator tree and removing any instruction that 
@@ -1229,7 +1232,7 @@ void GVNPRE::cleanup() {
     Instruction* I = createdExpressions.back();
     createdExpressions.pop_back();
     
-    delete I;
+    I->eraseFromParent();
   }
 }
 /// buildsets_availout - When calculating availability, handle an instruction
@@ -1624,7 +1627,7 @@ void GVNPRE::insertion_pre(Value* e, BasicBlock* BB,
         newVal = InsertElementInst::Create(s1, s2, s3, S->getName()+".gvnpre",
                                            (*PI)->getTerminator());
       else if (ExtractElementInst* S = dyn_cast<ExtractElementInst>(U))
-        newVal = new ExtractElementInst(s1, s2, S->getName()+".gvnpre",
+        newVal = ExtractElementInst::Create(s1, s2, S->getName()+".gvnpre",
                                         (*PI)->getTerminator());
       else if (SelectInst* S = dyn_cast<SelectInst>(U))
         newVal = SelectInst::Create(s1, s2, s3, S->getName()+".gvnpre",
@@ -1633,10 +1636,12 @@ void GVNPRE::insertion_pre(Value* e, BasicBlock* BB,
         newVal = CastInst::Create(C->getOpcode(), s1, C->getType(),
                                   C->getName()+".gvnpre", 
                                   (*PI)->getTerminator());
-      else if (GetElementPtrInst* G = dyn_cast<GetElementPtrInst>(U))
-        newVal = GetElementPtrInst::Create(s1, sVarargs.begin(), sVarargs.end(),
-                                           G->getName()+".gvnpre", 
+      else if (GetElementPtrInst* G = dyn_cast<GetElementPtrInst>(U)){
+        Value *Idx = Constant::getIntegerValue(Type::getInt32Ty(s1->getContext()), APInt(64, 0));
+        newVal = GetElementPtrInst::Create(U->getType(), s1, ArrayRef<Value *>(Idx),
+                                            G->getName()+".gvnpre", 
                                            (*PI)->getTerminator());
+      }
       VN.add(newVal, VN.lookup(U));
                   
       ValueNumberedSet& predAvail = availableOut[*PI];
