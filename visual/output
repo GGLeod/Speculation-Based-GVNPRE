@@ -1,158 +1,179 @@
-102102102103104105106107108109110111111111112113114115116117118119120120120121122123124125126127128129129129130131132133134135136137138138138139140141142143144145146147147147148149150151152153154155156156156157158159160161162163164165165165166167168169170171172173174174174175176177178179180181182183183183184185186187188189190191Writing '.main.dot'...
+101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101Writing '.main.dot'...
 begin
 avaiableOut for each Basic Block 
-Block: if.else
-8   %rem = srem i32 %i.0, 10
-16   %add3 = add nsw i32 %a.0, %call1
-1   %call = call i32 @getchar()
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-6   %cmp = icmp slt i32 %i.0, 100
-2   %call1 = call i32 @getchar()
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-10   %cmp2 = icmp ne i32 %rem, 1
-17   %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add3)
-Block: if.then
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-6   %cmp = icmp slt i32 %i.0, 100
-8   %rem = srem i32 %i.0, 10
-10   %cmp2 = icmp ne i32 %rem, 1
-11   %add = add nsw i32 %a.0, 1
-Block: for.body
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-6   %cmp = icmp slt i32 %i.0, 100
-8   %rem = srem i32 %i.0, 10
-10   %cmp2 = icmp ne i32 %rem, 1
 Block: for.cond
 1   %call = call i32 @getchar()
 2   %call1 = call i32 @getchar()
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-6   %cmp = icmp slt i32 %i.0, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+Block: if.then
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp eq i32 %rem, 1
+10   %add = add nsw i32 %call, 1
+Block: for.body
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp eq i32 %rem, 1
+Block: if.else
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp eq i32 %rem, 1
+12   %add3 = add nsw i32 %call, %call1
+14   %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add3)
+Block: if.then7
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp eq i32 %rem, 1
+10   %add9 = add nsw i32 %call, 1
+Block: if.end
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp eq i32 %rem, 1
+Block: if.end13
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp eq i32 %rem, 1
 Block: entry
 1   %call = call i32 @getchar()
 2   %call1 = call i32 @getchar()
+Block: if.else10
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp eq i32 %rem, 1
+12   %add11 = add nsw i32 %call, %call1
+13   %call12 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add11)
+Block: for.inc
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %rem = srem i32 %i.0, 10
+9   %cmp2 = icmp eq i32 %rem, 1
+11   %inc = add nsw i32 %i.0, 1
 Block: for.end
 1   %call = call i32 @getchar()
 2   %call1 = call i32 @getchar()
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-6   %cmp = icmp slt i32 %i.0, 100
-Block: for.inc
-8   %rem = srem i32 %i.0, 10
-14   %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add5)
-15   %inc = add nsw i32 %i.0, 1
-12   %a.1 = phi i32 [ %add, %if.then ], [ %a.0, %if.else ]
-1   %call = call i32 @getchar()
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-6   %cmp = icmp slt i32 %i.0, 100
-13   %add5 = add nsw i32 %a.1, %call1
-2   %call1 = call i32 @getchar()
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-10   %cmp2 = icmp ne i32 %rem, 1
-Block: if.end
-8   %rem = srem i32 %i.0, 10
-14   %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add5)
-12   %a.1 = phi i32 [ %add, %if.then ], [ %a.0, %if.else ]
-1   %call = call i32 @getchar()
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-6   %cmp = icmp slt i32 %i.0, 100
-13   %add5 = add nsw i32 %a.1, %call1
-2   %call1 = call i32 @getchar()
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-10   %cmp2 = icmp ne i32 %rem, 1
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
 anticipateIn for each Basic Block 
-Block: if.else
-15   %inc = add nsw i32 %i.0, 1
-20   %cmp.expr = icmp slt i32 %inc, 100
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-2   %call1 = call i32 @getchar()
-16   %add3 = add nsw i32 %a.0, %call1
-Block: if.then
-15   %inc = add nsw i32 %i.0, 1
-20   %cmp.expr = icmp slt i32 %inc, 100
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-11   %add = add nsw i32 %a.0, 1
-2   %call1 = call i32 @getchar()
-21   %add5.expr = add i32 %add, %call1
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-Block: for.body
-15   %inc = add nsw i32 %i.0, 1
-20   %cmp.expr = icmp slt i32 %inc, 100
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-2   %call1 = call i32 @getchar()
-3   %a.0 = phi i32 [ %call, %entry ], [ %a.1, %for.inc ]
-8   %rem = srem i32 %i.0, 10
-10   %cmp2 = icmp ne i32 %rem, 1
 Block: for.cond
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-6   %cmp = icmp slt i32 %i.0, 100
-Block: entry
-18 i32 0
-19   %cmp.expr = icmp slt i32 0, 100
-Block: for.end
-Block: for.inc
-15   %inc = add nsw i32 %i.0, 1
-20   %cmp.expr = icmp slt i32 %inc, 100
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-Block: if.end
-15   %inc = add nsw i32 %i.0, 1
-20   %cmp.expr = icmp slt i32 %inc, 100
-4   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-12   %a.1 = phi i32 [ %add, %if.then ], [ %a.0, %if.else ]
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+Block: if.then
+11   %inc = add nsw i32 %i.0, 1
+17   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+7   %rem5 = srem i32 %i.0, 10
+9   %cmp6 = icmp eq i32 %rem5, 1
+10   %add = add nsw i32 %call, 1
+Block: for.body
+11   %inc = add nsw i32 %i.0, 1
+17   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+7   %rem5 = srem i32 %i.0, 10
+9   %cmp6 = icmp eq i32 %rem5, 1
+Block: if.else
+11   %inc = add nsw i32 %i.0, 1
+17   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+7   %rem5 = srem i32 %i.0, 10
+9   %cmp6 = icmp eq i32 %rem5, 1
 2   %call1 = call i32 @getchar()
-13   %add5 = add nsw i32 %a.1, %call1
-22
+12   %add3 = add nsw i32 %call, %call1
+Block: if.then7
+11   %inc = add nsw i32 %i.0, 1
+17   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+10   %add9 = add nsw i32 %call, 1
+Block: if.end
+11   %inc = add nsw i32 %i.0, 1
+17   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+7   %rem5 = srem i32 %i.0, 10
+9   %cmp6 = icmp eq i32 %rem5, 1
+Block: if.end13
+11   %inc = add nsw i32 %i.0, 1
+17   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+Block: entry
+15 i32 0
+16   %cmp.expr = icmp slt i32 0, 100
+Block: if.else10
+11   %inc = add nsw i32 %i.0, 1
+17   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+12   %add11 = add nsw i32 %call, %call1
+Block: for.inc
+11   %inc = add nsw i32 %i.0, 1
+17   %cmp.expr = icmp slt i32 %inc, 100
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+Block: for.end
+18
 available out point of each value number0: 
-1: if.end for.inc for.end entry for.cond for.body if.then if.else 
-2: if.end for.inc for.end entry for.cond for.body if.then if.else 
-3: if.end for.inc for.end for.cond for.body if.then if.else 
-4: if.end for.inc for.end for.cond for.body if.then if.else 
-5: 
-6: if.end for.inc for.end for.cond for.body if.then if.else 
-7: 
-8: if.end for.inc for.body if.then if.else 
-9: 
-10: if.end for.inc for.body if.then if.else 
-11: if.then 
-12: if.end for.inc 
-13: if.end for.inc 
-14: if.end for.inc 
-15: for.inc 
-16: if.else 
-17: if.else 
-18: 
-19: 
-20: 
-21: 
-antipate in point of each value number0: 
-1: 
-2: if.end for.body if.then if.else 
-3: for.body if.then if.else 
-4: if.end for.inc for.cond for.body if.then if.else 
-5: 
-6: for.cond 
-7: 
-8: for.body 
-9: 
-10: for.body 
-11: if.then 
-12: if.end 
-13: if.end 
-14: 
-15: if.end for.inc for.body if.then if.else 
-16: if.else 
+1: for.end for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then entry for.cond 
+2: for.end for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then entry for.cond 
+3: for.end for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then for.cond 
+4: 
+5: for.end for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then for.cond 
+6: 
+7: for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then 
+8: 
+9: for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then 
+10: if.then7 if.then 
+11: for.inc 
+12: if.else10 if.else 
+13: if.else10 
+14: if.else 
+15: 
+16: 
 17: 
-18: entry 
-19: entry 
-20: if.end for.inc for.body if.then if.else 
-21: if.then 
+antipate in point of each value number0: 
+1: if.else10 if.end if.then7 if.else for.body if.then 
+2: if.else10 if.else 
+3: for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then for.cond 
+4: 
+5: for.cond 
+6: 
+7: if.end if.else for.body if.then 
+8: 
+9: if.end if.else for.body if.then 
+10: if.then7 if.then 
+11: for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then 
+12: if.else10 if.else 
+13: 
+14: 
+15: entry 
+16: entry 
+17: for.inc if.else10 if.end13 if.end if.then7 if.else for.body if.then 
 valunumber: 0
 0				0				
 0				0				
@@ -166,22 +187,18 @@ valunumber: 2
 0				0				
 min cut from 0 to 1
 valunumber: 3
-0				0				
-0				0				
-min cut from 0 to 1
+entry to for.cond: 8 1.000000e+00
+0				9				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+entry - for.cond
 valunumber: 4
-entry to for.cond: 8 1.000000e+00
-0				9				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-entry - for.cond
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 5
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 6
 entry to for.cond: 8 1.000000e+00
 0				9				0				0				
 0				0				0				2147483647				
@@ -189,23 +206,23 @@ entry to for.cond: 8 1.000000e+00
 0				0				0				0				
 min cut from 2 to 3
 entry - for.cond
+valunumber: 6
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 7
-0				0				
-0				0				
-min cut from 0 to 1
+for.cond to for.body: 808 9.900990e-01
+0				801				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+for.cond - for.body
 valunumber: 8
-for.cond to for.body: 808 9.900990e-01
-0				801				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.cond - for.body
-valunumber: 9
 0				0				
 0				0				
 min cut from 0 to 1
-valunumber: 10
+valunumber: 9
 for.cond to for.body: 808 9.900990e-01
 0				801				0				0				
 0				0				0				2147483647				
@@ -213,118 +230,111 @@ for.cond to for.body: 808 9.900990e-01
 0				0				0				0				
 min cut from 2 to 3
 for.cond - for.body
-valunumber: 11
-for.body to if.then: 800 9.000000e-01
-0				720				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
+valunumber: 10
+if.end to if.then7: 800 1.000000e-01
+for.body to if.then: 800 1.000000e-01
+0				81				0				0				0				0				
+0				0				0				0				0				2147483647				
+0				0				0				81				0				0				
+0				0				0				0				0				2147483647				
+2147483647				0				2147483647				0				0				0				
+0				0				0				0				0				0				
+min cut from 4 to 5
+if.end - if.then7
 for.body - if.then
+valunumber: 11
+if.end13 to for.inc: 800 1.000000e+00
+if.end to if.else10: 800 9.000000e-01
+if.else10 to if.end13: 720 1.000000e+00
+if.then7 to if.end13: 80 1.000000e+00
+if.else to if.end: 720 1.000000e+00
+if.then to if.end: 80 1.000000e+00
+if.end to if.then7: 800 1.000000e-01
+for.body to if.else: 800 9.000000e-01
+for.cond to for.body: 808 9.900990e-01
+for.body to if.then: 800 1.000000e-01
+0				801				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				2147483647				
+0				0				0				720				81				0				0				0				0				0				0				
+721				0				0				0				0				0				0				0				0				0				0				
+81				0				0				0				0				0				0				0				0				0				0				
+0				0				721				0				0				0				0				0				0				0				0				
+0				0				81				0				0				0				0				0				0				0				0				
+0				0				0				0				0				720				81				0				0				0				0				
+0				0				0				0				0				0				0				801				0				0				0				
+0				0				0				0				0				0				0				0				2147483647				0				0				
+0				0				0				0				0				0				0				0				0				0				0				
+min cut from 9 to 10
+for.cond - for.body
 valunumber: 12
-if.else to if.end: 80 1.000000e+00
-if.then to if.end: 720 1.000000e+00
-0				81				0				0				0				
-0				0				0				0				2147483647				
-0				721				0				0				0				
-2147483647				0				2147483647				0				0				
-0				0				0				0				0				
-min cut from 3 to 4
-if.else - if.end
-if.then - if.end
+if.end to if.else10: 800 9.000000e-01
+for.body to if.else: 800 9.000000e-01
+0				720				0				0				0				0				
+0				0				0				0				0				2147483647				
+0				0				0				720				0				0				
+0				0				0				0				0				2147483647				
+2147483647				0				2147483647				0				0				0				
+0				0				0				0				0				0				
+min cut from 4 to 5
+if.end - if.else10
+for.body - if.else
 valunumber: 13
-if.else to if.end: 80 1.000000e+00
-if.then to if.end: 720 1.000000e+00
-0				81				0				0				0				
-0				0				0				0				2147483647				
-0				721				0				0				0				
-2147483647				0				2147483647				0				0				
-0				0				0				0				0				
-min cut from 3 to 4
-if.else - if.end
-if.then - if.end
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 14
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 15
-if.else to if.end: 80 1.000000e+00
-if.then to if.end: 720 1.000000e+00
-if.end to for.inc: 800 1.000000e+00
-for.cond to for.body: 808 9.900990e-01
-for.body to if.then: 800 9.000000e-01
-for.body to if.else: 800 1.000000e-01
-0				81				0				0				0				0				0				0				
-0				0				0				801				0				0				0				0				
-0				721				0				0				0				0				0				0				
-0				0				0				0				0				0				0				2147483647				
-0				0				0				0				0				801				0				0				
-81				0				720				0				0				0				0				0				
-0				0				0				0				2147483647				0				0				0				
-0				0				0				0				0				0				0				0				
-min cut from 6 to 7
-for.cond - for.body
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 16
-for.body to if.else: 800 1.000000e-01
-0				81				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.body - if.else
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 17
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 18
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 19
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 20
-if.else to if.end: 80 1.000000e+00
-if.then to if.end: 720 1.000000e+00
-if.end to for.inc: 800 1.000000e+00
+if.end13 to for.inc: 800 1.000000e+00
+if.end to if.else10: 800 9.000000e-01
+if.else10 to if.end13: 720 1.000000e+00
+if.then7 to if.end13: 80 1.000000e+00
+if.else to if.end: 720 1.000000e+00
+if.then to if.end: 80 1.000000e+00
+if.end to if.then7: 800 1.000000e-01
+for.body to if.else: 800 9.000000e-01
 for.cond to for.body: 808 9.900990e-01
-for.body to if.then: 800 9.000000e-01
-for.body to if.else: 800 1.000000e-01
-0				81				0				0				0				0				0				0				
-0				0				0				801				0				0				0				0				
-0				721				0				0				0				0				0				0				
-0				0				0				0				0				0				0				2147483647				
-0				0				0				0				0				801				0				0				
-81				0				720				0				0				0				0				0				
-0				0				0				0				2147483647				0				0				0				
-0				0				0				0				0				0				0				0				
-min cut from 6 to 7
+for.body to if.then: 800 1.000000e-01
+0				801				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				2147483647				
+0				0				0				720				81				0				0				0				0				0				0				
+721				0				0				0				0				0				0				0				0				0				0				
+81				0				0				0				0				0				0				0				0				0				0				
+0				0				721				0				0				0				0				0				0				0				0				
+0				0				81				0				0				0				0				0				0				0				0				
+0				0				0				0				0				720				81				0				0				0				0				
+0				0				0				0				0				0				0				801				0				0				0				
+0				0				0				0				0				0				0				0				2147483647				0				0				
+0				0				0				0				0				0				0				0				0				0				0				
+min cut from 9 to 10
 for.cond - for.body
-valunumber: 21
-for.body to if.then: 800 9.000000e-01
-0				720				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.body - if.then
 
 if.else.split:                                    ; preds = %for.body
-  %OptInsert_add3 = add nsw i32 %a.0, %call1
+  %OptInsert_add3 = add nsw i32 %call, %call1
   br label %if.else
 
 
-if.then.split:                                    ; preds = %if.then
-  br label %if.end
+if.else10.split:                                  ; preds = %if.end
+  %OptInsert_add31 = add nsw i32 %call, %call1
+  br label %if.else10
 
 
-if.else.split1:                                   ; preds = %if.else
-  br label %if.end
-
-
-if.then.split2:                                   ; preds = %for.body
+if.then.split:                                    ; preds = %for.body
   br label %if.then
+
+
+if.then7.split:                                   ; preds = %if.end
+  br label %if.then7
 
 
 for.body.split:                                   ; preds = %for.cond
@@ -334,13 +344,17 @@ for.body.split:                                   ; preds = %for.cond
 entry.split:                                      ; preds = %entry
   br label %for.cond
 
-if.then.split2 has dominance frontier:
-if.end 
+if.then7 has dominance frontier:
+if.end13 
+if.else10.split has dominance frontier:
+if.end13 
+if.else10 has dominance frontier:
+if.end13 
 if.then has dominance frontier:
 if.end 
+if.then7.split has dominance frontier:
+if.end13 
 if.else.split has dominance frontier:
-if.end 
-if.else.split1 has dominance frontier:
 if.end 
 if.else has dominance frontier:
 if.end 
@@ -352,14 +366,19 @@ for.body has dominance frontier:
 for.cond 
 if.end has dominance frontier:
 for.cond 
+if.end13 has dominance frontier:
+for.cond 
 for.inc has dominance frontier:
 for.cond 
 
-if.end:                                           ; preds = %if.else.split1, %if.then.split
-  %a.1 = phi i32 [ %add, %if.then.split ], [ %a.0, %if.else.split1 ]
+if.end:                                           ; preds = %if.else, %if.then
   %NewPhi_OptInsert_add3 = phi i32 
-  %add5 = add nsw i32 %a.1, %call1
-  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add5)
+  %rem5 = srem i32 %i.0, 10
+  %cmp6 = icmp eq i32 %rem5, 1
+  br i1 %cmp6, label %if.then7.split, label %if.else10.split, !prof !33
+
+if.end13:                                         ; preds = %if.else10, %if.then7
+  %NewPhi_OptInsert_add31 = phi i32 
   br label %for.inc
 Writing '.main.dot'...
 Writing '.main.dot'...
