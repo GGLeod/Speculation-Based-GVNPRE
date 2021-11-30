@@ -1018,6 +1018,11 @@ Value* SPGVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
   if (V == 0)
     return 0;
   
+  errs() << "[phi_translate] Value name " << V->getName() << "\n";
+  if (V->getName().str().find(".expr") != std::string::npos) {
+    return 0;
+  }
+
   // Unary Operations
   if (CastInst* U = dyn_cast<CastInst>(V)) {
     Value* newOp1 = 0;
@@ -1359,11 +1364,14 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
                                 ValueNumberedSet& anticOut,
                                 SmallPtrSet<BasicBlock*, 8>& visited) {
   if (BB->getTerminator()->getNumSuccessors() == 1) {
+    errs() << "[AnticOut] single succ\n";
     if (BB->getTerminator()->getSuccessor(0) != BB &&
         visited.count(BB->getTerminator()->getSuccessor(0)) == 0) {
+          // Not self loop and successor haven't been visited
       return true;
     }
     else {
+      errs() << "[AnticOut] calling phi translate\n";
       phi_translate_set(anticipatedIn[BB->getTerminator()->getSuccessor(0)],
                         BB,  BB->getTerminator()->getSuccessor(0), anticOut);
     }
@@ -1374,7 +1382,7 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
       anticOut.insert(*I);
       anticOut.set(VN.lookup(*I));
     }
-    errs() << "Finished first succ\n";
+    errs() << "[AnticOut] Finished first succ\n";
     
     for (unsigned i = 1; i < BB->getTerminator()->getNumSuccessors(); ++i) {
       BasicBlock* currSucc = BB->getTerminator()->getSuccessor(i);
@@ -1385,7 +1393,7 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
       if (testOriginal) {
         SmallVector<Value*, 16> temp;
       
-        errs() << "Start constructing temp for " << i << "\n";
+        errs() << "[AnticOut] Start constructing temp for " << i << "\n";
         for (ValueNumberedSet::iterator I = anticOut.begin(),
             E = anticOut.end(); I != E; ++I)
           if (!succAnticIn.test(VN.lookup(*I)))
@@ -1398,7 +1406,7 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
       }
       
       if (testChange) {
-        errs() << "Start adding succAnticIn for " << i << "\n";
+        errs() << "[AnticOut] Start adding succAnticIn for " << i << "\n";
         for (ValueNumberedSet::iterator I = succAnticIn.begin(),
             E = succAnticIn.end(); I != E; ++I) {
               if (!anticOut.test(VN.lookup(*I))) {
@@ -1410,15 +1418,16 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
       
 
 
-      errs() << "[In Loop] anticOut size: " << anticOut.size() << "\n";
+      errs() << "[AnticOut in for Loop] anticOut size: " << anticOut.size() << "\n";
       if (testOriginal) {
         anticOut.print(VN);
       }
-      if (testChange && anticOut.size() < 50) {
+      int threshold = 20;
+      if (testChange && anticOut.size() < threshold) {
         anticOut.print(VN);
       }
     }
-    errs() << "[In Function] anticOut size: " << anticOut.size() << "\n";
+    errs() << "[AnticOut end of Function] anticOut size: " << anticOut.size() << "\n";
   }
   
   return false;
@@ -1448,7 +1457,7 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
     anticIn.insert(*I);
     anticIn.set(VN.lookup(*I));
   }
-  errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
+  // errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
   for (ValueNumberedSet::iterator I = currExps.begin(),
        E = currExps.end(); I != E; ++I) {
     if (!anticIn.test(VN.lookup(*I))) {
@@ -1456,13 +1465,13 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
       anticIn.set(VN.lookup(*I));
     }
   } 
-  errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
+  // errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
   for (SmallPtrSet<Value*, 16>::iterator I = currTemps.begin(),
        E = currTemps.end(); I != E; ++I) {
     anticIn.erase(*I);
     anticIn.reset(VN.lookup(*I));
   }
-  errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
+  // errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
   clean(anticIn);
   anticOut.clear();
   errs() << "[Anticin] anticIn size: " << anticIn.size() << "\n";
@@ -1926,7 +1935,7 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   // This phase calculates the AVAIL_OUT and ANTIC_IN sets
   buildsets(F);
 
-  errs() << "avaiableOut for each Basic Block \n";
+  errs() << "availableOut for each Basic Block \n";
   for(auto it = availableOut.begin(); it!=availableOut.end(); ++it){
     errs() << "Block: " << it->first->getName() << "\n";
     it->second.print(VN);
