@@ -40,13 +40,13 @@
 #include "llvm/Support/Compiler.h"
 #include "llvm/Support/Debug.h"
 #include "llvm/Transforms/Utils.h"
+
 #include <algorithm>
 #include <deque>
 #include <map>
 #include <iostream>
 using namespace llvm;
 
-FunctionPass *llvm::createGVNPREPass();
 //===----------------------------------------------------------------------===//
 //                         ValueTable Class
 //===----------------------------------------------------------------------===//
@@ -656,8 +656,8 @@ namespace {
     virtual void getAnalysisUsage(AnalysisUsage &AU) const {
       AU.setPreservesCFG();
       AU.addRequiredID(BreakCriticalEdgesID);
-      AU.addRequired<UnifyFunctionExitNodes>();
-      AU.addRequired<DominatorTree>();
+      // AU.addRequired<UnifyFunctionExitNodes>();
+      AU.addRequired<DominatorTreeWrapperPass>();
     }
   
     // Helper fuctions
@@ -706,8 +706,7 @@ namespace {
   char GVNPRE::ID = 0;
   
 }
-// createGVNPREPass - The public interface to this file...
-FunctionPass *llvm::createGVNPREPass() { return new GVNPRE(); }
+
 static RegisterPass<GVNPRE> X("gvnpre",
                       "Global Value Numbering/Partial Redundancy Elimination");
 STATISTIC(NumInsertedVals, "Number of values inserted");
@@ -1455,7 +1454,7 @@ unsigned GVNPRE::buildsets_anticin(BasicBlock* BB,
 void GVNPRE::buildsets(Function& F) {
   DenseMap<BasicBlock*, ValueNumberedSet> generatedExpressions;
   DenseMap<BasicBlock*, SmallPtrSet<Value*, 16> > generatedTemporaries;
-  DominatorTree &DT = getAnalysis<DominatorTree>();   
+  DominatorTree &DT = getAnalysis<DominatorTreeWrapperPass>().getDomTree();   
   
   // Phase 1, Part 1: calculate AVAIL_OUT
   
@@ -1748,7 +1747,7 @@ unsigned GVNPRE::insertion_mergepoint(SmallVector<Value*, 8>& workList,
 /// present, eliminate it.  Repeat this walk until no changes are made.
 bool GVNPRE::insertion(Function& F) {
   bool changed_function = false;
-  DominatorTree &DT = getAnalysis<DominatorTree>();  
+  DominatorTree &DT = getAnalysis<DominatorTreeWrapperPass>().getDomTree(); 
   
   std::map<BasicBlock*, ValueNumberedSet> new_sets;
   bool new_stuff = true;
