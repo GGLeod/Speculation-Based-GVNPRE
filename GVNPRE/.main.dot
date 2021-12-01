@@ -1,0 +1,21 @@
+digraph "CFG for 'main' function" {
+	label="CFG for 'main' function";
+
+	Node0x563f1f842800 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{entry:\l  %call = call i32 @getchar()\l  %call1 = call i32 @getchar()\l  br label %for.cond\l}"];
+	Node0x563f1f842800 -> Node0x563f1f842850;
+	Node0x563f1f842850 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body, label %for.end, !prof !32\l|{<s0>T|<s1>F}}"];
+	Node0x563f1f842850:s0 -> Node0x563f1f8428a0;
+	Node0x563f1f842850:s1 -> Node0x563f1f842a30;
+	Node0x563f1f8428a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body:                                         \l  %rem = srem i32 %i.0, 10\l  %cmp2 = icmp ne i32 %rem, 1\l  br i1 %cmp2, label %if.then, label %if.else, !prof !33\l|{<s0>T|<s1>F}}"];
+	Node0x563f1f8428a0:s0 -> Node0x563f1f8428f0;
+	Node0x563f1f8428a0:s1 -> Node0x563f1f842940;
+	Node0x563f1f8428f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{if.then:                                          \l  %add3.gvnpre = add i32 %call, %call1\l  br label %if.end\l}"];
+	Node0x563f1f8428f0 -> Node0x563f1f842990;
+	Node0x563f1f842940 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7bca170",label="{if.else:                                          \l  %add = add nsw i32 %call, %call1\l  br label %if.end\l}"];
+	Node0x563f1f842940 -> Node0x563f1f842990;
+	Node0x563f1f842990 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %gvnpre-join = phi i32 [ %add, %if.else ], [ %add3.gvnpre, %if.then ]\l  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %gvnpre-join)\l  br label %for.inc\l}"];
+	Node0x563f1f842990 -> Node0x563f1f8429e0;
+	Node0x563f1f8429e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.inc:                                          \l  %inc = add nsw i32 %i.0, 1\l  br label %for.cond, !llvm.loop !34\l}"];
+	Node0x563f1f8429e0 -> Node0x563f1f842850;
+	Node0x563f1f842a30 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{for.end:                                          \l  ret i32 0\l}"];
+}

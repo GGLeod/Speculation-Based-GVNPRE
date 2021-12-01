@@ -1231,7 +1231,7 @@ void GVNPRE::cleanup() {
     Instruction* I = createdExpressions.back();
     createdExpressions.pop_back();
     
-    I->eraseFromParent();
+    I->deleteValue();
   }
 }
 /// buildsets_availout - When calculating availability, handle an instruction
