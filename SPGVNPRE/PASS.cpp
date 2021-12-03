@@ -687,6 +687,13 @@ class ValueNumberedSet {
         errs() << VN.lookup(v) << " " << *v  << "\n";
       }
     }
+
+    void print(){
+      for(auto i=contents.begin(); i!=contents.end(); ++i){
+        Value* v = *i;
+        errs() << *v  << "\n";
+      }
+    }
 };
 }
 
@@ -703,6 +710,8 @@ namespace {
     DenseMap<BasicBlock*, ValueNumberedSet> availableOut;
     DenseMap<BasicBlock*, ValueNumberedSet> anticipatedIn;
     DenseMap<BasicBlock*, ValueNumberedSet> generatedPhis;
+
+    unordered_map<Value*, BasicBlock*> newValuePhiBB;
     
     // This transformation requires dominator postdominator info
     virtual void getAnalysisUsage(AnalysisUsage &AU) const {
@@ -1018,6 +1027,11 @@ Value* SPGVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
   if (V == 0)
     return 0;
   
+  if(newValuePhiBB.find(V) != newValuePhiBB.end() && newValuePhiBB[V] == pred){
+    return 0;
+  }
+
+
   // Unary Operations
   if (CastInst* U = dyn_cast<CastInst>(V)) {
     Value* newOp1 = 0;
@@ -1041,6 +1055,7 @@ Value* SPGVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
       Value* leader = find_leader(availableOut[pred], v);
       if (leader == 0) {
         createdExpressions.push_back(newVal);
+        newValuePhiBB[newVal] = pred;
         return newVal;
       } else {
         VN.erase(newVal);
@@ -1091,6 +1106,8 @@ Value* SPGVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
       Value* leader = find_leader(availableOut[pred], v);
       if (leader == 0) {
         createdExpressions.push_back(newVal);
+        newValuePhiBB[newVal] = pred;
+        
         return newVal;
       } else {
         VN.erase(newVal);
@@ -1150,6 +1167,9 @@ Value* SPGVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
       Value* leader = find_leader(availableOut[pred], v);
       if (leader == 0) {
         createdExpressions.push_back(newVal);
+        newValuePhiBB[newVal] = pred;
+        
+        
         return newVal;
       } else {
         VN.erase(newVal);
@@ -1183,16 +1203,17 @@ Value* SPGVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
       }
     
     if (newOp1 != U->getPointerOperand() || changed_idx) {
-      Instruction* newVal =
-          GetElementPtrInst::Create(newOp1->getType(), newOp1,
-                                    ArrayRef<Value*>(newIdx.begin(), newIdx.end()),
-                                    U->getName()+".expr");
+          Instruction* newVal = GetElementPtrInst::Create(nullptr, newOp1, ArrayRef<Value *>(newIdx),
+                                        U->getName()+".gvnpre");
       
       uint32_t v = VN.lookup_or_add(newVal);
       
       Value* leader = find_leader(availableOut[pred], v);
       if (leader == 0) {
         createdExpressions.push_back(newVal);
+        newValuePhiBB[newVal] = pred;
+        
+        
         return newVal;
       } else {
         VN.erase(newVal);
@@ -1377,24 +1398,24 @@ bool SPGVNPRE::buildsets_anticout(BasicBlock* BB,
     
     for (unsigned i = 1; i < BB->getTerminator()->getNumSuccessors(); ++i) {
       BasicBlock* currSucc = BB->getTerminator()->getSuccessor(i);
-      ValueNumberedSet& succAnticIn = anticipatedIn[currSucc];
+      // ValueNumberedSet& succAnticIn = anticipatedIn[currSucc];
       
-      SmallVector<Value*, 16> temp;
+      // SmallVector<Value*, 16> temp;
       
-      for (ValueNumberedSet::iterator I = anticOut.begin(),
-           E = anticOut.end(); I != E; ++I)
-        if (!succAnticIn.test(VN.lookup(*I)))
-          temp.push_back(*I);
-      for (SmallVector<Value*, 16>::iterator I = temp.begin(), E = temp.end();
-           I != E; ++I) {
-        anticOut.erase(*I);
-        anticOut.reset(VN.lookup(*I));
-      }
-      // for (ValueNumberedSet::iterator I = anticipatedIn[currSucc].begin(),
-      //     E = anticipatedIn[currSucc].end(); I != E; ++I) {
-      //   anticOut.insert(*I);
-      //   anticOut.set(VN.lookup(*I));
+      // for (ValueNumberedSet::iterator I = anticOut.begin(),
+      //      E = anticOut.end(); I != E; ++I)
+      //   if (!succAnticIn.test(VN.lookup(*I)))
+      //     temp.push_back(*I);
+      // for (SmallVector<Value*, 16>::iterator I = temp.begin(), E = temp.end();
+      //      I != E; ++I) {
+      //   anticOut.erase(*I);
+      //   anticOut.reset(VN.lookup(*I));
       // }
+      for (ValueNumberedSet::iterator I = anticipatedIn[currSucc].begin(),
+          E = anticipatedIn[currSucc].end(); I != E; ++I) {
+        anticOut.insert(*I);
+        anticOut.set(VN.lookup(*I));
+      }
       //TODO: error occur when changing this part
 
     }
@@ -1413,6 +1434,9 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
                                SmallPtrSet<Value*, 16>& currTemps,
                                SmallPtrSet<BasicBlock*, 8>& visited) {
   ValueNumberedSet& anticIn = anticipatedIn[BB];
+  errs() << BB->getName()  << "\n";
+  anticIn.print();
+
   unsigned old = anticIn.size();
       
   bool defer = buildsets_anticout(BB, anticOut, visited);
@@ -1443,8 +1467,12 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
   clean(anticIn);
   anticOut.clear();
   
-  if (old != anticIn.size())
+  if (old != anticIn.size()){
+    errs() << "new\n";
+    anticIn.print();
+
     return 2;
+  }
   else
     return 1;
 }
@@ -1491,6 +1519,7 @@ void SPGVNPRE::buildsets(Function& F) {
   unsigned iterations = 0;
   
   while (changed) {
+    errs() << "changed\n";
     changed = false;
     ValueNumberedSet anticOut;
     
