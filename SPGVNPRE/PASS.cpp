@@ -1203,10 +1203,8 @@ Value* SPGVNPRE::phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) {
       }
     
     if (newOp1 != U->getPointerOperand() || changed_idx) {
-      Instruction* newVal =
-          GetElementPtrInst::Create(newOp1->getType(), newOp1,
-                                    ArrayRef<Value*>(newIdx.begin(), newIdx.end()),
-                                    U->getName()+".expr");
+          Instruction* newVal = GetElementPtrInst::Create(nullptr, newOp1, ArrayRef<Value *>(newIdx),
+                                        U->getName()+".gvnpre");
       
       uint32_t v = VN.lookup_or_add(newVal);
       
