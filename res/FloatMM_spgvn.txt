@@ -1,0 +1,60 @@
+
+
+
+1. Result for reg
+
+
+   compile
+
+real	0m0.134s
+user	0m0.093s
+sys	0m0.041s
+
+
+   run
+
+real	0m1.800s
+user	0m1.795s
+sys	0m0.004s
+
+
+
+2. Result for pre
+
+
+   compile
+clang-12: error: no such file or directory: 'FloatMM.pre.bc'
+clang-12: error: no input files
+
+real	0m0.040s
+user	0m0.025s
+sys	0m0.012s
+
+
+   run
+./run.sh: line 60: ./FloatMM_pre: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+3. Result for final
+
+
+   compile
+clang-12: error: no such file or directory: 'FloatMM_final.bc'
+clang-12: error: no input files
+
+real	0m0.040s
+user	0m0.028s
+sys	0m0.012s
+
+
+   run
+./run.sh: line 73: ./FloatMM_final: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s

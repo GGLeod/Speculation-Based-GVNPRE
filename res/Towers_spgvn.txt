@@ -1,0 +1,63 @@
+
+
+
+1. Result for reg
+
+
+   compile
+clang-12: error: no such file or directory: 'Towers.prof.bc'
+clang-12: error: no input files
+
+real	0m0.035s
+user	0m0.026s
+sys	0m0.009s
+
+
+   run
+./run.sh: line 38: ../test/Towers.in: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+2. Result for pre
+
+
+   compile
+clang-12: error: no such file or directory: 'Towers.pre.bc'
+clang-12: error: no input files
+
+real	0m0.032s
+user	0m0.012s
+sys	0m0.020s
+
+
+   run
+./run.sh: line 60: ../test/Towers.in: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+
+
+3. Result for final
+
+
+   compile
+clang-12: error: no such file or directory: 'Towers_final.bc'
+clang-12: error: no input files
+
+real	0m0.030s
+user	0m0.015s
+sys	0m0.015s
+
+
+   run
+./run.sh: line 73: ../test/Towers.in: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s

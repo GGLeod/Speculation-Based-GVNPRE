@@ -1,0 +1,56 @@
+
+
+
+1. Result for reg
+
+
+   compile
+
+real	0m0.154s
+user	0m0.110s
+sys	0m0.043s
+
+
+   run
+
+real	0m0.038s
+user	0m0.034s
+sys	0m0.004s
+
+
+
+2. Result for pre
+
+
+   compile
+clang-12: error: no such file or directory: 'Queens.pre.bc'
+clang-12: error: no input files
+
+real	0m0.044s
+user	0m0.021s
+sys	0m0.021s
+
+
+   run
+
+real	0m0.032s
+user	0m0.032s
+sys	0m0.000s
+
+
+
+3. Result for final
+
+
+   compile
+
+real	0m0.137s
+user	0m0.094s
+sys	0m0.042s
+
+
+   run
+
+real	0m0.036s
+user	0m0.035s
+sys	0m0.000s

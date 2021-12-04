@@ -1,0 +1,56 @@
+
+
+
+1. Result for reg
+
+
+   compile
+
+real	0m0.128s
+user	0m0.096s
+sys	0m0.029s
+
+
+   run
+
+real	0m0.063s
+user	0m0.059s
+sys	0m0.004s
+
+
+
+2. Result for pre
+
+
+   compile
+clang-12: error: no such file or directory: 'Bubblesort.pre.bc'
+clang-12: error: no input files
+
+real	0m0.038s
+user	0m0.029s
+sys	0m0.008s
+
+
+   run
+
+real	0m0.084s
+user	0m0.080s
+sys	0m0.004s
+
+
+
+3. Result for final
+
+
+   compile
+
+real	0m0.129s
+user	0m0.081s
+sys	0m0.045s
+
+
+   run
+
+real	0m0.083s
+user	0m0.083s
+sys	0m0.000s

@@ -1,0 +1,18 @@
+
+
+
+1. Result for reg
+
+
+   compile
+
+real	0m0.165s
+user	0m0.127s
+sys	0m0.036s
+
+
+   run
+
+real	0m0.089s
+user	0m0.084s
+sys	0m0.000s
