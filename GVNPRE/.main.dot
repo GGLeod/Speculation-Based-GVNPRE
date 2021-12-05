@@ -1,21 +1,28 @@
 digraph "CFG for 'main' function" {
 	label="CFG for 'main' function";
 
-	Node0x563f1f842800 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{entry:\l  %call = call i32 @getchar()\l  %call1 = call i32 @getchar()\l  br label %for.cond\l}"];
-	Node0x563f1f842800 -> Node0x563f1f842850;
-	Node0x563f1f842850 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body, label %for.end, !prof !32\l|{<s0>T|<s1>F}}"];
-	Node0x563f1f842850:s0 -> Node0x563f1f8428a0;
-	Node0x563f1f842850:s1 -> Node0x563f1f842a30;
-	Node0x563f1f8428a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body:                                         \l  %rem = srem i32 %i.0, 10\l  %cmp2 = icmp ne i32 %rem, 1\l  br i1 %cmp2, label %if.then, label %if.else, !prof !33\l|{<s0>T|<s1>F}}"];
-	Node0x563f1f8428a0:s0 -> Node0x563f1f8428f0;
-	Node0x563f1f8428a0:s1 -> Node0x563f1f842940;
-	Node0x563f1f8428f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{if.then:                                          \l  %add3.gvnpre = add i32 %call, %call1\l  br label %if.end\l}"];
-	Node0x563f1f8428f0 -> Node0x563f1f842990;
-	Node0x563f1f842940 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7bca170",label="{if.else:                                          \l  %add = add nsw i32 %call, %call1\l  br label %if.end\l}"];
-	Node0x563f1f842940 -> Node0x563f1f842990;
-	Node0x563f1f842990 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %gvnpre-join = phi i32 [ %add, %if.else ], [ %add3.gvnpre, %if.then ]\l  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %gvnpre-join)\l  br label %for.inc\l}"];
-	Node0x563f1f842990 -> Node0x563f1f8429e0;
-	Node0x563f1f8429e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.inc:                                          \l  %inc = add nsw i32 %i.0, 1\l  br label %for.cond, !llvm.loop !34\l}"];
-	Node0x563f1f8429e0 -> Node0x563f1f842850;
-	Node0x563f1f842a30 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{for.end:                                          \l  ret i32 0\l}"];
+	Node0x55695e2b5640 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#88abfd70",label="{entry:\l  br label %for.cond\l}"];
+	Node0x55695e2b5640 -> Node0x55695e2c56c0;
+	Node0x55695e2c56c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry ], [ %add, %for.inc ]\l  %cmp = icmp slt i32 %i.0, 1000\l  br i1 %cmp, label %for.body, label %for.end, !prof !32\l|{<s0>T|<s1>F}}"];
+	Node0x55695e2c56c0:s0 -> Node0x55695e2c5710;
+	Node0x55695e2c56c0:s1 -> Node0x55695e2c5990;
+	Node0x55695e2c5710 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body:                                         \l  %add = add nsw i32 %i.0, 1\l  %div = sdiv i32 %i.0, 2\l  %rem = srem i32 %i.0, 100\l  %cmp1 = icmp eq i32 %rem, 1\l  br i1 %cmp1, label %if.then, label %if.else, !prof !33\l|{<s0>T|<s1>F}}"];
+	Node0x55695e2c5710:s0 -> Node0x55695e2c5760;
+	Node0x55695e2c5710:s1 -> Node0x55695e2c57b0;
+	Node0x55695e2c5760 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d9dce170",label="{if.then:                                          \l  %add2 = add nsw i32 %add, %div\l  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3\l... x i8]* @.str, i64 0, i64 0), i32 %add2)\l  br label %if.end\l}"];
+	Node0x55695e2c5760 -> Node0x55695e2c5800;
+	Node0x55695e2c57b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.else:                                          \l  %add3 = add nsw i32 %add, %div\l  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %add3)\l  br label %if.end\l}"];
+	Node0x55695e2c57b0 -> Node0x55695e2c5800;
+	Node0x55695e2c5800 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %cmp5 = icmp sgt i32 %i.0, 990\l  br i1 %cmp5, label %if.then6, label %if.else8, !prof !34\l|{<s0>T|<s1>F}}"];
+	Node0x55695e2c5800:s0 -> Node0x55695e2c5850;
+	Node0x55695e2c5800:s1 -> Node0x55695e2c58a0;
+	Node0x55695e2c5850 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6dce470",label="{if.then6:                                         \l  %add7 = add nsw i32 %add, 1\l  br label %if.end11\l}"];
+	Node0x55695e2c5850 -> Node0x55695e2c58f0;
+	Node0x55695e2c58a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.else8:                                         \l  %add9 = add nsw i32 %add, %div\l  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %add9)\l  br label %if.end11\l}"];
+	Node0x55695e2c58a0 -> Node0x55695e2c58f0;
+	Node0x55695e2c58f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end11:                                         \l  br label %for.inc\l}"];
+	Node0x55695e2c58f0 -> Node0x55695e2c5940;
+	Node0x55695e2c5940 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.inc:                                          \l  br label %for.cond, !llvm.loop !35\l}"];
+	Node0x55695e2c5940 -> Node0x55695e2c56c0;
+	Node0x55695e2c5990 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#88abfd70",label="{for.end:                                          \l  ret i32 0\l}"];
 }

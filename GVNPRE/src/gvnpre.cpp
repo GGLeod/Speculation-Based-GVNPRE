@@ -633,6 +633,13 @@ class ValueNumberedSet {
       contents.clear();
       numbers.clear();
     }
+
+    void print(){
+      for(auto i=contents.begin(); i!=contents.end(); ++i){
+        Value* v = *i;
+        errs() << *v  << "\n";
+      }
+    }
 };
 }
 //===----------------------------------------------------------------------===//
@@ -1436,7 +1443,11 @@ unsigned GVNPRE::buildsets_anticin(BasicBlock* BB,
       anticIn.set(VN.lookup(*I));
     }
   } 
-  
+
+  errs() << BB->getName() << "\n";
+  errs() << "before clean\n";
+  anticIn.print();
+
   for (SmallPtrSet<Value*, 16>::iterator I = currTemps.begin(),
        E = currTemps.end(); I != E; ++I) {
     anticIn.erase(*I);
@@ -1446,8 +1457,11 @@ unsigned GVNPRE::buildsets_anticin(BasicBlock* BB,
   clean(anticIn);
   anticOut.clear();
   
-  if (old != anticIn.size())
+  if (old != anticIn.size()){
+    errs() << "new\n";
+    anticIn.print();
     return 2;
+  }
   else
     return 1;
 }

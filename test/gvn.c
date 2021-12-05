@@ -8,14 +8,16 @@ int main(){
     int b = getchar();
 
     for(int i=0; i<100; i++){
+        int c = a + 1;
         if(i%10!=1){
-            int c = a;
+            c = getchar();
+            printf("%d", c);
         }
         else{
-            int  k = a+b;
+            printf("%d", c + b);
         }
-
-        printf("%d", a+b);
+        int d = a + 1;
+        printf("%d", d+b);
 
     }
 

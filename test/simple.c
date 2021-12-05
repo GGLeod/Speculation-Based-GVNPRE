@@ -4,20 +4,19 @@
 // gvnpre is not sure a+b is safe (may not go in to the loop)
 
 int main(){
-    int a = getchar();
-    int b = getchar();
 
+    for(int i=0; i<1000; i++){
+        int a = i+1;
+        int b = i/2;
 
-    for(int i=0; i<100; i++){
-
-        if(i%10==1){
+        if(i%100==1){
             int c = a+1;
         }
         else{
             printf("%d", a+b);
         }
 
-        if(i%10==1){
+        if(i>990){
             int c = a+1;
         }
         else{

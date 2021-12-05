@@ -1,0 +1,56 @@
+
+
+
+1. Result for reg
+
+
+   compile
+
+real	0m0.094s
+user	0m0.052s
+sys	0m0.041s
+
+
+   run
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+2. Result for pre
+
+
+   compile
+clang-12: error: no such file or directory: 'gvn.pre.bc'
+clang-12: error: no input files
+
+real	0m0.039s
+user	0m0.022s
+sys	0m0.017s
+
+
+   run
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+
+3. Result for final
+
+
+   compile
+
+real	0m0.096s
+user	0m0.056s
+sys	0m0.039s
+
+
+   run
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s

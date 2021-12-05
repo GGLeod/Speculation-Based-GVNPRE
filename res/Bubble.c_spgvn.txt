@@ -1,0 +1,63 @@
+
+
+
+1. Result for reg
+
+
+   compile
+clang-12: error: no such file or directory: 'Bubble.c.prof.bc'
+clang-12: error: no input files
+
+real	0m0.038s
+user	0m0.011s
+sys	0m0.026s
+
+
+   run
+run.sh: line 38: ../test/Bubble.c.in: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+2. Result for pre
+
+
+   compile
+clang-12: error: no such file or directory: 'Bubble.c.pre.bc'
+clang-12: error: no input files
+
+real	0m0.030s
+user	0m0.022s
+sys	0m0.009s
+
+
+   run
+run.sh: line 60: ../test/Bubble.c.in: No such file or directory
+
+real	0m0.000s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+3. Result for final
+
+
+   compile
+clang-12: error: no such file or directory: 'Bubble.c_final.bc'
+clang-12: error: no input files
+
+real	0m0.033s
+user	0m0.009s
+sys	0m0.025s
+
+
+   run
+run.sh: line 73: ../test/Bubble.c.in: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s

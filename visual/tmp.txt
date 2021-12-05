@@ -1,4 +1,4 @@
-101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101Writing '.main.dot'...
+9919619619610196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196Writing '.main.dot'...
 begin
 changed
 for.inc
@@ -7,232 +7,260 @@ if.then
 if.else
 for.body
 new
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %rem = srem i32 %i.0, 10
-  %cmp2 = icmp ne i32 %rem, 1
 for.end
 for.cond
 new
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
 entry
 new
+  %call = call i32 @getchar()
 i32 0
-  %cmp.expr = icmp slt i32 0, 100
 changed
 for.inc
 new
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
   %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
 if.end
 new
-  %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %inc = add nsw i32 %i.0, 1
   %call1 = call i32 @getchar()
-  %add3 = add nsw i32 %call, %call1
 if.then
 new
-  %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %inc = add nsw i32 %i.0, 1
   %call1 = call i32 @getchar()
-  %add3 = add nsw i32 %call, %call1
 if.else
 new
-  %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %inc = add nsw i32 %i.0, 1
   %call1 = call i32 @getchar()
-  %add3 = add nsw i32 %call, %call1
+  %add5 = add nsw i32 %add, %call1
 for.body
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-  %cmp2 = icmp ne i32 %rem, 1
-new
-  %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
-  %add3 = add nsw i32 %call, %call1
+  %add = add nsw i32 %call, 1
+  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %rem = srem i32 %i.0, 10
-  %cmp2 = icmp ne i32 %rem, 1
+new
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %inc = add nsw i32 %i.0, 1
+  %call1 = call i32 @getchar()
+  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %rem = srem i32 %i.0, 10
 for.cond
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
+new
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %call1 = call i32 @getchar()
+  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
 entry
+  %call = call i32 @getchar()
 i32 0
-  %cmp.expr = icmp slt i32 0, 100
+new
+  %call = call i32 @getchar()
+  %call1 = call i32 @getchar()
+i32 0
 changed
 for.inc
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
   %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+new
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %call1 = call i32 @getchar()
+  %inc = add nsw i32 %i.0, 1
 if.end
-  %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %inc = add nsw i32 %i.0, 1
   %call1 = call i32 @getchar()
-  %add3 = add nsw i32 %call, %call1
 if.then
-  %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %inc = add nsw i32 %i.0, 1
   %call1 = call i32 @getchar()
-  %add3 = add nsw i32 %call, %call1
 if.else
-  %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %inc = add nsw i32 %i.0, 1
   %call1 = call i32 @getchar()
-  %add3 = add nsw i32 %call, %call1
+  %add5 = add nsw i32 %add, %call1
 for.body
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
   %inc = add nsw i32 %i.0, 1
-  %cmp.expr = icmp slt i32 %inc, 100
+  %call1 = call i32 @getchar()
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %rem = srem i32 %i.0, 10
+for.cond
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %call1 = call i32 @getchar()
+  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+entry
   %call = call i32 @getchar()
   %call1 = call i32 @getchar()
-  %add3 = add nsw i32 %call, %call1
-  %rem = srem i32 %i.0, 10
-  %cmp2 = icmp ne i32 %rem, 1
+i32 0
+changed
+for.inc
+  %call = call i32 @getchar()
+  %add = add nsw i32 %call, 1
+  %call1 = call i32 @getchar()
+  %inc = add nsw i32 %i.0, 1
 avaiableOut for each Basic Block 
-Block: if.then
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %cmp = icmp slt i32 %i.0, 100
-7   %rem = srem i32 %i.0, 10
-9   %cmp2 = icmp ne i32 %rem, 1
-Block: for.body
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %cmp = icmp slt i32 %i.0, 100
-7   %rem = srem i32 %i.0, 10
-9   %cmp2 = icmp ne i32 %rem, 1
 Block: if.end
+10   %cmp2 = icmp ne i32 %rem, 1
+5   %cmp = icmp slt i32 %i.0, 100
+7   %add = add nsw i32 %call, 1
+14   %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
+9   %rem = srem i32 %i.0, 10
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+13   %add8 = add nsw i32 %add7, %call1
 1   %call = call i32 @getchar()
 2   %call1 = call i32 @getchar()
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %cmp = icmp slt i32 %i.0, 100
-7   %rem = srem i32 %i.0, 10
-9   %cmp2 = icmp ne i32 %rem, 1
-10   %add3 = add nsw i32 %call, %call1
-11   %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add3)
 Block: if.else
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+10   %cmp2 = icmp ne i32 %rem, 1
 5   %cmp = icmp slt i32 %i.0, 100
-7   %rem = srem i32 %i.0, 10
-9   %cmp2 = icmp ne i32 %rem, 1
-10   %add = add nsw i32 %call, %call1
-Block: entry
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-Block: for.cond
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
+7   %add = add nsw i32 %call, 1
+9   %rem = srem i32 %i.0, 10
 3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %cmp = icmp slt i32 %i.0, 100
-Block: for.inc
-11   %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add3)
-2   %call1 = call i32 @getchar()
-7   %rem = srem i32 %i.0, 10
+16   %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add5)
 1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+13   %add5 = add nsw i32 %add, %call1
+Block: if.then
+10   %cmp2 = icmp ne i32 %rem, 1
 5   %cmp = icmp slt i32 %i.0, 100
+12   %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %call3)
+7   %add = add nsw i32 %call, 1
+9   %rem = srem i32 %i.0, 10
 3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-12   %inc = add nsw i32 %i.0, 1
-10   %add3 = add nsw i32 %call, %call1
-9   %cmp2 = icmp ne i32 %rem, 1
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+11   %call3 = call i32 @getchar()
 Block: for.end
 1   %call = call i32 @getchar()
 2   %call1 = call i32 @getchar()
 3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
 5   %cmp = icmp slt i32 %i.0, 100
+Block: for.inc
+10   %cmp2 = icmp ne i32 %rem, 1
+5   %cmp = icmp slt i32 %i.0, 100
+7   %add = add nsw i32 %call, 1
+14   %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
+9   %rem = srem i32 %i.0, 10
+15   %inc = add nsw i32 %i.0, 1
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+13   %add8 = add nsw i32 %add7, %call1
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+Block: for.body
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+7   %add = add nsw i32 %call, 1
+9   %rem = srem i32 %i.0, 10
+10   %cmp2 = icmp ne i32 %rem, 1
+Block: for.cond
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %cmp = icmp slt i32 %i.0, 100
+Block: entry
+1   %call = call i32 @getchar()
+2   %call1 = call i32 @getchar()
 anticipateIn for each Basic Block 
-Block: if.then
-12   %inc = add nsw i32 %i.0, 1
-15   %cmp.expr = icmp slt i32 %inc, 100
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-10   %add3 = add nsw i32 %call, %call1
-Block: for.body
-12   %inc = add nsw i32 %i.0, 1
-15   %cmp.expr = icmp slt i32 %inc, 100
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-10   %add3 = add nsw i32 %call, %call1
-7   %rem = srem i32 %i.0, 10
-9   %cmp2 = icmp ne i32 %rem, 1
 Block: if.end
-12   %inc = add nsw i32 %i.0, 1
-15   %cmp.expr = icmp slt i32 %inc, 100
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
 1   %call = call i32 @getchar()
+7   %add = add nsw i32 %call, 1
 2   %call1 = call i32 @getchar()
-10   %add3 = add nsw i32 %call, %call1
+15   %inc = add nsw i32 %i.0, 1
 Block: if.else
-12   %inc = add nsw i32 %i.0, 1
-15   %cmp.expr = icmp slt i32 %inc, 100
+1   %call = call i32 @getchar()
+7   %add = add nsw i32 %call, 1
+2   %call1 = call i32 @getchar()
+15   %inc = add nsw i32 %i.0, 1
+13   %add5 = add nsw i32 %add, %call1
+Block: if.then
+1   %call = call i32 @getchar()
+7   %add = add nsw i32 %call, 1
+2   %call1 = call i32 @getchar()
+15   %inc = add nsw i32 %i.0, 1
+Block: for.end
+Block: for.inc
+1   %call = call i32 @getchar()
+7   %add = add nsw i32 %call, 1
+2   %call1 = call i32 @getchar()
+15   %inc = add nsw i32 %i.0, 1
+Block: for.body
+1   %call = call i32 @getchar()
+7   %add = add nsw i32 %call, 1
+2   %call1 = call i32 @getchar()
+15   %inc = add nsw i32 %i.0, 1
 3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+9   %rem = srem i32 %i.0, 10
+Block: for.cond
+1   %call = call i32 @getchar()
+7   %add = add nsw i32 %call, 1
+2   %call1 = call i32 @getchar()
+3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+Block: entry
 1   %call = call i32 @getchar()
 2   %call1 = call i32 @getchar()
-10   %add3 = add nsw i32 %call, %call1
-Block: entry
-13 i32 0
-14   %cmp.expr = icmp slt i32 0, 100
-Block: for.cond
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %cmp = icmp slt i32 %i.0, 100
-Block: for.inc
-12   %inc = add nsw i32 %i.0, 1
-15   %cmp.expr = icmp slt i32 %inc, 100
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-Block: for.end
-16
+17 i32 0
+18
 available out point of each value number0: 
-1: for.end for.inc for.cond entry if.else if.end for.body if.then 
-2: for.end for.inc for.cond entry if.else if.end for.body if.then 
-3: for.end for.inc for.cond if.else if.end for.body if.then 
+1: entry for.cond for.body for.inc for.end if.then if.else if.end 
+2: entry for.cond for.body for.inc for.end if.then if.else if.end 
+3: for.cond for.body for.inc for.end if.then if.else if.end 
 4: 
-5: for.end for.inc for.cond if.else if.end for.body if.then 
+5: for.cond for.body for.inc for.end if.then if.else if.end 
 6: 
-7: for.inc if.else if.end for.body if.then 
+7: for.body for.inc if.then if.else if.end 
 8: 
-9: for.inc if.else if.end for.body if.then 
-10: for.inc if.else if.end 
-11: for.inc if.end 
-12: for.inc 
-13: 
-14: 
-15: 
+9: for.body for.inc if.then if.else if.end 
+10: for.body for.inc if.then if.else if.end 
+11: if.then 
+12: if.then 
+13: for.inc if.else if.end 
+14: for.inc if.end 
+15: for.inc 
+16: if.else 
+17: 
 antipate in point of each value number0: 
-1: if.else if.end for.body if.then 
-2: if.else if.end for.body if.then 
-3: for.inc for.cond if.else if.end for.body if.then 
+1: entry for.cond for.body for.inc if.then if.else if.end 
+2: entry for.cond for.body for.inc if.then if.else if.end 
+3: for.cond for.body 
 4: 
-5: for.cond 
+5: 
 6: 
-7: for.body 
+7: for.cond for.body for.inc if.then if.else if.end 
 8: 
 9: for.body 
-10: if.else if.end for.body if.then 
+10: 
 11: 
-12: for.inc if.else if.end for.body if.then 
-13: entry 
-14: entry 
-15: for.inc if.else if.end for.body if.then 
+12: 
+13: if.else 
+14: 
+15: for.body for.inc if.then if.else if.end 
+16: 
+17: entry 
 valunumber: 0
 0				0				
 0				0				
@@ -258,25 +286,23 @@ valunumber: 4
 0				0				
 min cut from 0 to 1
 valunumber: 5
-entry to for.cond: 8 1.000000e+00
-0				9				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-entry - for.cond
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 6
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 7
+entry to for.cond: 8 1.000000e+00
 for.cond to for.body: 808 9.900990e-01
-0				801				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.cond - for.body
+0				9				0				0				0				
+0				0				801				0				0				
+0				0				0				0				2147483647				
+2147483647				0				0				0				0				
+0				0				0				0				0				
+min cut from 3 to 4
+entry - for.cond
 valunumber: 8
 0				0				
 0				0				
@@ -290,68 +316,61 @@ for.cond to for.body: 808 9.900990e-01
 min cut from 2 to 3
 for.cond - for.body
 valunumber: 10
-for.body to if.else: 800 1.000000e-01
-if.then to if.end: 720 1.000000e+00
-for.cond to for.body: 808 9.900990e-01
-for.body to if.then: 800 9.000000e-01
-0				81				720				0				0				0				0				
-0				0				0				0				0				0				2147483647				
-0				0				0				721				0				0				0				
-0				0				0				0				0				0				2147483647				
-801				0				0				0				0				0				0				
-0				0				0				0				2147483647				0				0				
-0				0				0				0				0				0				0				
-min cut from 5 to 6
-for.cond - for.body
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 11
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 12
-if.end to for.inc: 800 1.000000e+00
-for.body to if.else: 800 1.000000e-01
-if.else to if.end: 80 1.000000e+00
-if.then to if.end: 720 1.000000e+00
-for.cond to for.body: 808 9.900990e-01
-for.body to if.then: 800 9.000000e-01
-0				801				0				0				0				0				0				0				
-0				0				0				0				0				0				0				2147483647				
-0				0				0				81				720				0				0				0				
-81				0				0				0				0				0				0				0				
-721				0				0				0				0				0				0				0				
-0				0				801				0				0				0				0				0				
-0				0				0				0				0				2147483647				0				0				
-0				0				0				0				0				0				0				0				
-min cut from 6 to 7
-for.cond - for.body
-valunumber: 13
 0				0				
 0				0				
 min cut from 0 to 1
+valunumber: 13
+for.body to if.else: 800 1.000000e-01
+0				81				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+for.body - if.else
 valunumber: 14
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 15
+for.cond to for.body: 808 9.900990e-01
 if.end to for.inc: 800 1.000000e+00
+for.body to if.then: 800 9.000000e-01
 for.body to if.else: 800 1.000000e-01
 if.else to if.end: 80 1.000000e+00
 if.then to if.end: 720 1.000000e+00
-for.cond to for.body: 808 9.900990e-01
-for.body to if.then: 800 9.000000e-01
 0				801				0				0				0				0				0				0				
+0				0				0				0				720				81				0				0				
+0				0				0				801				0				0				0				0				
 0				0				0				0				0				0				0				2147483647				
-0				0				0				81				720				0				0				0				
-81				0				0				0				0				0				0				0				
-721				0				0				0				0				0				0				0				
-0				0				801				0				0				0				0				0				
-0				0				0				0				0				2147483647				0				0				
+0				0				721				0				0				0				0				0				
+0				0				81				0				0				0				0				0				
+2147483647				0				0				0				0				0				0				0				
 0				0				0				0				0				0				0				0				
 min cut from 6 to 7
 for.cond - for.body
+valunumber: 16
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 17
+0				0				
+0				0				
+min cut from 0 to 1
+
+if.else.split:                                    ; preds = %for.body
+  %OptInsert_add5 = add nsw i32 %add, %call1
+  br label %if.else
+
 
 for.body.split:                                   ; preds = %for.cond
-  %OptInsert_add3 = add nsw i32 %call, %call1
   br label %for.body
 
 
@@ -362,19 +381,164 @@ if.then has dominance frontier:
 if.end 
 if.else has dominance frontier:
 if.end 
-for.body has dominance frontier:
-for.cond 
 for.body.split has dominance frontier:
 for.cond 
+for.body has dominance frontier:
+for.cond 
+if.else.split has dominance frontier:
+if.end 
 if.end has dominance frontier:
 for.cond 
 for.inc has dominance frontier:
 for.cond 
 
+if.end:                                           ; preds = %if.else, %if.then
+  %NewPhi_OptInsert_add5 = phi i32 
+  %add7 = add nsw i32 %call, 1
+  %add8 = add nsw i32 %add7, %call1
+  %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
+  br label %for.inc
+
 for.cond:                                         ; preds = %for.inc, %entry.split
   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_add3 = phi i32 
+  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
   %cmp = icmp slt i32 %i.0, 100
   br i1 %cmp, label %for.body.split, label %for.end, !prof !32
+13 in newValueSet
+  %OptInsert_add5 = add nsw i32 %add, %call1
+  %NewPhi_OptInsert_add5 = phi i32 
+  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
+13 in newDefined
+  %OptInsert_add5 = add nsw i32 %add, %call1
+  %NewPhi_OptInsert_add5 = phi i32 
+  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
+revNewValue
+13:   %NewPhi_NewPhi_OptInsert_add5 = phi i32 
+13:   %NewPhi_OptInsert_add5 = phi i32 
+13:   %OptInsert_add5 = add nsw i32 %add, %call1
+rename: entry
+  %call = call i32 @getchar()
+  %call1 = call i32 @getchar()
+  br label %entry.split
+fill in phi
+rename: entry.split
+  br label %for.cond
+fill in phi
+rename: for.cond
+  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %inc = add nsw i32 %i.0, 1
+  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
+  %cmp = icmp slt i32 %i.0, 100
+  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
+  %cmp = icmp slt i32 %i.0, 100
+fill in phi
+rename: for.body.split
+  br label %for.body
+fill in phi
+rename: for.body
+  %add = add nsw i32 %call, 1
+  %call = call i32 @getchar()
+  %rem = srem i32 %i.0, 10
+  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %cmp2 = icmp ne i32 %rem, 1
+  %rem = srem i32 %i.0, 10
+  br i1 %cmp2, label %if.then, label %if.else.split, !prof !33
+  %cmp2 = icmp ne i32 %rem, 1
+fill in phi
+rename: if.then
+  %call3 = call i32 @getchar()
+  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %call3)
+  %call3 = call i32 @getchar()
+  br label %if.end
+fill in phi
+  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ]
+rename: if.end
+  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ]
+  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
+  %add7 = add nsw i32 %call, 1
+  %call = call i32 @getchar()
+  %add8 = add nsw i32 %add7, %call1
+  %add7 = add nsw i32 %call, 1
+  %call1 = call i32 @getchar()
+  %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
+  %add8 = add nsw i32 %add7, %call1
+  br label %for.inc
+fill in phi
+rename: for.inc
+  %inc = add nsw i32 %i.0, 1
+  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  br label %for.cond, !llvm.loop !34
+fill in phi
+  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_OptInsert_add5, %for.inc ]
+rename: if.else.split
+  %OptInsert_add5 = add nsw i32 %add, %call1
+  %add = add nsw i32 %call, 1
+  %call1 = call i32 @getchar()
+  br label %if.else
+fill in phi
+rename: if.else
+  %add5 = add nsw i32 %add, %call1
+  %add = add nsw i32 %call, 1
+  %call1 = call i32 @getchar()
+  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add5)
+  %add5 = add nsw i32 %add, %call1
+  br label %if.end
+fill in phi
+  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ], [ %OptInsert_add5, %if.else ]
+rename: for.end
+  ret i32 0
+fill in phi
+entry
+  %call = call i32 @getchar()
+  %call1 = call i32 @getchar()
+  br label %entry.split
+entry.split
+  br label %for.cond
+for.cond
+  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_OptInsert_add5, %for.inc ]
+  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_OptInsert_add5, %for.inc ]
+  %cmp = icmp slt i32 %i.0, 100
+  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
+While deleting: i32 %NewPhi_NewPhi_OptInsert_add5
+Use still stuck around after Def is destroyed:  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ], [ %OptInsert_add5, %if.else ]
+opt: /home/leozhu/llvm-project/llvm/lib/IR/Value.cpp:100: llvm::Value::~Value(): Assertion `materialized_use_empty() && "Uses remain when a value is destroyed!"' failed.
+PLEASE submit a bug report to https://bugs.llvm.org/ and include the crash backtrace.
+Stack dump:
+0.	Program arguments: opt -o gvn.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ../build/SPGVNPRE/LLVMHW2.so -spgvnpre
+1.	Running pass 'Function Pass Manager' on module '<stdin>'.
+2.	Running pass 'SPeculation-based Global Value Numbering/Partial Redundancy Elimination' on function '@main'
+ #0 0x00005566ba5dee2c llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:565:22
+ #1 0x00005566ba5deee7 PrintStackTraceSignalHandler(void*) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:632:1
+ #2 0x00005566ba5dcb5d llvm::sys::RunSignalHandlers() /home/leozhu/llvm-project/llvm/lib/Support/Signals.cpp:71:20
+ #3 0x00005566ba5de778 SignalHandler(int) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:407:1
+ #4 0x00007f0282dc43c0 __restore_rt (/lib/x86_64-linux-gnu/libpthread.so.0+0x153c0)
+ #5 0x00007f028286318b raise /build/glibc-eX1tMB/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+ #6 0x00007f0282842859 abort /build/glibc-eX1tMB/glibc-2.31/stdlib/abort.c:81:7
+ #7 0x00007f0282842729 get_sysdep_segment_value /build/glibc-eX1tMB/glibc-2.31/intl/loadmsgcat.c:509:8
+ #8 0x00007f0282842729 _nl_load_domain /build/glibc-eX1tMB/glibc-2.31/intl/loadmsgcat.c:970:34
+ #9 0x00007f0282853f36 (/lib/x86_64-linux-gnu/libc.so.6+0x36f36)
+#10 0x00005566b9ad79a7 llvm::Value::~Value() /home/leozhu/llvm-project/llvm/lib/IR/Value.cpp:100:3
+#11 0x00005566b8f272bc llvm::User::~User() /home/leozhu/llvm-project/llvm/include/llvm/IR/User.h:94:3
+#12 0x00005566b99ebe78 llvm::Instruction::~Instruction() /home/leozhu/llvm-project/llvm/lib/IR/Instruction.cpp:58:1
+#13 0x00005566b9addc42 llvm::PHINode::~PHINode() /home/leozhu/llvm-project/llvm/include/llvm/IR/Instructions.h:2582:7
+#14 0x00005566b9ad855f llvm::Value::deleteValue() /home/leozhu/llvm-project/llvm/include/llvm/IR/Instruction.def:208:1
+#15 0x00005566b8dc080e llvm::ilist_alloc_traits<llvm::Instruction>::deleteNode(llvm::Instruction*) /home/leozhu/llvm-project/llvm/include/llvm/IR/Instruction.h:848:1
+#16 0x00005566b8dc15df llvm::iplist_impl<llvm::simple_ilist<llvm::Instruction>, llvm::SymbolTableListTraits<llvm::Instruction> >::erase(llvm::ilist_iterator<llvm::ilist_detail::node_options<llvm::Instruction, true, false, void>, false, false>) /home/leozhu/llvm-project/llvm/include/llvm/ADT/ilist.h:269:12
+#17 0x00005566b99ebfa1 llvm::Instruction::eraseFromParent() /home/leozhu/llvm-project/llvm/lib/IR/Instruction.cpp:79:1
+#18 0x00007f02827af1aa (anonymous namespace)::SPGVNPRE::runOnFunction(llvm::Function&) (../build/SPGVNPRE/LLVMHW2.so+0xb01aa)
+#19 0x00005566b9a3b4fa llvm::FPPassManager::runOnFunction(llvm::Function&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1435:20
+#20 0x00005566b9a3b7c3 llvm::FPPassManager::runOnModule(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1481:13
+#21 0x00005566b9a3bc35 (anonymous namespace)::MPPassManager::runOnModule(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1550:20
+#22 0x00005566b9a36d30 llvm::legacy::PassManagerImpl::run(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:541:13
+#23 0x00005566b9a3c50b llvm::legacy::PassManager::run(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1678:1
+#24 0x00005566b739ba88 main /home/leozhu/llvm-project/llvm/tools/opt/opt.cpp:997:15
+#25 0x00007f02828440b3 __libc_start_main /build/glibc-eX1tMB/glibc-2.31/csu/../csu/libc-start.c:342:3
+#26 0x00005566b735d83e _start (/usr/local/bin/opt+0x1dca83e)
+run.sh: line 50: 176169 Aborted                 (core dumped) opt -o ${1}.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ${PATH_MYPASS} ${NAME_MYPASS} < ${1}_reg.bc > /dev/null
+run.sh: line 52: gvn.pre.bc: No such file or directory
+9999196196981961010196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196opt: gvn.pre.bc: error: Could not open input file: No such file or directory
 Writing '.main.dot'...
-Writing '.main.dot'...
+9999196196981961010196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-119619698196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196-1-1196

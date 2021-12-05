@@ -728,6 +728,7 @@ namespace {
     // FIXME: eliminate or document these better
     void dump(ValueNumberedSet& s) const ;
     void clean(ValueNumberedSet& set) ;
+    void myclean(ValueNumberedSet& set, BasicBlock* bb) ;
     Value* find_leader(ValueNumberedSet& vals, uint32_t v) ;
     Value* phi_translate(Value* V, BasicBlock* pred, BasicBlock* succ) ;
     void phi_translate_set(ValueNumberedSet& anticIn, BasicBlock* pred,
@@ -807,6 +808,47 @@ void SPGVNPRE::val_replace(ValueNumberedSet& s, Value* v) {
     s.erase(leader);
   s.insert(v);
   s.set(num);
+}
+
+
+
+void SPGVNPRE::myclean(ValueNumberedSet& set, BasicBlock* bb){
+  auto it = bb->end();
+  --it;
+
+  unordered_set<Value*> erased;
+  while(true){
+    Instruction* I = &*it;
+
+    for(Value* vinset : set){
+      if(isa<Instruction>(vinset)){
+        Instruction* IinSet = dyn_cast<Instruction>(vinset);
+        for(unsigned i = 0; i<IinSet->getNumOperands(); i++){
+          Value* op = IinSet->getOperand(i);
+          if(isa<Instruction>(op)){
+            Instruction* opI = dyn_cast<Instruction>(op);
+            if(opI==I){
+              set.erase(vinset);
+              set.reset(VN.lookup(vinset));
+              erased.insert(vinset);
+            }
+          }
+        }
+      }
+    }
+
+    if(erased.find(I)!=erased.end()){
+      set.insert(I);
+      set.set(VN.lookup(I));
+      erased.erase(I);
+    }
+  
+
+    if(it==bb->begin()){
+      break;
+    }
+    it--;
+  }
 }
 
 /// clean - Remove all non-opaque values from the set whose operands are not
@@ -1460,11 +1502,11 @@ unsigned SPGVNPRE::buildsets_anticin(BasicBlock* BB,
   
   for (SmallPtrSet<Value*, 16>::iterator I = currTemps.begin(),
        E = currTemps.end(); I != E; ++I) {
-    anticIn.erase(*I);
+    
     anticIn.reset(VN.lookup(*I));
   }
   
-  clean(anticIn);
+  myclean(anticIn, BB);
   anticOut.clear();
   
   if (old != anticIn.size()){
@@ -1848,12 +1890,13 @@ namespace{
 
     BasicBlock* bb = node->getBlock();
 
-
+    errs() << "rename: " << bb->getName() << "\n";
     unordered_map<int,int> cnt;
 
     for(auto it = bb->begin(); it != bb->end(); ++it){
       Instruction* I = &*it;
 
+      errs() << *I << "\n";
 
       // if is a definition, put to stack
       if(revNewValue.find(I)!=revNewValue.end()){
@@ -1866,8 +1909,11 @@ namespace{
       for(int i=0; i < I->getNumOperands(); i++){
         if(isa<Instruction>(I->getOperand(i))){
           Instruction* op = cast<Instruction>(I->getOperand(i));
+          errs() << *op <<"\n";
           if(VN.exists(op) && VRStack.find(VN.lookup(op))!=VRStack.end()){
-            I->replaceUsesOfWith(op, VRStack[VN.lookup(op)].top());
+            if(!VRStack[VN.lookup(op)].empty()){
+              I->replaceUsesOfWith(op, VRStack[VN.lookup(op)].top());
+            }
           }
         }
         
@@ -1876,16 +1922,18 @@ namespace{
 
     }
 
-
+    errs() << "fill in phi\n";
     // Fill in Phi node parameters of successor block
     for(auto succbb = succ_begin(bb); succbb != succ_end(bb); ++succbb){
       BasicBlock* sb = *succbb;
-      for(auto it2 = bb->begin(); it2!=bb->end(); ++it2){
+      for(auto it2 = sb->begin(); it2!=sb->end(); ++it2){
         Instruction* I2 = &*it2;
         if(isa<PHINode>(I2)){
           PHINode* phi = cast<PHINode>(I2);
-          if(revNewValue.find(I2)!=revNewValue.end()){
+          if(revNewValue.find(I2)!=revNewValue.end() && !VRStack[revNewValue[I2]].empty()){
             phi->addIncoming(VRStack[revNewValue[I2]].top(), bb);
+            errs() << *phi << "\n";
+
           }
         }
 
@@ -2052,20 +2100,41 @@ bool SPGVNPRE::runOnFunction(Function &F) {
 
 
   // step 2: insert phi node
+
+  // bool changed 
+
   for(auto it : newValueSets){
     int valueNumber = it.first;
-    vector<Instruction*>& newDefined = it.second;
+    vector<Instruction*>& newDefined = newValueSets[valueNumber];
+    unordered_set<BasicBlock*> hasInserted;
+
     for(int i=0; i<newDefined.size(); i++){
       
       BasicBlock* definedBlock = newDefined[i]->getParent();
 
-      for(auto BBd : Dfrontier[definedBlock]){
-        PHINode* newPhi = PHINode::Create(newDefined[i]->getType(), 2, "NewPhi_"+newDefined[i]->getName(), 
-            &*BBd->getFirstInsertionPt());
 
-        errs() << *BBd;
+      for(auto BBd : Dfrontier[definedBlock]){
+        
+        if(hasInserted.find(BBd)==hasInserted.end()){
+          PHINode* newPhi = PHINode::Create(newDefined[i]->getType(), 2, "NewPhi_"+newDefined[i]->getName(), 
+              &*BBd->getFirstInsertionPt());
+          newDefined.push_back(newPhi);
+          hasInserted.insert(BBd);
+          errs() << *BBd;
+        }
+
       }
 
+    }
+
+    errs() << valueNumber << " in newValueSet\n";
+    for(Instruction* tmp : newValueSets[valueNumber]){
+      errs() << *tmp << "\n";
+    }
+
+    errs() << valueNumber << " in newDefined\n";
+    for(Instruction* tmp : newDefined){
+      errs() << *tmp << "\n";
     }
   }
 
@@ -2078,6 +2147,12 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     }
   }
 
+  errs() << "revNewValue\n";
+  for(auto it: revNewValue){
+    errs() << it.second << ": " << *it.first << "\n";
+  }
+
+
   // step 3: rename variables
   unordered_map<int, stack<Value*>> VRStack;
   rename(VRStack, DT.getRootNode(), newValueSets, revNewValue, VN);
@@ -2088,21 +2163,22 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   // maybe use a dead code elimination pass
   // !!!need to eliminate partial phi node
   for (Function::iterator bb = F.begin(); bb!=F.end(); ++bb){ // iterate BBs 
+      errs() << bb->getName() << "\n";
+      vector<Instruction*> invalidPhis;
       for(BasicBlock::iterator i = bb->begin(); i!=bb->end(); ++i){
+        errs() << *i << "\n";
         if(isa<PHINode>(&*i)){
           PHINode* phi = cast<PHINode>(i);
-        
+          errs() << *phi << "\n";
           if(phi->getNumIncomingValues()!=pred_size(&*bb)){
-            phi->removeFromParent();
-            i = bb->begin();
+            invalidPhis.push_back(phi);
           }
-
-          
-
         }
-        
+    
+      }
 
-        
+      for(Instruction* phi : invalidPhis){
+        phi->eraseFromParent();
       }
   }
     

@@ -7,7 +7,7 @@
 
 PATH_MYPASS=./build/src/LLVMHW2.so ### Action Required: Specify the path to your pass ###
 NAME_MYPASS=-gvnpre ### Action Required: Specify the name for your pass ###
-BENCH=../test/${1}.cpp
+BENCH=../test/${1}.c
 
 # INPUT=${2}
 
