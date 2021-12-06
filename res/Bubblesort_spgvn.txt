@@ -6,15 +6,15 @@
 
    compile
 
-real	0m0.095s
-user	0m0.051s
-sys	0m0.044s
+real	0m0.088s
+user	0m0.047s
+sys	0m0.041s
 
 
    run
 
-real	0m0.062s
-user	0m0.062s
+real	0m0.069s
+user	0m0.068s
 sys	0m0.000s
 
 
@@ -26,16 +26,16 @@ sys	0m0.000s
 clang-12: error: no such file or directory: 'Bubblesort.pre.bc'
 clang-12: error: no input files
 
-real	0m0.040s
-user	0m0.020s
-sys	0m0.020s
+real	0m0.035s
+user	0m0.008s
+sys	0m0.025s
 
 
    run
 run.sh: line 60: ./Bubblesort_pre: No such file or directory
 
-real	0m0.001s
-user	0m0.001s
+real	0m0.000s
+user	0m0.000s
 sys	0m0.000s
 
 
@@ -47,14 +47,14 @@ sys	0m0.000s
 clang-12: error: no such file or directory: 'Bubblesort_final.bc'
 clang-12: error: no input files
 
-real	0m0.046s
-user	0m0.033s
-sys	0m0.012s
+real	0m0.041s
+user	0m0.016s
+sys	0m0.025s
 
 
    run
 run.sh: line 73: ./Bubblesort_final: No such file or directory
 
-real	0m0.001s
+real	0m0.000s
 user	0m0.000s
 sys	0m0.000s

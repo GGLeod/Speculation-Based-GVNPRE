@@ -1,0 +1,19 @@
+digraph "CFG for 'Permute' function" {
+	label="CFG for 'Permute' function";
+
+	Node0x55f0464d7320 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#dedcdb70",label="{entry:\l  %0 = load i32, i32* @pctr, align 4\l  %add = add i32 %0, 1\l  store i32 %add, i32* @pctr, align 4\l  %cmp = icmp ne i32 %n, 1\l  br i1 %cmp, label %if.then, label %if.end\l|{<s0>T|<s1>F}}"];
+	Node0x55f0464d7320:s0 -> Node0x55f0464d8030;
+	Node0x55f0464d7320:s1 -> Node0x55f0464d81c0;
+	Node0x55f0464d8030 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{if.then:                                          \l  %sub = sub nsw i32 %n, 1\l  call void @Permute(i32 %sub)\l  %sub1 = sub nsw i32 %n, 1\l  br label %for.cond\l}"];
+	Node0x55f0464d8030 -> Node0x55f0464d8080;
+	Node0x55f0464d8080 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %k.0 = phi i32 [ %sub1, %if.then ], [ %dec, %for.inc ]\l  %cmp2 = icmp sge i32 %k.0, 1\l  br i1 %cmp2, label %for.body, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x55f0464d8080:s0 -> Node0x55f0464d80d0;
+	Node0x55f0464d8080:s1 -> Node0x55f0464d8170;
+	Node0x55f0464d80d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body:                                         \l  %idxprom = sext i32 %n to i64\l  %arrayidx = getelementptr inbounds [11 x i32], [11 x i32]* @permarray, i64\l... 0, i64 %idxprom\l  %idxprom3 = sext i32 %k.0 to i64\l  %arrayidx4 = getelementptr inbounds [11 x i32], [11 x i32]* @permarray, i64\l... 0, i64 %idxprom3\l  call void @Swap(i32* %arrayidx, i32* %arrayidx4)\l  %sub5 = sub nsw i32 %n, 1\l  call void @Permute(i32 %sub5)\l  %idxprom6 = sext i32 %n to i64\l  %arrayidx7 = getelementptr inbounds [11 x i32], [11 x i32]* @permarray, i64\l... 0, i64 %idxprom6\l  %idxprom8 = sext i32 %k.0 to i64\l  %arrayidx9 = getelementptr inbounds [11 x i32], [11 x i32]* @permarray, i64\l... 0, i64 %idxprom8\l  call void @Swap(i32* %arrayidx7, i32* %arrayidx9)\l  br label %for.inc\l}"];
+	Node0x55f0464d80d0 -> Node0x55f0464d8120;
+	Node0x55f0464d8120 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.inc:                                          \l  %dec = add nsw i32 %k.0, -1\l  br label %for.cond, !llvm.loop !2\l}"];
+	Node0x55f0464d8120 -> Node0x55f0464d8080;
+	Node0x55f0464d8170 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{for.end:                                          \l  br label %if.end\l}"];
+	Node0x55f0464d8170 -> Node0x55f0464d81c0;
+	Node0x55f0464d81c0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#dedcdb70",label="{if.end:                                           \l  ret void\l}"];
+}
