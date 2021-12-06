@@ -1906,26 +1906,44 @@ namespace{
       }
 
       // if is a use, replace with top of stack
-      for(int i=0; i < I->getNumOperands(); i++){
-        if(isa<Instruction>(I->getOperand(i))){
-          Instruction* op = cast<Instruction>(I->getOperand(i));
-          errs() << *op <<"\n";
-          if(VN.exists(op) && VRStack.find(VN.lookup(op))!=VRStack.end()){
-            if(!VRStack[VN.lookup(op)].empty()){
-              I->replaceUsesOfWith(op, VRStack[VN.lookup(op)].top());
+      if(!isa<PHINode>(I)){
+        for(int i=0; i < I->getNumOperands(); i++){
+          if(isa<Instruction>(I->getOperand(i))){
+            Instruction* op = cast<Instruction>(I->getOperand(i));
+            errs() << *op <<"\n";
+            if(VN.exists(op) && VRStack.find(VN.lookup(op))!=VRStack.end()){
+              if(!VRStack[VN.lookup(op)].empty()){
+                I->replaceUsesOfWith(op, VRStack[VN.lookup(op)].top());
+              }
             }
           }
         }
-        
-        
       }
+      // else{
+      //   PHINode* phi = cast<PHINode>(I);
+      //   for(int i=0; i < phi->getNumOperands(); i++){
+      //     if(isa<Instruction>(I->getOperand(i))){
+      //       Instruction* op = cast<Instruction>(I->getOperand(i));
+      //       if(VN.exists(op) && VRStack.find(VN.lookup(op))!=VRStack.end()){
+      //         if(!VRStack[VN.lookup(op)].empty()){
+      //           I->replaceUsesOfWith(op, VRStack[VN.lookup(op)].top());
+      //         }
+      //       }
+
+      //     }
+      //   }
+      // }
+
+      
 
     }
 
     errs() << "fill in phi\n";
     // Fill in Phi node parameters of successor block
+    // Maybe not only the one we create
     for(auto succbb = succ_begin(bb); succbb != succ_end(bb); ++succbb){
       BasicBlock* sb = *succbb;
+      errs() << *sb;
       for(auto it2 = sb->begin(); it2!=sb->end(); ++it2){
         Instruction* I2 = &*it2;
         if(isa<PHINode>(I2)){
@@ -2093,9 +2111,11 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   for(auto it : newValueSets){
     if(!it.second.empty()){
       
-      Instruction* newI = new Instruction(it.second[0]->getType());
+      Instruction* newI = new AllocaInst(it.second[0]->getType(), 0, "nullalloc"+std::to_string(it.first), 
+        F.getEntryBlock().getTerminator());
+      Instruction* newload = new LoadInst(it.second[0]->getType(), newI, "nullLoad"+std::to_string(it.first), F.getEntryBlock().getTerminator());
 
-      newValueSets[it.first].push_back(newI);
+      newValueSets[it.first].push_back(newload);
     }
   }
 
