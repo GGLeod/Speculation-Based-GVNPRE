@@ -6,9 +6,9 @@
 
    compile
 
-real	0m0.094s
-user	0m0.052s
-sys	0m0.041s
+real	0m0.093s
+user	0m0.055s
+sys	0m0.037s
 
 
    run
@@ -26,16 +26,16 @@ sys	0m0.000s
 clang-12: error: no such file or directory: 'gvn.pre.bc'
 clang-12: error: no input files
 
-real	0m0.039s
-user	0m0.022s
+real	0m0.038s
+user	0m0.021s
 sys	0m0.017s
 
 
    run
 
 real	0m0.001s
-user	0m0.000s
-sys	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 
 
@@ -44,9 +44,9 @@ sys	0m0.001s
 
    compile
 
-real	0m0.096s
+real	0m0.100s
 user	0m0.056s
-sys	0m0.039s
+sys	0m0.044s
 
 
    run

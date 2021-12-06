@@ -2055,16 +2055,20 @@ bool SPGVNPRE::runOnFunction(Function &F) {
 
     BasicBlock * newBB = SplitEdge(insertSet.first.first, insertSet.first.second);
     auto vns = availableOut[insertSet.first.first];
+    errs() << "insert into " << newBB->getName()<<"\n";
+    errs() << "available\n";
+    vns.print();
     
-
     for(int n : insertSet.second){
+      errs() << n << " prepared\n";
       vector<Value*>& values = numberToValues[n];
       for(Value* v : values){
+        errs() << "try " << *v << "\n";
         Instruction* I = dyn_cast<Instruction>(v);
         bool valid = true;
         for(int i=0; i<I->getNumOperands(); i++){
           Value* operand = I->getOperand(i);
-          if(vns.find(operand) == vns.end()){
+          if(isa<Instruction>(operand) && vns.find(operand) == vns.end()){
             valid = false;
             break;
           }
@@ -2077,12 +2081,22 @@ bool SPGVNPRE::runOnFunction(Function &F) {
           auto lastinsert = newBB->getInstList().end();
           newBB->getInstList().insert(--lastinsert, I2);
           newValueSets[n].push_back(I2);
+
           break;
         }
       }
     }
 
     errs() << *newBB << "\n";
+  }
+
+  for(auto it : newValueSets){
+    if(!it.second.empty()){
+      
+      Instruction* newI = new Instruction(it.second[0]->getType());
+
+      newValueSets[it.first].push_back(newI);
+    }
   }
 
   // // Phase 4: Replace use with new inserted value
@@ -2111,7 +2125,7 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     for(int i=0; i<newDefined.size(); i++){
       
       BasicBlock* definedBlock = newDefined[i]->getParent();
-
+      
 
       for(auto BBd : Dfrontier[definedBlock]){
         
@@ -2158,6 +2172,12 @@ bool SPGVNPRE::runOnFunction(Function &F) {
   rename(VRStack, DT.getRootNode(), newValueSets, revNewValue, VN);
 
 
+  for (Function::iterator bb = F.begin(); bb!=F.end(); ++bb){ // iterate BBs 
+    errs() << *bb << "\n";
+  }
+    
+
+
 
   // step 4: eliminate old values
   // maybe use a dead code elimination pass
@@ -2181,7 +2201,8 @@ bool SPGVNPRE::runOnFunction(Function &F) {
         phi->eraseFromParent();
       }
   }
-    
+
+
 
   
   // Phase 5: Cleanup

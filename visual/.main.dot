@@ -1,23 +1,23 @@
 digraph "CFG for 'main' function" {
 	label="CFG for 'main' function";
 
-	Node0x557f1dcdf820 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{entry:\l  %call = call i32 @getchar()\l  %call1 = call i32 @getchar()\l  br label %entry.split\l}"];
-	Node0x557f1dcdf820 -> Node0x557f1dcdf870;
-	Node0x557f1dcdf870 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{entry.split:                                      \l  br label %for.cond\l}"];
-	Node0x557f1dcdf870 -> Node0x557f1dcdf8c0;
-	Node0x557f1dcdf8c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body, label %for.end, !prof !32\l|{<s0>T|<s1>F}}"];
-	Node0x557f1dcdf8c0:s0 -> Node0x557f1dcdf910;
-	Node0x557f1dcdf8c0:s1 -> Node0x557f1dcdfaa0;
-	Node0x557f1dcdf910 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body:                                         \l  %add = add nsw i32 %call, 1\l  %rem = srem i32 %i.0, 10\l  %cmp2 = icmp ne i32 %rem, 1\l  br i1 %cmp2, label %if.then, label %if.else, !prof !33\l|{<s0>T|<s1>F}}"];
-	Node0x557f1dcdf910:s0 -> Node0x557f1dcdf960;
-	Node0x557f1dcdf910:s1 -> Node0x557f1dcdf9b0;
-	Node0x557f1dcdf960 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{if.then:                                          \l  %call3 = call i32 @getchar()\l  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %call3)\l  br label %if.end\l}"];
-	Node0x557f1dcdf960 -> Node0x557f1dcdfa00;
-	Node0x557f1dcdf9b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7bca170",label="{if.else:                                          \l  %add5 = add nsw i32 %add, %call1\l  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %add5)\l  br label %if.end\l}"];
-	Node0x557f1dcdf9b0 -> Node0x557f1dcdfa00;
-	Node0x557f1dcdfa00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %c.0 = phi i32 [ %call3, %if.then ], [ %add, %if.else ]\l  %call7 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %c.0)\l  %add8 = add nsw i32 %call, 1\l  %add9 = add nsw i32 %add8, %call1\l  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %add9)\l  br label %for.inc\l}"];
-	Node0x557f1dcdfa00 -> Node0x557f1dcdfa50;
-	Node0x557f1dcdfa50 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.inc:                                          \l  %inc = add nsw i32 %i.0, 1\l  br label %for.cond, !llvm.loop !34\l}"];
-	Node0x557f1dcdfa50 -> Node0x557f1dcdf8c0;
-	Node0x557f1dcdfaa0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{for.end:                                          \l  ret i32 0\l}"];
+	Node0x5568c7301820 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{entry:\l  %call = call i32 @getchar()\l  %call1 = call i32 @getchar()\l  br label %entry.split\l}"];
+	Node0x5568c7301820 -> Node0x5568c7301870;
+	Node0x5568c7301870 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{entry.split:                                      \l  br label %for.cond\l}"];
+	Node0x5568c7301870 -> Node0x5568c73018c0;
+	Node0x5568c73018c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body, label %for.end, !prof !32\l|{<s0>T|<s1>F}}"];
+	Node0x5568c73018c0:s0 -> Node0x5568c7301910;
+	Node0x5568c73018c0:s1 -> Node0x5568c7301aa0;
+	Node0x5568c7301910 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body:                                         \l  %add = add nsw i32 %call, 1\l  %rem = srem i32 %i.0, 10\l  %cmp2 = icmp ne i32 %rem, 1\l  br i1 %cmp2, label %if.then, label %if.else, !prof !33\l|{<s0>T|<s1>F}}"];
+	Node0x5568c7301910:s0 -> Node0x5568c7301960;
+	Node0x5568c7301910:s1 -> Node0x5568c73019b0;
+	Node0x5568c7301960 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{if.then:                                          \l  %call3 = call i32 @getchar()\l  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %call3)\l  br label %if.end\l}"];
+	Node0x5568c7301960 -> Node0x5568c7301a00;
+	Node0x5568c73019b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7bca170",label="{if.else:                                          \l  %add5 = add nsw i32 %add, %call1\l  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %add5)\l  br label %if.end\l}"];
+	Node0x5568c73019b0 -> Node0x5568c7301a00;
+	Node0x5568c7301a00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %c.0 = phi i32 [ %call3, %if.then ], [ %add, %if.else ]\l  %call7 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %c.0)\l  %add8 = add nsw i32 %call, 1\l  %add9 = add nsw i32 %add8, %call1\l  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %add9)\l  br label %for.inc\l}"];
+	Node0x5568c7301a00 -> Node0x5568c7301a50;
+	Node0x5568c7301a50 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.inc:                                          \l  %inc = add nsw i32 %i.0, 1\l  br label %for.cond, !llvm.loop !34\l}"];
+	Node0x5568c7301a50 -> Node0x5568c73018c0;
+	Node0x5568c7301aa0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#a5c3fe70",label="{for.end:                                          \l  ret i32 0\l}"];
 }
