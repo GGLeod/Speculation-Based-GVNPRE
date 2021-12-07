@@ -71,3 +71,5 @@ dot -Tpng .${1}.dot -o ${1}/${1}_final.png
 # { time clang ${1}_final.bc -o ${1}_final; } 2>> ${TIME_MEASURE}
 # echo -e "\n\n   run" >> ${TIME_MEASURE}
 # { time ./${1}_final < ../test/${1}.in; } 2>> ${TIME_MEASURE}
+
+rm .*

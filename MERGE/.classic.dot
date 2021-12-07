@@ -1,0 +1,26 @@
+digraph "CFG for 'classic' function" {
+	label="CFG for 'classic' function";
+
+	Node0x559a153d4640 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{entry:\l  br label %for.cond\l}"];
+	Node0x559a153d4640 -> Node0x559a153e53a0;
+	Node0x559a153e53a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry ], [ %OptInsert_inc, %if.end11 ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body.split, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x559a153e53a0:s0 -> Node0x559a153e53f0;
+	Node0x559a153e53a0:s1 -> Node0x559a153e5620;
+	Node0x559a153e53f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body.split:                                   \l  %OptInsert_inc = add nsw i32 %i.0, 1\l  %OptInsert_div = sdiv i32 %i.0, 2\l  %OptInsert_rem = srem i32 %i.0, 100\l  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90\l  %0 = icmp eq i32 %OptInsert_rem, 1\l  br i1 %0, label %if.then.split, label %if.else.split\l|{<s0>T|<s1>F}}"];
+	Node0x559a153e53f0:s0 -> Node0x559a153e5440;
+	Node0x559a153e53f0:s1 -> Node0x559a153e5490;
+	Node0x559a153e5440 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.then.split:                                    \l  %OptInsert_add3 = add nsw i32 %OptInsert_inc, %OptInsert_div\l  br label %if.end\l}"];
+	Node0x559a153e5440 -> Node0x559a153e54e0;
+	Node0x559a153e5490 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.else.split:                                    \l  %OptInsert_add32 = add nsw i32 %OptInsert_inc, %OptInsert_div\l  %1 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x\l... i8]* @.str, i64 0, i64 0), i32 %OptInsert_add32)\l  br label %if.end\l}"];
+	Node0x559a153e5490 -> Node0x559a153e54e0;
+	Node0x559a153e54e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.end:                                           \l  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then.split ], [\l... %OptInsert_add32, %if.else.split ]\l  br i1 %OptInsert_cmp4, label %if.then5, label %if.else8\l|{<s0>T|<s1>F}}"];
+	Node0x559a153e54e0:s0 -> Node0x559a153e5530;
+	Node0x559a153e54e0:s1 -> Node0x559a153e5580;
+	Node0x559a153e5530 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.then5:                                         \l  br label %if.end11\l}"];
+	Node0x559a153e5530 -> Node0x559a153e55d0;
+	Node0x559a153e5580 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.else8:                                         \l  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %NewPhi_OptInsert_add3)\l  br label %if.end11\l}"];
+	Node0x559a153e5580 -> Node0x559a153e55d0;
+	Node0x559a153e55d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.end11:                                         \l  br label %for.cond, !llvm.loop !31\l}"];
+	Node0x559a153e55d0 -> Node0x559a153e53a0;
+	Node0x559a153e5620 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{for.end:                                          \l  ret void\l}"];
+}

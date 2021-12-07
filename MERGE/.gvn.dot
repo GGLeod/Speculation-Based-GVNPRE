@@ -1,0 +1,19 @@
+digraph "CFG for 'gvn' function" {
+	label="CFG for 'gvn' function";
+
+	Node0x5603e95bd640 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{entry:\l  %0 = add nsw i32 %a, 1\l  br label %for.cond\l}"];
+	Node0x5603e95bd640 -> Node0x5603e95ce380;
+	Node0x5603e95ce380 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry ], [ %OptInsert_inc, %if.end ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body.split, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x5603e95ce380:s0 -> Node0x5603e95ce3d0;
+	Node0x5603e95ce380:s1 -> Node0x5603e95ce510;
+	Node0x5603e95ce3d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body.split:                                   \l  %OptInsert_rem = srem i32 %i.0, 10\l  %OptInsert_inc = add nsw i32 %i.0, 1\l  %1 = icmp ne i32 %OptInsert_rem, 1\l  br i1 %1, label %if.then, label %if.else.split\l|{<s0>T|<s1>F}}"];
+	Node0x5603e95ce3d0:s0 -> Node0x5603e95ce420;
+	Node0x5603e95ce3d0:s1 -> Node0x5603e95ce470;
+	Node0x5603e95ce420 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.then:                                          \l  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4\l... x i8]* @.str, i64 0, i64 0), i32 %i.0)\l  br label %if.end\l}"];
+	Node0x5603e95ce420 -> Node0x5603e95ce4c0;
+	Node0x5603e95ce470 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.else.split:                                    \l  %OptInsert_add2 = add nsw i32 %0, %b\l  %2 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x\l... i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)\l  br label %if.end\l}"];
+	Node0x5603e95ce470 -> Node0x5603e95ce4c0;
+	Node0x5603e95ce4c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.end:                                           \l  %add5 = add nsw i32 %0, %b\l  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8],\l... [4 x i8]* @.str, i64 0, i64 0), i32 %add5)\l  br label %for.cond, !llvm.loop !31\l}"];
+	Node0x5603e95ce4c0 -> Node0x5603e95ce380;
+	Node0x5603e95ce510 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{for.end:                                          \l  ret void\l}"];
+}
