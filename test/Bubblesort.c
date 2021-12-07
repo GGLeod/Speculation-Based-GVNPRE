@@ -37,93 +37,28 @@ type */
     /* Perm */
 #define permrange     10
    /* tree */
-struct node {
-	struct node *left,*right;
-	int val;
-};
-    /* Towers */ /*
-    discsizrange = 1..maxcells; */
-#define    stackrange	3
-/*    cellcursor = 0..maxcells; */
-struct    element {
-	int discsize;
-	int next;
-};
-/*    emsgtype = packed array[1..15] of char;
-*/
-    /* Intmm, Mm */ /*
-    index = 1 .. rowsize;
-    intmatrix = array [index,index] of integer;
-    realmatrix = array [index,index] of real;
-*/
-    /* Puzzle */ /*
-    piececlass = 0..classmax;
-    piecetype = 0..typemax;
-    position = 0..size;
-*/
-    /* Bubble, Quick */ /*
-    listsize = 0..sortelements;
-    sortarray = array [listsize] of integer;
-*/
-    /* FFT */
-struct    complex { float rp, ip; } ;
-/*
-    carray = array [1..fftsize] of complex ;
-    c2array = array [1..fftsize2] of complex ;
-*/
-float value, fixed, floated;
-    /* global */
-long    seed;  /* converted to long for 16 bit WR*/
-    /* Perm */
-int    permarray[permrange+1];
-/* converted pctr to unsigned int for 16 bit WR*/
-unsigned int    pctr;
-    /* tree */
-struct node *tree;
-    /* Towers */
-int	   stack[stackrange+1];
-struct element    cellspace[maxcells+1];
-int    freelist,  movesdone;
-    /* Intmm, Mm */
-int   ima[rowsize+1][rowsize+1], imb[rowsize+1][rowsize+1], imr[rowsize+1][rowsize+1];
-float rma[rowsize+1][rowsize+1], rmb[rowsize+1][rowsize+1], rmr[rowsize+1][rowsize+1];
-    /* Puzzle */
-int	piececount[classmax+1],	class[typemax+1], piecemax[typemax+1];
-int	puzzl[size+1], p[typemax+1][size+1], n, kount;
-    /* Bubble, Quick */
-int sortlist[sortelements+1], biggest, littlest, top;
-    /* FFT */
-struct complex    z[fftsize+1], w[fftsize+1], e[fftsize2+1];
-float    zr, zi;
-void Initrand () {
-    seed = 74755L;   /* constant to long WR*/
-}
-int Rand () {
-    seed = (seed * 1309L + 13849L) & 65535L;  /* constants to long WR*/
-    return( (int)seed );     /* typecast back to int WR*/
-}
-    /* Sorts an array using bubblesort */
-void bInitarr()	{
-	int i;
-	long temp; /* converted temp to long for 16 bit WR*/
-	Initrand();
-	biggest = 0; littlest = 0;
-	for ( i = 1; i <= srtelements; i++ ) {
-	    temp = Rand();
-	    /* converted constants to long in next stmt, typecast back to int WR*/
-	    sortlist[i] = (int)(temp - (temp/100000L)*100000L - 50000L);
-	    if ( sortlist[i] > biggest ) biggest = sortlist[i];
-	    else if ( sortlist[i] < littlest ) littlest = sortlist[i];
-	}
-}
-void Bubble(int run) {
+
+
+void Bubblesort(int run) {
 	int i, j;
-	bInitarr();
-	top=srtelements;
+	unsigned int sortlist[500];
+
+
+	unsigned int littlest = RAND_MAX;
+	unsigned int biggest = 0;
+
+	for(int i=0; i<500; i++){
+		sortlist[i] = rand();
+
+		littlest = littlest < sortlist[i] ? littlest : sortlist[i];
+		biggest = biggest < sortlist[i] ? sortlist[i] : biggest;
+	}
+
+	int top = 499;
 	
-	while ( top>1 ) {
+	while ( top>0 ) {
 		
-		i=1;
+		i=0;
 		while ( i<top ) {
 			
 			if ( sortlist[i] > sortlist[i+1] ) {
@@ -136,13 +71,13 @@ void Bubble(int run) {
 		
 		top=top-1;
 	}
-	if ( (sortlist[1] != littlest) || (sortlist[srtelements] != biggest) )
+	if ( (sortlist[0] != littlest) || (sortlist[499] != biggest) )
 	printf ( "Error3 in Bubble.\n");
 	printf("%d\n", sortlist[run + 1]);
 }
 int main()
 {
 	int i;
-	for (i = 0; i < 100; i++) Bubble(i);
+	for (i = 0; i < 100; i++) Bubblesort(i);
 	return 0;
 }

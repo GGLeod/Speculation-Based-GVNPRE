@@ -112,29 +112,30 @@ int Rand () {
 	    carray      =   array [doublenorm] of boolean;
 	    xarray      =   array [boardrange] of boardrange;
 */
-void Try(int i, int *q, int a[], int b[], int c[], int x[]) {
+int Try(int i, int q, int a[], int b[], int c[], int x[]) {
 	int     j;
 	j = 0;
-	*q = false;
-	while ( (! *q) && (j != 8) ) {
+	q = false;
+	while ( (! q) && (j != 8) ) {
 		j = j + 1;
-		*q = false;
+		q = false;
 		if ( b[j] && a[i+j] && c[i-j+7] ) {
 			x[i] = j;
 		    b[j] = false;
 		    a[i+j] = false;
 		    c[i-j+7] = false;
 		    if ( i < 8 ) {
-		    	Try(i+1,q,a,b,c,x);
-				if ( ! *q ) {
+		    	q = Try(i+1,q,a,b,c,x);
+				if ( ! q ) {
 					b[j] = true;
 				    a[i+j] = true;
 				    c[i-j+7] = true;
 				}
 			}
-		    else *q = true;
+		    else q = true;
 	    }
 	}
+	return q;
 }
 	
 void Doit () {
@@ -147,7 +148,7 @@ void Doit () {
 	    if ( i <= 7 ) c[i+7] = true;
 	    i = i + 1;
 	}
-	Try(1, &q, b, a, c, x);
+	q = Try(1, q, b, a, c, x);
 	if ( !q ) printf (" Error in Queens.\n");
 }
 void Queens (int run) {

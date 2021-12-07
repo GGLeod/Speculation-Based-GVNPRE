@@ -72,4 +72,12 @@ dot -Tpng .${1}.dot -o ${1}/${1}_final.png
 # echo -e "\n\n   run" >> ${TIME_MEASURE}
 # { time ./${1}_final < ../test/${1}.in; } 2>> ${TIME_MEASURE}
 
+opt -o ${1}/${1}.merge.bc -load ../MERGE/build/src/LLVMHW2.so -mergeblock < ${1}/${1}_final.bc > /dev/null
+
+opt -dot-cfg < ${1}/${1}.merge.bc > /dev/null
+
+dot -Tpng .${1}.dot -o ${1}/${1}_merge.png
+
+
+
 rm .*

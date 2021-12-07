@@ -237,7 +237,9 @@ namespace {
 //===----------------------------------------------------------------------===//
 Expression::ExpressionOpcode 
                              ValueTable::getOpcode(BinaryOperator* BO) {
+  errs() << *BO << "\n";
   switch(BO->getOpcode()) {
+    
     case Instruction::Add:
       return Expression::ADD;
     case Instruction::Sub:
@@ -271,6 +273,7 @@ Expression::ExpressionOpcode
     
     // THIS SHOULD NEVER HAPPEN
     default:
+      errs() << "Binary operator with unknown opcode?\n";
       assert(0 && "Binary operator with unknown opcode?");
       return Expression::ADD;
   }
@@ -1996,7 +1999,7 @@ namespace{
 
 
 bool SPGVNPRE::runOnFunction(Function &F) {
-  errs() << "begin\n";
+  errs() << F.getName() << " begin\n";
   BranchProbabilityInfo &bpi = getAnalysis<BranchProbabilityInfoWrapperPass>().getBPI(); 
   BlockFrequencyInfo &bfi = getAnalysis<BlockFrequencyInfoWrapperPass>().getBFI();
   // Clean out global sets from any previous functions
@@ -2097,27 +2100,31 @@ bool SPGVNPRE::runOnFunction(Function &F) {
       errs() << n << " prepared\n";
       vector<Value*>& values = numberToValues[n];
       for(Value* v : values){
-        errs() << "try " << *v << "\n";
-        Instruction* I = dyn_cast<Instruction>(v);
-        bool valid = true;
-        for(int i=0; i<I->getNumOperands(); i++){
-          Value* operand = I->getOperand(i);
-          if(isa<Instruction>(operand) && vns.find(operand) == vns.end()){
-            valid = false;
+        if(isa<Instruction>(v)){
+          errs() << "try " << *v << "\n";
+          Instruction* I = dyn_cast<Instruction>(v);
+          bool valid = true;
+          for(int i=0; i<I->getNumOperands(); i++){
+            Value* operand = I->getOperand(i);
+            if(isa<Instruction>(operand) && vns.find(operand) == vns.end()){
+              valid = false;
+              break;
+            }
+          }
+
+          if(valid && !isa<PHINode>(I)){
+            
+            auto I2 = I->clone();
+            I2->setName("OptInsert_"+I->getName());
+            auto lastinsert = newBB->getInstList().end();
+            newBB->getInstList().insert(--lastinsert, I2);
+            newValueSets[n].push_back(I2);
+
             break;
           }
         }
 
-        if(valid && !isa<PHINode>(I)){
-          
-          auto I2 = I->clone();
-          I2->setName("OptInsert_"+I->getName());
-          auto lastinsert = newBB->getInstList().end();
-          newBB->getInstList().insert(--lastinsert, I2);
-          newValueSets[n].push_back(I2);
-
-          break;
-        }
+        
       }
     }
 
