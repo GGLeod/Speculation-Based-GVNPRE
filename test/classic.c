@@ -3,9 +3,9 @@
 // gvnpre cannot do LICM to a+b but sppregvn can
 // gvnpre is not sure a+b is safe (may not go in to the loop)
 
-int main(){
 
-    for(int i=0; i<1000; i++){
+void classic(){
+    for(int i=0; i<100; i++){
         int a = i+1;
         int b = i/2;
 
@@ -16,7 +16,7 @@ int main(){
             printf("%d", a+b);
         }
 
-        if(i>990){
+        if(i>90){
             int c = a+1;
         }
         else{
@@ -25,6 +25,12 @@ int main(){
 
     }
 
+}
+
+
+int main(){
+
+    classic();
 
 
     return 0;

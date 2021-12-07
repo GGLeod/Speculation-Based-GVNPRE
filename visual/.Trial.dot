@@ -1,0 +1,36 @@
+digraph "CFG for 'Trial' function" {
+	label="CFG for 'Trial' function";
+
+	Node0x5654d0fc6b60 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#dbdcde70",label="{entry:\l  %0 = load i32, i32* @kount, align 4\l  %add = add nsw i32 %0, 1\l  store i32 %add, i32* @kount, align 4\l  br label %for.cond\l}"];
+	Node0x5654d0fc6b60 -> Node0x5654d0fc7640;
+	Node0x5654d0fc7640 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]\l  %cmp = icmp sle i32 %i.0, 12\l  br i1 %cmp, label %for.body, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x5654d0fc7640:s0 -> Node0x5654d0fc7690;
+	Node0x5654d0fc7640:s1 -> Node0x5654d0fc79b0;
+	Node0x5654d0fc7690 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body:                                         \l  %idxprom = sext i32 %i.0 to i64\l  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0,\l... i64 %idxprom\l  %1 = load i32, i32* %arrayidx, align 4\l  %idxprom1 = sext i32 %1 to i64\l  %arrayidx2 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64\l... 0, i64 %idxprom1\l  %2 = load i32, i32* %arrayidx2, align 4\l  %cmp3 = icmp ne i32 %2, 0\l  br i1 %cmp3, label %if.then, label %if.end11\l|{<s0>T|<s1>F}}"];
+	Node0x5654d0fc7690:s0 -> Node0x5654d0fc76e0;
+	Node0x5654d0fc7690:s1 -> Node0x5654d0fc7910;
+	Node0x5654d0fc76e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#d24b4070",label="{if.then:                                          \l  %call = call i32 @Fit(i32 %i.0, i32 %j)\l  %tobool = icmp ne i32 %call, 0\l  br i1 %tobool, label %if.then4, label %if.end10\l|{<s0>T|<s1>F}}"];
+	Node0x5654d0fc76e0:s0 -> Node0x5654d0fc7730;
+	Node0x5654d0fc76e0:s1 -> Node0x5654d0fc78c0;
+	Node0x5654d0fc7730 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e8765c70",label="{if.then4:                                         \l  %call5 = call i32 @Place(i32 %i.0, i32 %j)\l  %call6 = call i32 @Trial(i32 %call5)\l  %tobool7 = icmp ne i32 %call6, 0\l  br i1 %tobool7, label %if.then9, label %lor.lhs.false\l|{<s0>T|<s1>F}}"];
+	Node0x5654d0fc7730:s0 -> Node0x5654d0fc77d0;
+	Node0x5654d0fc7730:s1 -> Node0x5654d0fc7780;
+	Node0x5654d0fc7780 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e97a5f70",label="{lor.lhs.false:                                    \l  %cmp8 = icmp eq i32 %call5, 0\l  br i1 %cmp8, label %if.then9, label %if.else\l|{<s0>T|<s1>F}}"];
+	Node0x5654d0fc7780:s0 -> Node0x5654d0fc77d0;
+	Node0x5654d0fc7780:s1 -> Node0x5654d0fc7820;
+	Node0x5654d0fc77d0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#abc8fd70",label="{if.then9:                                         \l  br label %return\l}"];
+	Node0x5654d0fc77d0 -> Node0x5654d0fc7a00;
+	Node0x5654d0fc7820 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ec7f6370",label="{if.else:                                          \l  call void @Remove(i32 %i.0, i32 %j)\l  br label %if.end\l}"];
+	Node0x5654d0fc7820 -> Node0x5654d0fc7870;
+	Node0x5654d0fc7870 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ec7f6370",label="{if.end:                                           \l  br label %if.end10\l}"];
+	Node0x5654d0fc7870 -> Node0x5654d0fc78c0;
+	Node0x5654d0fc78c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#d6524470",label="{if.end10:                                         \l  br label %if.end11\l}"];
+	Node0x5654d0fc78c0 -> Node0x5654d0fc7910;
+	Node0x5654d0fc7910 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.end11:                                         \l  br label %for.inc\l}"];
+	Node0x5654d0fc7910 -> Node0x5654d0fc7960;
+	Node0x5654d0fc7960 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.inc:                                          \l  %inc = add nsw i32 %i.0, 1\l  br label %for.cond, !llvm.loop !2\l}"];
+	Node0x5654d0fc7960 -> Node0x5654d0fc7640;
+	Node0x5654d0fc79b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#bfd3f670",label="{for.end:                                          \l  br label %return\l}"];
+	Node0x5654d0fc79b0 -> Node0x5654d0fc7a00;
+	Node0x5654d0fc7a00 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#dbdcde70",label="{return:                                           \l  %retval.0 = phi i32 [ 1, %if.then9 ], [ 0, %for.end ]\l  ret i32 %retval.0\l}"];
+}

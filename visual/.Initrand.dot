@@ -1,5 +1,5 @@
 digraph "CFG for 'Initrand' function" {
 	label="CFG for 'Initrand' function";
 
-	Node0x55f0464d11c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  store i64 74755, i64* @seed, align 8\l  ret void\l}"];
+	Node0x5654d0fb9780 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  store i64 74755, i64* @seed, align 8\l  ret void\l}"];
 }

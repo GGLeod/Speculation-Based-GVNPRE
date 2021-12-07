@@ -1,266 +1,91 @@
-9919619619610196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196Writing '.main.dot'...
+Writing '.Initrand.dot'...
+Writing '.Rand.dot'...
+Writing '.Fit.dot'...
+Writing '.Place.dot'...
+Writing '.Remove.dot'...
+Writing '.Trial.dot'...
+Writing '.Puzzle.dot'...
+Writing '.main.dot'...
 begin
 changed
-for.inc
-if.end
-if.then
-if.else
-for.body
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-for.end
-for.cond
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
 entry
-new
-  %call = call i32 @getchar()
-i32 0
-changed
-for.inc
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-if.end
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-  %call1 = call i32 @getchar()
-if.then
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-  %call1 = call i32 @getchar()
-if.else
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-  %call1 = call i32 @getchar()
-  %add5 = add nsw i32 %add, %call1
-for.body
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-  %call1 = call i32 @getchar()
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-for.cond
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %call1 = call i32 @getchar()
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-entry
-  %call = call i32 @getchar()
-i32 0
-new
-  %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
-i32 0
-changed
-for.inc
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-new
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %call1 = call i32 @getchar()
-  %inc = add nsw i32 %i.0, 1
-if.end
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-  %call1 = call i32 @getchar()
-if.then
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-  %call1 = call i32 @getchar()
-if.else
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-  %call1 = call i32 @getchar()
-  %add5 = add nsw i32 %add, %call1
-for.body
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %inc = add nsw i32 %i.0, 1
-  %call1 = call i32 @getchar()
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-for.cond
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %call1 = call i32 @getchar()
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-entry
-  %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
-i32 0
-changed
-for.inc
-  %call = call i32 @getchar()
-  %add = add nsw i32 %call, 1
-  %call1 = call i32 @getchar()
-  %inc = add nsw i32 %i.0, 1
 avaiableOut for each Basic Block 
 Block: entry
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-Block: for.body
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %cmp = icmp slt i32 %i.0, 100
-7   %add = add nsw i32 %call, 1
-9   %rem = srem i32 %i.0, 10
-10   %cmp2 = icmp ne i32 %rem, 1
-Block: for.cond
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %cmp = icmp slt i32 %i.0, 100
-Block: if.else
-13   %add5 = add nsw i32 %add, %call1
-2   %call1 = call i32 @getchar()
-16   %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add5)
-7   %add = add nsw i32 %call, 1
-1   %call = call i32 @getchar()
-5   %cmp = icmp slt i32 %i.0, 100
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-10   %cmp2 = icmp ne i32 %rem, 1
-9   %rem = srem i32 %i.0, 10
-Block: if.then
-11   %call3 = call i32 @getchar()
-12   %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %call3)
-2   %call1 = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-1   %call = call i32 @getchar()
-5   %cmp = icmp slt i32 %i.0, 100
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-10   %cmp2 = icmp ne i32 %rem, 1
-9   %rem = srem i32 %i.0, 10
-Block: if.end
-2   %call1 = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-1   %call = call i32 @getchar()
-13   %add8 = add nsw i32 %add7, %call1
-5   %cmp = icmp slt i32 %i.0, 100
-14   %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-10   %cmp2 = icmp ne i32 %rem, 1
-9   %rem = srem i32 %i.0, 10
-Block: for.end
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %cmp = icmp slt i32 %i.0, 100
-Block: for.inc
-2   %call1 = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-1   %call = call i32 @getchar()
-13   %add8 = add nsw i32 %add7, %call1
-15   %inc = add nsw i32 %i.0, 1
-5   %cmp = icmp slt i32 %i.0, 100
-14   %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-10   %cmp2 = icmp ne i32 %rem, 1
-9   %rem = srem i32 %i.0, 10
+1   store i64 74755, i64* @seed, align 8
 anticipateIn for each Basic Block 
 Block: entry
-1   %call = call i32 @getchar()
-2   %call1 = call i32 @getchar()
-17 i32 0
-Block: for.body
-1   %call = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-2   %call1 = call i32 @getchar()
-15   %inc = add nsw i32 %i.0, 1
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-9   %rem = srem i32 %i.0, 10
-Block: for.cond
-1   %call = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-2   %call1 = call i32 @getchar()
-3   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-Block: if.else
-1   %call = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-2   %call1 = call i32 @getchar()
-15   %inc = add nsw i32 %i.0, 1
-13   %add5 = add nsw i32 %add, %call1
-Block: if.then
-1   %call = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-2   %call1 = call i32 @getchar()
-15   %inc = add nsw i32 %i.0, 1
-Block: if.end
-1   %call = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-2   %call1 = call i32 @getchar()
-15   %inc = add nsw i32 %i.0, 1
-Block: for.end
-Block: for.inc
-1   %call = call i32 @getchar()
-7   %add = add nsw i32 %call, 1
-2   %call1 = call i32 @getchar()
-15   %inc = add nsw i32 %i.0, 1
-18
+2
 available out point of each value number0: 
-1: for.inc for.end if.end if.then if.else for.cond for.body entry 
-2: for.inc for.end if.end if.then if.else for.cond for.body entry 
-3: for.inc for.end if.end if.then if.else for.cond for.body 
-4: 
-5: for.inc for.end if.end if.then if.else for.cond for.body 
-6: 
-7: for.inc if.end if.then if.else for.body 
-8: 
-9: for.inc if.end if.then if.else for.body 
-10: for.inc if.end if.then if.else for.body 
-11: if.then 
-12: if.then 
-13: for.inc if.end if.else 
-14: for.inc if.end 
-15: for.inc 
-16: if.else 
-17: 
+1: entry 
 antipate in point of each value number0: 
-1: for.inc if.end if.then if.else for.cond for.body entry 
-2: for.inc if.end if.then if.else for.cond for.body entry 
-3: for.cond for.body 
+1: 
+valunumber: 0
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 1
+0				0				
+0				0				
+min cut from 0 to 1
+revNewValue
+rename: entry
+  store i64 74755, i64* @seed, align 8
+  ret void
+fill in phi
+
+entry:
+  store i64 74755, i64* @seed, align 8
+  ret void
+
+entry
+  store i64 74755, i64* @seed, align 8
+  ret void
+begin
+changed
+entry
+new
+  %0 = load i64, i64* @seed, align 8
+  %1 = load i64, i64* @seed, align 8
+changed
+entry
+  %0 = load i64, i64* @seed, align 8
+  %1 = load i64, i64* @seed, align 8
+avaiableOut for each Basic Block 
+Block: entry
+1   %0 = load i64, i64* @seed, align 8
+3   %mul = mul nsw i64 %0, 1309
+5   %add = add nsw i64 %mul, 13849
+7   %and = and i64 %add, 65535
+8   store i64 %and, i64* @seed, align 8
+9   %1 = load i64, i64* @seed, align 8
+10   %conv = trunc i64 %1 to i32
+anticipateIn for each Basic Block 
+Block: entry
+1   %0 = load i64, i64* @seed, align 8
+9   %1 = load i64, i64* @seed, align 8
+11
+available out point of each value number0: 
+1: entry 
+2: 
+3: entry 
+4: 
+5: entry 
+6: 
+7: entry 
+8: entry 
+9: entry 
+10: entry 
+antipate in point of each value number0: 
+1: entry 
+2: 
+3: 
 4: 
 5: 
 6: 
-7: for.inc if.end if.then if.else for.cond for.body 
+7: 
 8: 
-9: for.body 
+9: entry 
 10: 
-11: 
-12: 
-13: if.else 
-14: 
-15: for.inc if.end if.then if.else for.body 
-16: 
-17: entry 
 valunumber: 0
 0				0				
 0				0				
@@ -274,8 +99,386 @@ valunumber: 2
 0				0				
 min cut from 0 to 1
 valunumber: 3
-entry to for.cond: 8 1.000000e+00
-0				9				0				0				
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 4
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 5
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 6
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 7
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 8
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 9
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 10
+0				0				
+0				0				
+min cut from 0 to 1
+revNewValue
+rename: entry
+  %0 = load i64, i64* @seed, align 8
+  %mul = mul nsw i64 %0, 1309
+  %0 = load i64, i64* @seed, align 8
+  %add = add nsw i64 %mul, 13849
+  %mul = mul nsw i64 %0, 1309
+  %and = and i64 %add, 65535
+  %add = add nsw i64 %mul, 13849
+  store i64 %and, i64* @seed, align 8
+  %and = and i64 %add, 65535
+  %1 = load i64, i64* @seed, align 8
+  %conv = trunc i64 %1 to i32
+  %1 = load i64, i64* @seed, align 8
+  ret i32 %conv
+  %conv = trunc i64 %1 to i32
+fill in phi
+
+entry:
+  %0 = load i64, i64* @seed, align 8
+  %mul = mul nsw i64 %0, 1309
+  %add = add nsw i64 %mul, 13849
+  %and = and i64 %add, 65535
+  store i64 %and, i64* @seed, align 8
+  %1 = load i64, i64* @seed, align 8
+  %conv = trunc i64 %1 to i32
+  ret i32 %conv
+
+entry
+  %0 = load i64, i64* @seed, align 8
+  %mul = mul nsw i64 %0, 1309
+  %add = add nsw i64 %mul, 13849
+  %and = and i64 %add, 65535
+  store i64 %and, i64* @seed, align 8
+  %1 = load i64, i64* @seed, align 8
+  %conv = trunc i64 %1 to i32
+  ret i32 %conv
+begin
+changed
+return
+if.then8
+for.inc
+if.end9
+if.end
+if.then
+new
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+for.body.if.end9_crit_edge
+for.body
+new
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+  %idxprom1 = sext i32 %i to i64
+  %idxprom3 = sext i32 %k.0 to i64
+for.end
+for.cond
+new
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %idxprom1 = sext i32 %i to i64
+entry
+new
+i32 0
+  %idxprom1 = sext i32 %i to i64
+changed
+for.inc
+new
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+if.end9
+new
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+if.end
+new
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+if.then
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+new
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+for.body.if.end9_crit_edge
+new
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+for.body
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+  %idxprom1 = sext i32 %i to i64
+  %idxprom3 = sext i32 %k.0 to i64
+new
+  %add = add nsw i32 %j, %k.0
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %inc = add nsw i32 %k.0, 1
+  %idxprom3 = sext i32 %k.0 to i64
+  %idxprom1 = sext i32 %i to i64
+for.cond
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %idxprom1 = sext i32 %i to i64
+entry
+i32 0
+  %idxprom1 = sext i32 %i to i64
+changed
+for.inc
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+if.end9
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+if.end
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+if.then
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+for.body.if.end9_crit_edge
+  %inc = add nsw i32 %k.0, 1
+  %idxprom1 = sext i32 %i to i64
+for.body
+  %add = add nsw i32 %j, %k.0
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %inc = add nsw i32 %k.0, 1
+  %idxprom3 = sext i32 %k.0 to i64
+  %idxprom1 = sext i32 %i to i64
+avaiableOut for each Basic Block 
+Block: for.inc
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+11   %idxprom3 = sext i32 %k.0 to i64
+24   %inc = add nsw i32 %k.0, 1
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+15   %tobool = icmp ne i32 %1, 0
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+Block: if.end9
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+11   %idxprom3 = sext i32 %k.0 to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+15   %tobool = icmp ne i32 %1, 0
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+Block: for.end
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+Block: if.then
+20   %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+18   %idxprom5 = sext i32 %add to i64
+17   %add = add nsw i32 %j, %k.0
+22   %tobool7 = icmp ne i32 %2, 0
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+21   %2 = load i32, i32* %arrayidx6, align 4
+11   %idxprom3 = sext i32 %k.0 to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+15   %tobool = icmp ne i32 %1, 0
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+Block: if.end
+20   %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+18   %idxprom5 = sext i32 %add to i64
+17   %add = add nsw i32 %j, %k.0
+22   %tobool7 = icmp ne i32 %2, 0
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+21   %2 = load i32, i32* %arrayidx6, align 4
+11   %idxprom3 = sext i32 %k.0 to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+15   %tobool = icmp ne i32 %1, 0
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+Block: if.then8
+20   %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+18   %idxprom5 = sext i32 %add to i64
+17   %add = add nsw i32 %j, %k.0
+22   %tobool7 = icmp ne i32 %2, 0
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+21   %2 = load i32, i32* %arrayidx6, align 4
+11   %idxprom3 = sext i32 %k.0 to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+15   %tobool = icmp ne i32 %1, 0
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+Block: entry
+Block: for.body
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+11   %idxprom3 = sext i32 %k.0 to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+15   %tobool = icmp ne i32 %1, 0
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+Block: for.cond
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+Block: return
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+25   %retval.0 = phi i32 [ 0, %if.then8 ], [ 1, %for.end ]
+Block: for.body.if.end9_crit_edge
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+11   %idxprom3 = sext i32 %k.0 to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+15   %tobool = icmp ne i32 %1, 0
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+anticipateIn for each Basic Block 
+Block: for.inc
+24   %inc = add nsw i32 %k.0, 1
+3   %idxprom1 = sext i32 %i to i64
+Block: if.end9
+24   %inc = add nsw i32 %k.0, 1
+3   %idxprom1 = sext i32 %i to i64
+Block: for.end
+Block: if.then
+24   %inc = add nsw i32 %k.0, 1
+3   %idxprom1 = sext i32 %i to i64
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+17   %add = add nsw i32 %j, %k.0
+Block: if.end
+24   %inc = add nsw i32 %k.0, 1
+3   %idxprom1 = sext i32 %i to i64
+Block: if.then8
+Block: entry
+14 i32 0
+3   %idxprom1 = sext i32 %i to i64
+Block: for.body
+24   %inc = add nsw i32 %k.0, 1
+11   %idxprom3 = sext i32 %k.0 to i64
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom1 = sext i32 %i to i64
+17   %add = add nsw i32 %j, %k.0
+Block: for.cond
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom1 = sext i32 %i to i64
+Block: return
+Block: for.body.if.end9_crit_edge
+24   %inc = add nsw i32 %k.0, 1
+3   %idxprom1 = sext i32 %i to i64
+26
+available out point of each value number0: 
+1: return for.cond for.body for.body.if.end9_crit_edge if.then8 if.end if.then for.end if.end9 for.inc 
+2: 
+3: return for.cond for.body for.body.if.end9_crit_edge if.then8 if.end if.then for.end if.end9 for.inc 
+4: 
+5: 
+6: return for.cond for.body for.body.if.end9_crit_edge if.then8 if.end if.then for.end if.end9 for.inc 
+7: return for.cond for.body for.body.if.end9_crit_edge if.then8 if.end if.then for.end if.end9 for.inc 
+8: return for.cond for.body for.body.if.end9_crit_edge if.then8 if.end if.then for.end if.end9 for.inc 
+9: 
+10: for.body for.body.if.end9_crit_edge if.then8 if.end if.then if.end9 for.inc 
+11: for.body for.body.if.end9_crit_edge if.then8 if.end if.then if.end9 for.inc 
+12: for.body for.body.if.end9_crit_edge if.then8 if.end if.then if.end9 for.inc 
+13: for.body for.body.if.end9_crit_edge if.then8 if.end if.then if.end9 for.inc 
+14: 
+15: for.body for.body.if.end9_crit_edge if.then8 if.end if.then if.end9 for.inc 
+16: 
+17: if.then8 if.end if.then 
+18: if.then8 if.end if.then 
+19: 
+20: if.then8 if.end if.then 
+21: if.then8 if.end if.then 
+22: if.then8 if.end if.then 
+23: 
+24: for.inc 
+25: return 
+antipate in point of each value number0: 
+1: for.cond for.body if.then 
+2: 
+3: for.body.if.end9_crit_edge for.cond for.body if.end if.then entry if.end9 for.inc 
+4: 
+5: 
+6: 
+7: 
+8: 
+9: 
+10: 
+11: for.body 
+12: 
+13: 
+14: entry 
+15: 
+16: 
+17: for.body if.then 
+18: 
+19: 
+20: 
+21: 
+22: 
+23: 
+24: for.body.if.end9_crit_edge for.body if.end if.then if.end9 for.inc 
+25: 
+valunumber: 0
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 1
+entry to for.cond: 21 1.000000e+00
+0				22				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+entry - for.cond
+valunumber: 2
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 3
+entry to for.cond: 21 1.000000e+00
+0				22				0				0				
 0				0				0				2147483647				
 2147483647				0				0				0				
 0				0				0				0				
@@ -294,503 +497,1411 @@ valunumber: 6
 0				0				
 min cut from 0 to 1
 valunumber: 7
-entry to for.cond: 8 1.000000e+00
-for.cond to for.body: 808 9.900990e-01
-0				9				0				0				0				
-0				0				801				0				0				
-0				0				0				0				2147483647				
-2147483647				0				0				0				0				
-0				0				0				0				0				
-min cut from 3 to 4
-entry - for.cond
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 8
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 9
-for.cond to for.body: 808 9.900990e-01
-0				801				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.cond - for.body
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 10
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 11
-0				0				
-0				0				
-min cut from 0 to 1
+for.cond to for.body: 422 9.687500e-01
+0				409				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+for.cond - for.body
 valunumber: 12
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 13
-for.body to if.else: 800 1.000000e-01
-0				81				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.body - if.else
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 14
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 15
-if.end to for.inc: 800 1.000000e+00
-if.else to if.end: 80 1.000000e+00
-if.then to if.end: 720 1.000000e+00
-for.body to if.then: 800 9.000000e-01
-for.body to if.else: 800 1.000000e-01
-for.cond to for.body: 808 9.900990e-01
-0				801				0				0				0				0				0				0				
-0				0				0				0				0				0				0				2147483647				
-81				0				0				0				0				0				0				0				
-721				0				0				0				0				0				0				0				
-0				0				81				720				0				0				0				0				
-0				0				0				0				801				0				0				0				
-0				0				0				0				0				2147483647				0				0				
-0				0				0				0				0				0				0				0				
-min cut from 6 to 7
-for.cond - for.body
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 16
 0				0				
 0				0				
 min cut from 0 to 1
 valunumber: 17
+for.cond to for.body: 422 9.687500e-01
+for.body to if.then: 409 6.250000e-01
+0				409				0				0				0				
+0				0				256				0				0				
+0				0				0				0				2147483647				
+2147483647				0				0				0				0				
+0				0				0				0				0				
+min cut from 3 to 4
+for.body - if.then
+valunumber: 18
 0				0				
 0				0				
 min cut from 0 to 1
-insert into if.else.split
+valunumber: 19
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 20
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 21
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 22
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 23
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 24
+for.body to for.body.if.end9_crit_edge: 409 3.750000e-01
+for.cond to for.body: 422 9.687500e-01
+if.then to if.end: 256 9.687500e-01
+for.body to if.then: 409 6.250000e-01
+for.body.if.end9_crit_edge to if.end9: 153 1.000000e+00
+if.end to if.end9: 248 1.000000e+00
+if.end9 to for.inc: 401 1.000000e+00
+0				154				0				256				0				0				0				0				0				
+0				0				0				0				0				154				0				0				0				
+409				0				0				0				0				0				0				0				0				
+0				0				0				0				249				0				0				0				0				
+0				0				0				0				0				249				0				0				0				
+0				0				0				0				0				0				402				0				0				
+0				0				0				0				0				0				0				0				2147483647				
+0				0				2147483647				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				
+min cut from 7 to 8
+if.end9 - for.inc
+valunumber: 25
+0				0				
+0				0				
+min cut from 0 to 1
+insert into for.inc.split
 available
-  %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  %add = add nsw i32 %call, 1
-  %rem = srem i32 %i.0, 10
-  %cmp2 = icmp ne i32 %rem, 1
-13 prepared
-try   %add5 = add nsw i32 %add, %call1
+  %0 = load i32, i32* %arrayidx, align 4
+  %cmp = icmp sle i32 %k.0, %0
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %idxprom3 = sext i32 %k.0 to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+  %tobool = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+24 prepared
+try   %inc = add nsw i32 %k.0, 1
 
-if.else.split:                                    ; preds = %for.body
-  %OptInsert_add5 = add nsw i32 %add, %call1
-  br label %if.else
+for.inc.split:                                    ; preds = %if.end9
+  %OptInsert_inc = add nsw i32 %k.0, 1
+  br label %for.inc
+
+insert into if.then.split
+available
+  %0 = load i32, i32* %arrayidx, align 4
+  %cmp = icmp sle i32 %k.0, %0
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %idxprom3 = sext i32 %k.0 to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+  %tobool = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+17 prepared
+try   %add = add nsw i32 %j, %k.0
+
+if.then.split:                                    ; preds = %for.body
+  %OptInsert_add = add nsw i32 %j, %k.0
+  br label %if.then
 
 insert into for.body.split
 available
-  %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-9 prepared
-try   %rem = srem i32 %i.0, 10
-15 prepared
-try   %inc = add nsw i32 %i.0, 1
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %0 = load i32, i32* %arrayidx, align 4
+  %cmp = icmp sle i32 %k.0, %0
+11 prepared
+try   %idxprom3 = sext i32 %k.0 to i64
 
 for.body.split:                                   ; preds = %for.cond
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
+  %OptInsert_idxprom3 = sext i32 %k.0 to i64
   br label %for.body
 
 insert into entry.split
 available
-  %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
+1 prepared
+try   %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
 3 prepared
-try   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-7 prepared
-try   %add = add nsw i32 %call, 1
+try   %idxprom1 = sext i32 %i to i64
 
 entry.split:                                      ; preds = %entry
-  %OptInsert_add = add nsw i32 %call, 1
+  %OptInsert_idxprom1 = sext i32 %i to i64
   br label %for.cond
 
+for.end has dominance frontier:
+return 
+if.then.split has dominance frontier:
+if.end9 return 
 if.then has dominance frontier:
-if.end 
-if.else.split has dominance frontier:
-if.end 
-if.else has dominance frontier:
-if.end 
-for.body has dominance frontier:
-for.cond 
+if.end9 return 
 if.end has dominance frontier:
-for.cond 
+if.end9 
+if.then8 has dominance frontier:
+return 
+for.body.if.end9_crit_edge has dominance frontier:
+if.end9 
 for.body.split has dominance frontier:
+for.cond return 
+for.body has dominance frontier:
+for.cond return 
+if.end9 has dominance frontier:
+for.cond 
+for.inc.split has dominance frontier:
 for.cond 
 for.inc has dominance frontier:
 for.cond 
-7 in newValueSet
-  %OptInsert_add = add nsw i32 %call, 1
-  %nullLoad7 = load i32, i32* %nullalloc7, align 4
-7 in newDefined
-  %OptInsert_add = add nsw i32 %call, 1
-  %nullLoad7 = load i32, i32* %nullalloc7, align 4
-
-for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-15 in newValueSet
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  %nullLoad15 = load i32, i32* %nullalloc15, align 4
-  %NewPhi_OptInsert_inc = phi i32 
-15 in newDefined
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  %nullLoad15 = load i32, i32* %nullalloc15, align 4
-  %NewPhi_OptInsert_inc = phi i32 
-
-for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 
-  %NewPhi_OptInsert_rem = phi i32 
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-9 in newValueSet
-  %OptInsert_rem = srem i32 %i.0, 10
-  %nullLoad9 = load i32, i32* %nullalloc9, align 4
-  %NewPhi_OptInsert_rem = phi i32 
-9 in newDefined
-  %OptInsert_rem = srem i32 %i.0, 10
-  %nullLoad9 = load i32, i32* %nullalloc9, align 4
-  %NewPhi_OptInsert_rem = phi i32 
-
-if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add5 = phi i32 
-  %add7 = add nsw i32 %call, 1
-  %add8 = add nsw i32 %add7, %call1
-  %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
-  br label %for.inc
-
-for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 
-  %NewPhi_OptInsert_rem = phi i32 
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-13 in newValueSet
-  %OptInsert_add5 = add nsw i32 %add, %call1
-  %nullLoad13 = load i32, i32* %nullalloc13, align 4
-  %NewPhi_OptInsert_add5 = phi i32 
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
-13 in newDefined
-  %OptInsert_add5 = add nsw i32 %add, %call1
-  %nullLoad13 = load i32, i32* %nullalloc13, align 4
-  %NewPhi_OptInsert_add5 = phi i32 
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
+3 in newValueSet
+  %OptInsert_idxprom1 = sext i32 %i to i64
+3 in newDefined
+  %OptInsert_idxprom1 = sext i32 %i to i64
+17 in newValueSet
+  %OptInsert_add = add nsw i32 %j, %k.0
+17 in newDefined
+  %OptInsert_add = add nsw i32 %j, %k.0
+11 in newValueSet
+  %OptInsert_idxprom3 = sext i32 %k.0 to i64
+11 in newDefined
+  %OptInsert_idxprom3 = sext i32 %k.0 to i64
+24 in newValueSet
+  %OptInsert_inc = add nsw i32 %k.0, 1
+24 in newDefined
+  %OptInsert_inc = add nsw i32 %k.0, 1
 revNewValue
-13:   %OptInsert_add5 = add nsw i32 %add, %call1
-9:   %NewPhi_OptInsert_rem = phi i32 
-13:   %NewPhi_OptInsert_add5 = phi i32 
-9:   %OptInsert_rem = srem i32 %i.0, 10
-15:   %NewPhi_OptInsert_inc = phi i32 
-15:   %nullLoad15 = load i32, i32* %nullalloc15, align 4
-13:   %NewPhi_NewPhi_OptInsert_add5 = phi i32 
-9:   %nullLoad9 = load i32, i32* %nullalloc9, align 4
-15:   %OptInsert_inc = add nsw i32 %i.0, 1
-7:   %nullLoad7 = load i32, i32* %nullalloc7, align 4
-13:   %nullLoad13 = load i32, i32* %nullalloc13, align 4
-7:   %OptInsert_add = add nsw i32 %call, 1
+24:   %OptInsert_inc = add nsw i32 %k.0, 1
+17:   %OptInsert_add = add nsw i32 %j, %k.0
+11:   %OptInsert_idxprom3 = sext i32 %k.0 to i64
+3:   %OptInsert_idxprom1 = sext i32 %i to i64
 rename: entry
-  %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
-  %nullalloc7 = alloca i32, align 4
-  %nullLoad7 = load i32, i32* %nullalloc7, align 4
-  %nullalloc7 = alloca i32, align 4
-  %nullalloc15 = alloca i32, align 4
-  %nullLoad15 = load i32, i32* %nullalloc15, align 4
-  %nullalloc15 = alloca i32, align 4
-  %nullalloc9 = alloca i32, align 4
-  %nullLoad9 = load i32, i32* %nullalloc9, align 4
-  %nullalloc9 = alloca i32, align 4
-  %nullalloc13 = alloca i32, align 4
-  %nullLoad13 = load i32, i32* %nullalloc13, align 4
-  %nullalloc13 = alloca i32, align 4
   br label %entry.split
 fill in phi
 
 entry.split:                                      ; preds = %entry
-  %OptInsert_add = add nsw i32 %call, 1
+  %OptInsert_idxprom1 = sext i32 %i to i64
   br label %for.cond
 rename: entry.split
-  %OptInsert_add = add nsw i32 %call, 1
-  %call = call i32 @getchar()
+  %OptInsert_idxprom1 = sext i32 %i to i64
   br label %for.cond
 fill in phi
 
 for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 
-  %NewPhi_OptInsert_rem = phi i32 
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-  %NewPhi_OptInsert_inc = phi i32 [ %nullLoad15, %entry.split ]
-  %NewPhi_OptInsert_rem = phi i32 [ %nullLoad9, %entry.split ]
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %nullLoad13, %entry.split ]
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %0 = load i32, i32* %arrayidx, align 4
+  %cmp = icmp sle i32 %k.0, %0
+  br i1 %cmp, label %for.body.split, label %for.end
+  %inc = add nsw i32 %k.0, 1
 rename: for.cond
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 [ %nullLoad15, %entry.split ]
-  %NewPhi_OptInsert_rem = phi i32 [ %nullLoad9, %entry.split ]
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %nullLoad13, %entry.split ]
-  %cmp = icmp slt i32 %i.0, 100
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-  %cmp = icmp slt i32 %i.0, 100
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %idxprom = sext i32 %i to i64
+  %0 = load i32, i32* %arrayidx, align 4
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %OptInsert_idxprom1
+  %cmp = icmp sle i32 %k.0, %0
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %0 = load i32, i32* %arrayidx, align 4
+  br i1 %cmp, label %for.body.split, label %for.end
+  %cmp = icmp sle i32 %k.0, %0
 fill in phi
 
 for.body.split:                                   ; preds = %for.cond
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
+  %OptInsert_idxprom3 = sext i32 %k.0 to i64
   br label %for.body
 
 for.end:                                          ; preds = %for.cond
-  ret i32 0
+  br label %return
 rename: for.body.split
-  %OptInsert_rem = srem i32 %i.0, 10
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %OptInsert_idxprom3 = sext i32 %k.0 to i64
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
   br label %for.body
 fill in phi
 
 for.body:                                         ; preds = %for.body.split
-  %add = add nsw i32 %call, 1
-  %rem = srem i32 %i.0, 10
-  %cmp2 = icmp ne i32 %rem, 1
-  br i1 %cmp2, label %if.then, label %if.else.split, !prof !33
+  %idxprom1 = sext i32 %i to i64
+  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+  %idxprom3 = sext i32 %k.0 to i64
+  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+  %1 = load i32, i32* %arrayidx4, align 4
+  %tobool = icmp ne i32 %1, 0
+  br i1 %tobool, label %if.then.split, label %for.body.if.end9_crit_edge
 rename: for.body
-  %add = add nsw i32 %call, 1
-  %call = call i32 @getchar()
-  %rem = srem i32 %i.0, 10
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %cmp2 = icmp ne i32 %rem, 1
-  %rem = srem i32 %i.0, 10
-  br i1 %cmp2, label %if.then, label %if.else.split, !prof !33
-  %cmp2 = icmp ne i32 %OptInsert_rem, 1
+  %idxprom1 = sext i32 %i to i64
+  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+  %idxprom1 = sext i32 %i to i64
+  %idxprom3 = sext i32 %k.0 to i64
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %OptInsert_idxprom1
+  %idxprom3 = sext i32 %k.0 to i64
+  %1 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %OptInsert_idxprom3
+  %tobool = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx4, align 4
+  br i1 %tobool, label %if.then.split, label %for.body.if.end9_crit_edge
+  %tobool = icmp ne i32 %1, 0
 fill in phi
 
-if.then:                                          ; preds = %for.body
-  %call3 = call i32 @getchar()
-  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %call3)
-  br label %if.end
+if.then.split:                                    ; preds = %for.body
+  %OptInsert_add = add nsw i32 %j, %k.0
+  br label %if.then
 
-if.else.split:                                    ; preds = %for.body
-  %OptInsert_add5 = add nsw i32 %add, %call1
-  br label %if.else
+for.body.if.end9_crit_edge:                       ; preds = %for.body
+  br label %if.end9
+rename: if.then.split
+  %OptInsert_add = add nsw i32 %j, %k.0
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  br label %if.then
+fill in phi
+
+if.then:                                          ; preds = %if.then.split
+  %add = add nsw i32 %j, %k.0
+  %idxprom5 = sext i32 %add to i64
+  %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+  %2 = load i32, i32* %arrayidx6, align 4
+  %tobool7 = icmp ne i32 %2, 0
+  br i1 %tobool7, label %if.then8, label %if.end
 rename: if.then
-  %call3 = call i32 @getchar()
-  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %call3)
-  %call3 = call i32 @getchar()
-  br label %if.end
+  %add = add nsw i32 %j, %k.0
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %idxprom5 = sext i32 %add to i64
+  %add = add nsw i32 %j, %k.0
+  %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+  %idxprom5 = sext i32 %OptInsert_add to i64
+  %2 = load i32, i32* %arrayidx6, align 4
+  %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+  %tobool7 = icmp ne i32 %2, 0
+  %2 = load i32, i32* %arrayidx6, align 4
+  br i1 %tobool7, label %if.then8, label %if.end
+  %tobool7 = icmp ne i32 %2, 0
 fill in phi
 
-if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add5 = phi i32 
-  %add7 = add nsw i32 %call, 1
-  %add8 = add nsw i32 %add7, %call1
-  %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
-  br label %for.inc
-  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ]
+if.then8:                                         ; preds = %if.then
+  br label %return
+
+if.end:                                           ; preds = %if.then
+  br label %if.end9
+rename: if.then8
+  br label %return
+fill in phi
+
+return:                                           ; preds = %for.end, %if.then8
+  %retval.0 = phi i32 [ 0, %if.then8 ], [ 1, %for.end ]
+  ret i32 %retval.0
 rename: if.end
-  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ]
-  %add7 = add nsw i32 %call, 1
-  %call = call i32 @getchar()
-  %add8 = add nsw i32 %add7, %call1
-  %add7 = add nsw i32 %call, 1
-  %call1 = call i32 @getchar()
-  %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add8)
-  %add8 = add nsw i32 %OptInsert_add, %call1
+  br label %if.end9
+fill in phi
+
+if.end9:                                          ; preds = %for.body.if.end9_crit_edge, %if.end
+  br label %for.inc.split
+rename: if.end9
+  br label %for.inc.split
+fill in phi
+
+for.inc.split:                                    ; preds = %if.end9
+  %OptInsert_inc = add nsw i32 %k.0, 1
+  br label %for.inc
+rename: for.inc.split
+  %OptInsert_inc = add nsw i32 %k.0, 1
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
   br label %for.inc
 fill in phi
 
-for.inc:                                          ; preds = %if.end
-  %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !34
+for.inc:                                          ; preds = %for.inc.split
+  %inc = add nsw i32 %k.0, 1
+  br label %for.cond, !llvm.loop !31
 rename: for.inc
-  %inc = add nsw i32 %i.0, 1
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  br label %for.cond, !llvm.loop !34
+  %inc = add nsw i32 %k.0, 1
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  br label %for.cond, !llvm.loop !31
 fill in phi
 
 for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 [ %nullLoad15, %entry.split ]
-  %NewPhi_OptInsert_rem = phi i32 [ %nullLoad9, %entry.split ]
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %nullLoad13, %entry.split ]
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-  %NewPhi_OptInsert_inc = phi i32 [ %nullLoad15, %entry.split ], [ %OptInsert_inc, %for.inc ]
-  %NewPhi_OptInsert_rem = phi i32 [ %nullLoad9, %entry.split ], [ %OptInsert_rem, %for.inc ]
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %nullLoad13, %entry.split ], [ %NewPhi_OptInsert_add5, %for.inc ]
-rename: if.else.split
-  %OptInsert_add5 = add nsw i32 %add, %call1
-  %add = add nsw i32 %call, 1
-  %call1 = call i32 @getchar()
-  br label %if.else
+  %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %OptInsert_idxprom1
+  %0 = load i32, i32* %arrayidx, align 4
+  %cmp = icmp sle i32 %k.0, %0
+  br i1 %cmp, label %for.body.split, label %for.end
+  %inc = add nsw i32 %k.0, 1
+rename: for.body.if.end9_crit_edge
+  br label %if.end9
 fill in phi
 
-if.else:                                          ; preds = %if.else.split
-  %add5 = add nsw i32 %add, %call1
-  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add5)
-  br label %if.end
-rename: if.else
-  %add5 = add nsw i32 %add, %call1
-  %add = add nsw i32 %call, 1
-  %call1 = call i32 @getchar()
-  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add5)
-  %add5 = add nsw i32 %OptInsert_add, %call1
-  br label %if.end
+if.end9:                                          ; preds = %for.body.if.end9_crit_edge, %if.end
+  br label %for.inc.split
+rename: return
+  %retval.0 = phi i32 [ 0, %if.then8 ], [ 1, %for.end ]
+  ret i32 %retval.0
+  %retval.0 = phi i32 [ 0, %if.then8 ], [ 1, %for.end ]
 fill in phi
-
-if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ]
-  %add7 = add nsw i32 %call, 1
-  %add8 = add nsw i32 %OptInsert_add, %call1
-  %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %NewPhi_OptInsert_add5)
-  br label %for.inc
-  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ], [ %OptInsert_add5, %if.else ]
 rename: for.end
-  ret i32 0
+  br label %return
 fill in phi
+
+return:                                           ; preds = %for.end, %if.then8
+  %retval.0 = phi i32 [ 0, %if.then8 ], [ 1, %for.end ]
+  ret i32 %retval.0
 
 entry:
-  %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
-  %nullalloc7 = alloca i32, align 4
-  %nullLoad7 = load i32, i32* %nullalloc7, align 4
-  %nullalloc15 = alloca i32, align 4
-  %nullLoad15 = load i32, i32* %nullalloc15, align 4
-  %nullalloc9 = alloca i32, align 4
-  %nullLoad9 = load i32, i32* %nullalloc9, align 4
-  %nullalloc13 = alloca i32, align 4
-  %nullLoad13 = load i32, i32* %nullalloc13, align 4
   br label %entry.split
 
 
 entry.split:                                      ; preds = %entry
-  %OptInsert_add = add nsw i32 %call, 1
+  %OptInsert_idxprom1 = sext i32 %i to i64
   br label %for.cond
 
 
 for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 [ %nullLoad15, %entry.split ], [ %OptInsert_inc, %for.inc ]
-  %NewPhi_OptInsert_rem = phi i32 [ %nullLoad9, %entry.split ], [ %OptInsert_rem, %for.inc ]
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %nullLoad13, %entry.split ], [ %NewPhi_OptInsert_add5, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
+  %k.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %OptInsert_idxprom1
+  %0 = load i32, i32* %arrayidx, align 4
+  %cmp = icmp sle i32 %k.0, %0
+  br i1 %cmp, label %for.body.split, label %for.end
 
 
 for.body.split:                                   ; preds = %for.cond
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
+  %OptInsert_idxprom3 = sext i32 %k.0 to i64
   br label %for.body
 
 
 for.body:                                         ; preds = %for.body.split
-  %add = add nsw i32 %call, 1
-  %rem = srem i32 %i.0, 10
-  %cmp2 = icmp ne i32 %OptInsert_rem, 1
-  br i1 %cmp2, label %if.then, label %if.else.split, !prof !33
+  %idxprom1 = sext i32 %i to i64
+  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %OptInsert_idxprom1
+  %idxprom3 = sext i32 %k.0 to i64
+  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %OptInsert_idxprom3
+  %1 = load i32, i32* %arrayidx4, align 4
+  %tobool = icmp ne i32 %1, 0
+  br i1 %tobool, label %if.then.split, label %for.body.if.end9_crit_edge
 
 
-if.then:                                          ; preds = %for.body
-  %call3 = call i32 @getchar()
-  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %call3)
-  br label %if.end
+for.body.if.end9_crit_edge:                       ; preds = %for.body
+  br label %if.end9
 
 
-if.else.split:                                    ; preds = %for.body
-  %OptInsert_add5 = add nsw i32 %OptInsert_add, %call1
-  br label %if.else
+if.then.split:                                    ; preds = %for.body
+  %OptInsert_add = add nsw i32 %j, %k.0
+  br label %if.then
 
 
-if.else:                                          ; preds = %if.else.split
-  %add5 = add nsw i32 %OptInsert_add, %call1
-  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add5)
-  br label %if.end
+if.then:                                          ; preds = %if.then.split
+  %add = add nsw i32 %j, %k.0
+  %idxprom5 = sext i32 %OptInsert_add to i64
+  %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+  %2 = load i32, i32* %arrayidx6, align 4
+  %tobool7 = icmp ne i32 %2, 0
+  br i1 %tobool7, label %if.then8, label %if.end
 
 
-if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ], [ %OptInsert_add5, %if.else ]
-  %add7 = add nsw i32 %call, 1
-  %add8 = add nsw i32 %OptInsert_add, %call1
-  %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %NewPhi_OptInsert_add5)
+if.then8:                                         ; preds = %if.then
+  br label %return
+
+
+if.end:                                           ; preds = %if.then
+  br label %if.end9
+
+
+if.end9:                                          ; preds = %for.body.if.end9_crit_edge, %if.end
+  br label %for.inc.split
+
+
+for.inc.split:                                    ; preds = %if.end9
+  %OptInsert_inc = add nsw i32 %k.0, 1
   br label %for.inc
 
 
-for.inc:                                          ; preds = %if.end
-  %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !34
+for.inc:                                          ; preds = %for.inc.split
+  %inc = add nsw i32 %k.0, 1
+  br label %for.cond, !llvm.loop !31
 
 
 for.end:                                          ; preds = %for.cond
-  ret i32 0
+  br label %return
+
+
+return:                                           ; preds = %for.end, %if.then8
+  %retval.0 = phi i32 [ 0, %if.then8 ], [ 1, %for.end ]
+  ret i32 %retval.0
 
 entry
-  %call = call i32 @getchar()
-  %call1 = call i32 @getchar()
-  %nullalloc7 = alloca i32, align 4
-  %nullLoad7 = load i32, i32* %nullalloc7, align 4
-  %nullalloc15 = alloca i32, align 4
-  %nullLoad15 = load i32, i32* %nullalloc15, align 4
-  %nullalloc9 = alloca i32, align 4
-  %nullLoad9 = load i32, i32* %nullalloc9, align 4
-  %nullalloc13 = alloca i32, align 4
-  %nullLoad13 = load i32, i32* %nullalloc13, align 4
   br label %entry.split
 entry.split
-  %OptInsert_add = add nsw i32 %call, 1
+  %OptInsert_idxprom1 = sext i32 %i to i64
   br label %for.cond
 for.cond
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 [ %nullLoad15, %entry.split ], [ %OptInsert_inc, %for.inc ]
-  %NewPhi_OptInsert_inc = phi i32 [ %nullLoad15, %entry.split ], [ %OptInsert_inc, %for.inc ]
-  %NewPhi_OptInsert_rem = phi i32 [ %nullLoad9, %entry.split ], [ %OptInsert_rem, %for.inc ]
-  %NewPhi_OptInsert_rem = phi i32 [ %nullLoad9, %entry.split ], [ %OptInsert_rem, %for.inc ]
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %nullLoad13, %entry.split ], [ %NewPhi_OptInsert_add5, %for.inc ]
-  %NewPhi_NewPhi_OptInsert_add5 = phi i32 [ %nullLoad13, %entry.split ], [ %NewPhi_OptInsert_add5, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
+  %k.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
+  %k.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %OptInsert_idxprom1
+  %0 = load i32, i32* %arrayidx, align 4
+  %cmp = icmp sle i32 %k.0, %0
+  br i1 %cmp, label %for.body.split, label %for.end
 for.body.split
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
+  %OptInsert_idxprom3 = sext i32 %k.0 to i64
   br label %for.body
 for.body
-  %add = add nsw i32 %call, 1
-  %rem = srem i32 %i.0, 10
-  %cmp2 = icmp ne i32 %OptInsert_rem, 1
-  br i1 %cmp2, label %if.then, label %if.else.split, !prof !33
+  %idxprom1 = sext i32 %i to i64
+  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %OptInsert_idxprom1
+  %idxprom3 = sext i32 %k.0 to i64
+  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %OptInsert_idxprom3
+  %1 = load i32, i32* %arrayidx4, align 4
+  %tobool = icmp ne i32 %1, 0
+  br i1 %tobool, label %if.then.split, label %for.body.if.end9_crit_edge
+for.body.if.end9_crit_edge
+  br label %if.end9
+if.then.split
+  %OptInsert_add = add nsw i32 %j, %k.0
+  br label %if.then
 if.then
-  %call3 = call i32 @getchar()
-  %call4 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %call3)
-  br label %if.end
-if.else.split
-  %OptInsert_add5 = add nsw i32 %OptInsert_add, %call1
-  br label %if.else
-if.else
-  %add5 = add nsw i32 %OptInsert_add, %call1
-  %call6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add5)
-  br label %if.end
+  %add = add nsw i32 %j, %k.0
+  %idxprom5 = sext i32 %OptInsert_add to i64
+  %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+  %2 = load i32, i32* %arrayidx6, align 4
+  %tobool7 = icmp ne i32 %2, 0
+  br i1 %tobool7, label %if.then8, label %if.end
+if.then8
+  br label %return
 if.end
-  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ], [ %OptInsert_add5, %if.else ]
-  %NewPhi_OptInsert_add5 = phi i32 [ %NewPhi_NewPhi_OptInsert_add5, %if.then ], [ %OptInsert_add5, %if.else ]
-  %add7 = add nsw i32 %call, 1
-  %add8 = add nsw i32 %OptInsert_add, %call1
-  %call9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %NewPhi_OptInsert_add5)
+  br label %if.end9
+if.end9
+  br label %for.inc.split
+for.inc.split
+  %OptInsert_inc = add nsw i32 %k.0, 1
   br label %for.inc
 for.inc
-  %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !34
+  %inc = add nsw i32 %k.0, 1
+  br label %for.cond, !llvm.loop !31
 for.end
-  ret i32 0
-Writing '.main.dot'...
-99-136349233619619610196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196Writing '.main.dot'...
-99019619610196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196-1196196196-1196-1196-1196-1196-1196-1196-1196-1196
+  br label %return
+return
+  %retval.0 = phi i32 [ 0, %if.then8 ], [ 1, %for.end ]
+  %retval.0 = phi i32 [ 0, %if.then8 ], [ 1, %for.end ]
+  ret i32 %retval.0
+begin
+changed
+for.inc
+if.end
+if.then
+for.body.if.end_crit_edge
+for.body
+new
+  %idxprom1 = sext i32 %i to i64
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %idxprom3 = sext i32 %k.0 to i64
+for.inc23
+if.end22
+return
+if.then21
+for.body17
+new
+  %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+  %idxprom18 = sext i32 %k.1 to i64
+for.end25
+for.cond15
+new
+  %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+for.end
+new
+i32 %j
+  %idxprom7 = sext i32 %i to i64
+for.cond
+new
+  %idxprom1 = sext i32 %i to i64
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+i32 %j
+  %idxprom7 = sext i32 %i to i64
+entry
+new
+  %idxprom1 = sext i32 %i to i64
+i32 0
+i32 %j
+changed
+for.inc
+new
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+i32 %j
+if.end
+new
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+i32 %j
+if.then
+new
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+i32 %j
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+for.body.if.end_crit_edge
+new
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+i32 %j
+for.body
+  %idxprom1 = sext i32 %i to i64
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %idxprom3 = sext i32 %k.0 to i64
+new
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+  %idxprom3 = sext i32 %k.0 to i64
+i32 %j
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+for.inc23
+new
+  %inc24 = add nsw i32 %k.1, 1
+if.end22
+new
+  %inc24 = add nsw i32 %k.1, 1
+for.body17
+  %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+  %idxprom18 = sext i32 %k.1 to i64
+new
+  %inc24 = add nsw i32 %k.1, 1
+  %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+  %idxprom18 = sext i32 %k.1 to i64
+for.cond15
+  %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+for.end
+i32 %j
+  %idxprom7 = sext i32 %i to i64
+for.cond
+  %idxprom1 = sext i32 %i to i64
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+i32 %j
+  %idxprom7 = sext i32 %i to i64
+entry
+  %idxprom1 = sext i32 %i to i64
+i32 0
+i32 %j
+changed
+for.inc
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+i32 %j
+if.end
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+i32 %j
+if.then
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+i32 %j
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+for.body.if.end_crit_edge
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+i32 %j
+for.body
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %add = add nsw i32 %j, %k.0
+  %idxprom3 = sext i32 %k.0 to i64
+i32 %j
+  %idxprom1 = sext i32 %i to i64
+  %inc = add nsw i32 %k.0, 1
+for.inc23
+  %inc24 = add nsw i32 %k.1, 1
+if.end22
+  %inc24 = add nsw i32 %k.1, 1
+for.body17
+  %inc24 = add nsw i32 %k.1, 1
+  %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+  %idxprom18 = sext i32 %k.1 to i64
+avaiableOut for each Basic Block 
+Block: for.body17
+33   %idxprom13 = sext i32 %4 to i64
+3   %idxprom = sext i32 %i to i64
+41   %5 = load i32, i32* %arrayidx19, align 4
+39   %idxprom18 = sext i32 %k.1 to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+32   %4 = load i32, i32* %arrayidx12, align 4
+31   %sub = sub nsw i32 %3, 1
+40   %arrayidx19 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom18
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+38   %cmp16 = icmp sle i32 %k.1, 511
+29   %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+30   %3 = load i32, i32* %arrayidx10, align 4
+34   %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+27   %idxprom9 = sext i32 %2 to i64
+25   %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+35   store i32 %sub, i32* %arrayidx14, align 4
+26   %2 = load i32, i32* %arrayidx8, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+42   %tobool20 = icmp ne i32 %5, 0
+Block: if.then21
+33   %idxprom13 = sext i32 %4 to i64
+3   %idxprom = sext i32 %i to i64
+41   %5 = load i32, i32* %arrayidx19, align 4
+39   %idxprom18 = sext i32 %k.1 to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+32   %4 = load i32, i32* %arrayidx12, align 4
+31   %sub = sub nsw i32 %3, 1
+40   %arrayidx19 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom18
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+38   %cmp16 = icmp sle i32 %k.1, 511
+29   %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+30   %3 = load i32, i32* %arrayidx10, align 4
+34   %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+27   %idxprom9 = sext i32 %2 to i64
+25   %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+35   store i32 %sub, i32* %arrayidx14, align 4
+26   %2 = load i32, i32* %arrayidx8, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+42   %tobool20 = icmp ne i32 %5, 0
+Block: for.end
+33   %idxprom13 = sext i32 %4 to i64
+3   %idxprom = sext i32 %i to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+32   %4 = load i32, i32* %arrayidx12, align 4
+31   %sub = sub nsw i32 %3, 1
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+29   %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+30   %3 = load i32, i32* %arrayidx10, align 4
+34   %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+27   %idxprom9 = sext i32 %2 to i64
+25   %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+35   store i32 %sub, i32* %arrayidx14, align 4
+26   %2 = load i32, i32* %arrayidx8, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+Block: for.cond15
+33   %idxprom13 = sext i32 %4 to i64
+3   %idxprom = sext i32 %i to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+32   %4 = load i32, i32* %arrayidx12, align 4
+31   %sub = sub nsw i32 %3, 1
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+38   %cmp16 = icmp sle i32 %k.1, 511
+29   %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+30   %3 = load i32, i32* %arrayidx10, align 4
+34   %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+27   %idxprom9 = sext i32 %2 to i64
+25   %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+35   store i32 %sub, i32* %arrayidx14, align 4
+26   %2 = load i32, i32* %arrayidx8, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+Block: for.inc23
+33   %idxprom13 = sext i32 %4 to i64
+3   %idxprom = sext i32 %i to i64
+41   %5 = load i32, i32* %arrayidx19, align 4
+39   %idxprom18 = sext i32 %k.1 to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+32   %4 = load i32, i32* %arrayidx12, align 4
+31   %sub = sub nsw i32 %3, 1
+40   %arrayidx19 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom18
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+38   %cmp16 = icmp sle i32 %k.1, 511
+29   %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+30   %3 = load i32, i32* %arrayidx10, align 4
+34   %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+27   %idxprom9 = sext i32 %2 to i64
+43   %inc24 = add nsw i32 %k.1, 1
+25   %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+35   store i32 %sub, i32* %arrayidx14, align 4
+26   %2 = load i32, i32* %arrayidx8, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+42   %tobool20 = icmp ne i32 %5, 0
+Block: for.body.if.end_crit_edge
+3   %idxprom = sext i32 %i to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+15   %tobool = icmp ne i32 %1, 0
+11   %idxprom3 = sext i32 %k.0 to i64
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+8   %cmp = icmp sle i32 %k.0, %0
+Block: for.end25
+33   %idxprom13 = sext i32 %4 to i64
+3   %idxprom = sext i32 %i to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+32   %4 = load i32, i32* %arrayidx12, align 4
+31   %sub = sub nsw i32 %3, 1
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+38   %cmp16 = icmp sle i32 %k.1, 511
+29   %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+30   %3 = load i32, i32* %arrayidx10, align 4
+34   %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+27   %idxprom9 = sext i32 %2 to i64
+25   %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+35   store i32 %sub, i32* %arrayidx14, align 4
+26   %2 = load i32, i32* %arrayidx8, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+Block: if.end22
+33   %idxprom13 = sext i32 %4 to i64
+3   %idxprom = sext i32 %i to i64
+41   %5 = load i32, i32* %arrayidx19, align 4
+39   %idxprom18 = sext i32 %k.1 to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+32   %4 = load i32, i32* %arrayidx12, align 4
+31   %sub = sub nsw i32 %3, 1
+40   %arrayidx19 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom18
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+38   %cmp16 = icmp sle i32 %k.1, 511
+29   %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+30   %3 = load i32, i32* %arrayidx10, align 4
+34   %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+27   %idxprom9 = sext i32 %2 to i64
+25   %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+35   store i32 %sub, i32* %arrayidx14, align 4
+26   %2 = load i32, i32* %arrayidx8, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+42   %tobool20 = icmp ne i32 %5, 0
+Block: entry
+Block: for.body
+3   %idxprom = sext i32 %i to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+15   %tobool = icmp ne i32 %1, 0
+11   %idxprom3 = sext i32 %k.0 to i64
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+8   %cmp = icmp sle i32 %k.0, %0
+Block: return
+33   %idxprom13 = sext i32 %4 to i64
+3   %idxprom = sext i32 %i to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+32   %4 = load i32, i32* %arrayidx12, align 4
+31   %sub = sub nsw i32 %3, 1
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+38   %cmp16 = icmp sle i32 %k.1, 511
+29   %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+30   %3 = load i32, i32* %arrayidx10, align 4
+34   %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+27   %idxprom9 = sext i32 %2 to i64
+25   %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+35   store i32 %sub, i32* %arrayidx14, align 4
+26   %2 = load i32, i32* %arrayidx8, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+44   %retval.0 = phi i32 [ %k.1, %if.then21 ], [ 0, %for.end25 ]
+Block: for.cond
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %idxprom = sext i32 %i to i64
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+7   %0 = load i32, i32* %arrayidx, align 4
+8   %cmp = icmp sle i32 %k.0, %0
+Block: for.inc
+3   %idxprom = sext i32 %i to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+15   %tobool = icmp ne i32 %1, 0
+11   %idxprom3 = sext i32 %k.0 to i64
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+8   %cmp = icmp sle i32 %k.0, %0
+23   %inc = add nsw i32 %k.0, 1
+Block: if.then
+3   %idxprom = sext i32 %i to i64
+20   %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom5
+18   %idxprom5 = sext i32 %add to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+21   store i32 1, i32* %arrayidx6, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+15   %tobool = icmp ne i32 %1, 0
+17   %add = add nsw i32 %j, %k.0
+11   %idxprom3 = sext i32 %k.0 to i64
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+8   %cmp = icmp sle i32 %k.0, %0
+Block: if.end
+3   %idxprom = sext i32 %i to i64
+7   %0 = load i32, i32* %arrayidx, align 4
+6   %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+15   %tobool = icmp ne i32 %1, 0
+11   %idxprom3 = sext i32 %k.0 to i64
+10   %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+13   %1 = load i32, i32* %arrayidx4, align 4
+12   %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+8   %cmp = icmp sle i32 %k.0, %0
+anticipateIn for each Basic Block 
+Block: for.body17
+43   %inc24 = add nsw i32 %k.1, 1
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+39   %idxprom18 = sext i32 %k.1 to i64
+Block: if.then21
+Block: for.end
+16 i32 %j
+3   %idxprom7 = sext i32 %i to i64
+Block: for.cond15
+36   %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+Block: for.inc23
+43   %inc24 = add nsw i32 %k.1, 1
+Block: for.body.if.end_crit_edge
+23   %inc = add nsw i32 %k.0, 1
+16 i32 %j
+3   %idxprom7 = sext i32 %i to i64
+Block: for.end25
+Block: if.end22
+43   %inc24 = add nsw i32 %k.1, 1
+Block: entry
+14 i32 0
+16 i32 %j
+3   %idxprom7 = sext i32 %i to i64
+Block: for.body
+16 i32 %j
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+11   %idxprom3 = sext i32 %k.0 to i64
+3   %idxprom7 = sext i32 %i to i64
+17   %add = add nsw i32 %j, %k.0
+23   %inc = add nsw i32 %k.0, 1
+Block: return
+Block: for.cond
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+16 i32 %j
+3   %idxprom7 = sext i32 %i to i64
+3   %idxprom1 = sext i32 %i to i64
+Block: for.inc
+23   %inc = add nsw i32 %k.0, 1
+16 i32 %j
+3   %idxprom7 = sext i32 %i to i64
+Block: if.then
+23   %inc = add nsw i32 %k.0, 1
+16 i32 %j
+3   %idxprom7 = sext i32 %i to i64
+1   %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+17   %add = add nsw i32 %j, %k.0
+Block: if.end
+23   %inc = add nsw i32 %k.0, 1
+16 i32 %j
+3   %idxprom7 = sext i32 %i to i64
+45
+available out point of each value number0: 
+1: if.end for.body17 if.then21 for.end for.cond15 for.inc23 for.end25 if.end22 for.body return for.cond for.body.if.end_crit_edge for.inc if.then 
+2: 
+3: if.end for.body17 if.then21 for.end for.cond15 for.inc23 for.end25 if.end22 for.body return for.cond for.body.if.end_crit_edge for.inc if.then 
+4: 
+5: 
+6: if.end for.body17 if.then21 for.end for.cond15 for.inc23 for.end25 if.end22 for.body return for.cond for.body.if.end_crit_edge for.inc if.then 
+7: if.end for.body17 if.then21 for.end for.cond15 for.inc23 for.end25 if.end22 for.body return for.cond for.body.if.end_crit_edge for.inc if.then 
+8: if.end for.body17 if.then21 for.end for.cond15 for.inc23 for.end25 if.end22 for.body return for.cond for.body.if.end_crit_edge for.inc if.then 
+9: 
+10: if.end if.then for.inc for.body for.body.if.end_crit_edge 
+11: if.end if.then for.inc for.body for.body.if.end_crit_edge 
+12: if.end if.then for.inc for.body for.body.if.end_crit_edge 
+13: if.end if.then for.inc for.body for.body.if.end_crit_edge 
+14: 
+15: if.end if.then for.inc for.body for.body.if.end_crit_edge 
+16: 
+17: if.then 
+18: if.then 
+19: 
+20: if.then 
+21: if.then 
+22: 
+23: for.inc 
+24: 
+25: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+26: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+27: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+28: 
+29: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+30: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+31: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+32: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+33: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+34: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+35: return if.end22 for.end25 for.inc23 for.cond15 for.end if.then21 for.body17 
+36: return if.end22 for.end25 for.inc23 for.cond15 if.then21 for.body17 
+37: 
+38: return if.end22 for.end25 for.inc23 for.cond15 if.then21 for.body17 
+39: if.end22 for.inc23 if.then21 for.body17 
+40: if.end22 for.inc23 if.then21 for.body17 
+41: if.end22 for.inc23 if.then21 for.body17 
+42: if.end22 for.inc23 if.then21 for.body17 
+43: for.inc23 
+44: return 
+antipate in point of each value number0: 
+1: if.then for.cond for.body 
+2: 
+3: if.end if.then for.inc for.cond for.body entry for.body.if.end_crit_edge for.end 
+4: 
+5: 
+6: 
+7: 
+8: 
+9: 
+10: 
+11: for.body 
+12: 
+13: 
+14: entry 
+15: 
+16: if.end if.then for.inc for.cond for.body entry for.body.if.end_crit_edge for.end 
+17: if.then for.body 
+18: 
+19: 
+20: 
+21: 
+22: 
+23: if.end if.then for.inc for.body for.body.if.end_crit_edge 
+24: 
+25: 
+26: 
+27: 
+28: 
+29: 
+30: 
+31: 
+32: 
+33: 
+34: 
+35: 
+36: for.cond15 for.body17 
+37: 
+38: 
+39: for.body17 
+40: 
+41: 
+42: 
+43: if.end22 for.inc23 for.body17 
+44: 
+valunumber: 0
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 1
+entry to for.cond: 16 1.000000e+00
+0				17				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+entry - for.cond
+valunumber: 2
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 3
+entry to for.cond: 16 1.000000e+00
+0				17				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+entry - for.cond
+valunumber: 4
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 5
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 6
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 7
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 8
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 9
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 10
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 11
+for.cond to for.body: 520 9.687500e-01
+0				504				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+for.cond - for.body
+valunumber: 12
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 13
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 14
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 15
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 16
+for.body.if.end_crit_edge to if.end: 188 1.000000e+00
+if.then to if.end: 314 1.000000e+00
+for.body to if.then: 503 6.250000e-01
+if.end to for.inc: 503 1.000000e+00
+for.inc to for.cond: 503 1.000000e+00
+entry to for.cond: 16 1.000000e+00
+for.cond to for.body: 520 9.687500e-01
+for.body to for.body.if.end_crit_edge: 503 3.750000e-01
+for.cond to for.end: 520 3.125000e-02
+0				189				0				0				0				0				0				0				0				0				
+0				0				0				0				504				0				0				0				0				0				
+0				315				0				0				0				0				0				0				0				0				
+189				0				315				0				0				0				0				0				0				0				
+0				0				0				0				0				504				0				0				0				0				
+0				0				0				504				0				0				0				17				0				0				
+0				0				0				0				0				17				0				0				0				0				
+0				0				0				0				0				0				0				0				0				2147483647				
+0				0				0				0				0				0				2147483647				0				0				0				
+0				0				0				0				0				0				0				0				0				0				
+min cut from 8 to 9
+entry - for.cond
+valunumber: 17
+for.body to if.then: 503 6.250000e-01
+for.cond to for.body: 520 9.687500e-01
+0				315				0				0				0				
+0				0				0				0				2147483647				
+504				0				0				0				0				
+0				0				2147483647				0				0				
+0				0				0				0				0				
+min cut from 3 to 4
+for.body - if.then
+valunumber: 18
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 19
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 20
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 21
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 22
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 23
+for.body.if.end_crit_edge to if.end: 188 1.000000e+00
+if.then to if.end: 314 1.000000e+00
+for.body to if.then: 503 6.250000e-01
+if.end to for.inc: 503 1.000000e+00
+for.cond to for.body: 520 9.687500e-01
+for.body to for.body.if.end_crit_edge: 503 3.750000e-01
+0				189				0				0				0				0				0				0				
+0				0				0				0				504				0				0				0				
+0				315				0				0				0				0				0				0				
+189				0				315				0				0				0				0				0				
+0				0				0				0				0				0				0				2147483647				
+0				0				0				504				0				0				0				0				
+0				0				0				0				0				2147483647				0				0				
+0				0				0				0				0				0				0				0				
+min cut from 6 to 7
+for.cond - for.body
+valunumber: 24
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 25
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 26
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 27
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 28
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 29
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 30
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 31
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 32
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 33
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 34
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 35
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 36
+for.end to for.cond15: 16 1.000000e+00
+0				17				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+for.end - for.cond15
+valunumber: 37
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 38
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 39
+for.cond15 to for.body17: 264 9.687500e-01
+0				256				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+for.cond15 - for.body17
+valunumber: 40
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 41
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 42
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 43
+for.body17 to if.end22: 255 9.687500e-01
+if.end22 to for.inc23: 247 1.000000e+00
+for.cond15 to for.body17: 264 9.687500e-01
+0				248				0				0				0				0				
+0				0				248				0				0				0				
+0				0				0				0				0				2147483647				
+256				0				0				0				0				0				
+0				0				0				2147483647				0				0				
+0				0				0				0				0				0				
+min cut from 4 to 5
+for.body17 - if.end22
+valunumber: 44
+0				0				
+0				0				
+min cut from 0 to 1
+insert into if.end22.split
+available
+  %idxprom13 = sext i32 %4 to i64
+  %idxprom = sext i32 %i to i64
+  %5 = load i32, i32* %arrayidx19, align 4
+  %idxprom18 = sext i32 %k.1 to i64
+  %0 = load i32, i32* %arrayidx, align 4
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %4 = load i32, i32* %arrayidx12, align 4
+  %sub = sub nsw i32 %3, 1
+  %arrayidx19 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0, i64 %idxprom18
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %cmp16 = icmp sle i32 %k.1, 511
+  %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+  %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+  %3 = load i32, i32* %arrayidx10, align 4
+  %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+  %idxprom9 = sext i32 %2 to i64
+  %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+  store i32 %sub, i32* %arrayidx14, align 4
+  %2 = load i32, i32* %arrayidx8, align 4
+  %cmp = icmp sle i32 %k.0, %0
+  %tobool20 = icmp ne i32 %5, 0
+43 prepared
+try   %inc24 = add nsw i32 %k.1, 1
+
+if.end22.split:                                   ; preds = %for.body17
+  %OptInsert_inc24 = add nsw i32 %k.1, 1
+  br label %if.end22
+
+insert into for.body17.split
+available
+  %idxprom13 = sext i32 %4 to i64
+  %idxprom = sext i32 %i to i64
+  %0 = load i32, i32* %arrayidx, align 4
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %4 = load i32, i32* %arrayidx12, align 4
+  %sub = sub nsw i32 %3, 1
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %cmp16 = icmp sle i32 %k.1, 511
+  %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+  %k.1 = phi i32 [ %j, %for.end ], [ %inc24, %for.inc23 ]
+  %3 = load i32, i32* %arrayidx10, align 4
+  %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+  %idxprom9 = sext i32 %2 to i64
+  %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+  store i32 %sub, i32* %arrayidx14, align 4
+  %2 = load i32, i32* %arrayidx8, align 4
+  %cmp = icmp sle i32 %k.0, %0
+39 prepared
+try   %idxprom18 = sext i32 %k.1 to i64
+
+for.body17.split:                                 ; preds = %for.cond15
+  %OptInsert_idxprom18 = sext i32 %k.1 to i64
+  br label %for.body17
+
+insert into if.then.split
+available
+  %idxprom = sext i32 %i to i64
+  %0 = load i32, i32* %arrayidx, align 4
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %tobool = icmp ne i32 %1, 0
+  %idxprom3 = sext i32 %k.0 to i64
+  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]* @p, i64 0, i64 %idxprom1
+  %1 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2, i64 0, i64 %idxprom3
+  %cmp = icmp sle i32 %k.0, %0
+17 prepared
+try   %add = add nsw i32 %j, %k.0
+
+if.then.split:                                    ; preds = %for.body
+  %OptInsert_add = add nsw i32 %j, %k.0
+  br label %if.then
+
+insert into for.body.split
+available
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %idxprom = sext i32 %i to i64
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %0 = load i32, i32* %arrayidx, align 4
+  %cmp = icmp sle i32 %k.0, %0
+11 prepared
+try   %idxprom3 = sext i32 %k.0 to i64
+23 prepared
+try   %inc = add nsw i32 %k.0, 1
+
+for.body.split:                                   ; preds = %for.cond
+  %OptInsert_idxprom3 = sext i32 %k.0 to i64
+  %OptInsert_inc = add nsw i32 %k.0, 1
+  br label %for.body
+
+insert into for.end.split
+available
+  %idxprom13 = sext i32 %4 to i64
+  %idxprom = sext i32 %i to i64
+  %0 = load i32, i32* %arrayidx, align 4
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0, i64 %idxprom
+  %4 = load i32, i32* %arrayidx12, align 4
+  %sub = sub nsw i32 %3, 1
+  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom9
+  %3 = load i32, i32* %arrayidx10, align 4
+  %arrayidx14 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64 0, i64 %idxprom13
+  %idxprom9 = sext i32 %2 to i64
+  %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0, i64 %idxprom7
+  store i32 %sub, i32* %arrayidx14, align 4
+  %2 = load i32, i32* %arrayidx8, align 4
+  %cmp = icmp sle i32 %k.0, %0
+36 prepared
+try   %k.1 = phi i32 [ %j, %for.end.split ], [ %inc24, %for.inc23 ]
+
+for.end.split:                                    ; preds = %for.end
+  br label %for.cond15
+
+insert into entry.split
+available
+1 prepared
+try   %k.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+3 prepared
+try   %idxprom = sext i32 %i to i64
+16 prepared
+try i32 %j
+PLEASE submit a bug report to https://bugs.llvm.org/ and include the crash backtrace.
+Stack dump:
+0.	Program arguments: opt -o Puzzle/Puzzle.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ../build/SPGVNPRE/LLVMHW2.so -spgvnpre
+1.	Running pass 'Function Pass Manager' on module '<stdin>'.
+2.	Running pass 'SPeculation-based Global Value Numbering/Partial Redundancy Elimination' on function '@Place'
+ #0 0x00005608500dce2c llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:565:22
+ #1 0x00005608500dcee7 PrintStackTraceSignalHandler(void*) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:632:1
+ #2 0x00005608500dab5d llvm::sys::RunSignalHandlers() /home/leozhu/llvm-project/llvm/lib/Support/Signals.cpp:71:20
+ #3 0x00005608500dc778 SignalHandler(int) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:407:1
+ #4 0x00007fcc274853c0 __restore_rt (/lib/x86_64-linux-gnu/libpthread.so.0+0x153c0)
+ #5 0x00007fcc26e758e8 llvm::User::getNumOperands() const (../build/SPGVNPRE/LLVMHW2.so+0xb58e8)
+ #6 0x00007fcc26e6f642 (anonymous namespace)::SPGVNPRE::runOnFunction(llvm::Function&) (../build/SPGVNPRE/LLVMHW2.so+0xaf642)
+ #7 0x000056084f5394fa llvm::FPPassManager::runOnFunction(llvm::Function&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1435:20
+ #8 0x000056084f5397c3 llvm::FPPassManager::runOnModule(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1481:13
+ #9 0x000056084f539c35 (anonymous namespace)::MPPassManager::runOnModule(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1550:20
+#10 0x000056084f534d30 llvm::legacy::PassManagerImpl::run(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:541:13
+#11 0x000056084f53a50b llvm::legacy::PassManager::run(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1678:1
+#12 0x000056084ce99a88 main /home/leozhu/llvm-project/llvm/tools/opt/opt.cpp:997:15
+#13 0x00007fcc26f050b3 __libc_start_main /build/glibc-eX1tMB/glibc-2.31/csu/../csu/libc-start.c:342:3
+#14 0x000056084ce5b83e _start (/usr/local/bin/opt+0x1dca83e)
+single.sh: line 50: 267025 Segmentation fault      (core dumped) opt -o ${1}/${1}.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ${PATH_MYPASS} ${NAME_MYPASS} < ${1}/${1}_reg.bc > /dev/null
+single.sh: line 52: Puzzle/Puzzle.pre.bc: No such file or directory
+opt: Puzzle/Puzzle.pre.bc: error: Could not open input file: No such file or directory
+single.sh: line 66: Puzzle/Puzzle_final.bc: No such file or directory

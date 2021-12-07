@@ -41,7 +41,7 @@ llvm-profdata merge -output=pgo.profdata default.profraw
 
 opt -dot-cfg < ${1}/${1}_reg.bc > /dev/null
 
-dot -Tpng .main.dot -o ${1}/${1}_reg.png
+dot -Tpng .${1}.dot -o ${1}/${1}_reg.png
 
 
 # Prepare input to run
@@ -51,7 +51,7 @@ opt -o ${1}/${1}.pre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load
 
 opt -dot-cfg < ${1}/${1}.pre.bc > /dev/null
 
-dot -Tpng .main.dot -o ${1}/${1}_pre.png
+dot -Tpng .${1}.dot -o ${1}/${1}_pre.png
 
 # echo -e "\n\n\n2. Result for pre" >> ${TIME_MEASURE}
 # echo -e "\n\n   compile" >> ${TIME_MEASURE}
@@ -65,7 +65,7 @@ opt -dce ${1}/${1}.pre.bc -o ${1}/${1}_final.bc
 
 opt -dot-cfg < ${1}/${1}_final.bc > /dev/null
 
-dot -Tpng .main.dot -o ${1}/${1}_final.png
+dot -Tpng .${1}.dot -o ${1}/${1}_final.png
 # echo -e "\n\n\n3. Result for final" >> ${TIME_MEASURE}
 # echo -e "\n\n   compile" >> ${TIME_MEASURE}
 # { time clang ${1}_final.bc -o ${1}_final; } 2>> ${TIME_MEASURE}

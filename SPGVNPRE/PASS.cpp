@@ -1948,10 +1948,26 @@ namespace{
         Instruction* I2 = &*it2;
         if(isa<PHINode>(I2)){
           PHINode* phi = cast<PHINode>(I2);
-          if(revNewValue.find(I2)!=revNewValue.end() && !VRStack[revNewValue[I2]].empty()){
-            phi->addIncoming(VRStack[revNewValue[I2]].top(), bb);
-            errs() << *phi << "\n";
+          if(revNewValue.find(I2)!=revNewValue.end()){
+            if( !VRStack[revNewValue[I2]].empty()){
+              phi->addIncoming(VRStack[revNewValue[I2]].top(), bb);
+              errs() << *phi << "\n";
+            }
+          }
+          else{
+            for(int i=0; i < phi->getNumOperands(); i++){
+              if(isa<Instruction>(phi->getOperand(i))){
+                Instruction* op = cast<Instruction>(phi->getOperand(i));
+                errs() << *op <<"\n";
+                if(VN.exists(op) && VRStack.find(VN.lookup(op))!=VRStack.end()){
+                  if(!VRStack[VN.lookup(op)].empty()){
 
+                    if(phi->getIncomingValueForBlock(bb) == op)
+                      phi->replaceUsesOfWith(op, VRStack[VN.lookup(op)].top());
+                  }
+                }
+              }
+            }
           }
         }
 
@@ -2108,16 +2124,16 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     errs() << *newBB << "\n";
   }
 
-  for(auto it : newValueSets){
-    if(!it.second.empty()){
+  // for(auto it : newValueSets){
+  //   if(!it.second.empty()){
       
-      Instruction* newI = new AllocaInst(it.second[0]->getType(), 0, "nullalloc"+std::to_string(it.first), 
-        F.getEntryBlock().getTerminator());
-      Instruction* newload = new LoadInst(it.second[0]->getType(), newI, "nullLoad"+std::to_string(it.first), F.getEntryBlock().getTerminator());
+  //     Instruction* newI = new AllocaInst(it.second[0]->getType(), 0, "nullalloc"+std::to_string(it.first), 
+  //       F.getEntryBlock().getTerminator());
+  //     Instruction* newload = new LoadInst(it.second[0]->getType(), newI, "nullLoad"+std::to_string(it.first), F.getEntryBlock().getTerminator());
 
-      newValueSets[it.first].push_back(newload);
-    }
-  }
+  //     newValueSets[it.first].push_back(newload);
+  //   }
+  // }
 
   // // Phase 4: Replace use with new inserted value
   // step 1: compute dominance frontier
@@ -2149,7 +2165,7 @@ bool SPGVNPRE::runOnFunction(Function &F) {
 
       for(auto BBd : Dfrontier[definedBlock]){
         
-        if(hasInserted.find(BBd)==hasInserted.end()){
+        if(pantiValueSets[valueNumber].find(BBd)!=pantiValueSets[valueNumber].end() && hasInserted.find(BBd)==hasInserted.end()){
           PHINode* newPhi = PHINode::Create(newDefined[i]->getType(), 2, "NewPhi_"+newDefined[i]->getName(), 
               &*BBd->getFirstInsertionPt());
           newDefined.push_back(newPhi);

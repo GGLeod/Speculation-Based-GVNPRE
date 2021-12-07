@@ -1,0 +1,25 @@
+digraph "CFG for 'licm' function" {
+	label="CFG for 'licm' function";
+
+	Node0x5606335f8640 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{entry:\l  br label %entry.split\l}"];
+	Node0x5606335f8640 -> Node0x5606336093b0;
+	Node0x5606336093b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{entry.split:                                      \l  %OptInsert_add = add nsw i32 %a, %b\l  br label %for.cond\l}"];
+	Node0x5606336093b0 -> Node0x560633609400;
+	Node0x560633609400 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body.split, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x560633609400:s0 -> Node0x560633609450;
+	Node0x560633609400:s1 -> Node0x560633609630;
+	Node0x560633609450 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body.split:                                   \l  %OptInsert_rem = srem i32 %i.0, 10\l  %OptInsert_inc = add nsw i32 %i.0, 1\l  br label %for.body\l}"];
+	Node0x560633609450 -> Node0x5606336094a0;
+	Node0x5606336094a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body:                                         \l  %cmp1 = icmp ne i32 %OptInsert_rem, 1\l  br i1 %cmp1, label %if.then, label %if.else\l|{<s0>T|<s1>F}}"];
+	Node0x5606336094a0:s0 -> Node0x5606336094f0;
+	Node0x5606336094a0:s1 -> Node0x560633609540;
+	Node0x5606336094f0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.then:                                          \l  br label %if.end\l}"];
+	Node0x5606336094f0 -> Node0x560633609590;
+	Node0x560633609540 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.else:                                          \l  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3\l... x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add)\l  br label %if.end\l}"];
+	Node0x560633609540 -> Node0x560633609590;
+	Node0x560633609590 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.end:                                           \l  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8],\l... [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add)\l  br label %for.inc\l}"];
+	Node0x560633609590 -> Node0x5606336095e0;
+	Node0x5606336095e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.inc:                                          \l  br label %for.cond, !llvm.loop !31\l}"];
+	Node0x5606336095e0 -> Node0x560633609400;
+	Node0x560633609630 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{for.end:                                          \l  ret void\l}"];
+}

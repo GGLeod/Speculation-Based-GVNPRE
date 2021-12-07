@@ -1,0 +1,18 @@
+digraph "CFG for 'Queens' function" {
+	label="CFG for 'Queens' function";
+
+	Node0x55c92b7f1900 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{entry:\l  br label %entry.split\l}"];
+	Node0x55c92b7f1900 -> Node0x55c92b7ed5b0;
+	Node0x55c92b7ed5b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{entry.split:                                      \l  %OptInsert_add = add nsw i32 %run, 1\l  br label %for.cond\l}"];
+	Node0x55c92b7ed5b0 -> Node0x55c92b7ed600;
+	Node0x55c92b7ed600 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %i.0 = phi i32 [ 1, %entry.split ], [ %inc, %for.inc ]\l  %cmp = icmp sle i32 %i.0, 50\l  br i1 %cmp, label %for.body.split, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x55c92b7ed600:s0 -> Node0x55c92b7ed650;
+	Node0x55c92b7ed600:s1 -> Node0x55c92b7ed740;
+	Node0x55c92b7ed650 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body.split:                                   \l  br label %for.body\l}"];
+	Node0x55c92b7ed650 -> Node0x55c92b7ed6a0;
+	Node0x55c92b7ed6a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body:                                         \l  call void @Doit()\l  br label %for.inc\l}"];
+	Node0x55c92b7ed6a0 -> Node0x55c92b7ed6f0;
+	Node0x55c92b7ed6f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.inc:                                          \l  %inc = add nsw i32 %i.0, 1\l  br label %for.cond, !llvm.loop !31\l}"];
+	Node0x55c92b7ed6f0 -> Node0x55c92b7ed600;
+	Node0x55c92b7ed740 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{for.end:                                          \l  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4\l... x i8]* @.str.1, i64 0, i64 0), i32 %OptInsert_add)\l  ret void\l}"];
+}

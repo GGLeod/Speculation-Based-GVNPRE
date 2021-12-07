@@ -1,0 +1,19 @@
+digraph "CFG for 'Remove' function" {
+	label="CFG for 'Remove' function";
+
+	Node0x5654d0fc3000 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{entry:\l  br label %for.cond\l}"];
+	Node0x5654d0fc3000 -> Node0x5654d0fc5590;
+	Node0x5654d0fc5590 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %k.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]\l  %idxprom = sext i32 %i to i64\l  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* @piecemax, i64 0,\l... i64 %idxprom\l  %0 = load i32, i32* %arrayidx, align 4\l  %cmp = icmp sle i32 %k.0, %0\l  br i1 %cmp, label %for.body, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x5654d0fc5590:s0 -> Node0x5654d0fc55e0;
+	Node0x5654d0fc5590:s1 -> Node0x5654d0fc5720;
+	Node0x5654d0fc55e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body:                                         \l  %idxprom1 = sext i32 %i to i64\l  %arrayidx2 = getelementptr inbounds [13 x [512 x i32]], [13 x [512 x i32]]*\l... @p, i64 0, i64 %idxprom1\l  %idxprom3 = sext i32 %k.0 to i64\l  %arrayidx4 = getelementptr inbounds [512 x i32], [512 x i32]* %arrayidx2,\l... i64 0, i64 %idxprom3\l  %1 = load i32, i32* %arrayidx4, align 4\l  %tobool = icmp ne i32 %1, 0\l  br i1 %tobool, label %if.then, label %if.end\l|{<s0>T|<s1>F}}"];
+	Node0x5654d0fc55e0:s0 -> Node0x5654d0fc5630;
+	Node0x5654d0fc55e0:s1 -> Node0x5654d0fc5680;
+	Node0x5654d0fc5630 [shape=record,color="#b70d28ff", style=filled, fillcolor="#d6524470",label="{if.then:                                          \l  %add = add nsw i32 %j, %k.0\l  %idxprom5 = sext i32 %add to i64\l  %arrayidx6 = getelementptr inbounds [512 x i32], [512 x i32]* @puzzl, i64 0,\l... i64 %idxprom5\l  store i32 0, i32* %arrayidx6, align 4\l  br label %if.end\l}"];
+	Node0x5654d0fc5630 -> Node0x5654d0fc5680;
+	Node0x5654d0fc5680 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.end:                                           \l  br label %for.inc\l}"];
+	Node0x5654d0fc5680 -> Node0x5654d0fc56d0;
+	Node0x5654d0fc56d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.inc:                                          \l  %inc = add nsw i32 %k.0, 1\l  br label %for.cond, !llvm.loop !2\l}"];
+	Node0x5654d0fc56d0 -> Node0x5654d0fc5590;
+	Node0x5654d0fc5720 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{for.end:                                          \l  %idxprom7 = sext i32 %i to i64\l  %arrayidx8 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0,\l... i64 %idxprom7\l  %2 = load i32, i32* %arrayidx8, align 4\l  %idxprom9 = sext i32 %2 to i64\l  %arrayidx10 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64\l... 0, i64 %idxprom9\l  %3 = load i32, i32* %arrayidx10, align 4\l  %add11 = add nsw i32 %3, 1\l  %idxprom12 = sext i32 %i to i64\l  %arrayidx13 = getelementptr inbounds [13 x i32], [13 x i32]* @class, i64 0,\l... i64 %idxprom12\l  %4 = load i32, i32* %arrayidx13, align 4\l  %idxprom14 = sext i32 %4 to i64\l  %arrayidx15 = getelementptr inbounds [4 x i32], [4 x i32]* @piececount, i64\l... 0, i64 %idxprom14\l  store i32 %add11, i32* %arrayidx15, align 4\l  ret void\l}"];
+}
