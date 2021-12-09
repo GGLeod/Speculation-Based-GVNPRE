@@ -6,13 +6,71 @@
 
    compile
 
-real	0m0.165s
-user	0m0.127s
-sys	0m0.036s
+real	0m0.202s
+user	0m0.101s
+sys	0m0.043s
 
 
    run
+./single.sh: line 38: ../test/Quicksort.in: No such file or directory
 
-real	0m0.089s
+real	0m0.003s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+2. Result for pre
+
+
+   compile
+
+real	0m0.150s
 user	0m0.084s
+sys	0m0.053s
+
+
+   run
+./single.sh: line 60: ../test/Quicksort.in: No such file or directory
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+3. Result for final
+
+
+   compile
+
+real	0m0.209s
+user	0m0.096s
+sys	0m0.042s
+
+
+   run
+./single.sh: line 73: ../test/Quicksort.in: No such file or directory
+
+real	0m0.009s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+4. Result for merge
+
+
+   compile
+
+real	0m0.215s
+user	0m0.090s
+sys	0m0.046s
+
+
+   run
+./single.sh: line 85: ../test/Quicksort.in: No such file or directory
+
+real	0m0.011s
+user	0m0.001s
 sys	0m0.000s

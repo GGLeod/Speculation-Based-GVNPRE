@@ -6,16 +6,17 @@
 
    compile
 
-real	0m0.091s
-user	0m0.061s
-sys	0m0.030s
+real	0m0.203s
+user	0m0.115s
+sys	0m0.031s
 
 
    run
+./single.sh: line 38: ../test/Perm.in: No such file or directory
 
-real	0m0.035s
-user	0m0.031s
-sys	0m0.004s
+real	0m0.010s
+user	0m0.001s
+sys	0m0.000s
 
 
 
@@ -23,19 +24,17 @@ sys	0m0.004s
 
 
    compile
-clang-12: error: no such file or directory: 'Perm.pre.bc'
-clang-12: error: no input files
 
-real	0m0.028s
-user	0m0.016s
-sys	0m0.012s
+real	0m0.183s
+user	0m0.085s
+sys	0m0.055s
 
 
    run
-run.sh: line 60: ./Perm_pre: No such file or directory
+./single.sh: line 60: ../test/Perm.in: No such file or directory
 
-real	0m0.000s
-user	0m0.000s
+real	0m0.003s
+user	0m0.001s
 sys	0m0.000s
 
 
@@ -44,17 +43,34 @@ sys	0m0.000s
 
 
    compile
-clang-12: error: no such file or directory: 'Perm_final.bc'
-clang-12: error: no input files
 
-real	0m0.041s
-user	0m0.024s
-sys	0m0.016s
+real	0m0.233s
+user	0m0.083s
+sys	0m0.051s
 
 
    run
-run.sh: line 73: ./Perm_final: No such file or directory
+./single.sh: line 73: ../test/Perm.in: No such file or directory
 
-real	0m0.000s
-user	0m0.000s
+real	0m0.006s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+4. Result for merge
+
+
+   compile
+
+real	0m0.158s
+user	0m0.097s
+sys	0m0.034s
+
+
+   run
+./single.sh: line 85: ../test/Perm.in: No such file or directory
+
+real	0m0.003s
+user	0m0.001s
 sys	0m0.000s
