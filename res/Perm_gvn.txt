@@ -1,0 +1,73 @@
+
+
+
+1. Result for reg
+
+
+   compile
+
+real	0m0.435s
+user	0m0.088s
+sys	0m0.081s
+./run.sh: line 37: ../test/Perm.in: No such file or directory
+
+real	0m0.021s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+2. Result for pre
+
+
+   compile
+
+real	0m0.184s
+user	0m0.098s
+sys	0m0.032s
+
+
+   run
+./run.sh: line 59: ../test/Perm.in: No such file or directory
+
+real	0m0.010s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+3. Result for final
+
+
+   compile
+
+real	0m0.168s
+user	0m0.091s
+sys	0m0.036s
+
+
+   run
+./run.sh: line 73: ../test/Perm.in: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+
+4. Result for merge
+
+
+   compile
+
+real	0m0.201s
+user	0m0.086s
+sys	0m0.044s
+
+
+   run
+./run.sh: line 85: ../test/Perm.in: No such file or directory
+
+real	0m0.011s
+user	0m0.001s
+sys	0m0.000s
