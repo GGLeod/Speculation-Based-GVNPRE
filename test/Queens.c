@@ -153,12 +153,12 @@ void Doit () {
 }
 void Queens (int run) {
     int i;
-    for ( i = 1; i <= 50; i++ ) Doit();
+    for ( i = 1; i <= 500; i++ ) Doit();
 	 printf("%d\n", run + 1);
 }
 int main()
 {
 	int i;
-	for (i = 0; i < 100; i++) Queens(i);
+	for (i = 0; i < 1000; i++) Queens(i);
 	return 0;
 }

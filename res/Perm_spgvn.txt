@@ -6,36 +6,36 @@
 
    compile
 
-real	0m0.203s
-user	0m0.115s
-sys	0m0.031s
+real	0m0.081s
+user	0m0.051s
+sys	0m0.030s
 
 
    run
-./single.sh: line 38: ../test/Perm.in: No such file or directory
 
-real	0m0.010s
-user	0m0.001s
-sys	0m0.000s
+real	0m3.637s
+user	0m3.623s
+sys	0m0.008s
 
 
 
 2. Result for pre
 
+real	0m2.733s
+user	0m2.725s
+sys	0m0.008s
 
-   compile
 
-real	0m0.183s
-user	0m0.085s
-sys	0m0.055s
+
+2. Result for spre
 
 
    run
-./single.sh: line 60: ../test/Perm.in: No such file or directory
+lli: Perm/Perm.spre.bc: error: Could not open input file: No such file or directory
 
-real	0m0.003s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.011s
+user	0m0.005s
+sys	0m0.005s
 
 
 
@@ -44,17 +44,16 @@ sys	0m0.000s
 
    compile
 
-real	0m0.233s
-user	0m0.083s
+real	0m0.185s
+user	0m0.073s
 sys	0m0.051s
 
 
    run
-./single.sh: line 73: ../test/Perm.in: No such file or directory
 
-real	0m0.006s
-user	0m0.001s
-sys	0m0.000s
+real	0m2.776s
+user	0m2.764s
+sys	0m0.012s
 
 
 
@@ -63,14 +62,13 @@ sys	0m0.000s
 
    compile
 
-real	0m0.158s
-user	0m0.097s
-sys	0m0.034s
+real	0m0.101s
+user	0m0.062s
+sys	0m0.039s
 
 
    run
-./single.sh: line 85: ../test/Perm.in: No such file or directory
 
-real	0m0.003s
-user	0m0.001s
-sys	0m0.000s
+real	0m2.709s
+user	0m2.696s
+sys	0m0.012s

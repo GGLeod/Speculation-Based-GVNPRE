@@ -6,36 +6,35 @@
 
    compile
 
-real	0m0.202s
-user	0m0.101s
-sys	0m0.043s
+real	0m0.082s
+user	0m0.048s
+sys	0m0.034s
 
 
    run
-./single.sh: line 38: ../test/Quicksort.in: No such file or directory
 
-real	0m0.003s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.695s
+user	0m0.681s
+sys	0m0.012s
 
 
 
 2. Result for pre
 
+real	0m0.694s
+user	0m0.680s
+sys	0m0.012s
 
-   compile
 
-real	0m0.150s
-user	0m0.084s
-sys	0m0.053s
+
+2. Result for spre
 
 
    run
-./single.sh: line 60: ../test/Quicksort.in: No such file or directory
 
-real	0m0.003s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.236s
+user	0m0.224s
+sys	0m0.012s
 
 
 
@@ -44,17 +43,16 @@ sys	0m0.000s
 
    compile
 
-real	0m0.209s
-user	0m0.096s
-sys	0m0.042s
+real	0m0.110s
+user	0m0.073s
+sys	0m0.037s
 
 
    run
-./single.sh: line 73: ../test/Quicksort.in: No such file or directory
 
-real	0m0.009s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.230s
+user	0m0.226s
+sys	0m0.004s
 
 
 
@@ -63,14 +61,13 @@ sys	0m0.000s
 
    compile
 
-real	0m0.215s
-user	0m0.090s
-sys	0m0.046s
+real	0m0.111s
+user	0m0.070s
+sys	0m0.041s
 
 
    run
-./single.sh: line 85: ../test/Quicksort.in: No such file or directory
 
-real	0m0.011s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.275s
+user	0m0.267s
+sys	0m0.008s

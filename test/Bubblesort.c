@@ -41,20 +41,20 @@ type */
 
 void Bubblesort(int run) {
 	int i, j;
-	unsigned int sortlist[500];
+	unsigned int sortlist[5000];
 
 
 	unsigned int littlest = RAND_MAX;
 	unsigned int biggest = 0;
 
-	for(int i=0; i<500; i++){
+	for(int i=0; i<5000; i++){
 		sortlist[i] = rand();
 
 		littlest = littlest < sortlist[i] ? littlest : sortlist[i];
 		biggest = biggest < sortlist[i] ? sortlist[i] : biggest;
 	}
 
-	int top = 499;
+	int top = 4999;
 	
 	while ( top>0 ) {
 		
@@ -71,7 +71,7 @@ void Bubblesort(int run) {
 		
 		top=top-1;
 	}
-	if ( (sortlist[0] != littlest) || (sortlist[499] != biggest) )
+	if ( (sortlist[0] != littlest) || (sortlist[4999] != biggest) )
 	printf ( "Error3 in Bubble.\n");
 	printf("%d\n", sortlist[run + 1]);
 }

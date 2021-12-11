@@ -68,20 +68,20 @@ void Quicksort( int a[], int l, int r) {
 	if ( i<r ) Quicksort(a,i,r);
 }
 void Quick (int run) {
-    unsigned int sortlist[500];
+    unsigned int sortlist[50000];
 
 
 	unsigned int littlest = RAND_MAX;
 	unsigned int biggest = 0;
 
-	for(int i=0; i<500; i++){
+	for(int i=0; i<50000; i++){
 		sortlist[i] = rand();
 
 		littlest = littlest < sortlist[i] ? littlest : sortlist[i];
 		biggest = biggest < sortlist[i] ? sortlist[i] : biggest;
 	}
-    Quicksort(sortlist,1,499);
-    if ( (sortlist[1] != littlest) || (sortlist[499] != biggest) )	printf ( " Error in Quick.\n");
+    Quicksort(sortlist,1,49999);
+    if ( (sortlist[1] != littlest) || (sortlist[49999] != biggest) )	printf ( " Error in Quick.\n");
 	  printf("%d\n", sortlist[run + 1]);
 }
 int main()

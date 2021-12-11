@@ -6,34 +6,35 @@
 
    compile
 
-real	0m0.107s
-user	0m0.061s
-sys	0m0.045s
+real	0m0.088s
+user	0m0.044s
+sys	0m0.044s
 
 
    run
 
-real	0m0.001s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.044s
+user	0m0.032s
+sys	0m0.012s
 
 
 
 2. Result for pre
 
+real	0m0.077s
+user	0m0.059s
+sys	0m0.013s
 
-   compile
 
-real	0m0.116s
-user	0m0.078s
-sys	0m0.028s
+
+2. Result for spre
 
 
    run
 
-real	0m0.001s
-user	0m0.000s
-sys	0m0.001s
+real	0m0.068s
+user	0m0.056s
+sys	0m0.012s
 
 
 
@@ -42,13 +43,31 @@ sys	0m0.001s
 
    compile
 
-real	0m0.101s
-user	0m0.032s
-sys	0m0.067s
+real	0m0.135s
+user	0m0.083s
+sys	0m0.050s
 
 
    run
 
-real	0m0.001s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.089s
+user	0m0.078s
+sys	0m0.008s
+
+
+
+4. Result for merge
+
+
+   compile
+
+real	0m0.109s
+user	0m0.054s
+sys	0m0.052s
+
+
+   run
+
+real	0m0.072s
+user	0m0.064s
+sys	0m0.008s

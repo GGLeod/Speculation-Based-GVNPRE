@@ -1621,7 +1621,7 @@ namespace{
     public:
 
     ReducedFlowGraph(vector<pair<BasicBlock*, BasicBlock*>> essentialEdges, 
-      BranchProbabilityInfo &bpi, BlockFrequencyInfo &bfi){
+      BranchProbabilityInfo &bpi, BlockFrequencyInfo &bfi, BasicBlock* entry){
 
       int nodeNum = 0;
       for(auto edge : essentialEdges){
@@ -1643,11 +1643,12 @@ namespace{
       for(auto edge : essentialEdges){
         BasicBlock* start = edge.first;
         BasicBlock* dest = edge.second;
-        uint64_t blockFreq = bfi.getBlockFreq(start).getFrequency();
+        uint64_t blockFreq = bfi.getBlockFreq(start).getFrequency() / bfi.getBlockFreq(entry).getFrequency();
         double branchProb =  bpi.getEdgeProbability(start,dest).getNumerator() 
           / (double)bpi.getEdgeProbability(start,dest).getDenominator();
 
-        errs() << start->getName() << " to " << dest->getName() << ": " << blockFreq << " " << branchProb << "\n";
+        errs() << BBtoNode[start] << " " << start->getName() << " to " 
+        << BBtoNode[dest] << " " << dest->getName() << ": " << blockFreq << " " << branchProb << "\n";
 
         graph[BBtoNode[start]][BBtoNode[dest]] = blockFreq * branchProb + 1;
       }
@@ -1783,7 +1784,7 @@ namespace{
             // Find minimum residual capacity of the edhes along the
             // path filled by BFS. Or we can say find the maximum flow
             // through the path found.
-            long long path_flow = LONG_LONG_MAX;
+            long long path_flow = INT_MAX;
             for (v=t; v!=s; v=parent[v])
             {
                 u = parent[v];
@@ -1845,6 +1846,7 @@ namespace{
         BasicBlock* pred = *it;
         if(avOutBB.find(pred)==avOutBB.end()){
           essentialEdge.push_back(pair<BasicBlock*, BasicBlock*>(pred, bb));
+          errs() << "essentail: " << pred->getName() <<" " << bb->getName() <<"\n";
         }
       }
     }
@@ -2068,7 +2070,7 @@ bool SPGVNPRE::runOnFunction(Function &F) {
     
     errs() << "valunumber: " << i << "\n";
     
-    ReducedFlowGraph RFG(essentialEdges,bpi, bfi);
+    ReducedFlowGraph RFG(essentialEdges,bpi, bfi, &F.getEntryBlock());
     vector<pair<BasicBlock*, BasicBlock*>> optimalInsertSet = RFG.minCut();
     for(auto edge : optimalInsertSet){
       insertSets[edge].push_back(i);

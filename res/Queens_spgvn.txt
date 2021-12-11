@@ -6,36 +6,35 @@
 
    compile
 
-real	0m0.199s
-user	0m0.122s
-sys	0m0.041s
+real	0m0.089s
+user	0m0.053s
+sys	0m0.036s
 
 
    run
-./single.sh: line 38: ../test/Queens.in: No such file or directory
 
-real	0m0.007s
-user	0m0.001s
-sys	0m0.000s
+real	0m1.763s
+user	0m1.741s
+sys	0m0.016s
 
 
 
 2. Result for pre
 
+real	0m1.144s
+user	0m1.130s
+sys	0m0.012s
 
-   compile
 
-real	0m0.183s
-user	0m0.121s
-sys	0m0.029s
+
+2. Result for spre
 
 
    run
-./single.sh: line 60: ../test/Queens.in: No such file or directory
 
-real	0m0.009s
-user	0m0.001s
-sys	0m0.000s
+real	0m1.384s
+user	0m1.366s
+sys	0m0.016s
 
 
 
@@ -44,17 +43,16 @@ sys	0m0.000s
 
    compile
 
-real	0m0.210s
-user	0m0.099s
-sys	0m0.050s
+real	0m0.119s
+user	0m0.095s
+sys	0m0.023s
 
 
    run
-./single.sh: line 73: ../test/Queens.in: No such file or directory
 
-real	0m0.024s
-user	0m0.000s
-sys	0m0.001s
+real	0m1.205s
+user	0m1.188s
+sys	0m0.016s
 
 
 
@@ -63,14 +61,13 @@ sys	0m0.001s
 
    compile
 
-real	0m0.197s
-user	0m0.082s
-sys	0m0.068s
+real	0m0.112s
+user	0m0.074s
+sys	0m0.038s
 
 
    run
-./single.sh: line 85: ../test/Queens.in: No such file or directory
 
-real	0m0.008s
-user	0m0.001s
-sys	0m0.000s
+real	0m1.134s
+user	0m1.122s
+sys	0m0.012s

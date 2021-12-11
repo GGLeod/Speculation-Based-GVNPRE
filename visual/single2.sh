@@ -35,7 +35,7 @@ opt -pgo-instr-gen -instrprof ${1}/${1}_reg.bc -o ${1}/${1}.prof.bc
 clang -fprofile-instr-generate ${1}/${1}.prof.bc -o ${1}/${1}.prof;
 # # Collect profiling data
 # echo -e "\n\n   run" >> ${TIME_MEASURE}
-# { time ./${1}.prof < ../test/${1}.in; } 2>> ${TIME_MEASURE}
+${1}/${1}.prof
 # Translate raw profiling data into LLVM data format
 llvm-profdata merge -output=pgo.profdata default.profraw
 

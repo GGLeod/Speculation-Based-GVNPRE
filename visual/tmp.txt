@@ -1,44 +1,19 @@
-Writing '.classic.dot'...
+33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333Writing '.licm.dot'...
 Writing '.main.dot'...
-warning: <stdin>: Function control flow change detected (hash mismatch) main Hash = 742261418966908927
-classic begin
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %rem = srem i32 %i.0, 100
-  %add2 = add nsw i32 %add, 1
-  %add7 = add nsw i32 %add, 1
+licm begin
+  %rem = srem i32 %i.0, 10
+  %add2 = add nsw i32 %a, %b
   %inc = add nsw i32 %i.0, 1
-  %add9 = add nsw i32 %add, %div
-  %add3 = add nsw i32 %add, %div
+  %add = add nsw i32 %a, %b
 changed
 for.inc
-if.end11
-if.then5
-if.else8
 if.end
-new
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
 if.then
-new
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  %add = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %add, 1
 if.else
-new
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %add3 = add nsw i32 %add, %div
 for.body
 new
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %rem = srem i32 %i.0, 100
+  %rem = srem i32 %i.0, 10
 for.end
 for.cond
 new
@@ -50,257 +25,170 @@ changed
 for.inc
 new
   %inc = add nsw i32 %i.0, 1
-if.end11
-new
-  %inc = add nsw i32 %i.0, 1
-if.then5
-new
-  %inc = add nsw i32 %i.0, 1
-  %add7 = add nsw i32 %add, 1
-if.else8
-new
-  %inc = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %add9 = add nsw i32 %add, %div
 if.end
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
 new
   %inc = add nsw i32 %i.0, 1
-  %add7 = add nsw i32 %add, 1
-  %div = sdiv i32 %i.0, 2
-  %add9 = add nsw i32 %add, %div
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
+  %add2 = add nsw i32 %a, %b
 if.then
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  %add = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %add, 1
 new
   %inc = add nsw i32 %i.0, 1
-  %add7 = add nsw i32 %add, 1
-  %div = sdiv i32 %i.0, 2
-  %add9 = add nsw i32 %add, %div
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
+  %add2 = add nsw i32 %a, %b
 if.else
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %add3 = add nsw i32 %add, %div
 new
   %inc = add nsw i32 %i.0, 1
-  %add7 = add nsw i32 %add, 1
-  %div = sdiv i32 %i.0, 2
-  %add9 = add nsw i32 %add, %div
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
+  %add2 = add nsw i32 %a, %b
 for.body
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %rem = srem i32 %i.0, 100
+  %rem = srem i32 %i.0, 10
+new
+  %inc = add nsw i32 %i.0, 1
+  %add2 = add nsw i32 %a, %b
+  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+  %rem = srem i32 %i.0, 10
 for.cond
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+new
+  %add2 = add nsw i32 %a, %b
+  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
 entry
+i32 0
+new
+  %add2 = add nsw i32 %a, %b
 i32 0
 changed
 for.inc
   %inc = add nsw i32 %i.0, 1
-if.end11
+new
+  %add2 = add nsw i32 %a, %b
   %inc = add nsw i32 %i.0, 1
-if.then5
-  %inc = add nsw i32 %i.0, 1
-  %add7 = add nsw i32 %add, 1
-if.else8
-  %inc = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %add9 = add nsw i32 %add, %div
 if.end
   %inc = add nsw i32 %i.0, 1
-  %add7 = add nsw i32 %add, 1
-  %div = sdiv i32 %i.0, 2
-  %add9 = add nsw i32 %add, %div
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
+  %add2 = add nsw i32 %a, %b
 if.then
   %inc = add nsw i32 %i.0, 1
-  %add7 = add nsw i32 %add, 1
-  %div = sdiv i32 %i.0, 2
-  %add9 = add nsw i32 %add, %div
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
+  %add2 = add nsw i32 %a, %b
 if.else
   %inc = add nsw i32 %i.0, 1
-  %add7 = add nsw i32 %add, 1
-  %div = sdiv i32 %i.0, 2
-  %add9 = add nsw i32 %add, %div
+  %add2 = add nsw i32 %a, %b
+for.body
+  %inc = add nsw i32 %i.0, 1
+  %add2 = add nsw i32 %a, %b
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp4 = icmp sgt i32 %i.0, 90
+  %rem = srem i32 %i.0, 10
+for.cond
+  %add2 = add nsw i32 %a, %b
+  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+entry
+  %add2 = add nsw i32 %a, %b
+i32 0
+changed
+for.inc
+  %add2 = add nsw i32 %a, %b
+  %inc = add nsw i32 %i.0, 1
 avaiableOut for each Basic Block 
-Block: for.end
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-Block: for.cond
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-Block: for.body
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %add = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-8   %rem = srem i32 %i.0, 100
-9   %cmp1 = icmp eq i32 %rem, 1
-Block: entry
-Block: if.else
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %add = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-8   %rem = srem i32 %i.0, 100
-9   %cmp1 = icmp eq i32 %rem, 1
-13   %add3 = add nsw i32 %add, %div
-15   %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add3)
-Block: if.then
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %add = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-8   %rem = srem i32 %i.0, 100
-9   %cmp1 = icmp eq i32 %rem, 1
-10   %add2 = add nsw i32 %add, 1
-Block: if.end
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %add = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-8   %rem = srem i32 %i.0, 100
-9   %cmp1 = icmp eq i32 %rem, 1
-12   %cmp4 = icmp sgt i32 %i.0, 90
-Block: if.else8
-3   %cmp = icmp slt i32 %i.0, 100
-12   %cmp4 = icmp sgt i32 %i.0, 90
-13   %add9 = add nsw i32 %add, %div
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-14   %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add9)
-8   %rem = srem i32 %i.0, 100
-7   %div = sdiv i32 %i.0, 2
-5   %add = add nsw i32 %i.0, 1
-9   %cmp1 = icmp eq i32 %rem, 1
-Block: if.then5
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %add = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-8   %rem = srem i32 %i.0, 100
-9   %cmp1 = icmp eq i32 %rem, 1
-12   %cmp4 = icmp sgt i32 %i.0, 90
-10   %add7 = add nsw i32 %add, 1
 Block: for.inc
 1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
 3   %cmp = icmp slt i32 %i.0, 100
-5   %add = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-8   %rem = srem i32 %i.0, 100
-9   %cmp1 = icmp eq i32 %rem, 1
-12   %cmp4 = icmp sgt i32 %i.0, 90
-Block: if.end11
+5   %rem = srem i32 %i.0, 10
+7   %cmp1 = icmp ne i32 %rem, 1
+10   %add2 = add nsw i32 %a, %b
+11   %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add2)
+12   %inc = add nsw i32 %i.0, 1
+Block: for.end
 1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
 3   %cmp = icmp slt i32 %i.0, 100
-5   %add = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-8   %rem = srem i32 %i.0, 100
-9   %cmp1 = icmp eq i32 %rem, 1
-12   %cmp4 = icmp sgt i32 %i.0, 90
+Block: entry
+Block: for.body
+1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %cmp = icmp slt i32 %i.0, 100
+5   %rem = srem i32 %i.0, 10
+7   %cmp1 = icmp ne i32 %rem, 1
+Block: for.cond
+1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %cmp = icmp slt i32 %i.0, 100
+Block: if.else
+1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %cmp = icmp slt i32 %i.0, 100
+5   %rem = srem i32 %i.0, 10
+7   %cmp1 = icmp ne i32 %rem, 1
+10   %add = add nsw i32 %a, %b
+13   %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add)
+Block: if.then
+1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %cmp = icmp slt i32 %i.0, 100
+5   %rem = srem i32 %i.0, 10
+7   %cmp1 = icmp ne i32 %rem, 1
+Block: if.end
+1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+3   %cmp = icmp slt i32 %i.0, 100
+5   %rem = srem i32 %i.0, 10
+7   %cmp1 = icmp ne i32 %rem, 1
+10   %add2 = add nsw i32 %a, %b
+11   %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add2)
 anticipateIn for each Basic Block 
-Block: for.end
-Block: for.cond
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-Block: for.body
-5   %inc = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-12   %cmp4 = icmp sgt i32 %i.0, 90
-8   %rem = srem i32 %i.0, 100
-Block: entry
-16 i32 0
-Block: if.else
-5   %inc = add nsw i32 %i.0, 1
-10   %add7 = add nsw i32 %add, 1
-7   %div = sdiv i32 %i.0, 2
-13   %add9 = add nsw i32 %add, %div
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-12   %cmp4 = icmp sgt i32 %i.0, 90
-Block: if.then
-5   %inc = add nsw i32 %i.0, 1
-10   %add7 = add nsw i32 %add, 1
-7   %div = sdiv i32 %i.0, 2
-13   %add9 = add nsw i32 %add, %div
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-12   %cmp4 = icmp sgt i32 %i.0, 90
-Block: if.end
-5   %inc = add nsw i32 %i.0, 1
-10   %add7 = add nsw i32 %add, 1
-7   %div = sdiv i32 %i.0, 2
-13   %add9 = add nsw i32 %add, %div
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-12   %cmp4 = icmp sgt i32 %i.0, 90
-Block: if.else8
-5   %inc = add nsw i32 %i.0, 1
-7   %div = sdiv i32 %i.0, 2
-13   %add9 = add nsw i32 %add, %div
-Block: if.then5
-5   %inc = add nsw i32 %i.0, 1
-10   %add7 = add nsw i32 %add, 1
 Block: for.inc
-5   %inc = add nsw i32 %i.0, 1
-Block: if.end11
-5   %inc = add nsw i32 %i.0, 1
-17
+10   %add2 = add nsw i32 %a, %b
+12   %inc = add nsw i32 %i.0, 1
+Block: for.end
+Block: entry
+10   %add2 = add nsw i32 %a, %b
+14 i32 0
+Block: for.body
+10   %add2 = add nsw i32 %a, %b
+12   %inc = add nsw i32 %i.0, 1
+1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+5   %rem = srem i32 %i.0, 10
+Block: for.cond
+10   %add2 = add nsw i32 %a, %b
+1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
+Block: if.else
+10   %add2 = add nsw i32 %a, %b
+12   %inc = add nsw i32 %i.0, 1
+Block: if.then
+10   %add2 = add nsw i32 %a, %b
+12   %inc = add nsw i32 %i.0, 1
+Block: if.end
+10   %add2 = add nsw i32 %a, %b
+12   %inc = add nsw i32 %i.0, 1
+15
 available out point of each value number0: 
-1: if.end11 for.inc if.then5 if.else8 if.end if.then if.else for.body for.cond for.end 
+1: if.end if.then if.else for.cond for.body for.end for.inc 
 2: 
-3: if.end11 for.inc if.then5 if.else8 if.end if.then if.else for.body for.cond for.end 
+3: if.end if.then if.else for.cond for.body for.end for.inc 
 4: 
-5: if.end11 for.inc if.then5 if.else8 if.end if.then if.else for.body 
+5: if.end if.then if.else for.body for.inc 
 6: 
-7: if.end11 for.inc if.then5 if.else8 if.end if.then if.else for.body 
-8: if.end11 for.inc if.then5 if.else8 if.end if.then if.else for.body 
-9: if.end11 for.inc if.then5 if.else8 if.end if.then if.else for.body 
-10: if.then5 if.then 
-11: 
-12: if.end11 for.inc if.then5 if.else8 if.end 
-13: if.else8 if.else 
-14: if.else8 
-15: if.else 
-16: 
+7: if.end if.then if.else for.body for.inc 
+8: 
+9: 
+10: if.end if.else for.inc 
+11: if.end for.inc 
+12: for.inc 
+13: if.else 
+14: 
 antipate in point of each value number0: 
-1: if.end if.then if.else for.body for.cond 
+1: for.cond for.body 
 2: 
 3: 
 4: 
-5: if.end11 for.inc if.then5 if.else8 if.end if.then if.else for.body 
+5: for.body 
 6: 
-7: if.else8 if.end if.then if.else for.body 
-8: for.body 
+7: 
+8: 
 9: 
-10: if.then5 if.end if.then if.else 
+10: if.end if.then if.else for.cond for.body entry for.inc 
 11: 
-12: if.end if.then if.else for.body 
-13: if.else8 if.end if.then if.else 
-14: 
-15: 
-16: entry 
+12: if.end if.then if.else for.body for.inc 
+13: 
+14: entry 
 valunumber: 0
 0				0				
 0				0				
 min cut from 0 to 1
+essentail: entry for.cond
 valunumber: 1
-entry to for.cond: 8 1.000000e+00
-0				9				0				0				
+0 entry to 1 for.cond: 1 1.000000e+00
+0				2				0				0				
 0				0				0				2147483647				
 2147483647				0				0				0				
 0				0				0				0				
@@ -318,9 +206,10 @@ valunumber: 4
 0				0				
 0				0				
 min cut from 0 to 1
+essentail: for.cond for.body
 valunumber: 5
-for.cond to for.body: 256 9.687500e-01
-0				249				0				0				
+0 for.cond to 1 for.body: 101 9.900990e-01
+0				101				0				0				
 0				0				0				2147483647				
 2147483647				0				0				0				
 0				0				0				0				
@@ -331,157 +220,99 @@ valunumber: 6
 0				0				
 min cut from 0 to 1
 valunumber: 7
-for.cond to for.body: 256 9.687500e-01
-0				249				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.cond - for.body
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 8
-for.cond to for.body: 256 9.687500e-01
-0				249				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.cond - for.body
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 9
 0				0				
 0				0				
 min cut from 0 to 1
+essentail: if.then if.end
+essentail: for.body if.then
+essentail: for.body if.else
+essentail: entry for.cond
+essentail: for.cond for.body
 valunumber: 10
-if.end to if.then5: 248 5.000000e-01
-if.else to if.end: 124 1.000000e+00
-for.body to if.then: 248 5.000000e-01
-for.body to if.else: 248 5.000000e-01
-0				125				0				0				0				0				0				
-0				0				0				0				0				0				2147483647				
-125				0				0				0				0				0				0				
-0				0				125				0				125				0				0				
-0				0				0				0				0				0				2147483647				
-0				0				0				2147483647				0				0				0				
-0				0				0				0				0				0				0				
-min cut from 5 to 6
-for.body - if.else
-for.body - if.then
+0 if.then to 1 if.end: 90 1.000000e+00
+2 for.body to 0 if.then: 100 9.000000e-01
+2 for.body to 3 if.else: 100 1.000000e-01
+4 entry to 5 for.cond: 1 1.000000e+00
+5 for.cond to 2 for.body: 101 9.900990e-01
+0				91				0				0				0				0				0				0				
+0				0				0				0				0				0				0				2147483647				
+90				0				0				11				0				0				0				0				
+0				0				0				0				0				0				0				2147483647				
+0				0				0				0				0				2				0				0				
+0				0				101				0				0				0				0				0				
+0				0				0				0				2147483647				0				0				0				
+0				0				0				0				0				0				0				0				
+min cut from 6 to 7
+entry - for.cond
 valunumber: 11
 0				0				
 0				0				
 min cut from 0 to 1
+essentail: if.else if.end
+essentail: if.then if.end
+essentail: for.body if.then
+essentail: for.body if.else
+essentail: for.cond for.body
+essentail: if.end for.inc
 valunumber: 12
-if.else to if.end: 124 1.000000e+00
-if.then to if.end: 124 1.000000e+00
-for.body to if.then: 248 5.000000e-01
-for.body to if.else: 248 5.000000e-01
-for.cond to for.body: 256 9.687500e-01
-0				125				0				0				0				0				0				
-0				0				0				0				0				0				2147483647				
-0				125				0				0				0				0				0				
-125				0				125				0				0				0				0				
-0				0				0				249				0				0				0				
-0				0				0				0				2147483647				0				0				
-0				0				0				0				0				0				0				
-min cut from 5 to 6
+0 if.else to 1 if.end: 10 1.000000e+00
+2 if.then to 1 if.end: 90 1.000000e+00
+3 for.body to 2 if.then: 100 9.000000e-01
+3 for.body to 0 if.else: 100 1.000000e-01
+4 for.cond to 3 for.body: 101 9.900990e-01
+1 if.end to 5 for.inc: 100 1.000000e+00
+0				11				0				0				0				0				0				0				
+0				0				0				0				0				101				0				0				
+0				91				0				0				0				0				0				0				
+11				0				90				0				0				0				0				0				
+0				0				0				101				0				0				0				0				
+0				0				0				0				0				0				0				2147483647				
+0				0				0				0				2147483647				0				0				0				
+0				0				0				0				0				0				0				0				
+min cut from 6 to 7
 for.cond - for.body
 valunumber: 13
-if.end to if.else8: 248 5.000000e-01
-if.then to if.end: 124 1.000000e+00
-for.body to if.then: 248 5.000000e-01
-for.body to if.else: 248 5.000000e-01
-0				125				0				0				0				0				0				
-0				0				0				0				0				0				2147483647				
-125				0				0				0				0				0				0				
-0				0				125				0				125				0				0				
-0				0				0				0				0				0				2147483647				
-0				0				0				2147483647				0				0				0				
-0				0				0				0				0				0				0				
-min cut from 5 to 6
-for.body - if.then
-for.body - if.else
+0				0				
+0				0				
+min cut from 0 to 1
 valunumber: 14
 0				0				
 0				0				
 min cut from 0 to 1
-valunumber: 15
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 16
-0				0				
-0				0				
-min cut from 0 to 1
-insert into if.then.split
-available
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %rem = srem i32 %i.0, 100
-  %cmp1 = icmp eq i32 %rem, 1
-10 prepared
-try   %add2 = add nsw i32 %add, 1
-13 prepared
-try   %add3 = add nsw i32 %add, %div
-
-if.then.split:                                    ; preds = %for.body
-  %OptInsert_add2 = add nsw i32 %add, 1
-  %OptInsert_add3 = add nsw i32 %add, %div
-  br label %if.then
-
 insert into for.body.split
 available
   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
   %cmp = icmp slt i32 %i.0, 100
 5 prepared
-try   %inc = add nsw i32 %i.0, 1
-7 prepared
-try   %div = sdiv i32 %i.0, 2
-8 prepared
-try   %rem = srem i32 %i.0, 100
+try   %rem = srem i32 %i.0, 10
 12 prepared
-try   %cmp4 = icmp sgt i32 %i.0, 90
+try   %inc = add nsw i32 %i.0, 1
 
 for.body.split:                                   ; preds = %for.cond
+  %OptInsert_rem = srem i32 %i.0, 10
   %OptInsert_inc = add nsw i32 %i.0, 1
-  %OptInsert_div = sdiv i32 %i.0, 2
-  %OptInsert_rem = srem i32 %i.0, 100
-  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
   br label %for.body
-
-insert into if.else.split
-available
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %rem = srem i32 %i.0, 100
-  %cmp1 = icmp eq i32 %rem, 1
-10 prepared
-try   %add2 = add nsw i32 %add, 1
-13 prepared
-try   %add3 = add nsw i32 %add, %div
-
-if.else.split:                                    ; preds = %for.body
-  %OptInsert_add21 = add nsw i32 %add, 1
-  %OptInsert_add32 = add nsw i32 %add, %div
-  br label %if.else
 
 insert into entry.split
 available
 1 prepared
 try   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
+10 prepared
+try   %add2 = add nsw i32 %a, %b
 
 entry.split:                                      ; preds = %entry
+  %OptInsert_add2 = add nsw i32 %a, %b
   br label %for.cond
 
-if.else8 has dominance frontier:
-if.end11 
 if.then has dominance frontier:
-if.end 
-if.then5 has dominance frontier:
-if.end11 
-if.else.split has dominance frontier:
 if.end 
 if.else has dominance frontier:
 if.end 
@@ -491,246 +322,124 @@ for.body has dominance frontier:
 for.cond 
 if.end has dominance frontier:
 for.cond 
-if.end11 has dominance frontier:
-for.cond 
-if.then.split has dominance frontier:
-if.end 
 for.inc has dominance frontier:
 for.cond 
-12 in newValueSet
-  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
-12 in newDefined
-  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
-8 in newValueSet
-  %OptInsert_rem = srem i32 %i.0, 100
-8 in newDefined
-  %OptInsert_rem = srem i32 %i.0, 100
-7 in newValueSet
-  %OptInsert_div = sdiv i32 %i.0, 2
-7 in newDefined
-  %OptInsert_div = sdiv i32 %i.0, 2
-5 in newValueSet
-  %OptInsert_inc = add nsw i32 %i.0, 1
-5 in newDefined
-  %OptInsert_inc = add nsw i32 %i.0, 1
-
-if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add3 = phi i32 
-  %cmp4 = icmp sgt i32 %i.0, 90
-  br i1 %cmp4, label %if.then5, label %if.else8
-13 in newValueSet
-  %OptInsert_add3 = add nsw i32 %add, %div
-  %OptInsert_add32 = add nsw i32 %add, %div
-  %NewPhi_OptInsert_add3 = phi i32 
-13 in newDefined
-  %OptInsert_add3 = add nsw i32 %add, %div
-  %OptInsert_add32 = add nsw i32 %add, %div
-  %NewPhi_OptInsert_add3 = phi i32 
-
-if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add3 = phi i32 
-  %NewPhi_OptInsert_add2 = phi i32 
-  %cmp4 = icmp sgt i32 %i.0, 90
-  br i1 %cmp4, label %if.then5, label %if.else8
 10 in newValueSet
-  %OptInsert_add2 = add nsw i32 %add, 1
-  %OptInsert_add21 = add nsw i32 %add, 1
-  %NewPhi_OptInsert_add2 = phi i32 
+  %OptInsert_add2 = add nsw i32 %a, %b
 10 in newDefined
-  %OptInsert_add2 = add nsw i32 %add, 1
-  %OptInsert_add21 = add nsw i32 %add, 1
-  %NewPhi_OptInsert_add2 = phi i32 
+  %OptInsert_add2 = add nsw i32 %a, %b
+12 in newValueSet
+  %OptInsert_inc = add nsw i32 %i.0, 1
+12 in newDefined
+  %OptInsert_inc = add nsw i32 %i.0, 1
+5 in newValueSet
+  %OptInsert_rem = srem i32 %i.0, 10
+5 in newDefined
+  %OptInsert_rem = srem i32 %i.0, 10
 revNewValue
-10:   %NewPhi_OptInsert_add2 = phi i32 
-10:   %OptInsert_add21 = add nsw i32 %add, 1
-10:   %OptInsert_add2 = add nsw i32 %add, 1
-13:   %NewPhi_OptInsert_add3 = phi i32 
-13:   %OptInsert_add32 = add nsw i32 %add, %div
-13:   %OptInsert_add3 = add nsw i32 %add, %div
-5:   %OptInsert_inc = add nsw i32 %i.0, 1
-7:   %OptInsert_div = sdiv i32 %i.0, 2
-8:   %OptInsert_rem = srem i32 %i.0, 100
-12:   %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
+5:   %OptInsert_rem = srem i32 %i.0, 10
+12:   %OptInsert_inc = add nsw i32 %i.0, 1
+10:   %OptInsert_add2 = add nsw i32 %a, %b
 rename: entry
   br label %entry.split
 fill in phi
 
 entry.split:                                      ; preds = %entry
+  %OptInsert_add2 = add nsw i32 %a, %b
   br label %for.cond
 rename: entry.split
+  %OptInsert_add2 = add nsw i32 %a, %b
   br label %for.cond
 fill in phi
 
 for.cond:                                         ; preds = %for.inc, %entry.split
   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
   %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end
+  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
   %inc = add nsw i32 %i.0, 1
 rename: for.cond
   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
   %cmp = icmp slt i32 %i.0, 100
   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  br i1 %cmp, label %for.body.split, label %for.end
+  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
   %cmp = icmp slt i32 %i.0, 100
 fill in phi
 
 for.body.split:                                   ; preds = %for.cond
+  %OptInsert_rem = srem i32 %i.0, 10
   %OptInsert_inc = add nsw i32 %i.0, 1
-  %OptInsert_div = sdiv i32 %i.0, 2
-  %OptInsert_rem = srem i32 %i.0, 100
-  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
   br label %for.body
 
 for.end:                                          ; preds = %for.cond
   ret void
 rename: for.body.split
+  %OptInsert_rem = srem i32 %i.0, 10
+  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
   %OptInsert_inc = add nsw i32 %i.0, 1
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %OptInsert_div = sdiv i32 %i.0, 2
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %OptInsert_rem = srem i32 %i.0, 100
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
   br label %for.body
 fill in phi
 
 for.body:                                         ; preds = %for.body.split
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %rem = srem i32 %i.0, 100
-  %cmp1 = icmp eq i32 %rem, 1
-  br i1 %cmp1, label %if.then.split, label %if.else.split
+  %rem = srem i32 %i.0, 10
+  %cmp1 = icmp ne i32 %rem, 1
+  br i1 %cmp1, label %if.then, label %if.else, !prof !33
 rename: for.body
-  %add = add nsw i32 %i.0, 1
+  %rem = srem i32 %i.0, 10
   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %div = sdiv i32 %i.0, 2
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 100
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %cmp1 = icmp eq i32 %rem, 1
-  %rem = srem i32 %i.0, 100
-  br i1 %cmp1, label %if.then.split, label %if.else.split
-  %cmp1 = icmp eq i32 %OptInsert_rem, 1
+  %cmp1 = icmp ne i32 %rem, 1
+  %rem = srem i32 %i.0, 10
+  br i1 %cmp1, label %if.then, label %if.else, !prof !33
+  %cmp1 = icmp ne i32 %OptInsert_rem, 1
 fill in phi
 
-if.then.split:                                    ; preds = %for.body
-  %OptInsert_add2 = add nsw i32 %add, 1
-  %OptInsert_add3 = add nsw i32 %add, %div
-  br label %if.then
+if.then:                                          ; preds = %for.body
+  br label %if.end
 
-if.else.split:                                    ; preds = %for.body
-  %OptInsert_add21 = add nsw i32 %add, 1
-  %OptInsert_add32 = add nsw i32 %add, %div
-  br label %if.else
-rename: if.then.split
-  %OptInsert_add2 = add nsw i32 %add, 1
-  %add = add nsw i32 %i.0, 1
-  %OptInsert_add3 = add nsw i32 %add, %div
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  br label %if.then
-fill in phi
-
-if.then:                                          ; preds = %if.then.split
-  %add2 = add nsw i32 %add, 1
+if.else:                                          ; preds = %for.body
+  %add = add nsw i32 %a, %b
+  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add)
   br label %if.end
 rename: if.then
-  %add2 = add nsw i32 %add, 1
-  %add = add nsw i32 %i.0, 1
   br label %if.end
 fill in phi
 
 if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add3 = phi i32 
-  %NewPhi_OptInsert_add2 = phi i32 
-  %cmp4 = icmp sgt i32 %i.0, 90
-  br i1 %cmp4, label %if.then5, label %if.else8
-  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then ]
-  %NewPhi_OptInsert_add2 = phi i32 [ %OptInsert_add2, %if.then ]
+  %add2 = add nsw i32 %a, %b
+  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add2)
+  br label %for.inc
 rename: if.end
-  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then ]
-  %NewPhi_OptInsert_add2 = phi i32 [ %OptInsert_add2, %if.then ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  br i1 %cmp4, label %if.then5, label %if.else8
-  %cmp4 = icmp sgt i32 %i.0, 90
-fill in phi
-
-if.then5:                                         ; preds = %if.end
-  %add7 = add nsw i32 %add, 1
-  br label %if.end11
-
-if.else8:                                         ; preds = %if.end
-  %add9 = add nsw i32 %add, %div
-  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add9)
-  br label %if.end11
-rename: if.then5
-  %add7 = add nsw i32 %add, 1
-  %add = add nsw i32 %i.0, 1
-  br label %if.end11
-fill in phi
-
-if.end11:                                         ; preds = %if.else8, %if.then5
-  br label %for.inc
-rename: if.end11
+  %add2 = add nsw i32 %a, %b
+  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add2)
+  %add2 = add nsw i32 %a, %b
   br label %for.inc
 fill in phi
 
-for.inc:                                          ; preds = %if.end11
+for.inc:                                          ; preds = %if.end
   %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !31
+  br label %for.cond, !llvm.loop !34
 rename: for.inc
   %inc = add nsw i32 %i.0, 1
   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  br label %for.cond, !llvm.loop !31
+  br label %for.cond, !llvm.loop !34
 fill in phi
 
 for.cond:                                         ; preds = %for.inc, %entry.split
   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
   %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end
+  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
   %inc = add nsw i32 %i.0, 1
-rename: if.else8
-  %add9 = add nsw i32 %add, %div
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add9)
-  %add9 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  br label %if.end11
-fill in phi
-
-if.end11:                                         ; preds = %if.else8, %if.then5
-  br label %for.inc
-rename: if.else.split
-  %OptInsert_add21 = add nsw i32 %add, 1
-  %add = add nsw i32 %i.0, 1
-  %OptInsert_add32 = add nsw i32 %add, %div
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  br label %if.else
-fill in phi
-
-if.else:                                          ; preds = %if.else.split
-  %add3 = add nsw i32 %add, %div
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add3)
-  br label %if.end
 rename: if.else
-  %add3 = add nsw i32 %add, %div
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add3)
-  %add3 = add nsw i32 %OptInsert_inc, %OptInsert_div
+  %add = add nsw i32 %a, %b
+  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add)
+  %add = add nsw i32 %a, %b
   br label %if.end
 fill in phi
 
 if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then ]
-  %NewPhi_OptInsert_add2 = phi i32 [ %OptInsert_add2, %if.then ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  br i1 %OptInsert_cmp4, label %if.then5, label %if.else8
-  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then ], [ %OptInsert_add32, %if.else ]
-  %NewPhi_OptInsert_add2 = phi i32 [ %OptInsert_add2, %if.then ], [ %OptInsert_add21, %if.else ]
+  %add2 = add nsw i32 %a, %b
+  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
+  br label %for.inc
 rename: for.end
   ret void
 fill in phi
@@ -740,79 +449,47 @@ entry:
 
 
 entry.split:                                      ; preds = %entry
+  %OptInsert_add2 = add nsw i32 %a, %b
   br label %for.cond
 
 
 for.cond:                                         ; preds = %for.inc, %entry.split
   %i.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
   %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end
+  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
 
 
 for.body.split:                                   ; preds = %for.cond
+  %OptInsert_rem = srem i32 %i.0, 10
   %OptInsert_inc = add nsw i32 %i.0, 1
-  %OptInsert_div = sdiv i32 %i.0, 2
-  %OptInsert_rem = srem i32 %i.0, 100
-  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
   br label %for.body
 
 
 for.body:                                         ; preds = %for.body.split
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %rem = srem i32 %i.0, 100
-  %cmp1 = icmp eq i32 %OptInsert_rem, 1
-  br i1 %cmp1, label %if.then.split, label %if.else.split
+  %rem = srem i32 %i.0, 10
+  %cmp1 = icmp ne i32 %OptInsert_rem, 1
+  br i1 %cmp1, label %if.then, label %if.else, !prof !33
 
 
-if.then.split:                                    ; preds = %for.body
-  %OptInsert_add2 = add nsw i32 %OptInsert_inc, 1
-  %OptInsert_add3 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  br label %if.then
-
-
-if.then:                                          ; preds = %if.then.split
-  %add2 = add nsw i32 %OptInsert_inc, 1
+if.then:                                          ; preds = %for.body
   br label %if.end
 
 
-if.else.split:                                    ; preds = %for.body
-  %OptInsert_add21 = add nsw i32 %OptInsert_inc, 1
-  %OptInsert_add32 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  br label %if.else
-
-
-if.else:                                          ; preds = %if.else.split
-  %add3 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add32)
+if.else:                                          ; preds = %for.body
+  %add = add nsw i32 %a, %b
+  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
   br label %if.end
 
 
 if.end:                                           ; preds = %if.else, %if.then
-  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then ], [ %OptInsert_add32, %if.else ]
-  %NewPhi_OptInsert_add2 = phi i32 [ %OptInsert_add2, %if.then ], [ %OptInsert_add21, %if.else ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  br i1 %OptInsert_cmp4, label %if.then5, label %if.else8
-
-
-if.then5:                                         ; preds = %if.end
-  %add7 = add nsw i32 %OptInsert_inc, 1
-  br label %if.end11
-
-
-if.else8:                                         ; preds = %if.end
-  %add9 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %NewPhi_OptInsert_add3)
-  br label %if.end11
-
-
-if.end11:                                         ; preds = %if.else8, %if.then5
+  %add2 = add nsw i32 %a, %b
+  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
   br label %for.inc
 
 
-for.inc:                                          ; preds = %if.end11
+for.inc:                                          ; preds = %if.end
   %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !31
+  br label %for.cond, !llvm.loop !34
 
 
 for.end:                                          ; preds = %for.cond
@@ -821,58 +498,34 @@ for.end:                                          ; preds = %for.cond
 entry
   br label %entry.split
 entry.split
+  %OptInsert_add2 = add nsw i32 %a, %b
   br label %for.cond
 for.cond
   %i.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
   %i.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
   %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end
+  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
 for.body.split
+  %OptInsert_rem = srem i32 %i.0, 10
   %OptInsert_inc = add nsw i32 %i.0, 1
-  %OptInsert_div = sdiv i32 %i.0, 2
-  %OptInsert_rem = srem i32 %i.0, 100
-  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
   br label %for.body
 for.body
-  %add = add nsw i32 %i.0, 1
-  %div = sdiv i32 %i.0, 2
-  %rem = srem i32 %i.0, 100
-  %cmp1 = icmp eq i32 %OptInsert_rem, 1
-  br i1 %cmp1, label %if.then.split, label %if.else.split
-if.then.split
-  %OptInsert_add2 = add nsw i32 %OptInsert_inc, 1
-  %OptInsert_add3 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  br label %if.then
+  %rem = srem i32 %i.0, 10
+  %cmp1 = icmp ne i32 %OptInsert_rem, 1
+  br i1 %cmp1, label %if.then, label %if.else, !prof !33
 if.then
-  %add2 = add nsw i32 %OptInsert_inc, 1
   br label %if.end
-if.else.split
-  %OptInsert_add21 = add nsw i32 %OptInsert_inc, 1
-  %OptInsert_add32 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  br label %if.else
 if.else
-  %add3 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add32)
+  %add = add nsw i32 %a, %b
+  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
   br label %if.end
 if.end
-  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then ], [ %OptInsert_add32, %if.else ]
-  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then ], [ %OptInsert_add32, %if.else ]
-  %NewPhi_OptInsert_add2 = phi i32 [ %OptInsert_add2, %if.then ], [ %OptInsert_add21, %if.else ]
-  %NewPhi_OptInsert_add2 = phi i32 [ %OptInsert_add2, %if.then ], [ %OptInsert_add21, %if.else ]
-  %cmp4 = icmp sgt i32 %i.0, 90
-  br i1 %OptInsert_cmp4, label %if.then5, label %if.else8
-if.then5
-  %add7 = add nsw i32 %OptInsert_inc, 1
-  br label %if.end11
-if.else8
-  %add9 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %NewPhi_OptInsert_add3)
-  br label %if.end11
-if.end11
+  %add2 = add nsw i32 %a, %b
+  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
   br label %for.inc
 for.inc
   %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !31
+  br label %for.cond, !llvm.loop !34
 for.end
   ret void
 main begin
@@ -880,7 +533,7 @@ changed
 entry
 avaiableOut for each Basic Block 
 Block: entry
-1   call void @classic()
+1   call void @licm(i32 1, i32 2)
 anticipateIn for each Basic Block 
 Block: entry
 2
@@ -898,68 +551,55 @@ valunumber: 1
 min cut from 0 to 1
 revNewValue
 rename: entry
-  call void @classic()
+  call void @licm(i32 1, i32 2)
   ret i32 0
 fill in phi
 
 entry:
-  call void @classic()
+  call void @licm(i32 1, i32 2)
   ret i32 0
 
 entry
-  call void @classic()
+  call void @licm(i32 1, i32 2)
   ret i32 0
-Writing '.classic.dot'...
+Writing '.licm.dot'...
 Writing '.main.dot'...
-Writing '.classic.dot'...
+Writing '.licm.dot'...
 Writing '.main.dot'...
 
 entry:
+  %0 = add nsw i32 %a, %b
   br label %for.cond
 
-for.cond:                                         ; preds = %if.end11, %entry
-  %i.0 = phi i32 [ 0, %entry ], [ %OptInsert_inc, %if.end11 ]
+for.cond:                                         ; preds = %if.end, %entry
+  %i.0 = phi i32 [ 0, %entry ], [ %OptInsert_inc, %if.end ]
   %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end
+  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
 
 for.body.split:                                   ; preds = %for.cond
+  %OptInsert_rem = srem i32 %i.0, 10
   %OptInsert_inc = add nsw i32 %i.0, 1
-  %OptInsert_div = sdiv i32 %i.0, 2
-  %OptInsert_rem = srem i32 %i.0, 100
-  %OptInsert_cmp4 = icmp sgt i32 %i.0, 90
-  %0 = icmp eq i32 %OptInsert_rem, 1
-  br i1 %0, label %if.then.split, label %if.else.split
+  %1 = icmp ne i32 %OptInsert_rem, 1
+  br i1 %1, label %if.then, label %if.else, !prof !33
 
-if.then.split:                                    ; preds = %for.body.split
-  %OptInsert_add3 = add nsw i32 %OptInsert_inc, %OptInsert_div
+if.then:                                          ; preds = %for.body.split
   br label %if.end
 
-if.else.split:                                    ; preds = %for.body.split
-  %OptInsert_add32 = add nsw i32 %OptInsert_inc, %OptInsert_div
-  %1 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add32)
+if.else:                                          ; preds = %for.body.split
+  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %0)
   br label %if.end
 
-if.end:                                           ; preds = %if.else.split, %if.then.split
-  %NewPhi_OptInsert_add3 = phi i32 [ %OptInsert_add3, %if.then.split ], [ %OptInsert_add32, %if.else.split ]
-  br i1 %OptInsert_cmp4, label %if.then5, label %if.else8
-
-if.then5:                                         ; preds = %if.end
-  br label %if.end11
-
-if.else8:                                         ; preds = %if.end
-  %call10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %NewPhi_OptInsert_add3)
-  br label %if.end11
-
-if.end11:                                         ; preds = %if.else8, %if.then5
-  br label %for.cond, !llvm.loop !31
+if.end:                                           ; preds = %if.else, %if.then
+  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %0)
+  br label %for.cond, !llvm.loop !34
 
 for.end:                                          ; preds = %for.cond
   ret void
 
 entry:
-  call void @classic()
+  call void @licm(i32 1, i32 2)
   ret i32 0
-Writing '.classic.dot'...
+Writing '.licm.dot'...
 Writing '.main.dot'...
 rm: cannot remove '.': Is a directory
 rm: cannot remove '..': Is a directory

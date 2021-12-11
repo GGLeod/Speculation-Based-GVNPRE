@@ -34,7 +34,7 @@ echo -e "\n\n\n1. Result for reg" > ${TIME_MEASURE}
 echo -e "\n\n   compile" >> ${TIME_MEASURE}
 { time clang -fprofile-instr-generate ${1}/${1}.prof.bc -o ${1}/${1}.prof; } 2>> ${TIME_MEASURE}
 # Collect profiling data
-{ time ${1}/${1}.prof < ../test/${1}.in; } 2>> ${TIME_MEASURE}
+{ time ${1}/${1}.prof ; } 2>> ${TIME_MEASURE}
 # Translate raw profiling data into LLVM data format
 llvm-profdata merge -output=pgo.profdata default.profraw
 
@@ -56,12 +56,12 @@ echo -e "\n\n\n2. Result for pre" >> ${TIME_MEASURE}
 echo -e "\n\n   compile" >> ${TIME_MEASURE}
 { time clang ${1}/${1}.pre.bc -o ${1}/${1}_pre; } 2>> ${TIME_MEASURE}
 echo -e "\n\n   run" >> ${TIME_MEASURE}
-{ time ${1}/${1}_pre < ../test/${1}.in; } 2>> ${TIME_MEASURE}
+{ time lli ${1}/${1}.pre.bc ; } 2>> ${TIME_MEASURE}
 
 
 # perform dead code elimination
 
-opt -dce ${1}/${1}.pre.bc -o ${1}/${1}_final.bc
+opt -dce -gvn -enable-pre ${1}/${1}.pre.bc -o ${1}/${1}_final.bc
 
 opt -dot-cfg < ${1}/${1}_final.bc > /dev/null
 
@@ -70,7 +70,7 @@ echo -e "\n\n\n3. Result for final" >> ${TIME_MEASURE}
 echo -e "\n\n   compile" >> ${TIME_MEASURE}
 { time clang ${1}/${1}_final.bc -o ${1}/${1}_final; } 2>> ${TIME_MEASURE}
 echo -e "\n\n   run" >> ${TIME_MEASURE}
-{ time ${1}/${1}_final < ../test/${1}.in; } 2>> ${TIME_MEASURE}
+{ time lli ${1}/${1}_final.bc ; } 2>> ${TIME_MEASURE}
 
 opt -o ${1}/${1}.merge.bc -load ../MERGE/build/src/LLVMHW2.so -mergeblock < ${1}/${1}_final.bc > /dev/null
 
@@ -82,6 +82,6 @@ echo -e "\n\n\n4. Result for merge" >> ${TIME_MEASURE}
 echo -e "\n\n   compile" >> ${TIME_MEASURE}
 { time clang ${1}/${1}.merge.bc -o ${1}/${1}_merge; } 2>> ${TIME_MEASURE}
 echo -e "\n\n   run" >> ${TIME_MEASURE}
-{ time ${1}/${1}_merge < ../test/${1}.in; } 2>> ${TIME_MEASURE}
+{ time lli ${1}/${1}.merge.bc ; } 2>> ${TIME_MEASURE}
 
 rm .*
