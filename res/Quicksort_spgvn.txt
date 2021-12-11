@@ -1,20 +1,39 @@
 
 
 
+0. Result for reg
+
+
+   compile
+
+real	0m0.138s
+user	0m0.085s
+sys	0m0.041s
+
+
+   run
+./single.sh: line 34: ../test/Quicksort.in: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+
 1. Result for reg
 
 
    compile
 
-real	0m0.202s
-user	0m0.101s
-sys	0m0.043s
+real	0m0.144s
+user	0m0.093s
+sys	0m0.047s
 
 
    run
-./single.sh: line 38: ../test/Quicksort.in: No such file or directory
+./single.sh: line 45: ../test/Quicksort.in: No such file or directory
 
-real	0m0.003s
+real	0m0.005s
 user	0m0.001s
 sys	0m0.000s
 
@@ -25,15 +44,15 @@ sys	0m0.000s
 
    compile
 
-real	0m0.150s
-user	0m0.084s
-sys	0m0.053s
+real	0m0.138s
+user	0m0.089s
+sys	0m0.044s
 
 
    run
-./single.sh: line 60: ../test/Quicksort.in: No such file or directory
+./single.sh: line 67: ../test/Quicksort.in: No such file or directory
 
-real	0m0.003s
+real	0m0.002s
 user	0m0.001s
 sys	0m0.000s
 
@@ -44,15 +63,15 @@ sys	0m0.000s
 
    compile
 
-real	0m0.209s
-user	0m0.096s
-sys	0m0.042s
+real	0m0.149s
+user	0m0.076s
+sys	0m0.053s
 
 
    run
-./single.sh: line 73: ../test/Quicksort.in: No such file or directory
+./single.sh: line 80: ../test/Quicksort.in: No such file or directory
 
-real	0m0.009s
+real	0m0.008s
 user	0m0.001s
 sys	0m0.000s
 
@@ -63,14 +82,14 @@ sys	0m0.000s
 
    compile
 
-real	0m0.215s
-user	0m0.090s
-sys	0m0.046s
+real	0m0.162s
+user	0m0.094s
+sys	0m0.032s
 
 
    run
-./single.sh: line 85: ../test/Quicksort.in: No such file or directory
+./single.sh: line 92: ../test/Quicksort.in: No such file or directory
 
-real	0m0.011s
-user	0m0.001s
+real	0m0.001s
+user	0m0.000s
 sys	0m0.000s

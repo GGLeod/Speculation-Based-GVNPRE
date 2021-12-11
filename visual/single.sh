@@ -27,10 +27,17 @@ mkdir -p ${1}
 clang -Xclang -disable-O0-optnone -emit-llvm -c ${BENCH} -o ${1}/${1}.bc 
 
 opt -mem2reg ${1}/${1}.bc -o ${1}/${1}_reg.bc
+echo -e "\n\n\n0. Result for reg" > ${TIME_MEASURE}
+echo -e "\n\n   compile" >> ${TIME_MEASURE}
+{ time clang ${1}/${1}_reg.bc -o ${1}/${1}_reg; } 2>> ${TIME_MEASURE}
+echo -e "\n\n   run" >> ${TIME_MEASURE}
+{ time ${1}/${1}_reg < ../test/${1}.in; } 2>> ${TIME_MEASURE}
+
+
 # Instrument profiler
 opt -pgo-instr-gen -instrprof ${1}/${1}_reg.bc -o ${1}/${1}.prof.bc 
 # Generate binary executable with profiler embedded
-echo -e "\n\n\n1. Result for reg" > ${TIME_MEASURE}
+echo -e "\n\n\n1. Result for reg" >> ${TIME_MEASURE}
 echo -e "\n\n   compile" >> ${TIME_MEASURE}
 { time clang -fprofile-instr-generate ${1}/${1}.prof.bc -o ${1}/${1}.prof; } 2>> ${TIME_MEASURE}
 # Collect profiling data

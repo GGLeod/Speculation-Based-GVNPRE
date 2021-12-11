@@ -1,20 +1,39 @@
 
 
 
+0. Result for reg
+
+
+   compile
+
+real	0m0.133s
+user	0m0.080s
+sys	0m0.047s
+
+
+   run
+./single.sh: line 34: ../test/Perm.in: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+
 1. Result for reg
 
 
    compile
 
-real	0m0.203s
-user	0m0.115s
-sys	0m0.031s
+real	0m0.169s
+user	0m0.106s
+sys	0m0.045s
 
 
    run
-./single.sh: line 38: ../test/Perm.in: No such file or directory
+./single.sh: line 45: ../test/Perm.in: No such file or directory
 
-real	0m0.010s
+real	0m0.001s
 user	0m0.001s
 sys	0m0.000s
 
@@ -25,17 +44,17 @@ sys	0m0.000s
 
    compile
 
-real	0m0.183s
-user	0m0.085s
-sys	0m0.055s
+real	0m0.138s
+user	0m0.073s
+sys	0m0.052s
 
 
    run
-./single.sh: line 60: ../test/Perm.in: No such file or directory
+./single.sh: line 67: ../test/Perm.in: No such file or directory
 
-real	0m0.003s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
 
 
 
@@ -44,17 +63,17 @@ sys	0m0.000s
 
    compile
 
-real	0m0.233s
-user	0m0.083s
-sys	0m0.051s
+real	0m0.128s
+user	0m0.079s
+sys	0m0.047s
 
 
    run
-./single.sh: line 73: ../test/Perm.in: No such file or directory
+./single.sh: line 80: ../test/Perm.in: No such file or directory
 
-real	0m0.006s
-user	0m0.001s
-sys	0m0.000s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.001s
 
 
 
@@ -63,14 +82,14 @@ sys	0m0.000s
 
    compile
 
-real	0m0.158s
-user	0m0.097s
-sys	0m0.034s
+real	0m0.133s
+user	0m0.076s
+sys	0m0.053s
 
 
    run
-./single.sh: line 85: ../test/Perm.in: No such file or directory
+./single.sh: line 92: ../test/Perm.in: No such file or directory
 
 real	0m0.003s
-user	0m0.001s
-sys	0m0.000s
+user	0m0.000s
+sys	0m0.001s
