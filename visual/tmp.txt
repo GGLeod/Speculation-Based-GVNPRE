@@ -1,539 +1,1015 @@
-33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333Writing '.licm.dot'...
-Writing '.main.dot'...
-licm begin
-  %rem = srem i32 %i.0, 10
-  %add2 = add nsw i32 %a, %b
-  %inc = add nsw i32 %i.0, 1
-  %add = add nsw i32 %a, %b
-changed
-for.inc
-if.end
-if.then
-if.else
-for.body
-new
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-for.end
-for.cond
-new
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-entry
-new
-i32 0
-changed
-for.inc
-new
-  %inc = add nsw i32 %i.0, 1
-if.end
-new
-  %inc = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %a, %b
-if.then
-new
-  %inc = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %a, %b
-if.else
-new
-  %inc = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %a, %b
-for.body
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-new
-  %inc = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %a, %b
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-for.cond
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-new
-  %add2 = add nsw i32 %a, %b
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-entry
-i32 0
-new
-  %add2 = add nsw i32 %a, %b
-i32 0
-changed
-for.inc
-  %inc = add nsw i32 %i.0, 1
-new
-  %add2 = add nsw i32 %a, %b
-  %inc = add nsw i32 %i.0, 1
-if.end
-  %inc = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %a, %b
-if.then
-  %inc = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %a, %b
-if.else
-  %inc = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %a, %b
-for.body
-  %inc = add nsw i32 %i.0, 1
-  %add2 = add nsw i32 %a, %b
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %rem = srem i32 %i.0, 10
-for.cond
-  %add2 = add nsw i32 %a, %b
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-entry
-  %add2 = add nsw i32 %a, %b
-i32 0
-changed
-for.inc
-  %add2 = add nsw i32 %a, %b
-  %inc = add nsw i32 %i.0, 1
-avaiableOut for each Basic Block 
-Block: for.inc
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %rem = srem i32 %i.0, 10
-7   %cmp1 = icmp ne i32 %rem, 1
-10   %add2 = add nsw i32 %a, %b
-11   %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add2)
-12   %inc = add nsw i32 %i.0, 1
-Block: for.end
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-Block: entry
-Block: for.body
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %rem = srem i32 %i.0, 10
-7   %cmp1 = icmp ne i32 %rem, 1
-Block: for.cond
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-Block: if.else
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %rem = srem i32 %i.0, 10
-7   %cmp1 = icmp ne i32 %rem, 1
-10   %add = add nsw i32 %a, %b
-13   %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add)
-Block: if.then
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %rem = srem i32 %i.0, 10
-7   %cmp1 = icmp ne i32 %rem, 1
-Block: if.end
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-3   %cmp = icmp slt i32 %i.0, 100
-5   %rem = srem i32 %i.0, 10
-7   %cmp1 = icmp ne i32 %rem, 1
-10   %add2 = add nsw i32 %a, %b
-11   %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add2)
-anticipateIn for each Basic Block 
-Block: for.inc
-10   %add2 = add nsw i32 %a, %b
-12   %inc = add nsw i32 %i.0, 1
-Block: for.end
-Block: entry
-10   %add2 = add nsw i32 %a, %b
-14 i32 0
-Block: for.body
-10   %add2 = add nsw i32 %a, %b
-12   %inc = add nsw i32 %i.0, 1
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-5   %rem = srem i32 %i.0, 10
-Block: for.cond
-10   %add2 = add nsw i32 %a, %b
-1   %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-Block: if.else
-10   %add2 = add nsw i32 %a, %b
-12   %inc = add nsw i32 %i.0, 1
-Block: if.then
-10   %add2 = add nsw i32 %a, %b
-12   %inc = add nsw i32 %i.0, 1
-Block: if.end
-10   %add2 = add nsw i32 %a, %b
-12   %inc = add nsw i32 %i.0, 1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 15
-available out point of each value number0: 
-1: if.end if.then if.else for.cond for.body for.end for.inc 
-2: 
-3: if.end if.then if.else for.cond for.body for.end for.inc 
-4: 
-5: if.end if.then if.else for.body for.inc 
-6: 
-7: if.end if.then if.else for.body for.inc 
-8: 
-9: 
-10: if.end if.else for.inc 
-11: if.end for.inc 
-12: for.inc 
-13: if.else 
-14: 
-antipate in point of each value number0: 
-1: for.cond for.body 
-2: 
-3: 
-4: 
-5: for.body 
-6: 
-7: 
-8: 
-9: 
-10: if.end if.then if.else for.cond for.body entry for.inc 
-11: 
-12: if.end if.then if.else for.body for.inc 
-13: 
-14: entry 
-valunumber: 0
-0				0				
-0				0				
-min cut from 0 to 1
-essentail: entry for.cond
-valunumber: 1
-0 entry to 1 for.cond: 1 1.000000e+00
-0				2				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-entry - for.cond
-valunumber: 2
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 3
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 4
-0				0				
-0				0				
-min cut from 0 to 1
-essentail: for.cond for.body
-valunumber: 5
-0 for.cond to 1 for.body: 101 9.900990e-01
-0				101				0				0				
-0				0				0				2147483647				
-2147483647				0				0				0				
-0				0				0				0				
-min cut from 2 to 3
-for.cond - for.body
-valunumber: 6
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 7
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 8
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 9
-0				0				
-0				0				
-min cut from 0 to 1
-essentail: if.then if.end
-essentail: for.body if.then
-essentail: for.body if.else
-essentail: entry for.cond
-essentail: for.cond for.body
-valunumber: 10
-0 if.then to 1 if.end: 90 1.000000e+00
-2 for.body to 0 if.then: 100 9.000000e-01
-2 for.body to 3 if.else: 100 1.000000e-01
-4 entry to 5 for.cond: 1 1.000000e+00
-5 for.cond to 2 for.body: 101 9.900990e-01
-0				91				0				0				0				0				0				0				
-0				0				0				0				0				0				0				2147483647				
-90				0				0				11				0				0				0				0				
-0				0				0				0				0				0				0				2147483647				
-0				0				0				0				0				2				0				0				
-0				0				101				0				0				0				0				0				
-0				0				0				0				2147483647				0				0				0				
-0				0				0				0				0				0				0				0				
-min cut from 6 to 7
-entry - for.cond
-valunumber: 11
-0				0				
-0				0				
-min cut from 0 to 1
-essentail: if.else if.end
-essentail: if.then if.end
-essentail: for.body if.then
-essentail: for.body if.else
-essentail: for.cond for.body
-essentail: if.end for.inc
-valunumber: 12
-0 if.else to 1 if.end: 10 1.000000e+00
-2 if.then to 1 if.end: 90 1.000000e+00
-3 for.body to 2 if.then: 100 9.000000e-01
-3 for.body to 0 if.else: 100 1.000000e-01
-4 for.cond to 3 for.body: 101 9.900990e-01
-1 if.end to 5 for.inc: 100 1.000000e+00
-0				11				0				0				0				0				0				0				
-0				0				0				0				0				101				0				0				
-0				91				0				0				0				0				0				0				
-11				0				90				0				0				0				0				0				
-0				0				0				101				0				0				0				0				
-0				0				0				0				0				0				0				2147483647				
-0				0				0				0				2147483647				0				0				0				
-0				0				0				0				0				0				0				0				
-min cut from 6 to 7
-for.cond - for.body
-valunumber: 13
-0				0				
-0				0				
-min cut from 0 to 1
-valunumber: 14
-0				0				
-0				0				
-min cut from 0 to 1
-insert into for.body.split
-available
-  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-5 prepared
-try   %rem = srem i32 %i.0, 10
-12 prepared
-try   %inc = add nsw i32 %i.0, 1
-
-for.body.split:                                   ; preds = %for.cond
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  br label %for.body
-
-insert into entry.split
-available
-1 prepared
-try   %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-10 prepared
-try   %add2 = add nsw i32 %a, %b
-
-entry.split:                                      ; preds = %entry
-  %OptInsert_add2 = add nsw i32 %a, %b
-  br label %for.cond
-
-if.then has dominance frontier:
-if.end 
-if.else has dominance frontier:
-if.end 
-for.body.split has dominance frontier:
-for.cond 
-for.body has dominance frontier:
-for.cond 
-if.end has dominance frontier:
-for.cond 
-for.inc has dominance frontier:
-for.cond 
-10 in newValueSet
-  %OptInsert_add2 = add nsw i32 %a, %b
-10 in newDefined
-  %OptInsert_add2 = add nsw i32 %a, %b
-12 in newValueSet
-  %OptInsert_inc = add nsw i32 %i.0, 1
-12 in newDefined
-  %OptInsert_inc = add nsw i32 %i.0, 1
-5 in newValueSet
-  %OptInsert_rem = srem i32 %i.0, 10
-5 in newDefined
-  %OptInsert_rem = srem i32 %i.0, 10
-revNewValue
-5:   %OptInsert_rem = srem i32 %i.0, 10
-12:   %OptInsert_inc = add nsw i32 %i.0, 1
-10:   %OptInsert_add2 = add nsw i32 %a, %b
-rename: entry
-  br label %entry.split
-fill in phi
-
-entry.split:                                      ; preds = %entry
-  %OptInsert_add2 = add nsw i32 %a, %b
-  br label %for.cond
-rename: entry.split
-  %OptInsert_add2 = add nsw i32 %a, %b
-  br label %for.cond
-fill in phi
-
-for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-  %inc = add nsw i32 %i.0, 1
-rename: for.cond
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-  %cmp = icmp slt i32 %i.0, 100
-fill in phi
-
-for.body.split:                                   ; preds = %for.cond
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  br label %for.body
-
-for.end:                                          ; preds = %for.cond
-  ret void
-rename: for.body.split
-  %OptInsert_rem = srem i32 %i.0, 10
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  br label %for.body
-fill in phi
-
-for.body:                                         ; preds = %for.body.split
-  %rem = srem i32 %i.0, 10
-  %cmp1 = icmp ne i32 %rem, 1
-  br i1 %cmp1, label %if.then, label %if.else, !prof !33
-rename: for.body
-  %rem = srem i32 %i.0, 10
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %cmp1 = icmp ne i32 %rem, 1
-  %rem = srem i32 %i.0, 10
-  br i1 %cmp1, label %if.then, label %if.else, !prof !33
-  %cmp1 = icmp ne i32 %OptInsert_rem, 1
-fill in phi
-
-if.then:                                          ; preds = %for.body
-  br label %if.end
-
-if.else:                                          ; preds = %for.body
-  %add = add nsw i32 %a, %b
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add)
-  br label %if.end
-rename: if.then
-  br label %if.end
-fill in phi
-
-if.end:                                           ; preds = %if.else, %if.then
-  %add2 = add nsw i32 %a, %b
-  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add2)
-  br label %for.inc
-rename: if.end
-  %add2 = add nsw i32 %a, %b
-  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add2)
-  %add2 = add nsw i32 %a, %b
-  br label %for.inc
-fill in phi
-
-for.inc:                                          ; preds = %if.end
-  %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !34
-rename: for.inc
-  %inc = add nsw i32 %i.0, 1
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  br label %for.cond, !llvm.loop !34
-fill in phi
-
-for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-  %inc = add nsw i32 %i.0, 1
-rename: if.else
-  %add = add nsw i32 %a, %b
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %add)
-  %add = add nsw i32 %a, %b
-  br label %if.end
-fill in phi
-
-if.end:                                           ; preds = %if.else, %if.then
-  %add2 = add nsw i32 %a, %b
-  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
-  br label %for.inc
-rename: for.end
-  ret void
-fill in phi
-
-entry:
-  br label %entry.split
-
-
-entry.split:                                      ; preds = %entry
-  %OptInsert_add2 = add nsw i32 %a, %b
-  br label %for.cond
-
-
-for.cond:                                         ; preds = %for.inc, %entry.split
-  %i.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-
-
-for.body.split:                                   ; preds = %for.cond
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  br label %for.body
-
-
-for.body:                                         ; preds = %for.body.split
-  %rem = srem i32 %i.0, 10
-  %cmp1 = icmp ne i32 %OptInsert_rem, 1
-  br i1 %cmp1, label %if.then, label %if.else, !prof !33
-
-
-if.then:                                          ; preds = %for.body
-  br label %if.end
-
-
-if.else:                                          ; preds = %for.body
-  %add = add nsw i32 %a, %b
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
-  br label %if.end
-
-
-if.end:                                           ; preds = %if.else, %if.then
-  %add2 = add nsw i32 %a, %b
-  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
-  br label %for.inc
-
-
-for.inc:                                          ; preds = %if.end
-  %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !34
-
-
-for.end:                                          ; preds = %for.cond
-  ret void
-
-entry
-  br label %entry.split
-entry.split
-  %OptInsert_add2 = add nsw i32 %a, %b
-  br label %for.cond
-for.cond
-  %i.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
-  %i.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_inc, %for.inc ]
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-for.body.split
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  br label %for.body
-for.body
-  %rem = srem i32 %i.0, 10
-  %cmp1 = icmp ne i32 %OptInsert_rem, 1
-  br i1 %cmp1, label %if.then, label %if.else, !prof !33
-if.then
-  br label %if.end
-if.else
-  %add = add nsw i32 %a, %b
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
-  br label %if.end
-if.end
-  %add2 = add nsw i32 %a, %b
-  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %OptInsert_add2)
-  br label %for.inc
-for.inc
-  %inc = add nsw i32 %i.0, 1
-  br label %for.cond, !llvm.loop !34
-for.end
-  ret void
-main begin
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+991
+992
+993
+994
+995
+996
+997
+998
+999
+1000
+Writing '.Initrand.dot'...
+Writing '.Rand.dot'...
+Writing '.Try.dot'...
+Writing '.Doit.dot'...
+Writing '.Queens.dot'...
+Writing '.main.dot'...
+Initrand begin
 changed
 entry
 avaiableOut for each Basic Block 
 Block: entry
-1   call void @licm(i32 1, i32 2)
+1   store i64 74755, i64* @seed, align 8
 anticipateIn for each Basic Block 
 Block: entry
 2
@@ -551,55 +1027,3042 @@ valunumber: 1
 min cut from 0 to 1
 revNewValue
 rename: entry
-  call void @licm(i32 1, i32 2)
-  ret i32 0
+  store i64 74755, i64* @seed, align 8
+  ret void
 fill in phi
 
 entry:
-  call void @licm(i32 1, i32 2)
-  ret i32 0
-
-entry
-  call void @licm(i32 1, i32 2)
-  ret i32 0
-Writing '.licm.dot'...
-Writing '.main.dot'...
-Writing '.licm.dot'...
-Writing '.main.dot'...
-
-entry:
-  %0 = add nsw i32 %a, %b
-  br label %for.cond
-
-for.cond:                                         ; preds = %if.end, %entry
-  %i.0 = phi i32 [ 0, %entry ], [ %OptInsert_inc, %if.end ]
-  %cmp = icmp slt i32 %i.0, 100
-  br i1 %cmp, label %for.body.split, label %for.end, !prof !32
-
-for.body.split:                                   ; preds = %for.cond
-  %OptInsert_rem = srem i32 %i.0, 10
-  %OptInsert_inc = add nsw i32 %i.0, 1
-  %1 = icmp ne i32 %OptInsert_rem, 1
-  br i1 %1, label %if.then, label %if.else, !prof !33
-
-if.then:                                          ; preds = %for.body.split
-  br label %if.end
-
-if.else:                                          ; preds = %for.body.split
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %0)
-  br label %if.end
-
-if.end:                                           ; preds = %if.else, %if.then
-  %call3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %0)
-  br label %for.cond, !llvm.loop !34
-
-for.end:                                          ; preds = %for.cond
+  store i64 74755, i64* @seed, align 8
   ret void
 
+entry
+  store i64 74755, i64* @seed, align 8
+  ret void
+Rand begin
+  %mul = mul nsw i64 %0, 1309
+  %add = add nsw i64 %mul, 13849
+  %and = and i64 %add, 65535
+changed
+entry
+new
+  %0 = load i64, i64* @seed, align 8
+  %1 = load i64, i64* @seed, align 8
+changed
+entry
+  %0 = load i64, i64* @seed, align 8
+  %1 = load i64, i64* @seed, align 8
+avaiableOut for each Basic Block 
+Block: entry
+1   %0 = load i64, i64* @seed, align 8
+3   %mul = mul nsw i64 %0, 1309
+5   %add = add nsw i64 %mul, 13849
+7   %and = and i64 %add, 65535
+8   store i64 %and, i64* @seed, align 8
+9   %1 = load i64, i64* @seed, align 8
+10   %conv = trunc i64 %1 to i32
+anticipateIn for each Basic Block 
+Block: entry
+1   %0 = load i64, i64* @seed, align 8
+9   %1 = load i64, i64* @seed, align 8
+11
+available out point of each value number0: 
+1: entry 
+2: 
+3: entry 
+4: 
+5: entry 
+6: 
+7: entry 
+8: entry 
+9: entry 
+10: entry 
+antipate in point of each value number0: 
+1: entry 
+2: 
+3: 
+4: 
+5: 
+6: 
+7: 
+8: 
+9: entry 
+10: 
+valunumber: 0
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 1
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 2
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 3
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 4
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 5
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 6
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 7
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 8
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 9
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 10
+0				0				
+0				0				
+min cut from 0 to 1
+revNewValue
+rename: entry
+  %0 = load i64, i64* @seed, align 8
+  %mul = mul nsw i64 %0, 1309
+  %0 = load i64, i64* @seed, align 8
+  %add = add nsw i64 %mul, 13849
+  %mul = mul nsw i64 %0, 1309
+  %and = and i64 %add, 65535
+  %add = add nsw i64 %mul, 13849
+  store i64 %and, i64* @seed, align 8
+  %and = and i64 %add, 65535
+  %1 = load i64, i64* @seed, align 8
+  %conv = trunc i64 %1 to i32
+  %1 = load i64, i64* @seed, align 8
+  ret i32 %conv
+  %conv = trunc i64 %1 to i32
+fill in phi
+
 entry:
-  call void @licm(i32 1, i32 2)
-  ret i32 0
-Writing '.licm.dot'...
-Writing '.main.dot'...
+  %0 = load i64, i64* @seed, align 8
+  %mul = mul nsw i64 %0, 1309
+  %add = add nsw i64 %mul, 13849
+  %and = and i64 %add, 65535
+  store i64 %and, i64* @seed, align 8
+  %1 = load i64, i64* @seed, align 8
+  %conv = trunc i64 %1 to i32
+  ret i32 %conv
+
+entry
+  %0 = load i64, i64* @seed, align 8
+  %mul = mul nsw i64 %0, 1309
+  %add = add nsw i64 %mul, 13849
+  %and = and i64 %add, 65535
+  store i64 %and, i64* @seed, align 8
+  %1 = load i64, i64* @seed, align 8
+  %conv = trunc i64 %1 to i32
+  ret i32 %conv
+Try begin
+  %add = add nsw i32 %j.0, 1
+  %add2 = add nsw i32 %i, %add
+  %sub = sub nsw i32 %i, %add
+  %add7 = add nsw i32 %sub, 7
+  %add15 = add nsw i32 %i, %add
+  %sub18 = sub nsw i32 %i, %add
+  %add19 = add nsw i32 %sub18, 7
+  %add24 = add nsw i32 %i, 1
+  %add29 = add nsw i32 %i, %add
+  %sub32 = sub nsw i32 %i, %add
+  %add33 = add nsw i32 %sub32, 7
+changed
+if.end37
+if.end36
+if.end
+if.then23.if.end_crit_edge
+if.then26
+if.then23
+new
+  %add24 = add nsw i32 %i, 1
+if.else
+if.then
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom13 = sext i32 %add to i64
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add15 = add nsw i32 %i, %add
+  %sub18 = sub nsw i32 %i, %add
+land.lhs.true6.if.end37_crit_edge
+land.lhs.true6
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom13 = sext i32 %add to i64
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add15 = add nsw i32 %i, %add
+  %sub18 = sub nsw i32 %i, %add
+land.lhs.true.if.end37_crit_edge
+land.lhs.true
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom13 = sext i32 %add to i64
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add15 = add nsw i32 %i, %add
+  %sub18 = sub nsw i32 %i, %add
+while.body.if.end37_crit_edge
+while.body
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+while.end
+land.end
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+while.cond.land.end_crit_edge
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+land.rhs
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %cmp = icmp ne i32 %j.0, 8
+while.cond
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+entry
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+i32 0
+changed
+if.end37
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36 ], [ 0, %land.lhs.true6.if.end37_crit_edge ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge ]
+if.end36
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %q.addr.1 = phi i32 [ %call, %if.end ], [ 1, %if.else ]
+if.end
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+if.then23.if.end_crit_edge
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+if.then26
+new
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+if.then23
+  %add24 = add nsw i32 %i, 1
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+if.else
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+i32 1
+if.then
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom13 = sext i32 %add to i64
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add15 = add nsw i32 %i, %add
+  %sub18 = sub nsw i32 %i, %add
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+land.lhs.true6.if.end37_crit_edge
+new
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+i32 0
+land.lhs.true6
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom13 = sext i32 %add to i64
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add15 = add nsw i32 %i, %add
+  %sub18 = sub nsw i32 %i, %add
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+land.lhs.true.if.end37_crit_edge
+new
+  %add = add nsw i32 %j.0, 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+land.lhs.true
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom13 = sext i32 %add to i64
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add15 = add nsw i32 %i, %add
+  %sub18 = sub nsw i32 %i, %add
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+while.body.if.end37_crit_edge
+new
+  %add = add nsw i32 %j.0, 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+while.body
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+land.end
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+while.cond.land.end_crit_edge
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+land.rhs
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %cmp = icmp ne i32 %j.0, 8
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %cmp = icmp ne i32 %j.0, 8
+while.cond
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+new
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+entry
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+i32 0
+new
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+changed
+if.end37
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36 ], [ 0, %land.lhs.true6.if.end37_crit_edge ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge ]
+new
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36 ], [ 0, %land.lhs.true6.if.end37_crit_edge ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add = add nsw i32 %j.0, 1
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+if.end36
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %q.addr.1 = phi i32 [ %call, %if.end ], [ 1, %if.else ]
+new
+  %q.addr.1 = phi i32 [ %call, %if.end ], [ 1, %if.else ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add = add nsw i32 %j.0, 1
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+if.end
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+new
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add = add nsw i32 %j.0, 1
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+if.then23.if.end_crit_edge
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+new
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add = add nsw i32 %j.0, 1
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+if.then26
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+if.then23
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+if.else
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+i32 1
+new
+i32 1
+  %add = add nsw i32 %j.0, 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+if.then
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+land.lhs.true6.if.end37_crit_edge
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %add = add nsw i32 %j.0, 1
+i32 0
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+land.lhs.true6
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+land.lhs.true.if.end37_crit_edge
+  %add = add nsw i32 %j.0, 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+land.lhs.true
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+while.body.if.end37_crit_edge
+  %add = add nsw i32 %j.0, 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+new
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+while.body
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+land.end
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+while.cond.land.end_crit_edge
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+land.rhs
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %cmp = icmp ne i32 %j.0, 8
+while.cond
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+entry
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+changed
+if.end37
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36 ], [ 0, %land.lhs.true6.if.end37_crit_edge ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add = add nsw i32 %j.0, 1
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+if.end36
+  %q.addr.1 = phi i32 [ %call, %if.end ], [ 1, %if.else ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add = add nsw i32 %j.0, 1
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+if.end
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add = add nsw i32 %j.0, 1
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+if.then23.if.end_crit_edge
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %add = add nsw i32 %j.0, 1
+  %add24 = add nsw i32 %i, 1
+i32 0
+i32 1
+if.then26
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+if.then23
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+if.else
+i32 1
+  %add = add nsw i32 %j.0, 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+if.then
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add29 = add nsw i32 %i, %add
+  %idxprom27 = sext i32 %add to i64
+  %sub32 = sub nsw i32 %i, %add
+  %add24 = add nsw i32 %i, 1
+land.lhs.true6.if.end37_crit_edge
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+land.lhs.true.if.end37_crit_edge
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+while.body.if.end37_crit_edge
+  %add = add nsw i32 %j.0, 1
+i32 1
+  %idxprom11 = sext i32 %i to i64
+i32 0
+  %cmp22 = icmp slt i32 %i, 8
+  %add24 = add nsw i32 %i, 1
+avaiableOut for each Basic Block 
+Block: if.then
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+34   store i32 0, i32* %arrayidx21, align 4
+30   %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+28   %idxprom11 = sext i32 %i to i64
+36   %cmp22 = icmp slt i32 %i, 8
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+31   store i32 %add, i32* %arrayidx12, align 4
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+32   store i32 0, i32* %arrayidx14, align 4
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+33   store i32 0, i32* %arrayidx17, align 4
+23   %idxprom8 = sext i32 %add7 to i64
+Block: land.lhs.true6
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+23   %idxprom8 = sext i32 %add7 to i64
+Block: if.then26
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+38   %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+42   store i32 1, i32* %arrayidx35, align 4
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+34   store i32 0, i32* %arrayidx21, align 4
+30   %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+28   %idxprom11 = sext i32 %i to i64
+36   %cmp22 = icmp slt i32 %i, 8
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+41   store i32 1, i32* %arrayidx31, align 4
+14   %add2 = add nsw i32 %i, %add
+31   store i32 %add, i32* %arrayidx12, align 4
+37   %add24 = add nsw i32 %i, 1
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+39   %tobool25 = icmp ne i32 %call, 0
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+32   store i32 0, i32* %arrayidx14, align 4
+40   store i32 1, i32* %arrayidx28, align 4
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+33   store i32 0, i32* %arrayidx17, align 4
+23   %idxprom8 = sext i32 %add7 to i64
+Block: if.then23
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+38   %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+34   store i32 0, i32* %arrayidx21, align 4
+30   %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+28   %idxprom11 = sext i32 %i to i64
+36   %cmp22 = icmp slt i32 %i, 8
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+31   store i32 %add, i32* %arrayidx12, align 4
+37   %add24 = add nsw i32 %i, 1
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+39   %tobool25 = icmp ne i32 %call, 0
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+32   store i32 0, i32* %arrayidx14, align 4
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+33   store i32 0, i32* %arrayidx17, align 4
+23   %idxprom8 = sext i32 %add7 to i64
+Block: if.end
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+38   %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+34   store i32 0, i32* %arrayidx21, align 4
+30   %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+28   %idxprom11 = sext i32 %i to i64
+36   %cmp22 = icmp slt i32 %i, 8
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+31   store i32 %add, i32* %arrayidx12, align 4
+37   %add24 = add nsw i32 %i, 1
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+39   %tobool25 = icmp ne i32 %call, 0
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+32   store i32 0, i32* %arrayidx14, align 4
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+33   store i32 0, i32* %arrayidx17, align 4
+23   %idxprom8 = sext i32 %add7 to i64
+Block: if.then23.if.end_crit_edge
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+38   %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+34   store i32 0, i32* %arrayidx21, align 4
+30   %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+28   %idxprom11 = sext i32 %i to i64
+36   %cmp22 = icmp slt i32 %i, 8
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+31   store i32 %add, i32* %arrayidx12, align 4
+37   %add24 = add nsw i32 %i, 1
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+39   %tobool25 = icmp ne i32 %call, 0
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+32   store i32 0, i32* %arrayidx14, align 4
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+33   store i32 0, i32* %arrayidx17, align 4
+23   %idxprom8 = sext i32 %add7 to i64
+Block: if.end36
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+34   store i32 0, i32* %arrayidx21, align 4
+30   %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+28   %idxprom11 = sext i32 %i to i64
+36   %cmp22 = icmp slt i32 %i, 8
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+31   store i32 %add, i32* %arrayidx12, align 4
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+32   store i32 0, i32* %arrayidx14, align 4
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+43   %q.addr.1 = phi i32 [ %call, %if.end ], [ 1, %if.else ]
+33   store i32 0, i32* %arrayidx17, align 4
+23   %idxprom8 = sext i32 %add7 to i64
+Block: if.else
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+34   store i32 0, i32* %arrayidx21, align 4
+30   %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+28   %idxprom11 = sext i32 %i to i64
+36   %cmp22 = icmp slt i32 %i, 8
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+31   store i32 %add, i32* %arrayidx12, align 4
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+32   store i32 0, i32* %arrayidx14, align 4
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+33   store i32 0, i32* %arrayidx17, align 4
+23   %idxprom8 = sext i32 %add7 to i64
+Block: entry
+Block: if.end37
+4   %tobool = icmp ne i32 %q.addr.0, 0
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+11   %1 = load i32, i32* %arrayidx, align 4
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+44   %q.addr.2 = phi i32 [ %q.addr.1, %if.end36 ], [ 0, %land.lhs.true6.if.end37_crit_edge ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge ]
+Block: land.lhs.true.if.end37_crit_edge
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+11   %1 = load i32, i32* %arrayidx, align 4
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+Block: while.end
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+4   %tobool = icmp ne i32 %q.addr.0, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+Block: while.cond.land.end_crit_edge
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+4   %tobool = icmp ne i32 %q.addr.0, 0
+Block: while.body
+4   %tobool = icmp ne i32 %q.addr.0, 0
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+11   %1 = load i32, i32* %arrayidx, align 4
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+Block: land.end
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+4   %tobool = icmp ne i32 %q.addr.0, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+Block: land.rhs
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+4   %tobool = icmp ne i32 %q.addr.0, 0
+45   %cmp = icmp ne i32 %j.0, 8
+Block: land.lhs.true6.if.end37_crit_edge
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+26   %3 = load i32, i32* %arrayidx9, align 4
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+11   %1 = load i32, i32* %arrayidx, align 4
+27   %tobool10 = icmp ne i32 %3, 0
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+22   %add7 = add nsw i32 %sub, 7
+20   %sub = sub nsw i32 %i, %add
+25   %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+23   %idxprom8 = sext i32 %add7 to i64
+Block: while.cond
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+4   %tobool = icmp ne i32 %q.addr.0, 0
+Block: while.body.if.end37_crit_edge
+4   %tobool = icmp ne i32 %q.addr.0, 0
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+11   %1 = load i32, i32* %arrayidx, align 4
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+Block: land.lhs.true
+18   %2 = load i32, i32* %arrayidx4, align 4
+17   %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+4   %tobool = icmp ne i32 %q.addr.0, 0
+19   %tobool5 = icmp ne i32 %2, 0
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+15   %idxprom3 = sext i32 %add2 to i64
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+14   %add2 = add nsw i32 %i, %add
+10   %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+7   %add = add nsw i32 %j.0, 1
+8   %idxprom = sext i32 %add to i64
+12   %tobool1 = icmp ne i32 %1, 0
+11   %1 = load i32, i32* %arrayidx, align 4
+5   %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+anticipateIn for each Basic Block 
+Block: if.then
+7   %add = add nsw i32 %j.0, 1
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+14   %add29 = add nsw i32 %i, %add
+8   %idxprom27 = sext i32 %add to i64
+20   %sub32 = sub nsw i32 %i, %add
+37   %add24 = add nsw i32 %i, 1
+Block: land.lhs.true6
+7   %add = add nsw i32 %j.0, 1
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+14   %add29 = add nsw i32 %i, %add
+8   %idxprom27 = sext i32 %add to i64
+20   %sub32 = sub nsw i32 %i, %add
+37   %add24 = add nsw i32 %i, 1
+Block: if.then26
+6 i32 1
+7   %add = add nsw i32 %j.0, 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+38   %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+36   %cmp22 = icmp slt i32 %i, 8
+14   %add29 = add nsw i32 %i, %add
+8   %idxprom27 = sext i32 %add to i64
+20   %sub32 = sub nsw i32 %i, %add
+37   %add24 = add nsw i32 %i, 1
+Block: if.then23
+7   %add = add nsw i32 %j.0, 1
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+14   %add29 = add nsw i32 %i, %add
+8   %idxprom27 = sext i32 %add to i64
+20   %sub32 = sub nsw i32 %i, %add
+37   %add24 = add nsw i32 %i, 1
+Block: if.end
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+38   %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+36   %cmp22 = icmp slt i32 %i, 8
+7   %add = add nsw i32 %j.0, 1
+37   %add24 = add nsw i32 %i, 1
+Block: if.then23.if.end_crit_edge
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+38   %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+36   %cmp22 = icmp slt i32 %i, 8
+7   %add = add nsw i32 %j.0, 1
+37   %add24 = add nsw i32 %i, 1
+Block: if.end36
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+43   %q.addr.1 = phi i32 [ %call, %if.end ], [ 1, %if.else ]
+36   %cmp22 = icmp slt i32 %i, 8
+7   %add = add nsw i32 %j.0, 1
+37   %add24 = add nsw i32 %i, 1
+Block: if.else
+6 i32 1
+7   %add = add nsw i32 %j.0, 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+Block: entry
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+Block: if.end37
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+44   %q.addr.2 = phi i32 [ %q.addr.1, %if.end36 ], [ 0, %land.lhs.true6.if.end37_crit_edge ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge ]
+36   %cmp22 = icmp slt i32 %i, 8
+7   %add = add nsw i32 %j.0, 1
+37   %add24 = add nsw i32 %i, 1
+Block: land.lhs.true.if.end37_crit_edge
+6 i32 1
+7   %add = add nsw i32 %j.0, 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+Block: while.end
+Block: while.body
+7   %add = add nsw i32 %j.0, 1
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+Block: while.cond.land.end_crit_edge
+7   %add = add nsw i32 %j.0, 1
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+Block: land.end
+7   %add = add nsw i32 %j.0, 1
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+Block: land.rhs
+7   %add = add nsw i32 %j.0, 1
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+45   %cmp = icmp ne i32 %j.0, 8
+Block: land.lhs.true6.if.end37_crit_edge
+6 i32 1
+7   %add = add nsw i32 %j.0, 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+Block: while.cond
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+1   %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+36   %cmp22 = icmp slt i32 %i, 8
+2   %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+37   %add24 = add nsw i32 %i, 1
+Block: while.body.if.end37_crit_edge
+6 i32 1
+7   %add = add nsw i32 %j.0, 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+37   %add24 = add nsw i32 %i, 1
+Block: land.lhs.true
+7   %add = add nsw i32 %j.0, 1
+6 i32 1
+28   %idxprom11 = sext i32 %i to i64
+3 i32 0
+36   %cmp22 = icmp slt i32 %i, 8
+14   %add29 = add nsw i32 %i, %add
+8   %idxprom27 = sext i32 %add to i64
+20   %sub32 = sub nsw i32 %i, %add
+37   %add24 = add nsw i32 %i, 1
+46
+available out point of each value number0: 
+1: land.lhs.true land.end while.cond land.lhs.true6 land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge while.end while.cond.land.end_crit_edge while.body 
+2: land.lhs.true land.end while.cond land.lhs.true6 land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge while.end while.cond.land.end_crit_edge while.body 
+3: 
+4: land.lhs.true land.end while.cond land.lhs.true6 land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge while.end while.cond.land.end_crit_edge while.body 
+5: land.lhs.true land.lhs.true6 if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge while.end while.body land.end 
+6: 
+7: land.lhs.true land.lhs.true6 if.then if.then23.if.end_crit_edge if.then26 if.end36 if.else if.end37 if.end while.body.if.end37_crit_edge land.lhs.true.if.end37_crit_edge while.body if.then23 land.lhs.true6.if.end37_crit_edge 
+8: land.lhs.true land.lhs.true6 if.then if.then23.if.end_crit_edge if.then26 if.end36 if.else if.end37 if.end while.body.if.end37_crit_edge land.lhs.true.if.end37_crit_edge while.body if.then23 land.lhs.true6.if.end37_crit_edge 
+9: 
+10: land.lhs.true land.lhs.true6 if.then if.then23.if.end_crit_edge if.then26 if.end36 if.else if.end37 if.end while.body.if.end37_crit_edge land.lhs.true.if.end37_crit_edge while.body if.then23 land.lhs.true6.if.end37_crit_edge 
+11: land.lhs.true land.lhs.true6 if.then if.then23.if.end_crit_edge if.then26 if.end36 if.else if.end37 if.end while.body.if.end37_crit_edge land.lhs.true.if.end37_crit_edge while.body if.then23 land.lhs.true6.if.end37_crit_edge 
+12: land.lhs.true land.lhs.true6 if.then if.then23.if.end_crit_edge if.then26 if.end36 if.else if.end37 if.end while.body.if.end37_crit_edge land.lhs.true.if.end37_crit_edge while.body if.then23 land.lhs.true6.if.end37_crit_edge 
+13: 
+14: land.lhs.true land.lhs.true6.if.end37_crit_edge land.lhs.true.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+15: land.lhs.true land.lhs.true6.if.end37_crit_edge land.lhs.true.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+16: 
+17: land.lhs.true land.lhs.true6.if.end37_crit_edge land.lhs.true.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+18: land.lhs.true land.lhs.true6.if.end37_crit_edge land.lhs.true.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+19: land.lhs.true land.lhs.true6.if.end37_crit_edge land.lhs.true.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+20: land.lhs.true6.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+21: 
+22: land.lhs.true6.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+23: land.lhs.true6.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+24: 
+25: land.lhs.true6.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+26: land.lhs.true6.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+27: land.lhs.true6.if.end37_crit_edge if.else if.end36 if.end if.then23 if.then26 if.then23.if.end_crit_edge land.lhs.true6 if.then 
+28: if.else if.end36 if.then23.if.end_crit_edge if.end if.then23 if.then26 if.then 
+29: 
+30: if.else if.end36 if.then23.if.end_crit_edge if.end if.then23 if.then26 if.then 
+31: if.else if.end36 if.then23.if.end_crit_edge if.end if.then23 if.then26 if.then 
+32: if.else if.end36 if.then23.if.end_crit_edge if.end if.then23 if.then26 if.then 
+33: if.else if.end36 if.then23.if.end_crit_edge if.end if.then23 if.then26 if.then 
+34: if.else if.end36 if.then23.if.end_crit_edge if.end if.then23 if.then26 if.then 
+35: 
+36: if.else if.end36 if.then23.if.end_crit_edge if.end if.then23 if.then26 if.then 
+37: if.then23.if.end_crit_edge if.end if.then23 if.then26 
+38: if.then23.if.end_crit_edge if.end if.then23 if.then26 
+39: if.then23.if.end_crit_edge if.end if.then23 if.then26 
+40: if.then26 
+41: if.then26 
+42: if.then26 
+43: if.end36 
+44: if.end37 
+45: land.rhs 
+antipate in point of each value number0: 
+1: while.cond 
+2: while.cond land.rhs 
+3: land.lhs.true land.end land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else while.cond land.lhs.true6 entry while.body while.cond.land.end_crit_edge if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge 
+4: 
+5: 
+6: land.lhs.true land.end land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else while.cond land.lhs.true6 entry while.body while.cond.land.end_crit_edge if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge 
+7: land.lhs.true land.lhs.true6 land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge while.body while.cond.land.end_crit_edge land.end 
+8: land.lhs.true if.then23 if.then26 land.lhs.true6 if.then 
+9: 
+10: 
+11: 
+12: 
+13: 
+14: land.lhs.true if.then23 if.then26 land.lhs.true6 if.then 
+15: 
+16: 
+17: 
+18: 
+19: 
+20: land.lhs.true if.then23 if.then26 land.lhs.true6 if.then 
+21: 
+22: 
+23: 
+24: 
+25: 
+26: 
+27: 
+28: land.lhs.true land.end land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else while.cond land.lhs.true6 entry while.body while.cond.land.end_crit_edge if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge 
+29: 
+30: 
+31: 
+32: 
+33: 
+34: 
+35: 
+36: land.lhs.true land.end land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else while.cond land.lhs.true6 entry while.body while.cond.land.end_crit_edge if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge 
+37: land.lhs.true land.end land.rhs if.then if.then23.if.end_crit_edge if.then26 land.lhs.true6.if.end37_crit_edge if.then23 if.end36 if.else while.cond land.lhs.true6 entry while.body while.cond.land.end_crit_edge if.end37 while.body.if.end37_crit_edge if.end land.lhs.true.if.end37_crit_edge 
+38: if.then23.if.end_crit_edge if.end if.then26 
+39: 
+40: 
+41: 
+42: 
+43: if.end36 
+44: if.end37 
+45: land.rhs 
+valunumber: 0
+0				0				
+0				0				
+min cut from 0 to 1
+essentail: entry while.cond
+valunumber: 1
+0 entry to 1 while.cond: 1 1.000000e+00
+0				2				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+entry - while.cond
+essentail: entry while.cond
+valunumber: 2
+0 entry to 1 while.cond: 1 1.000000e+00
+0				2				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+entry - while.cond
+essentail: while.body land.lhs.true
+essentail: while.cond.land.end_crit_edge land.end
+essentail: land.rhs land.end
+essentail: while.cond land.rhs
+essentail: land.lhs.true6 if.then
+essentail: if.then23 if.then23.if.end_crit_edge
+essentail: if.then23 if.then26
+essentail: land.lhs.true6 land.lhs.true6.if.end37_crit_edge
+essentail: if.then if.then23
+essentail: if.else if.end36
+essentail: if.end if.end36
+essentail: if.then if.else
+essentail: if.end37 while.cond
+essentail: entry while.cond
+essentail: land.lhs.true land.lhs.true6
+essentail: land.end while.body
+essentail: while.cond while.cond.land.end_crit_edge
+essentail: land.lhs.true6.if.end37_crit_edge if.end37
+essentail: land.lhs.true.if.end37_crit_edge if.end37
+essentail: while.body.if.end37_crit_edge if.end37
+essentail: if.end36 if.end37
+essentail: while.body while.body.if.end37_crit_edge
+essentail: if.then23.if.end_crit_edge if.end
+essentail: if.then26 if.end
+essentail: land.lhs.true land.lhs.true.if.end37_crit_edge
+valunumber: 3
+0 while.body to 1 land.lhs.true: 7 3.835616e-01
+2 while.cond.land.end_crit_edge to 3 land.end: 0 1.000000e+00
+4 land.rhs to 3 land.end: 8 1.000000e+00
+5 while.cond to 4 land.rhs: 8 9.919110e-01
+6 land.lhs.true6 to 7 if.then: 2 4.708333e-01
+8 if.then23 to 9 if.then23.if.end_crit_edge: 0 6.250000e-02
+8 if.then23 to 10 if.then26: 0 9.375000e-01
+6 land.lhs.true6 to 11 land.lhs.true6.if.end37_crit_edge: 2 5.291667e-01
+7 if.then to 8 if.then23: 1 9.911504e-01
+12 if.else to 13 if.end36: 0 1.000000e+00
+14 if.end to 13 if.end36: 0 1.000000e+00
+7 if.then to 12 if.else: 1 8.849557e-03
+15 if.end37 to 5 while.cond: 7 1.000000e+00
+16 entry to 5 while.cond: 1 1.000000e+00
+1 land.lhs.true to 6 land.lhs.true6: 2 7.142857e-01
+3 land.end to 0 while.body: 8 8.857432e-01
+5 while.cond to 2 while.cond.land.end_crit_edge: 8 8.088979e-03
+11 land.lhs.true6.if.end37_crit_edge to 15 if.end37: 1 1.000000e+00
+17 land.lhs.true.if.end37_crit_edge to 15 if.end37: 0 1.000000e+00
+18 while.body.if.end37_crit_edge to 15 if.end37: 4 1.000000e+00
+13 if.end36 to 15 if.end37: 1 1.000000e+00
+0 while.body to 18 while.body.if.end37_crit_edge: 7 6.164384e-01
+9 if.then23.if.end_crit_edge to 14 if.end: 0 1.000000e+00
+10 if.then26 to 14 if.end: 0 1.000000e+00
+1 land.lhs.true to 17 land.lhs.true.if.end37_crit_edge: 2 2.857143e-01
+0				3				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				5				0				0				
+0				0				0				0				0				0				2				0				0				0				0				0				0				0				0				0				0				1				0				0				0				
+0				0				0				1				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				9				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				1				0				8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				1				0				0				0				2				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				1				0				0				0				1				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				1				1				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				2				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				2				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				0				
+0				0				0				0				0				8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				2				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				5				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				2147483647				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+min cut from 19 to 20
+valunumber: 4
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 5
+0				0				
+0				0				
+min cut from 0 to 1
+essentail: while.body land.lhs.true
+essentail: while.cond.land.end_crit_edge land.end
+essentail: land.rhs land.end
+essentail: while.cond land.rhs
+essentail: land.lhs.true6 if.then
+essentail: if.then23 if.then23.if.end_crit_edge
+essentail: if.then23 if.then26
+essentail: land.lhs.true6 land.lhs.true6.if.end37_crit_edge
+essentail: if.then if.then23
+essentail: if.else if.end36
+essentail: if.end if.end36
+essentail: if.then if.else
+essentail: if.end37 while.cond
+essentail: entry while.cond
+essentail: land.lhs.true land.lhs.true6
+essentail: land.end while.body
+essentail: while.cond while.cond.land.end_crit_edge
+essentail: land.lhs.true6.if.end37_crit_edge if.end37
+essentail: land.lhs.true.if.end37_crit_edge if.end37
+essentail: while.body.if.end37_crit_edge if.end37
+essentail: if.end36 if.end37
+essentail: while.body while.body.if.end37_crit_edge
+essentail: if.then23.if.end_crit_edge if.end
+essentail: if.then26 if.end
+essentail: land.lhs.true land.lhs.true.if.end37_crit_edge
+valunumber: 6
+0 while.body to 1 land.lhs.true: 7 3.835616e-01
+2 while.cond.land.end_crit_edge to 3 land.end: 0 1.000000e+00
+4 land.rhs to 3 land.end: 8 1.000000e+00
+5 while.cond to 4 land.rhs: 8 9.919110e-01
+6 land.lhs.true6 to 7 if.then: 2 4.708333e-01
+8 if.then23 to 9 if.then23.if.end_crit_edge: 0 6.250000e-02
+8 if.then23 to 10 if.then26: 0 9.375000e-01
+6 land.lhs.true6 to 11 land.lhs.true6.if.end37_crit_edge: 2 5.291667e-01
+7 if.then to 8 if.then23: 1 9.911504e-01
+12 if.else to 13 if.end36: 0 1.000000e+00
+14 if.end to 13 if.end36: 0 1.000000e+00
+7 if.then to 12 if.else: 1 8.849557e-03
+15 if.end37 to 5 while.cond: 7 1.000000e+00
+16 entry to 5 while.cond: 1 1.000000e+00
+1 land.lhs.true to 6 land.lhs.true6: 2 7.142857e-01
+3 land.end to 0 while.body: 8 8.857432e-01
+5 while.cond to 2 while.cond.land.end_crit_edge: 8 8.088979e-03
+11 land.lhs.true6.if.end37_crit_edge to 15 if.end37: 1 1.000000e+00
+17 land.lhs.true.if.end37_crit_edge to 15 if.end37: 0 1.000000e+00
+18 while.body.if.end37_crit_edge to 15 if.end37: 4 1.000000e+00
+13 if.end36 to 15 if.end37: 1 1.000000e+00
+0 while.body to 18 while.body.if.end37_crit_edge: 7 6.164384e-01
+9 if.then23.if.end_crit_edge to 14 if.end: 0 1.000000e+00
+10 if.then26 to 14 if.end: 0 1.000000e+00
+1 land.lhs.true to 17 land.lhs.true.if.end37_crit_edge: 2 2.857143e-01
+0				3				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				5				0				0				
+0				0				0				0				0				0				2				0				0				0				0				0				0				0				0				0				0				1				0				0				0				
+0				0				0				1				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				9				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				1				0				8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				1				0				0				0				2				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				1				0				0				0				1				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				1				1				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				2				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				2				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				0				
+0				0				0				0				0				8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				2				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				5				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				2147483647				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+min cut from 19 to 20
+essentail: while.cond land.rhs
+essentail: land.end while.body
+essentail: while.cond while.cond.land.end_crit_edge
+essentail: while.cond.land.end_crit_edge land.end
+essentail: land.rhs land.end
+valunumber: 7
+0 while.cond to 1 land.rhs: 8 9.919110e-01
+2 land.end to 3 while.body: 8 8.857432e-01
+0 while.cond to 4 while.cond.land.end_crit_edge: 8 8.088979e-03
+4 while.cond.land.end_crit_edge to 2 land.end: 0 1.000000e+00
+1 land.rhs to 2 land.end: 8 1.000000e+00
+0				8				0				0				1				0				0				
+0				0				9				0				0				0				0				
+0				0				0				8				0				0				0				
+0				0				0				0				0				0				2147483647				
+0				0				1				0				0				0				0				
+2147483647				0				0				0				0				0				0				
+0				0				0				0				0				0				0				
+min cut from 5 to 6
+land.end - while.body
+valunumber: 8
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 9
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 10
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 11
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 12
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 13
+0				0				
+0				0				
+min cut from 0 to 1
+essentail: while.body land.lhs.true
+valunumber: 14
+0 while.body to 1 land.lhs.true: 7 3.835616e-01
+0				3				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+while.body - land.lhs.true
+valunumber: 15
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 16
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 17
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 18
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 19
+0				0				
+0				0				
+min cut from 0 to 1
+essentail: while.body land.lhs.true
+essentail: land.lhs.true land.lhs.true6
+valunumber: 20
+0 while.body to 1 land.lhs.true: 7 3.835616e-01
+1 land.lhs.true to 2 land.lhs.true6: 2 7.142857e-01
+0				3				0				0				0				
+0				0				2				0				0				
+0				0				0				0				2147483647				
+2147483647				0				0				0				0				
+0				0				0				0				0				
+min cut from 3 to 4
+land.lhs.true - land.lhs.true6
+valunumber: 21
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 22
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 23
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 24
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 25
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 26
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 27
+0				0				
+0				0				
+min cut from 0 to 1
+essentail: while.body land.lhs.true
+essentail: while.cond.land.end_crit_edge land.end
+essentail: land.rhs land.end
+essentail: while.cond land.rhs
+essentail: land.lhs.true6 if.then
+essentail: land.lhs.true6 land.lhs.true6.if.end37_crit_edge
+essentail: if.end37 while.cond
+essentail: entry while.cond
+essentail: land.lhs.true land.lhs.true6
+essentail: land.end while.body
+essentail: while.cond while.cond.land.end_crit_edge
+essentail: land.lhs.true6.if.end37_crit_edge if.end37
+essentail: land.lhs.true.if.end37_crit_edge if.end37
+essentail: while.body.if.end37_crit_edge if.end37
+essentail: while.body while.body.if.end37_crit_edge
+essentail: land.lhs.true land.lhs.true.if.end37_crit_edge
+valunumber: 28
+0 while.body to 1 land.lhs.true: 7 3.835616e-01
+2 while.cond.land.end_crit_edge to 3 land.end: 0 1.000000e+00
+4 land.rhs to 3 land.end: 8 1.000000e+00
+5 while.cond to 4 land.rhs: 8 9.919110e-01
+6 land.lhs.true6 to 7 if.then: 2 4.708333e-01
+6 land.lhs.true6 to 8 land.lhs.true6.if.end37_crit_edge: 2 5.291667e-01
+9 if.end37 to 5 while.cond: 7 1.000000e+00
+10 entry to 5 while.cond: 1 1.000000e+00
+1 land.lhs.true to 6 land.lhs.true6: 2 7.142857e-01
+3 land.end to 0 while.body: 8 8.857432e-01
+5 while.cond to 2 while.cond.land.end_crit_edge: 8 8.088979e-03
+8 land.lhs.true6.if.end37_crit_edge to 9 if.end37: 1 1.000000e+00
+11 land.lhs.true.if.end37_crit_edge to 9 if.end37: 0 1.000000e+00
+12 while.body.if.end37_crit_edge to 9 if.end37: 4 1.000000e+00
+0 while.body to 12 while.body.if.end37_crit_edge: 7 6.164384e-01
+1 land.lhs.true to 11 land.lhs.true.if.end37_crit_edge: 2 2.857143e-01
+0				3				0				0				0				0				0				0				0				0				0				0				5				0				0				
+0				0				0				0				0				0				2				0				0				0				0				1				0				0				0				
+0				0				0				1				0				0				0				0				0				0				0				0				0				0				0				
+8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				9				0				0				0				0				0				0				0				0				0				0				0				
+0				0				1				0				8				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				1				2				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				2147483647				
+0				0				0				0				0				0				0				0				0				2				0				0				0				0				0				
+0				0				0				0				0				8				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				2				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				5				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				2147483647				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+min cut from 13 to 14
+land.lhs.true6 - if.then
+valunumber: 29
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 30
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 31
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 32
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 33
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 34
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 35
+0				0				
+0				0				
+min cut from 0 to 1
+essentail: while.body land.lhs.true
+essentail: while.cond.land.end_crit_edge land.end
+essentail: land.rhs land.end
+essentail: while.cond land.rhs
+essentail: land.lhs.true6 if.then
+essentail: land.lhs.true6 land.lhs.true6.if.end37_crit_edge
+essentail: if.end37 while.cond
+essentail: entry while.cond
+essentail: land.lhs.true land.lhs.true6
+essentail: land.end while.body
+essentail: while.cond while.cond.land.end_crit_edge
+essentail: land.lhs.true6.if.end37_crit_edge if.end37
+essentail: land.lhs.true.if.end37_crit_edge if.end37
+essentail: while.body.if.end37_crit_edge if.end37
+essentail: while.body while.body.if.end37_crit_edge
+essentail: land.lhs.true land.lhs.true.if.end37_crit_edge
+valunumber: 36
+0 while.body to 1 land.lhs.true: 7 3.835616e-01
+2 while.cond.land.end_crit_edge to 3 land.end: 0 1.000000e+00
+4 land.rhs to 3 land.end: 8 1.000000e+00
+5 while.cond to 4 land.rhs: 8 9.919110e-01
+6 land.lhs.true6 to 7 if.then: 2 4.708333e-01
+6 land.lhs.true6 to 8 land.lhs.true6.if.end37_crit_edge: 2 5.291667e-01
+9 if.end37 to 5 while.cond: 7 1.000000e+00
+10 entry to 5 while.cond: 1 1.000000e+00
+1 land.lhs.true to 6 land.lhs.true6: 2 7.142857e-01
+3 land.end to 0 while.body: 8 8.857432e-01
+5 while.cond to 2 while.cond.land.end_crit_edge: 8 8.088979e-03
+8 land.lhs.true6.if.end37_crit_edge to 9 if.end37: 1 1.000000e+00
+11 land.lhs.true.if.end37_crit_edge to 9 if.end37: 0 1.000000e+00
+12 while.body.if.end37_crit_edge to 9 if.end37: 4 1.000000e+00
+0 while.body to 12 while.body.if.end37_crit_edge: 7 6.164384e-01
+1 land.lhs.true to 11 land.lhs.true.if.end37_crit_edge: 2 2.857143e-01
+0				3				0				0				0				0				0				0				0				0				0				0				5				0				0				
+0				0				0				0				0				0				2				0				0				0				0				1				0				0				0				
+0				0				0				1				0				0				0				0				0				0				0				0				0				0				0				
+8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				9				0				0				0				0				0				0				0				0				0				0				0				
+0				0				1				0				8				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				1				2				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				2147483647				
+0				0				0				0				0				0				0				0				0				2				0				0				0				0				0				
+0				0				0				0				0				8				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				2				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				5				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				2147483647				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+min cut from 13 to 14
+land.lhs.true6 - if.then
+essentail: while.body land.lhs.true
+essentail: while.cond.land.end_crit_edge land.end
+essentail: land.rhs land.end
+essentail: while.cond land.rhs
+essentail: land.lhs.true6 if.then
+essentail: land.lhs.true6 land.lhs.true6.if.end37_crit_edge
+essentail: if.then if.then23
+essentail: if.else if.end36
+essentail: if.then if.else
+essentail: if.end37 while.cond
+essentail: entry while.cond
+essentail: land.lhs.true land.lhs.true6
+essentail: land.end while.body
+essentail: while.cond while.cond.land.end_crit_edge
+essentail: land.lhs.true6.if.end37_crit_edge if.end37
+essentail: land.lhs.true.if.end37_crit_edge if.end37
+essentail: while.body.if.end37_crit_edge if.end37
+essentail: if.end36 if.end37
+essentail: while.body while.body.if.end37_crit_edge
+essentail: land.lhs.true land.lhs.true.if.end37_crit_edge
+valunumber: 37
+0 while.body to 1 land.lhs.true: 7 3.835616e-01
+2 while.cond.land.end_crit_edge to 3 land.end: 0 1.000000e+00
+4 land.rhs to 3 land.end: 8 1.000000e+00
+5 while.cond to 4 land.rhs: 8 9.919110e-01
+6 land.lhs.true6 to 7 if.then: 2 4.708333e-01
+6 land.lhs.true6 to 8 land.lhs.true6.if.end37_crit_edge: 2 5.291667e-01
+7 if.then to 9 if.then23: 1 9.911504e-01
+10 if.else to 11 if.end36: 0 1.000000e+00
+7 if.then to 10 if.else: 1 8.849557e-03
+12 if.end37 to 5 while.cond: 7 1.000000e+00
+13 entry to 5 while.cond: 1 1.000000e+00
+1 land.lhs.true to 6 land.lhs.true6: 2 7.142857e-01
+3 land.end to 0 while.body: 8 8.857432e-01
+5 while.cond to 2 while.cond.land.end_crit_edge: 8 8.088979e-03
+8 land.lhs.true6.if.end37_crit_edge to 12 if.end37: 1 1.000000e+00
+14 land.lhs.true.if.end37_crit_edge to 12 if.end37: 0 1.000000e+00
+15 while.body.if.end37_crit_edge to 12 if.end37: 4 1.000000e+00
+11 if.end36 to 12 if.end37: 1 1.000000e+00
+0 while.body to 15 while.body.if.end37_crit_edge: 7 6.164384e-01
+1 land.lhs.true to 14 land.lhs.true.if.end37_crit_edge: 2 2.857143e-01
+0				3				0				0				0				0				0				0				0				0				0				0				0				0				0				5				0				0				
+0				0				0				0				0				0				2				0				0				0				0				0				0				0				1				0				0				0				
+0				0				0				1				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+8				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				9				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				1				0				8				0				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				1				2				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				1				1				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				2				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				2147483647				
+0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				2				0				0				0				0				0				
+0				0				0				0				0				8				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				2				0				0				0				0				0				0				0				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				1				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				5				0				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				2147483647				0				0				0				0				
+0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				0				
+min cut from 16 to 17
+land.lhs.true6 - if.then
+valunumber: 38
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 39
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 40
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 41
+0				0				
+0				0				
+min cut from 0 to 1
+valunumber: 42
+0				0				
+0				0				
+min cut from 0 to 1
+essentail: if.else if.end36
+essentail: if.end if.end36
+valunumber: 43
+0 if.else to 1 if.end36: 0 1.000000e+00
+2 if.end to 1 if.end36: 0 1.000000e+00
+0				1				0				0				0				
+0				0				0				0				2147483647				
+0				1				0				0				0				
+2147483647				0				2147483647				0				0				
+0				0				0				0				0				
+min cut from 3 to 4
+if.else - if.end36
+if.end - if.end36
+essentail: land.lhs.true6.if.end37_crit_edge if.end37
+essentail: land.lhs.true.if.end37_crit_edge if.end37
+essentail: while.body.if.end37_crit_edge if.end37
+essentail: if.end36 if.end37
+valunumber: 44
+0 land.lhs.true6.if.end37_crit_edge to 1 if.end37: 1 1.000000e+00
+2 land.lhs.true.if.end37_crit_edge to 1 if.end37: 0 1.000000e+00
+3 while.body.if.end37_crit_edge to 1 if.end37: 4 1.000000e+00
+4 if.end36 to 1 if.end37: 1 1.000000e+00
+0				2				0				0				0				0				0				
+0				0				0				0				0				0				2147483647				
+0				1				0				0				0				0				0				
+0				5				0				0				0				0				0				
+0				2				0				0				0				0				0				
+2147483647				0				2147483647				2147483647				2147483647				0				0				
+0				0				0				0				0				0				0				
+min cut from 5 to 6
+land.lhs.true6.if.end37_crit_edge - if.end37
+land.lhs.true.if.end37_crit_edge - if.end37
+while.body.if.end37_crit_edge - if.end37
+if.end36 - if.end37
+essentail: while.cond land.rhs
+valunumber: 45
+0 while.cond to 1 land.rhs: 8 9.919110e-01
+0				8				0				0				
+0				0				0				2147483647				
+2147483647				0				0				0				
+0				0				0				0				
+min cut from 2 to 3
+while.cond - land.rhs
+insert into if.end36.split
+available
+  %2 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %tobool5 = icmp ne i32 %2, 0
+  store i32 0, i32* %arrayidx21, align 4
+  %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom3 = sext i32 %add2 to i64
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add2 = add nsw i32 %i, %add
+  store i32 %add, i32* %arrayidx12, align 4
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %3 = load i32, i32* %arrayidx9, align 4
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  store i32 0, i32* %arrayidx14, align 4
+  %1 = load i32, i32* %arrayidx, align 4
+  %tobool10 = icmp ne i32 %3, 0
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+  %add7 = add nsw i32 %sub, 7
+  %sub = sub nsw i32 %i, %add
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  %q.addr.1 = phi i32 [ %call, %if.end ], [ 1, %if.else ]
+  store i32 0, i32* %arrayidx17, align 4
+  %idxprom8 = sext i32 %add7 to i64
+44 prepared
+try   %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge ]
+
+if.end36.split:                                   ; preds = %if.end36
+  br label %if.end37
+
+insert into land.lhs.true6.if.end37_crit_edge.split
+available
+  %2 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %tobool5 = icmp ne i32 %2, 0
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom3 = sext i32 %add2 to i64
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add2 = add nsw i32 %i, %add
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %3 = load i32, i32* %arrayidx9, align 4
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx, align 4
+  %tobool10 = icmp ne i32 %3, 0
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+  %add7 = add nsw i32 %sub, 7
+  %sub = sub nsw i32 %i, %add
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  %idxprom8 = sext i32 %add7 to i64
+44 prepared
+try   %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge ]
+
+land.lhs.true6.if.end37_crit_edge.split:          ; preds = %land.lhs.true6.if.end37_crit_edge
+  br label %if.end37
+
+insert into if.then.split
+available
+  %2 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %tobool5 = icmp ne i32 %2, 0
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom3 = sext i32 %add2 to i64
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add2 = add nsw i32 %i, %add
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %3 = load i32, i32* %arrayidx9, align 4
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx, align 4
+  %tobool10 = icmp ne i32 %3, 0
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+  %add7 = add nsw i32 %sub, 7
+  %sub = sub nsw i32 %i, %add
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  %idxprom8 = sext i32 %add7 to i64
+28 prepared
+try   %idxprom11 = sext i32 %i to i64
+36 prepared
+try   %cmp22 = icmp slt i32 %i, 8
+37 prepared
+try   %add24 = add nsw i32 %i, 1
+
+if.then.split:                                    ; preds = %land.lhs.true6
+  %OptInsert_idxprom11 = sext i32 %i to i64
+  %OptInsert_cmp22 = icmp slt i32 %i, 8
+  %OptInsert_add24 = add nsw i32 %i, 1
+  br label %if.then
+
+insert into land.rhs.split
+available
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %tobool = icmp ne i32 %q.addr.0, 0
+45 prepared
+try   %cmp = icmp ne i32 %j.0, 8
+
+land.rhs.split:                                   ; preds = %while.cond
+  %OptInsert_cmp = icmp ne i32 %j.0, 8
+  br label %land.rhs
+
+insert into while.body.if.end37_crit_edge.split
+available
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx, align 4
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+44 prepared
+try   %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge ], [ 0, %while.body.if.end37_crit_edge.split ]
+
+while.body.if.end37_crit_edge.split:              ; preds = %while.body.if.end37_crit_edge
+  br label %if.end37
+
+insert into land.lhs.true.split
+available
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx, align 4
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+14 prepared
+try   %add2 = add nsw i32 %i, %add
+
+land.lhs.true.split:                              ; preds = %while.body
+  %OptInsert_add2 = add nsw i32 %i, %add
+  br label %land.lhs.true
+
+insert into land.lhs.true.if.end37_crit_edge.split
+available
+  %2 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %tobool5 = icmp ne i32 %2, 0
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom3 = sext i32 %add2 to i64
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add2 = add nsw i32 %i, %add
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx, align 4
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+44 prepared
+try   %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+
+land.lhs.true.if.end37_crit_edge.split:           ; preds = %land.lhs.true.if.end37_crit_edge
+  br label %if.end37
+
+insert into if.else.split
+available
+  %2 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %tobool5 = icmp ne i32 %2, 0
+  store i32 0, i32* %arrayidx21, align 4
+  %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom3 = sext i32 %add2 to i64
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add2 = add nsw i32 %i, %add
+  store i32 %add, i32* %arrayidx12, align 4
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %3 = load i32, i32* %arrayidx9, align 4
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  store i32 0, i32* %arrayidx14, align 4
+  %1 = load i32, i32* %arrayidx, align 4
+  %tobool10 = icmp ne i32 %3, 0
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+  %add7 = add nsw i32 %sub, 7
+  %sub = sub nsw i32 %i, %add
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  store i32 0, i32* %arrayidx17, align 4
+  %idxprom8 = sext i32 %add7 to i64
+43 prepared
+try   %q.addr.1 = phi i32 [ %call, %if.end ], [ 1, %if.else.split ]
+
+if.else.split:                                    ; preds = %if.else
+  br label %if.end36
+
+insert into land.lhs.true6.split
+available
+  %2 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %tobool5 = icmp ne i32 %2, 0
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom3 = sext i32 %add2 to i64
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add2 = add nsw i32 %i, %add
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx, align 4
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+20 prepared
+try   %sub32 = sub nsw i32 %i, %add
+
+land.lhs.true6.split:                             ; preds = %land.lhs.true
+  %OptInsert_sub32 = sub nsw i32 %i, %add
+  br label %land.lhs.true6
+
+insert into while.body.split
+available
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+7 prepared
+try   %add = add nsw i32 %j.0, 1
+
+while.body.split:                                 ; preds = %land.end
+  %OptInsert_add = add nsw i32 %j.0, 1
+  br label %while.body
+
+insert into if.end.split
+available
+  %2 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %tobool5 = icmp ne i32 %2, 0
+  store i32 0, i32* %arrayidx21, align 4
+  %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+  %q.addr.0 = phi i32 [ 0, %entry ], [ %q.addr.2, %if.end37 ]
+  %idxprom11 = sext i32 %i to i64
+  %cmp22 = icmp slt i32 %i, 8
+  %idxprom3 = sext i32 %add2 to i64
+  %j.0 = phi i32 [ 0, %entry ], [ %add, %if.end37 ]
+  %add2 = add nsw i32 %i, %add
+  store i32 %add, i32* %arrayidx12, align 4
+  %add24 = add nsw i32 %i, 1
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %add = add nsw i32 %j.0, 1
+  %3 = load i32, i32* %arrayidx9, align 4
+  %tobool25 = icmp ne i32 %call, 0
+  %idxprom = sext i32 %add to i64
+  %tobool1 = icmp ne i32 %1, 0
+  store i32 0, i32* %arrayidx14, align 4
+  %1 = load i32, i32* %arrayidx, align 4
+  %tobool10 = icmp ne i32 %3, 0
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+  %add7 = add nsw i32 %sub, 7
+  %sub = sub nsw i32 %i, %add
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  store i32 0, i32* %arrayidx17, align 4
+  %idxprom8 = sext i32 %add7 to i64
+43 prepared
+try   %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+
+if.end.split:                                     ; preds = %if.end
+  br label %if.end36
+
+insert into entry.split
+available
+1 prepared
+try   %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+2 prepared
+try   %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+
+entry.split:                                      ; preds = %entry
+  br label %while.cond
+
+if.end36 has dominance frontier:
+if.end37 
+if.end36.split has dominance frontier:
+if.end37 
+while.body.if.end37_crit_edge.split has dominance frontier:
+if.end37 
+land.lhs.true6 has dominance frontier:
+if.end37 if.end37 
+land.lhs.true6.if.end37_crit_edge.split has dominance frontier:
+if.end37 
+if.then.split has dominance frontier:
+if.end37 
+land.lhs.true6.if.end37_crit_edge has dominance frontier:
+if.end37 
+if.then23 has dominance frontier:
+if.end36 
+if.end37 has dominance frontier:
+while.cond 
+while.cond.land.end_crit_edge has dominance frontier:
+land.end 
+while.body.split has dominance frontier:
+while.cond 
+land.end has dominance frontier:
+while.cond 
+while.body.if.end37_crit_edge has dominance frontier:
+if.end37 
+land.lhs.true.if.end37_crit_edge has dominance frontier:
+if.end37 
+if.end has dominance frontier:
+if.end36 
+land.lhs.true.if.end37_crit_edge.split has dominance frontier:
+if.end37 
+while.body has dominance frontier:
+while.cond 
+land.rhs.split has dominance frontier:
+land.end 
+if.then26 has dominance frontier:
+if.end 
+if.then has dominance frontier:
+if.end37 
+land.rhs has dominance frontier:
+land.end 
+if.then23.if.end_crit_edge has dominance frontier:
+if.end 
+land.lhs.true has dominance frontier:
+if.end37 if.end37 if.end37 
+if.else.split has dominance frontier:
+if.end36 
+land.lhs.true.split has dominance frontier:
+if.end37 if.end37 if.end37 
+land.lhs.true6.split has dominance frontier:
+if.end37 if.end37 
+if.else has dominance frontier:
+if.end36 
+if.end.split has dominance frontier:
+if.end36 
+7 in newValueSet
+  %OptInsert_add = add nsw i32 %j.0, 1
+7 in newDefined
+  %OptInsert_add = add nsw i32 %j.0, 1
+20 in newValueSet
+  %OptInsert_sub32 = sub nsw i32 %i, %add
+20 in newDefined
+  %OptInsert_sub32 = sub nsw i32 %i, %add
+14 in newValueSet
+  %OptInsert_add2 = add nsw i32 %i, %add
+14 in newDefined
+  %OptInsert_add2 = add nsw i32 %i, %add
+45 in newValueSet
+  %OptInsert_cmp = icmp ne i32 %j.0, 8
+45 in newDefined
+  %OptInsert_cmp = icmp ne i32 %j.0, 8
+
+if.end37:                                         ; preds = %land.lhs.true6.if.end37_crit_edge.split, %land.lhs.true.if.end37_crit_edge.split, %while.body.if.end37_crit_edge.split, %if.end36.split
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 
+  br label %while.cond, !llvm.loop !39
+
+while.cond:                                       ; preds = %if.end37, %entry.split
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+  %tobool = icmp ne i32 %q.addr.0, 0
+  br i1 %tobool, label %while.cond.land.end_crit_edge, label %land.rhs.split, !prof !32
+37 in newValueSet
+  %OptInsert_add24 = add nsw i32 %i, 1
+  %NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+37 in newDefined
+  %OptInsert_add24 = add nsw i32 %i, 1
+  %NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+
+if.end37:                                         ; preds = %land.lhs.true6.if.end37_crit_edge.split, %land.lhs.true.if.end37_crit_edge.split, %while.body.if.end37_crit_edge.split, %if.end36.split
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_OptInsert_cmp22 = phi i1 
+  br label %while.cond, !llvm.loop !39
+
+while.cond:                                       ; preds = %if.end37, %entry.split
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 
+  %tobool = icmp ne i32 %q.addr.0, 0
+  br i1 %tobool, label %while.cond.land.end_crit_edge, label %land.rhs.split, !prof !32
+36 in newValueSet
+  %OptInsert_cmp22 = icmp slt i32 %i, 8
+  %NewPhi_OptInsert_cmp22 = phi i1 
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 
+36 in newDefined
+  %OptInsert_cmp22 = icmp slt i32 %i, 8
+  %NewPhi_OptInsert_cmp22 = phi i1 
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 
+
+if.end37:                                         ; preds = %land.lhs.true6.if.end37_crit_edge.split, %land.lhs.true.if.end37_crit_edge.split, %while.body.if.end37_crit_edge.split, %if.end36.split
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_OptInsert_cmp22 = phi i1 
+  %NewPhi_OptInsert_idxprom11 = phi i64 
+  br label %while.cond, !llvm.loop !39
+
+while.cond:                                       ; preds = %if.end37, %entry.split
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 
+  %tobool = icmp ne i32 %q.addr.0, 0
+  br i1 %tobool, label %while.cond.land.end_crit_edge, label %land.rhs.split, !prof !32
+28 in newValueSet
+  %OptInsert_idxprom11 = sext i32 %i to i64
+  %NewPhi_OptInsert_idxprom11 = phi i64 
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 
+28 in newDefined
+  %OptInsert_idxprom11 = sext i32 %i to i64
+  %NewPhi_OptInsert_idxprom11 = phi i64 
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 
+revNewValue
+28:   %NewPhi_OptInsert_idxprom11 = phi i64 
+36:   %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 
+37:   %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+28:   %OptInsert_idxprom11 = sext i32 %i to i64
+37:   %NewPhi_OptInsert_add24 = phi i32 
+28:   %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 
+36:   %NewPhi_OptInsert_cmp22 = phi i1 
+37:   %OptInsert_add24 = add nsw i32 %i, 1
+36:   %OptInsert_cmp22 = icmp slt i32 %i, 8
+45:   %OptInsert_cmp = icmp ne i32 %j.0, 8
+20:   %OptInsert_sub32 = sub nsw i32 %i, %add
+14:   %OptInsert_add2 = add nsw i32 %i, %add
+7:   %OptInsert_add = add nsw i32 %j.0, 1
+rename: entry
+  br label %entry.split
+fill in phi
+
+entry.split:                                      ; preds = %entry
+  br label %while.cond
+rename: entry.split
+  br label %while.cond
+fill in phi
+
+while.cond:                                       ; preds = %if.end37, %entry.split
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 
+  %tobool = icmp ne i32 %q.addr.0, 0
+  br i1 %tobool, label %while.cond.land.end_crit_edge, label %land.rhs.split, !prof !32
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %add = add nsw i32 %j.0, 1
+rename: while.cond
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 
+  %tobool = icmp ne i32 %q.addr.0, 0
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  br i1 %tobool, label %while.cond.land.end_crit_edge, label %land.rhs.split, !prof !32
+  %tobool = icmp ne i32 %q.addr.0, 0
+fill in phi
+
+while.cond.land.end_crit_edge:                    ; preds = %while.cond
+  br label %land.end
+
+land.rhs.split:                                   ; preds = %while.cond
+  %OptInsert_cmp = icmp ne i32 %j.0, 8
+  br label %land.rhs
+rename: while.cond.land.end_crit_edge
+  br label %land.end
+fill in phi
+
+land.end:                                         ; preds = %while.cond.land.end_crit_edge, %land.rhs
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+  br i1 %0, label %while.body.split, label %while.end, !prof !33
+  %cmp = icmp ne i32 %j.0, 8
+rename: land.end
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+  br i1 %0, label %while.body.split, label %while.end, !prof !33
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+fill in phi
+
+while.body.split:                                 ; preds = %land.end
+  %OptInsert_add = add nsw i32 %j.0, 1
+  br label %while.body
+
+while.end:                                        ; preds = %land.end
+  ret i32 %q.addr.0
+rename: while.body.split
+  %OptInsert_add = add nsw i32 %j.0, 1
+  %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+  br label %while.body
+fill in phi
+
+while.body:                                       ; preds = %while.body.split
+  %add = add nsw i32 %j.0, 1
+  %idxprom = sext i32 %add to i64
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %1 = load i32, i32* %arrayidx, align 4
+  %tobool1 = icmp ne i32 %1, 0
+  br i1 %tobool1, label %land.lhs.true.split, label %while.body.if.end37_crit_edge, !prof !34
+rename: while.body
+  %add = add nsw i32 %j.0, 1
+  %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+  %idxprom = sext i32 %add to i64
+  %add = add nsw i32 %j.0, 1
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %idxprom = sext i32 %OptInsert_add to i64
+  %1 = load i32, i32* %arrayidx, align 4
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %tobool1 = icmp ne i32 %1, 0
+  %1 = load i32, i32* %arrayidx, align 4
+  br i1 %tobool1, label %land.lhs.true.split, label %while.body.if.end37_crit_edge, !prof !34
+  %tobool1 = icmp ne i32 %1, 0
+fill in phi
+
+land.lhs.true.split:                              ; preds = %while.body
+  %OptInsert_add2 = add nsw i32 %i, %add
+  br label %land.lhs.true
+
+while.body.if.end37_crit_edge:                    ; preds = %while.body
+  br label %while.body.if.end37_crit_edge.split
+rename: land.lhs.true.split
+  %OptInsert_add2 = add nsw i32 %i, %add
+  %add = add nsw i32 %j.0, 1
+  br label %land.lhs.true
+fill in phi
+
+land.lhs.true:                                    ; preds = %land.lhs.true.split
+  %add2 = add nsw i32 %i, %add
+  %idxprom3 = sext i32 %add2 to i64
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %2 = load i32, i32* %arrayidx4, align 4
+  %tobool5 = icmp ne i32 %2, 0
+  br i1 %tobool5, label %land.lhs.true6.split, label %land.lhs.true.if.end37_crit_edge, !prof !35
+rename: land.lhs.true
+  %add2 = add nsw i32 %i, %add
+  %add = add nsw i32 %j.0, 1
+  %idxprom3 = sext i32 %add2 to i64
+  %add2 = add nsw i32 %i, %OptInsert_add
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %idxprom3 = sext i32 %OptInsert_add2 to i64
+  %2 = load i32, i32* %arrayidx4, align 4
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %tobool5 = icmp ne i32 %2, 0
+  %2 = load i32, i32* %arrayidx4, align 4
+  br i1 %tobool5, label %land.lhs.true6.split, label %land.lhs.true.if.end37_crit_edge, !prof !35
+  %tobool5 = icmp ne i32 %2, 0
+fill in phi
+
+land.lhs.true6.split:                             ; preds = %land.lhs.true
+  %OptInsert_sub32 = sub nsw i32 %i, %add
+  br label %land.lhs.true6
+
+land.lhs.true.if.end37_crit_edge:                 ; preds = %land.lhs.true
+  br label %land.lhs.true.if.end37_crit_edge.split
+rename: land.lhs.true6.split
+  %OptInsert_sub32 = sub nsw i32 %i, %add
+  %add = add nsw i32 %j.0, 1
+  br label %land.lhs.true6
+fill in phi
+
+land.lhs.true6:                                   ; preds = %land.lhs.true6.split
+  %sub = sub nsw i32 %i, %add
+  %add7 = add nsw i32 %sub, 7
+  %idxprom8 = sext i32 %add7 to i64
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  %3 = load i32, i32* %arrayidx9, align 4
+  %tobool10 = icmp ne i32 %3, 0
+  br i1 %tobool10, label %if.then.split, label %land.lhs.true6.if.end37_crit_edge, !prof !36
+rename: land.lhs.true6
+  %sub = sub nsw i32 %i, %add
+  %add = add nsw i32 %j.0, 1
+  %add7 = add nsw i32 %sub, 7
+  %sub = sub nsw i32 %i, %OptInsert_add
+  %idxprom8 = sext i32 %add7 to i64
+  %add7 = add nsw i32 %OptInsert_sub32, 7
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  %idxprom8 = sext i32 %add7 to i64
+  %3 = load i32, i32* %arrayidx9, align 4
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  %tobool10 = icmp ne i32 %3, 0
+  %3 = load i32, i32* %arrayidx9, align 4
+  br i1 %tobool10, label %if.then.split, label %land.lhs.true6.if.end37_crit_edge, !prof !36
+  %tobool10 = icmp ne i32 %3, 0
+fill in phi
+
+if.then.split:                                    ; preds = %land.lhs.true6
+  %OptInsert_idxprom11 = sext i32 %i to i64
+  %OptInsert_cmp22 = icmp slt i32 %i, 8
+  %OptInsert_add24 = add nsw i32 %i, 1
+  br label %if.then
+
+land.lhs.true6.if.end37_crit_edge:                ; preds = %land.lhs.true6
+  br label %land.lhs.true6.if.end37_crit_edge.split
+rename: if.then.split
+  %OptInsert_idxprom11 = sext i32 %i to i64
+  %OptInsert_cmp22 = icmp slt i32 %i, 8
+  %OptInsert_add24 = add nsw i32 %i, 1
+  br label %if.then
+fill in phi
+
+if.then:                                          ; preds = %if.then.split
+  %idxprom11 = sext i32 %i to i64
+  %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+  store i32 %add, i32* %arrayidx12, align 4
+  %idxprom13 = sext i32 %add to i64
+  %arrayidx14 = getelementptr inbounds i32, i32* %b, i64 %idxprom13
+  store i32 0, i32* %arrayidx14, align 4
+  %add15 = add nsw i32 %i, %add
+  %idxprom16 = sext i32 %add15 to i64
+  %arrayidx17 = getelementptr inbounds i32, i32* %a, i64 %idxprom16
+  store i32 0, i32* %arrayidx17, align 4
+  %sub18 = sub nsw i32 %i, %add
+  %add19 = add nsw i32 %sub18, 7
+  %idxprom20 = sext i32 %add19 to i64
+  %arrayidx21 = getelementptr inbounds i32, i32* %c, i64 %idxprom20
+  store i32 0, i32* %arrayidx21, align 4
+  %cmp22 = icmp slt i32 %i, 8
+  br i1 %cmp22, label %if.then23, label %if.else, !prof !37
+rename: if.then
+  %idxprom11 = sext i32 %i to i64
+  %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %idxprom11
+  %idxprom11 = sext i32 %i to i64
+  store i32 %add, i32* %arrayidx12, align 4
+  %add = add nsw i32 %j.0, 1
+  %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %OptInsert_idxprom11
+  %idxprom13 = sext i32 %add to i64
+  %add = add nsw i32 %j.0, 1
+  %arrayidx14 = getelementptr inbounds i32, i32* %b, i64 %idxprom13
+  %idxprom13 = sext i32 %OptInsert_add to i64
+  store i32 0, i32* %arrayidx14, align 4
+  %arrayidx14 = getelementptr inbounds i32, i32* %b, i64 %idxprom13
+  %add15 = add nsw i32 %i, %add
+  %add = add nsw i32 %j.0, 1
+  %idxprom16 = sext i32 %add15 to i64
+  %add15 = add nsw i32 %i, %OptInsert_add
+  %arrayidx17 = getelementptr inbounds i32, i32* %a, i64 %idxprom16
+  %idxprom16 = sext i32 %OptInsert_add2 to i64
+  store i32 0, i32* %arrayidx17, align 4
+  %arrayidx17 = getelementptr inbounds i32, i32* %a, i64 %idxprom16
+  %sub18 = sub nsw i32 %i, %add
+  %add = add nsw i32 %j.0, 1
+  %add19 = add nsw i32 %sub18, 7
+  %sub18 = sub nsw i32 %i, %OptInsert_add
+  %idxprom20 = sext i32 %add19 to i64
+  %add19 = add nsw i32 %OptInsert_sub32, 7
+  %arrayidx21 = getelementptr inbounds i32, i32* %c, i64 %idxprom20
+  %idxprom20 = sext i32 %add19 to i64
+  store i32 0, i32* %arrayidx21, align 4
+  %arrayidx21 = getelementptr inbounds i32, i32* %c, i64 %idxprom20
+  %cmp22 = icmp slt i32 %i, 8
+  br i1 %cmp22, label %if.then23, label %if.else, !prof !37
+  %cmp22 = icmp slt i32 %i, 8
+fill in phi
+
+if.then23:                                        ; preds = %if.then
+  %add24 = add nsw i32 %i, 1
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %tobool25 = icmp ne i32 %call, 0
+  br i1 %tobool25, label %if.then23.if.end_crit_edge, label %if.then26, !prof !38
+
+if.else:                                          ; preds = %if.then
+  br label %if.else.split
+rename: if.then23
+  %add24 = add nsw i32 %i, 1
+  %call = call i32 @Try(i32 %add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %add24 = add nsw i32 %i, 1
+  %tobool25 = icmp ne i32 %call, 0
+  %call = call i32 @Try(i32 %OptInsert_add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  br i1 %tobool25, label %if.then23.if.end_crit_edge, label %if.then26, !prof !38
+  %tobool25 = icmp ne i32 %call, 0
+fill in phi
+
+if.then23.if.end_crit_edge:                       ; preds = %if.then23
+  br label %if.end
+
+if.then26:                                        ; preds = %if.then23
+  %idxprom27 = sext i32 %add to i64
+  %arrayidx28 = getelementptr inbounds i32, i32* %b, i64 %idxprom27
+  store i32 1, i32* %arrayidx28, align 4
+  %add29 = add nsw i32 %i, %add
+  %idxprom30 = sext i32 %add29 to i64
+  %arrayidx31 = getelementptr inbounds i32, i32* %a, i64 %idxprom30
+  store i32 1, i32* %arrayidx31, align 4
+  %sub32 = sub nsw i32 %i, %add
+  %add33 = add nsw i32 %sub32, 7
+  %idxprom34 = sext i32 %add33 to i64
+  %arrayidx35 = getelementptr inbounds i32, i32* %c, i64 %idxprom34
+  store i32 1, i32* %arrayidx35, align 4
+  br label %if.end
+rename: if.then23.if.end_crit_edge
+  br label %if.end
+fill in phi
+
+if.end:                                           ; preds = %if.then23.if.end_crit_edge, %if.then26
+  br label %if.end.split
+rename: if.end
+  br label %if.end.split
+fill in phi
+
+if.end.split:                                     ; preds = %if.end
+  br label %if.end36
+rename: if.end.split
+  br label %if.end36
+fill in phi
+
+if.end36:                                         ; preds = %if.else.split, %if.end.split
+  %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+  br label %if.end36.split
+  %call = call i32 @Try(i32 %OptInsert_add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+rename: if.then26
+  %idxprom27 = sext i32 %add to i64
+  %add = add nsw i32 %j.0, 1
+  %arrayidx28 = getelementptr inbounds i32, i32* %b, i64 %idxprom27
+  %idxprom27 = sext i32 %OptInsert_add to i64
+  store i32 1, i32* %arrayidx28, align 4
+  %arrayidx28 = getelementptr inbounds i32, i32* %b, i64 %idxprom27
+  %add29 = add nsw i32 %i, %add
+  %add = add nsw i32 %j.0, 1
+  %idxprom30 = sext i32 %add29 to i64
+  %add29 = add nsw i32 %i, %OptInsert_add
+  %arrayidx31 = getelementptr inbounds i32, i32* %a, i64 %idxprom30
+  %idxprom30 = sext i32 %OptInsert_add2 to i64
+  store i32 1, i32* %arrayidx31, align 4
+  %arrayidx31 = getelementptr inbounds i32, i32* %a, i64 %idxprom30
+  %sub32 = sub nsw i32 %i, %add
+  %add = add nsw i32 %j.0, 1
+  %add33 = add nsw i32 %sub32, 7
+  %sub32 = sub nsw i32 %i, %OptInsert_add
+  %idxprom34 = sext i32 %add33 to i64
+  %add33 = add nsw i32 %OptInsert_sub32, 7
+  %arrayidx35 = getelementptr inbounds i32, i32* %c, i64 %idxprom34
+  %idxprom34 = sext i32 %add33 to i64
+  store i32 1, i32* %arrayidx35, align 4
+  %arrayidx35 = getelementptr inbounds i32, i32* %c, i64 %idxprom34
+  br label %if.end
+fill in phi
+
+if.end:                                           ; preds = %if.then23.if.end_crit_edge, %if.then26
+  br label %if.end.split
+rename: if.end36
+  %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+  br label %if.end36.split
+fill in phi
+
+if.end36.split:                                   ; preds = %if.end36
+  br label %if.end37
+rename: if.end36.split
+  br label %if.end37
+fill in phi
+
+if.end37:                                         ; preds = %land.lhs.true6.if.end37_crit_edge.split, %land.lhs.true.if.end37_crit_edge.split, %while.body.if.end37_crit_edge.split, %if.end36.split
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_OptInsert_cmp22 = phi i1 
+  %NewPhi_OptInsert_idxprom11 = phi i64 
+  br label %while.cond, !llvm.loop !39
+  %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ]
+rename: if.else
+  br label %if.else.split
+fill in phi
+
+if.else.split:                                    ; preds = %if.else
+  br label %if.end36
+rename: if.else.split
+  br label %if.end36
+fill in phi
+
+if.end36:                                         ; preds = %if.else.split, %if.end.split
+  %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+  br label %if.end36.split
+  %call = call i32 @Try(i32 %OptInsert_add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+rename: land.lhs.true6.if.end37_crit_edge
+  br label %land.lhs.true6.if.end37_crit_edge.split
+fill in phi
+
+land.lhs.true6.if.end37_crit_edge.split:          ; preds = %land.lhs.true6.if.end37_crit_edge
+  br label %if.end37
+rename: land.lhs.true6.if.end37_crit_edge.split
+  br label %if.end37
+fill in phi
+
+if.end37:                                         ; preds = %land.lhs.true6.if.end37_crit_edge.split, %land.lhs.true.if.end37_crit_edge.split, %while.body.if.end37_crit_edge.split, %if.end36.split
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ]
+  br label %while.cond, !llvm.loop !39
+  %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true6.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true6.if.end37_crit_edge.split ]
+rename: land.lhs.true.if.end37_crit_edge
+  br label %land.lhs.true.if.end37_crit_edge.split
+fill in phi
+
+land.lhs.true.if.end37_crit_edge.split:           ; preds = %land.lhs.true.if.end37_crit_edge
+  br label %if.end37
+rename: land.lhs.true.if.end37_crit_edge.split
+  br label %if.end37
+fill in phi
+
+if.end37:                                         ; preds = %land.lhs.true6.if.end37_crit_edge.split, %land.lhs.true.if.end37_crit_edge.split, %while.body.if.end37_crit_edge.split, %if.end36.split
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true6.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true6.if.end37_crit_edge.split ]
+  br label %while.cond, !llvm.loop !39
+  %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true.if.end37_crit_edge.split ]
+rename: if.end37
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true.if.end37_crit_edge.split ]
+  br label %while.cond, !llvm.loop !39
+fill in phi
+
+while.cond:                                       ; preds = %if.end37, %entry.split
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %add, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 
+  %tobool = icmp ne i32 %q.addr.0, 0
+  br i1 %tobool, label %while.cond.land.end_crit_edge, label %land.rhs.split, !prof !32
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %add = add nsw i32 %j.0, 1
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 [ %NewPhi_OptInsert_add24, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 [ %NewPhi_OptInsert_cmp22, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 [ %NewPhi_OptInsert_idxprom11, %if.end37 ]
+rename: while.body.if.end37_crit_edge
+  br label %while.body.if.end37_crit_edge.split
+fill in phi
+
+while.body.if.end37_crit_edge.split:              ; preds = %while.body.if.end37_crit_edge
+  br label %if.end37
+rename: while.body.if.end37_crit_edge.split
+  br label %if.end37
+fill in phi
+
+if.end37:                                         ; preds = %land.lhs.true6.if.end37_crit_edge.split, %land.lhs.true.if.end37_crit_edge.split, %while.body.if.end37_crit_edge.split, %if.end36.split
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true.if.end37_crit_edge.split ]
+  br label %while.cond, !llvm.loop !39
+  %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %while.body.if.end37_crit_edge.split ]
+rename: while.end
+  ret i32 %q.addr.0
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+fill in phi
+rename: land.rhs.split
+  %OptInsert_cmp = icmp ne i32 %j.0, 8
+  %j.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_add, %if.end37 ]
+  br label %land.rhs
+fill in phi
+
+land.rhs:                                         ; preds = %land.rhs.split
+  %cmp = icmp ne i32 %j.0, 8
+  br label %land.end
+rename: land.rhs
+  %cmp = icmp ne i32 %j.0, 8
+  %j.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_add, %if.end37 ]
+  br label %land.end
+fill in phi
+
+land.end:                                         ; preds = %while.cond.land.end_crit_edge, %land.rhs
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %cmp, %land.rhs ]
+  br i1 %0, label %while.body.split, label %while.end, !prof !33
+  %cmp = icmp ne i32 %j.0, 8
+
+entry:
+  br label %entry.split
+
+
+entry.split:                                      ; preds = %entry
+  br label %while.cond
+
+
+while.cond:                                       ; preds = %if.end37, %entry.split
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_add, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 [ %NewPhi_OptInsert_add24, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 [ %NewPhi_OptInsert_cmp22, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 [ %NewPhi_OptInsert_idxprom11, %if.end37 ]
+  %tobool = icmp ne i32 %q.addr.0, 0
+  br i1 %tobool, label %while.cond.land.end_crit_edge, label %land.rhs.split, !prof !32
+
+
+while.cond.land.end_crit_edge:                    ; preds = %while.cond
+  br label %land.end
+
+
+land.rhs.split:                                   ; preds = %while.cond
+  %OptInsert_cmp = icmp ne i32 %j.0, 8
+  br label %land.rhs
+
+
+land.rhs:                                         ; preds = %land.rhs.split
+  %cmp = icmp ne i32 %j.0, 8
+  br label %land.end
+
+
+land.end:                                         ; preds = %while.cond.land.end_crit_edge, %land.rhs
+  %0 = phi i1 [ false, %while.cond.land.end_crit_edge ], [ %OptInsert_cmp, %land.rhs ]
+  br i1 %0, label %while.body.split, label %while.end, !prof !33
+
+
+while.body.split:                                 ; preds = %land.end
+  %OptInsert_add = add nsw i32 %j.0, 1
+  br label %while.body
+
+
+while.body:                                       ; preds = %while.body.split
+  %add = add nsw i32 %j.0, 1
+  %idxprom = sext i32 %OptInsert_add to i64
+  %arrayidx = getelementptr inbounds i32, i32* %b, i64 %idxprom
+  %1 = load i32, i32* %arrayidx, align 4
+  %tobool1 = icmp ne i32 %1, 0
+  br i1 %tobool1, label %land.lhs.true.split, label %while.body.if.end37_crit_edge, !prof !34
+
+
+while.body.if.end37_crit_edge:                    ; preds = %while.body
+  br label %while.body.if.end37_crit_edge.split
+
+
+while.body.if.end37_crit_edge.split:              ; preds = %while.body.if.end37_crit_edge
+  br label %if.end37
+
+
+land.lhs.true.split:                              ; preds = %while.body
+  %OptInsert_add2 = add nsw i32 %i, %OptInsert_add
+  br label %land.lhs.true
+
+
+land.lhs.true:                                    ; preds = %land.lhs.true.split
+  %add2 = add nsw i32 %i, %OptInsert_add
+  %idxprom3 = sext i32 %OptInsert_add2 to i64
+  %arrayidx4 = getelementptr inbounds i32, i32* %a, i64 %idxprom3
+  %2 = load i32, i32* %arrayidx4, align 4
+  %tobool5 = icmp ne i32 %2, 0
+  br i1 %tobool5, label %land.lhs.true6.split, label %land.lhs.true.if.end37_crit_edge, !prof !35
+
+
+land.lhs.true.if.end37_crit_edge:                 ; preds = %land.lhs.true
+  br label %land.lhs.true.if.end37_crit_edge.split
+
+
+land.lhs.true.if.end37_crit_edge.split:           ; preds = %land.lhs.true.if.end37_crit_edge
+  br label %if.end37
+
+
+land.lhs.true6.split:                             ; preds = %land.lhs.true
+  %OptInsert_sub32 = sub nsw i32 %i, %OptInsert_add
+  br label %land.lhs.true6
+
+
+land.lhs.true6:                                   ; preds = %land.lhs.true6.split
+  %sub = sub nsw i32 %i, %OptInsert_add
+  %add7 = add nsw i32 %OptInsert_sub32, 7
+  %idxprom8 = sext i32 %add7 to i64
+  %arrayidx9 = getelementptr inbounds i32, i32* %c, i64 %idxprom8
+  %3 = load i32, i32* %arrayidx9, align 4
+  %tobool10 = icmp ne i32 %3, 0
+  br i1 %tobool10, label %if.then.split, label %land.lhs.true6.if.end37_crit_edge, !prof !36
+
+
+land.lhs.true6.if.end37_crit_edge:                ; preds = %land.lhs.true6
+  br label %land.lhs.true6.if.end37_crit_edge.split
+
+
+land.lhs.true6.if.end37_crit_edge.split:          ; preds = %land.lhs.true6.if.end37_crit_edge
+  br label %if.end37
+
+
+if.then.split:                                    ; preds = %land.lhs.true6
+  %OptInsert_idxprom11 = sext i32 %i to i64
+  %OptInsert_cmp22 = icmp slt i32 %i, 8
+  %OptInsert_add24 = add nsw i32 %i, 1
+  br label %if.then
+
+
+if.then:                                          ; preds = %if.then.split
+  %idxprom11 = sext i32 %i to i64
+  %arrayidx12 = getelementptr inbounds i32, i32* %x, i64 %OptInsert_idxprom11
+  store i32 %OptInsert_add, i32* %arrayidx12, align 4
+  %idxprom13 = sext i32 %OptInsert_add to i64
+  %arrayidx14 = getelementptr inbounds i32, i32* %b, i64 %idxprom13
+  store i32 0, i32* %arrayidx14, align 4
+  %add15 = add nsw i32 %i, %OptInsert_add
+  %idxprom16 = sext i32 %OptInsert_add2 to i64
+  %arrayidx17 = getelementptr inbounds i32, i32* %a, i64 %idxprom16
+  store i32 0, i32* %arrayidx17, align 4
+  %sub18 = sub nsw i32 %i, %OptInsert_add
+  %add19 = add nsw i32 %OptInsert_sub32, 7
+  %idxprom20 = sext i32 %add19 to i64
+  %arrayidx21 = getelementptr inbounds i32, i32* %c, i64 %idxprom20
+  store i32 0, i32* %arrayidx21, align 4
+  %cmp22 = icmp slt i32 %i, 8
+  br i1 %OptInsert_cmp22, label %if.then23, label %if.else, !prof !37
+
+
+if.then23:                                        ; preds = %if.then
+  %add24 = add nsw i32 %i, 1
+  %call = call i32 @Try(i32 %OptInsert_add24, i32 0, i32* %a, i32* %b, i32* %c, i32* %x)
+  %tobool25 = icmp ne i32 %call, 0
+  br i1 %tobool25, label %if.then23.if.end_crit_edge, label %if.then26, !prof !38
+
+
+if.then23.if.end_crit_edge:                       ; preds = %if.then23
+  br label %if.end
+
+
+if.then26:                                        ; preds = %if.then23
+  %idxprom27 = sext i32 %OptInsert_add to i64
+  %arrayidx28 = getelementptr inbounds i32, i32* %b, i64 %idxprom27
+  store i32 1, i32* %arrayidx28, align 4
+  %add29 = add nsw i32 %i, %OptInsert_add
+  %idxprom30 = sext i32 %OptInsert_add2 to i64
+  %arrayidx31 = getelementptr inbounds i32, i32* %a, i64 %idxprom30
+  store i32 1, i32* %arrayidx31, align 4
+  %sub32 = sub nsw i32 %i, %OptInsert_add
+  %add33 = add nsw i32 %OptInsert_sub32, 7
+  %idxprom34 = sext i32 %add33 to i64
+  %arrayidx35 = getelementptr inbounds i32, i32* %c, i64 %idxprom34
+  store i32 1, i32* %arrayidx35, align 4
+  br label %if.end
+
+
+if.end:                                           ; preds = %if.then23.if.end_crit_edge, %if.then26
+  br label %if.end.split
+
+
+if.end.split:                                     ; preds = %if.end
+  br label %if.end36
+
+
+if.else:                                          ; preds = %if.then
+  br label %if.else.split
+
+
+if.else.split:                                    ; preds = %if.else
+  br label %if.end36
+
+
+if.end36:                                         ; preds = %if.else.split, %if.end.split
+  %q.addr.1 = phi i32 [ %call, %if.end.split ], [ 1, %if.else.split ]
+  br label %if.end36.split
+
+
+if.end36.split:                                   ; preds = %if.end36
+  br label %if.end37
+
+
+if.end37:                                         ; preds = %land.lhs.true6.if.end37_crit_edge.split, %land.lhs.true.if.end37_crit_edge.split, %while.body.if.end37_crit_edge.split, %if.end36.split
+  %q.addr.2 = phi i32 [ %q.addr.1, %if.end36.split ], [ 0, %land.lhs.true6.if.end37_crit_edge.split ], [ 0, %land.lhs.true.if.end37_crit_edge.split ], [ 0, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_cmp22 = phi i1 [ %OptInsert_cmp22, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_cmp22, %while.body.if.end37_crit_edge.split ]
+  %NewPhi_OptInsert_idxprom11 = phi i64 [ %OptInsert_idxprom11, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_idxprom11, %while.body.if.end37_crit_edge.split ]
+  br label %while.cond, !llvm.loop !39
+
+
+while.end:                                        ; preds = %land.end
+  ret i32 %q.addr.0
+
+entry
+  br label %entry.split
+entry.split
+  br label %while.cond
+while.cond
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %q.addr.0 = phi i32 [ 0, %entry.split ], [ %q.addr.2, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_add, %if.end37 ]
+  %j.0 = phi i32 [ 0, %entry.split ], [ %OptInsert_add, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 [ %NewPhi_OptInsert_add24, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_add24 = phi i32 [ %NewPhi_OptInsert_add24, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 [ %NewPhi_OptInsert_cmp22, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_cmp22 = phi i1 [ %NewPhi_OptInsert_cmp22, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 [ %NewPhi_OptInsert_idxprom11, %if.end37 ]
+  %NewPhi_NewPhi_OptInsert_idxprom11 = phi i64 [ %NewPhi_OptInsert_idxprom11, %if.end37 ]
+  %tobool = icmp ne i32 %q.addr.0, 0
+  br i1 %tobool, label %while.cond.land.end_crit_edge, label %land.rhs.split, !prof !32
+While deleting: i32 %NewPhi_NewPhi_OptInsert_add24
+Use still stuck around after Def is destroyed:  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %while.body.if.end37_crit_edge.split ]
+Use still stuck around after Def is destroyed:  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %while.body.if.end37_crit_edge.split ]
+Use still stuck around after Def is destroyed:  %NewPhi_OptInsert_add24 = phi i32 [ %OptInsert_add24, %if.end36.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true6.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %land.lhs.true.if.end37_crit_edge.split ], [ %NewPhi_NewPhi_OptInsert_add24, %while.body.if.end37_crit_edge.split ]
+opt: /home/leozhu/llvm-project/llvm/lib/IR/Value.cpp:100: llvm::Value::~Value(): Assertion `materialized_use_empty() && "Uses remain when a value is destroyed!"' failed.
+PLEASE submit a bug report to https://bugs.llvm.org/ and include the crash backtrace.
+Stack dump:
+0.	Program arguments: opt -o Queens/Queens.spre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ../build/SPGVNPRE/LLVMHW2.so -spgvnpre
+1.	Running pass 'Function Pass Manager' on module '<stdin>'.
+2.	Running pass 'SPeculation-based Global Value Numbering/Partial Redundancy Elimination' on function '@Try'
+ #0 0x000055701bf56e2c llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:565:22
+ #1 0x000055701bf56ee7 PrintStackTraceSignalHandler(void*) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:632:1
+ #2 0x000055701bf54b5d llvm::sys::RunSignalHandlers() /home/leozhu/llvm-project/llvm/lib/Support/Signals.cpp:71:20
+ #3 0x000055701bf56778 SignalHandler(int) /home/leozhu/llvm-project/llvm/lib/Support/Unix/Signals.inc:407:1
+ #4 0x00007f71d012e3c0 __restore_rt (/lib/x86_64-linux-gnu/libpthread.so.0+0x153c0)
+ #5 0x00007f71cfbcd18b raise /build/glibc-eX1tMB/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+ #6 0x00007f71cfbac859 abort /build/glibc-eX1tMB/glibc-2.31/stdlib/abort.c:81:7
+ #7 0x00007f71cfbac729 get_sysdep_segment_value /build/glibc-eX1tMB/glibc-2.31/intl/loadmsgcat.c:509:8
+ #8 0x00007f71cfbac729 _nl_load_domain /build/glibc-eX1tMB/glibc-2.31/intl/loadmsgcat.c:970:34
+ #9 0x00007f71cfbbdf36 (/lib/x86_64-linux-gnu/libc.so.6+0x36f36)
+#10 0x000055701b44f9a7 llvm::Value::~Value() /home/leozhu/llvm-project/llvm/lib/IR/Value.cpp:100:3
+#11 0x000055701a89f2bc llvm::User::~User() /home/leozhu/llvm-project/llvm/include/llvm/IR/User.h:94:3
+#12 0x000055701b363e78 llvm::Instruction::~Instruction() /home/leozhu/llvm-project/llvm/lib/IR/Instruction.cpp:58:1
+#13 0x000055701b455c42 llvm::PHINode::~PHINode() /home/leozhu/llvm-project/llvm/include/llvm/IR/Instructions.h:2582:7
+#14 0x000055701b45055f llvm::Value::deleteValue() /home/leozhu/llvm-project/llvm/include/llvm/IR/Instruction.def:208:1
+#15 0x000055701a73880e llvm::ilist_alloc_traits<llvm::Instruction>::deleteNode(llvm::Instruction*) /home/leozhu/llvm-project/llvm/include/llvm/IR/Instruction.h:848:1
+#16 0x000055701a7395df llvm::iplist_impl<llvm::simple_ilist<llvm::Instruction>, llvm::SymbolTableListTraits<llvm::Instruction> >::erase(llvm::ilist_iterator<llvm::ilist_detail::node_options<llvm::Instruction, true, false, void>, false, false>) /home/leozhu/llvm-project/llvm/include/llvm/ADT/ilist.h:269:12
+#17 0x000055701b363fa1 llvm::Instruction::eraseFromParent() /home/leozhu/llvm-project/llvm/lib/IR/Instruction.cpp:79:1
+#18 0x00007f71cfb197d3 (anonymous namespace)::SPGVNPRE::runOnFunction(llvm::Function&) (../build/SPGVNPRE/LLVMHW2.so+0xb07d3)
+#19 0x000055701b3b34fa llvm::FPPassManager::runOnFunction(llvm::Function&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1435:20
+#20 0x000055701b3b37c3 llvm::FPPassManager::runOnModule(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1481:13
+#21 0x000055701b3b3c35 (anonymous namespace)::MPPassManager::runOnModule(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1550:20
+#22 0x000055701b3aed30 llvm::legacy::PassManagerImpl::run(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:541:13
+#23 0x000055701b3b450b llvm::legacy::PassManager::run(llvm::Module&) /home/leozhu/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1678:1
+#24 0x0000557018d13a88 main /home/leozhu/llvm-project/llvm/tools/opt/opt.cpp:997:15
+#25 0x00007f71cfbae0b3 __libc_start_main /build/glibc-eX1tMB/glibc-2.31/csu/../csu/libc-start.c:342:3
+#26 0x0000557018cd583e _start (/usr/local/bin/opt+0x1dca83e)
+single_copy.sh: line 72: 391958 Aborted                 (core dumped) opt -o ${1}/${1}.spre.bc -pgo-instr-use -pgo-test-profile-file=pgo.profdata -load ${PATH_MYPASS} ${NAME_MYPASS} < ${1}/${1}_reg.bc > /dev/null
+single_copy.sh: line 74: Queens/Queens.spre.bc: No such file or directory
+opt: Queens/Queens.spre.bc: error: Could not open input file: No such file or directory
+single_copy.sh: line 86: Queens/Queens_final.bc: No such file or directory
+single_copy.sh: line 95: Queens/Queens_final.bc: No such file or directory
+single_copy.sh: line 97: Queens/Queens.merge.bc: No such file or directory
 rm: cannot remove '.': Is a directory
 rm: cannot remove '..': Is a directory

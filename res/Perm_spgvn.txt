@@ -6,24 +6,16 @@
 
    compile
 
-real	0m0.081s
-user	0m0.051s
-sys	0m0.030s
+real	0m0.082s
+user	0m0.047s
+sys	0m0.035s
 
 
    run
 
-real	0m3.637s
-user	0m3.623s
-sys	0m0.008s
-
-
-
-2. Result for pre
-
-real	0m2.733s
-user	0m2.725s
-sys	0m0.008s
+real	0m3.443s
+user	0m3.419s
+sys	0m0.016s
 
 
 
@@ -31,11 +23,10 @@ sys	0m0.008s
 
 
    run
-lli: Perm/Perm.spre.bc: error: Could not open input file: No such file or directory
 
-real	0m0.011s
-user	0m0.005s
-sys	0m0.005s
+real	0m2.879s
+user	0m2.868s
+sys	0m0.008s
 
 
 
@@ -44,15 +35,15 @@ sys	0m0.005s
 
    compile
 
-real	0m0.185s
-user	0m0.073s
-sys	0m0.051s
+real	0m0.145s
+user	0m0.074s
+sys	0m0.048s
 
 
    run
 
-real	0m2.776s
-user	0m2.764s
+real	0m2.950s
+user	0m2.933s
 sys	0m0.012s
 
 
@@ -62,13 +53,13 @@ sys	0m0.012s
 
    compile
 
-real	0m0.101s
-user	0m0.062s
-sys	0m0.039s
+real	0m0.108s
+user	0m0.085s
+sys	0m0.023s
 
 
    run
 
-real	0m2.709s
-user	0m2.696s
-sys	0m0.012s
+real	0m3.012s
+user	0m3.004s
+sys	0m0.008s

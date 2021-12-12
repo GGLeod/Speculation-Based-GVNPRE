@@ -1,0 +1,69 @@
+
+
+
+1. Result for reg
+
+
+   compile
+
+real	0m0.089s
+user	0m0.054s
+sys	0m0.035s
+
+real	0m4.532s
+user	0m4.434s
+sys	0m0.012s
+
+
+
+2. Result for pre
+
+
+   compile
+
+real	0m0.120s
+user	0m0.076s
+sys	0m0.044s
+
+
+   run
+
+real	0m2.899s
+user	0m2.881s
+sys	0m0.016s
+
+
+
+3. Result for final
+
+
+   compile
+
+real	0m0.120s
+user	0m0.076s
+sys	0m0.043s
+
+
+   run
+
+real	0m2.946s
+user	0m2.930s
+sys	0m0.008s
+
+
+
+4. Result for merge
+
+
+   compile
+
+real	0m0.107s
+user	0m0.069s
+sys	0m0.038s
+
+
+   run
+
+real	0m2.902s
+user	0m2.888s
+sys	0m0.008s

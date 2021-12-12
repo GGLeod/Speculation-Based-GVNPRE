@@ -82,11 +82,16 @@ void Quick (int run) {
 	}
     Quicksort(sortlist,1,49999);
     if ( (sortlist[1] != littlest) || (sortlist[49999] != biggest) )	printf ( " Error in Quick.\n");
-	  printf("%d\n", sortlist[run + 1]);
+
+	for(int i=0; i<10; i++){
+		printf("%d\n", sortlist[run + i]);
+	}  
+	printf("\n");
+	  
 }
 int main()
 {
 	int i;
-	for (i = 0; i < 100; i++) Quick(i);
+	for (i = 0; i < 1000; i++) Quick(i);
 	return 0;
 }

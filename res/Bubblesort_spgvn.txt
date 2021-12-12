@@ -7,22 +7,14 @@
    compile
 
 real	0m0.083s
-user	0m0.052s
-sys	0m0.031s
+user	0m0.056s
+sys	0m0.027s
 
 
    run
 
-real	0m7.461s
-user	0m7.445s
-sys	0m0.012s
-
-
-
-2. Result for pre
-
-real	0m2.864s
-user	0m2.856s
+real	0m7.418s
+user	0m7.373s
 sys	0m0.008s
 
 
@@ -32,9 +24,9 @@ sys	0m0.008s
 
    run
 
-real	0m0.829s
-user	0m0.816s
-sys	0m0.012s
+real	0m6.094s
+user	0m6.093s
+sys	0m0.000s
 
 
 
@@ -43,16 +35,16 @@ sys	0m0.012s
 
    compile
 
-real	0m0.111s
-user	0m0.059s
-sys	0m0.052s
+real	0m0.129s
+user	0m0.065s
+sys	0m0.049s
 
 
    run
 
-real	0m0.722s
-user	0m0.709s
-sys	0m0.012s
+real	0m4.017s
+user	0m3.958s
+sys	0m0.016s
 
 
 
@@ -61,13 +53,13 @@ sys	0m0.012s
 
    compile
 
-real	0m0.124s
-user	0m0.070s
-sys	0m0.051s
+real	0m0.107s
+user	0m0.074s
+sys	0m0.032s
 
 
    run
 
-real	0m1.086s
-user	0m1.063s
-sys	0m0.008s
+real	0m3.936s
+user	0m3.915s
+sys	0m0.020s

@@ -19,7 +19,7 @@ TIME_MEASURE=../res/${1}_spgvn.txt
 # fi
 # }
 mkdir -p ${1}
-
+rm ${1}/*
 # Prepare input to run
 # setup
 # Convert source code to bitcode (IR)
