@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE
+CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build
+CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build
 
 # Utility rule file for omp_gen.
 
@@ -78,6 +78,6 @@ CMakeFiles/omp_gen.dir/clean:
 .PHONY : CMakeFiles/omp_gen.dir/clean
 
 CMakeFiles/omp_gen.dir/depend:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles/omp_gen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles/omp_gen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/omp_gen.dir/depend
 

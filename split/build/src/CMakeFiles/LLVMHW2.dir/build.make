@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE
+CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build
+CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/LLVMHW2.dir/depend.make
@@ -69,42 +69,42 @@ include src/CMakeFiles/LLVMHW2.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/LLVMHW2.dir/flags.make
 
-src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.o: src/CMakeFiles/LLVMHW2.dir/flags.make
-src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.o: ../src/mergepass.cpp
-src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.o: src/CMakeFiles/LLVMHW2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.o"
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.o -MF CMakeFiles/LLVMHW2.dir/mergepass.cpp.o.d -o CMakeFiles/LLVMHW2.dir/mergepass.cpp.o -c /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/src/mergepass.cpp
+src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.o: src/CMakeFiles/LLVMHW2.dir/flags.make
+src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.o: ../src/splitpass.cpp
+src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.o: src/CMakeFiles/LLVMHW2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.o"
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.o -MF CMakeFiles/LLVMHW2.dir/splitpass.cpp.o.d -o CMakeFiles/LLVMHW2.dir/splitpass.cpp.o -c /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/src/splitpass.cpp
 
-src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LLVMHW2.dir/mergepass.cpp.i"
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/src/mergepass.cpp > CMakeFiles/LLVMHW2.dir/mergepass.cpp.i
+src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LLVMHW2.dir/splitpass.cpp.i"
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/src/splitpass.cpp > CMakeFiles/LLVMHW2.dir/splitpass.cpp.i
 
-src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LLVMHW2.dir/mergepass.cpp.s"
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/src/mergepass.cpp -o CMakeFiles/LLVMHW2.dir/mergepass.cpp.s
+src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LLVMHW2.dir/splitpass.cpp.s"
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/src/splitpass.cpp -o CMakeFiles/LLVMHW2.dir/splitpass.cpp.s
 
 # Object files for target LLVMHW2
 LLVMHW2_OBJECTS = \
-"CMakeFiles/LLVMHW2.dir/mergepass.cpp.o"
+"CMakeFiles/LLVMHW2.dir/splitpass.cpp.o"
 
 # External object files for target LLVMHW2
 LLVMHW2_EXTERNAL_OBJECTS =
 
-src/LLVMHW2.so: src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.o
+src/LLVMHW2.so: src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.o
 src/LLVMHW2.so: src/CMakeFiles/LLVMHW2.dir/build.make
 src/LLVMHW2.so: src/CMakeFiles/LLVMHW2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module LLVMHW2.so"
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LLVMHW2.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module LLVMHW2.so"
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LLVMHW2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/LLVMHW2.dir/build: src/LLVMHW2.so
 .PHONY : src/CMakeFiles/LLVMHW2.dir/build
 
 src/CMakeFiles/LLVMHW2.dir/clean:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src && $(CMAKE_COMMAND) -P CMakeFiles/LLVMHW2.dir/cmake_clean.cmake
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src && $(CMAKE_COMMAND) -P CMakeFiles/LLVMHW2.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/LLVMHW2.dir/clean
 
 src/CMakeFiles/LLVMHW2.dir/depend:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/src /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src/CMakeFiles/LLVMHW2.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/src /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src/CMakeFiles/LLVMHW2.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/LLVMHW2.dir/depend
 

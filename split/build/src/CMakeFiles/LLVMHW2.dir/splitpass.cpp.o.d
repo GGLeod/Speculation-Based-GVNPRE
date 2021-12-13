@@ -1,5 +1,5 @@
-src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.o: \
- /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/src/mergepass.cpp \
+src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.o: \
+ /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/src/splitpass.cpp \
  /usr/include/stdc-predef.h /usr/local/include/llvm/Analysis/LoopInfo.h \
  /usr/local/include/llvm/ADT/DenseMap.h \
  /usr/local/include/llvm/ADT/DenseMapInfo.h \

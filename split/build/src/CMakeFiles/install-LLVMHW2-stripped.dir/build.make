@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE
+CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build
+CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build
 
 # Utility rule file for install-LLVMHW2-stripped.
 
@@ -67,7 +67,7 @@ include src/CMakeFiles/install-LLVMHW2-stripped.dir/compiler_depend.make
 include src/CMakeFiles/install-LLVMHW2-stripped.dir/progress.make
 
 src/CMakeFiles/install-LLVMHW2-stripped:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src && /usr/local/bin/cmake -DCMAKE_INSTALL_COMPONENT="LLVMHW2" -DCMAKE_INSTALL_DO_STRIP=1 -P /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/cmake_install.cmake
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src && /usr/local/bin/cmake -DCMAKE_INSTALL_COMPONENT="LLVMHW2" -DCMAKE_INSTALL_DO_STRIP=1 -P /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/cmake_install.cmake
 
 install-LLVMHW2-stripped: src/CMakeFiles/install-LLVMHW2-stripped
 install-LLVMHW2-stripped: src/CMakeFiles/install-LLVMHW2-stripped.dir/build.make
@@ -78,10 +78,10 @@ src/CMakeFiles/install-LLVMHW2-stripped.dir/build: install-LLVMHW2-stripped
 .PHONY : src/CMakeFiles/install-LLVMHW2-stripped.dir/build
 
 src/CMakeFiles/install-LLVMHW2-stripped.dir/clean:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src && $(CMAKE_COMMAND) -P CMakeFiles/install-LLVMHW2-stripped.dir/cmake_clean.cmake
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src && $(CMAKE_COMMAND) -P CMakeFiles/install-LLVMHW2-stripped.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/install-LLVMHW2-stripped.dir/clean
 
 src/CMakeFiles/install-LLVMHW2-stripped.dir/depend:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/src /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src/CMakeFiles/install-LLVMHW2-stripped.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/src /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src/CMakeFiles/install-LLVMHW2-stripped.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/install-LLVMHW2-stripped.dir/depend
 

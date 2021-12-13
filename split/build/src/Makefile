@@ -57,10 +57,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE
+CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build
+CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src//CMakeFiles/progress.marks
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src//CMakeFiles/progress.marks
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/install-LLVMHW2-stripped.dir/rule:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/install-LLVMHW2-stripped.dir/rule
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/install-LLVMHW2-stripped.dir/rule
 .PHONY : src/CMakeFiles/install-LLVMHW2-stripped.dir/rule
 
 # Convenience name for target.
@@ -172,12 +172,12 @@ install-LLVMHW2-stripped: src/CMakeFiles/install-LLVMHW2-stripped.dir/rule
 
 # fast build rule for target.
 install-LLVMHW2-stripped/fast:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/install-LLVMHW2-stripped.dir/build.make src/CMakeFiles/install-LLVMHW2-stripped.dir/build
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/install-LLVMHW2-stripped.dir/build.make src/CMakeFiles/install-LLVMHW2-stripped.dir/build
 .PHONY : install-LLVMHW2-stripped/fast
 
 # Convenience name for target.
 src/CMakeFiles/install-LLVMHW2.dir/rule:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/install-LLVMHW2.dir/rule
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/install-LLVMHW2.dir/rule
 .PHONY : src/CMakeFiles/install-LLVMHW2.dir/rule
 
 # Convenience name for target.
@@ -186,12 +186,12 @@ install-LLVMHW2: src/CMakeFiles/install-LLVMHW2.dir/rule
 
 # fast build rule for target.
 install-LLVMHW2/fast:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/install-LLVMHW2.dir/build.make src/CMakeFiles/install-LLVMHW2.dir/build
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/install-LLVMHW2.dir/build.make src/CMakeFiles/install-LLVMHW2.dir/build
 .PHONY : install-LLVMHW2/fast
 
 # Convenience name for target.
 src/CMakeFiles/LLVMHW2.dir/rule:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/LLVMHW2.dir/rule
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/LLVMHW2.dir/rule
 .PHONY : src/CMakeFiles/LLVMHW2.dir/rule
 
 # Convenience name for target.
@@ -200,32 +200,32 @@ LLVMHW2: src/CMakeFiles/LLVMHW2.dir/rule
 
 # fast build rule for target.
 LLVMHW2/fast:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/build
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/build
 .PHONY : LLVMHW2/fast
 
-mergepass.o: mergepass.cpp.o
-.PHONY : mergepass.o
+splitpass.o: splitpass.cpp.o
+.PHONY : splitpass.o
 
 # target to build an object file
-mergepass.cpp.o:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.o
-.PHONY : mergepass.cpp.o
+splitpass.cpp.o:
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.o
+.PHONY : splitpass.cpp.o
 
-mergepass.i: mergepass.cpp.i
-.PHONY : mergepass.i
+splitpass.i: splitpass.cpp.i
+.PHONY : splitpass.i
 
 # target to preprocess a source file
-mergepass.cpp.i:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.i
-.PHONY : mergepass.cpp.i
+splitpass.cpp.i:
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.i
+.PHONY : splitpass.cpp.i
 
-mergepass.s: mergepass.cpp.s
-.PHONY : mergepass.s
+splitpass.s: splitpass.cpp.s
+.PHONY : splitpass.s
 
 # target to generate assembly for a file
-mergepass.cpp.s:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/mergepass.cpp.s
-.PHONY : mergepass.cpp.s
+splitpass.cpp.s:
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/splitpass.cpp.s
+.PHONY : splitpass.cpp.s
 
 # Help Target
 help:
@@ -242,9 +242,9 @@ help:
 	@echo "... install-LLVMHW2"
 	@echo "... install-LLVMHW2-stripped"
 	@echo "... LLVMHW2"
-	@echo "... mergepass.o"
-	@echo "... mergepass.i"
-	@echo "... mergepass.s"
+	@echo "... splitpass.o"
+	@echo "... splitpass.i"
+	@echo "... splitpass.s"
 .PHONY : help
 
 
@@ -256,6 +256,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

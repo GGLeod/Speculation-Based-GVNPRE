@@ -54,10 +54,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE
+CMAKE_SOURCE_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build
+CMAKE_BINARY_DIR = /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -101,14 +101,14 @@ src/clean: src/CMakeFiles/LLVMHW2.dir/clean
 CMakeFiles/acc_gen.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/acc_gen.dir/build.make CMakeFiles/acc_gen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/acc_gen.dir/build.make CMakeFiles/acc_gen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles --progress-num= "Built target acc_gen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles --progress-num= "Built target acc_gen"
 .PHONY : CMakeFiles/acc_gen.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/acc_gen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/acc_gen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 .PHONY : CMakeFiles/acc_gen.dir/rule
 
 # Convenience name for target.
@@ -127,14 +127,14 @@ CMakeFiles/acc_gen.dir/clean:
 CMakeFiles/omp_gen.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/omp_gen.dir/build.make CMakeFiles/omp_gen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/omp_gen.dir/build.make CMakeFiles/omp_gen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles --progress-num= "Built target omp_gen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles --progress-num= "Built target omp_gen"
 .PHONY : CMakeFiles/omp_gen.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/omp_gen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/omp_gen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 .PHONY : CMakeFiles/omp_gen.dir/rule
 
 # Convenience name for target.
@@ -153,14 +153,14 @@ CMakeFiles/omp_gen.dir/clean:
 CMakeFiles/intrinsics_gen.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/intrinsics_gen.dir/build.make CMakeFiles/intrinsics_gen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/intrinsics_gen.dir/build.make CMakeFiles/intrinsics_gen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles --progress-num= "Built target intrinsics_gen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles --progress-num= "Built target intrinsics_gen"
 .PHONY : CMakeFiles/intrinsics_gen.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/intrinsics_gen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/intrinsics_gen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 .PHONY : CMakeFiles/intrinsics_gen.dir/rule
 
 # Convenience name for target.
@@ -179,14 +179,14 @@ CMakeFiles/intrinsics_gen.dir/clean:
 src/CMakeFiles/install-LLVMHW2-stripped.dir/all: src/CMakeFiles/LLVMHW2.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/install-LLVMHW2-stripped.dir/build.make src/CMakeFiles/install-LLVMHW2-stripped.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/install-LLVMHW2-stripped.dir/build.make src/CMakeFiles/install-LLVMHW2-stripped.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles --progress-num= "Built target install-LLVMHW2-stripped"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles --progress-num= "Built target install-LLVMHW2-stripped"
 .PHONY : src/CMakeFiles/install-LLVMHW2-stripped.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/install-LLVMHW2-stripped.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/install-LLVMHW2-stripped.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/install-LLVMHW2-stripped.dir/rule
 
 # Convenience name for target.
@@ -205,14 +205,14 @@ src/CMakeFiles/install-LLVMHW2-stripped.dir/clean:
 src/CMakeFiles/install-LLVMHW2.dir/all: src/CMakeFiles/LLVMHW2.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/install-LLVMHW2.dir/build.make src/CMakeFiles/install-LLVMHW2.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/install-LLVMHW2.dir/build.make src/CMakeFiles/install-LLVMHW2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles --progress-num= "Built target install-LLVMHW2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles --progress-num= "Built target install-LLVMHW2"
 .PHONY : src/CMakeFiles/install-LLVMHW2.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/install-LLVMHW2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/install-LLVMHW2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/install-LLVMHW2.dir/rule
 
 # Convenience name for target.
@@ -231,14 +231,14 @@ src/CMakeFiles/install-LLVMHW2.dir/clean:
 src/CMakeFiles/LLVMHW2.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/LLVMHW2.dir/build.make src/CMakeFiles/LLVMHW2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles --progress-num=1,2 "Built target LLVMHW2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles --progress-num=1,2 "Built target LLVMHW2"
 .PHONY : src/CMakeFiles/LLVMHW2.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/LLVMHW2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/LLVMHW2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/LLVMHW2.dir/rule
 
 # Convenience name for target.

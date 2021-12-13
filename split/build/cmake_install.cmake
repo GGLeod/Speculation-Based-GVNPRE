@@ -1,4 +1,4 @@
-# Install script for directory: /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE
+# Install script for directory: /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src/cmake_install.cmake")
+  include("/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

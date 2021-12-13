@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/LLVMHW2.dir/mergepass.cpp.o"
-  "CMakeFiles/LLVMHW2.dir/mergepass.cpp.o.d"
+  "CMakeFiles/LLVMHW2.dir/splitpass.cpp.o"
+  "CMakeFiles/LLVMHW2.dir/splitpass.cpp.o.d"
   "LLVMHW2.pdb"
   "LLVMHW2.so"
 )

@@ -29,18 +29,43 @@ struct Statics : public FunctionPass {
 
   bool runOnFunction(Function &F) override {
 
-    for (Function::iterator bbi = F.begin(); bbi!=F.end(); ++bbi){ // iterate BBs 
-        BasicBlock* bb = &*bbi;
-        for(auto Ii = bb->begin(); Ii!=bb->end(); ++Ii){
+    for (Function::iterator BBi = F.begin(); BBi!=F.end(); ++BBi){ // iterate BBs 
+        BasicBlock* BB = &*BBi;
+        for(auto Ii = BB->begin(); Ii!=BB->end(); ++Ii){
             Instruction* I = &*Ii;
-            Instruction* newI = I->clone();
-            auto lastinsert = bb->getInstList().end();
-            lastinsert--;
-            bb->getInstList().insert(lastinsert, newI);
-            I->replaceAllUsesWith(newI);
+            auto last = BB->end();
+            last--;
+            if(Ii!=last){
+                errs() << *I << "\n";
+                
+
+                for(int i=0; i<I->getNumOperands(); i++){
+                    Value* op = I->getOperand(i);
+                    if(isa<Instruction>(op)){
+                        Instruction* Iop = cast<Instruction>(op);
+                        if(Iop->getParent() == I->getParent()){
+                            BasicBlock * parent = I->getParent();
+
+                            BasicBlock * newBB = SplitBlock(parent, I);
+                            // errs() << "break\n";
+                            
+                            // errs() << *parent;
+
+                            BBi = F.begin();
+                            Ii = (*BBi).begin();
+                            break;
+                        }
+                    }
+                }
+            }
+            
         }
 
      
+    }
+
+    for (Function::iterator BBi = F.begin(); BBi!=F.end(); ++BBi){ // iterate BBs 
+        errs() << *BBi;
     }
 
     return false;

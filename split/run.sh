@@ -7,13 +7,13 @@
 
 PATH_MYPASS=./build/src/LLVMHW2.so ### Action Required: Specify the path to your pass ###
 NAME_MYPASS=-splitblock ### Action Required: Specify the name for your pass ###
-BENCH=../visual/${1}/${1}_final.bc
+BENCH=../visual/${1}/${1}_reg.bc
 
-opt -o ${1}.merge.bc -load ${PATH_MYPASS} ${NAME_MYPASS} < ${BENCH} > /dev/null
+opt -o ${1}.split.bc -load ${PATH_MYPASS} ${NAME_MYPASS} < ${BENCH} > /dev/null
 
-opt -dot-cfg < ${1}.merge.bc > /dev/null
+opt -dot-cfg < ${1}.split.bc > /dev/null
 
-dot -Tpng .${1}.dot -o ${1}_merge.png
+dot -Tpng .${1}.dot -o ${1}_split.png
 
 # # perform dead code elimination
 

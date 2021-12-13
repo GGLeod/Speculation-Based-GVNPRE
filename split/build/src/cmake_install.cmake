@@ -1,4 +1,4 @@
-# Install script for directory: /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/src
+# Install script for directory: /home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xLLVMHW2x" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE MODULE FILES "/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/MERGE/build/src/LLVMHW2.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE MODULE FILES "/home/leozhu/Desktop/21Fall/583/Speculation-Based-GVNPRE/split/build/src/LLVMHW2.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/LLVMHW2.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/LLVMHW2.so")
     if(CMAKE_INSTALL_DO_STRIP)
